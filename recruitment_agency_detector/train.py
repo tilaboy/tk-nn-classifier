@@ -23,7 +23,7 @@ class Trainer:
         )
         return model
 
-    def train_spacy(self, nlp, train_data, eval_texts, eval_cats, n_iter=20, init_tok2vec=None):
+    def train_spacy(nlp, train_data, eval_texts, eval_cats, n_iter=20, init_tok2vec=None):
         textcat = nlp.get_pipe("textcat")
 
         # get names of other pipes to disable them during training
@@ -46,7 +46,7 @@ class Trainer:
                     nlp.update(texts, annotations, sgd=optimizer, drop=0.2, losses=losses)
                 with textcat.model.use_params(optimizer.averages):
                     # evaluate on the dev data split off in load_data()
-                    scores = self.evaluate_spacy(nlp.tokenizer, textcat, eval_texts, eval_cats)
+                    scores = evaluate_spacy(nlp.tokenizer, textcat, eval_texts, eval_cats)
                 print(
                     "{0:.3f}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(  # print a simple table
                         losses["textcat"],
@@ -58,34 +58,34 @@ class Trainer:
 
         return nlp
 
-    def evaluate_spacy(self, tokenizer, textcat, texts, cats):
-        docs = (tokenizer(text) for text in texts)
-        tp = 0.0  # True positives
-        fp = 1e-8  # False positives
-        fn = 1e-8  # False negatives
-        tn = 0.0  # True negatives
-        for i, doc in enumerate(textcat.pipe(docs)):
-            gold = cats[i]
-            for label, score in doc.cats.items():
-                if label not in gold:
-                    continue
-                if label == "NEGATIVE":
-                    continue
-                if score >= 0.5 and gold[label] >= 0.5:
-                    tp += 1.0
-                elif score >= 0.5 and gold[label] < 0.5:
-                    fp += 1.0
-                elif score < 0.5 and gold[label] < 0.5:
-                    tn += 1
-                elif score < 0.5 and gold[label] >= 0.5:
-                    fn += 1
-        precision = tp / (tp + fp)
-        recall = tp / (tp + fn)
-        if (precision + recall) == 0:
-            f_score = 0.0
-        else:
-            f_score = 2 * (precision * recall) / (precision + recall)
-        return {"textcat_p": precision, "textcat_r": recall, "textcat_f": f_score}
+def evaluate_spacy(tokenizer, textcat, texts, cats):
+    docs = (tokenizer(text) for text in texts)
+    tp = 0.0  # True positives
+    fp = 1e-8  # False positives
+    fn = 1e-8  # False negatives
+    tn = 0.0  # True negatives
+    for i, doc in enumerate(textcat.pipe(docs)):
+        gold = cats[i]
+        for label, score in doc.cats.items():
+            if label not in gold:
+                continue
+            if label == "NEGATIVE":
+                continue
+            if score >= 0.5 and gold[label] >= 0.5:
+                tp += 1.0
+            elif score >= 0.5 and gold[label] < 0.5:
+                fp += 1.0
+            elif score < 0.5 and gold[label] < 0.5:
+                tn += 1
+            elif score < 0.5 and gold[label] >= 0.5:
+                fn += 1
+    precision = tp / (tp + fp)
+    recall = tp / (tp + fn)
+    if (precision + recall) == 0:
+        f_score = 0.0
+    else:
+        f_score = 2 * (precision * recall) / (precision + recall)
+    return {"textcat_p": precision, "textcat_r": recall, "textcat_f": f_score}
 
 
 def build_model(model_cfg):

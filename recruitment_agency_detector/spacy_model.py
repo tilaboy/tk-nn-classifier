@@ -11,34 +11,19 @@ Compatible with: spaCy v2.0.0+
 """
 from __future__ import unicode_literals, print_function
 import plac
-import random
-from pathlib import Path
 
 import spacy
-
+import random
 from xml_miner.miner import TRXMLMiner
-from graph import Graph
-from train import Trainer
+from model import Model
 
-
-def main(model="en_core_web_sm", output_dir='output_dir', n_iter=10, init_tok2vec=None):
-    model = Graph('spacy')
-    model.build_graph()
+def main(model="en_core_web_sm", output_dir='output_dir', n_iter=2, init_tok2vec=None):
+    model = Model('spacy')
+    model.build_graph(pre_model='en_core_web_sm')
     (train_texts, train_cats), (dev_texts, dev_cats) = load_data()
-    train_data = list(zip(train_texts, [{"cats": cats} for cats in train_cats]))
-    model.train(train_data, dev_texts, dev_cats)
-    save_model(model, output_dir)
-
-def save_model(model, output_dir):
-    if output_dir is not None:
-        output_dir = Path(output_dir)
-        if not output_dir.exists():
-            output_dir.mkdir()
-        optimizer = model.begin_training()
-        with model.use_params(optimizer.averages):
-            model.to_disk(output_dir)
-        print("Saved model to", output_dir)
-
+    train_cats = [{"cats": cats} for cats in train_cats]
+    model.train(train_texts, train_cats, dev_texts, dev_cats)
+    model.save_model(output_dir)
 
 def inference(output_dir='output_dir'):
     # test the trained model

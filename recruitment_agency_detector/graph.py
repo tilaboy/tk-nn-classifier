@@ -2,11 +2,17 @@ import tensorflow as tf
 from tensorflow import keras
 import spacy
 
-class Graph:
+class Model:
     def __init__(self, type):
         self.type = type
 
-    def build_tf_graph(input_dimension=450, l_rate=0.02):
+    def build_graph(self):
+        if self.type == 'tf':
+            self.model = self.build_tf_graph()
+        elif self.type = 'spacy'
+            self.model = self.build_spacy_graph()
+
+    def build_tf_graph(self, input_dimension=450, l_rate=0.02):
         """
         A hard coded training graph
 

@@ -20,26 +20,25 @@ from xml_miner.miner import TRXMLMiner
 from graph import Graph
 from train import Trainer
 
+
 def main(model="en_core_web_sm", output_dir='output_dir', n_iter=10, init_tok2vec=None):
+    model = Graph('spacy')
+    model.build_graph()
+    (train_texts, train_cats), (dev_texts, dev_cats) = load_data()
+    train_data = list(zip(train_texts, [{"cats": cats} for cats in train_cats]))
+    model.train(train_data, dev_texts, dev_cats)
+    save_model(model, output_dir)
+
+def save_model(model, output_dir):
     if output_dir is not None:
         output_dir = Path(output_dir)
         if not output_dir.exists():
             output_dir.mkdir()
-
-    # add graph to spacy
-    nlp = Graph.build_spacy_graph(model)
-
-    # load the IMDB dataset
-    print("Loading data...")
-    (train_texts, train_cats), (dev_texts, dev_cats) = load_data()
-    train_data = list(zip(train_texts, [{"cats": cats} for cats in train_cats]))
-
-    nlp = Trainer.train_spacy(nlp, train_data, dev_texts, dev_cats)
-
-    if output_dir is not None:
-        with nlp.use_params(optimizer.averages):
-            nlp.to_disk(output_dir)
+        optimizer = model.begin_training()
+        with model.use_params(optimizer.averages):
+            model.to_disk(output_dir)
         print("Saved model to", output_dir)
+
 
 def inference(output_dir='output_dir'):
     # test the trained model

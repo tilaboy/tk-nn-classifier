@@ -11,31 +11,27 @@ Compatible with: spaCy v2.0.0+
 """
 from __future__ import unicode_literals, print_function
 import plac
-
 import spacy
-import random
-from xml_miner.miner import TRXMLMiner
-from model import Model
 
-def main(model="en_core_web_sm", output_dir='output_dir', n_iter=2, init_tok2vec=None):
-    model = Model('spacy')
-    model.build_graph(pre_model='en_core_web_sm')
-    (train_texts, train_cats), (dev_texts, dev_cats) = load_data()
-    train_cats = [{"cats": cats} for cats in train_cats]
-    model.train(train_texts, train_cats, dev_texts, dev_cats)
-    model.save_model(output_dir)
+def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):
+    print("Loading from", model_dir)
+    nlp = spacy.load(model_dir)
 
-def inference(output_dir='output_dir'):
-    # test the trained model
-
-    print("Loading from", output_dir)
-    nlp = spacy.load(output_dir)
-
-    fh_train_output = open('train.txt', 'w')
-    for test_text, category in get_data('data/trxml/'):
+    fh_output = open(output_file, 'w')
+    fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
+    for test_text, category, id, orgname, site, url in get_data_with_details('data/random_trxmls'):
         doc = nlp(test_text)
-        fh_train_output.write(str(category) + " <=> " + str(doc.cats) + "\n")
-    fh_train_output.close()
+        predict_cat = 1 if doc.cats['POSITIVE'] > doc.cats['NEGATIVE'] else 0
+        fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{doc.cats}\n")
+    fh_output.close()
+
+def evaluate_trxml_batch(model_path, data_path):
+    nlp = spacy.load(model_path)
+    train_data = get_data(data_path)
+    train_texts, train_labels = zip(*train_data)
+    print('compute scores on training set')
+    compute_score(nlp, train_texts, train_labels)
+
 
 def compute_score(nlp, texts, labels):
 
@@ -56,30 +52,40 @@ def compute_score(nlp, texts, labels):
     )
 
 
-def evaluate_and_print(nlp=None, output_dir='output_dir'):
-    if nlp is None:
-        print("Loading from", output_dir)
-        nlp = spacy.load(output_dir)
+def get_data_with_details(data_dir):
+    fields = [
+        'fulltext.0.fulltext',
+        'derived_source_type.0.derived_source_type',
+        'Document.0.correlationid',
+        'derived_org_name.0.derived_org_name',
+        'derived_source_site.0.derived_source_site',
+        'derived_norm_url.0.derived_norm_url'
+    ]
+    trxml_miner = TRXMLMiner(','.join(fields))
+    data = []
 
-    train_data_path = 'data/trxml'
-    train_data = get_data(train_data_path)
-    train_texts, train_labels = zip(*train_data)
-    print('compute scores on training set')
-    compute_score(nlp, train_texts, train_labels)
-
-    eval_data_path = 'data/unidentified'
-
-    eval_data = get_data(eval_data_path)
-    eval_texts, _ = zip(*eval_data)
-    eval_labels = [1] * len(eval_texts)
-    print('compute scores on eval set')
-    compute_score(nlp, eval_texts, eval_labels)
+    for mined in trxml_miner.mine(data_dir):
+        if mined['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
+            category = 1
+        elif mined['values']['derived_source_type.0.derived_source_type'] == 'other':
+            category = 0
+        else:
+            category = 0.5
+        data.append(
+                    (mined['values']['fulltext.0.fulltext'],
+                     category,
+                     mined['values']['Document.0.correlationid'],
+                     mined['values']['derived_org_name.0.derived_org_name'],
+                     mined['values']['derived_source_site.0.derived_source_site'],
+                     mined['values']['derived_norm_url.0.derived_norm_url']
+                     )
+                    )
+    return data
 
 
 def get_data(data_dir):
     trxml_miner = TRXMLMiner("fulltext.0.fulltext,derived_source_type.0.derived_source_type")
     data = []
-
     for mined in trxml_miner.mine(data_dir):
         if mined['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
             category = 1
@@ -90,27 +96,12 @@ def get_data(data_dir):
         data.append( (mined['values']['fulltext.0.fulltext'], category) )
     return data
 
-def load_data(split=0.8, limit=0):
+
+def load_data(config):
     """Load data from our dataset."""
-    # Partition off part of the train data for evaluation
-    # train_data, _ = thinc.extra.datasets.imdb()
-    # vacs_df = pandas.read_json(file_path)
-
-    train_data_path = 'data/trxml_small'
-
-    train_data = get_data(train_data_path)
+    train_data = get_data(config['train_data_path'])
     random.shuffle(train_data)
-    train_data = train_data[-limit:]
-
-
     texts, labels = zip(*train_data)
-
     cats = [{"POSITIVE": bool(y), "NEGATIVE": not bool(y)} for y in labels]
-
-    split = int(len(train_data) * split)
+    split = int(len(train_data) * config['split_ratio'])
     return (texts[:split], cats[:split]), (texts[split:], cats[split:])
-
-
-if __name__ == "__main__":
-    #plac.call(evaluate_and_print)
-    plac.call(main)

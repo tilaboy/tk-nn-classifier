@@ -10,8 +10,9 @@ see the documentation:
 Compatible with: spaCy v2.0.0+
 """
 from __future__ import unicode_literals, print_function
-import plac
 import spacy
+import random
+from xml_miner.miner import TRXMLMiner
 
 def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):
     print("Loading from", model_dir)

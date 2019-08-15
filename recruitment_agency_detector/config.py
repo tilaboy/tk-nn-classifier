@@ -34,7 +34,7 @@ def get_default_config():
     return config
 
 
-def load_config(config_file, insert_defaults=True):
+def load_config(config_file, insert_defaults=False):
     '''
     load the config file
 

@@ -98,7 +98,7 @@ class Model:
 
         with self.model.disable_pipes(*other_pipes):  # only train textcat
             optimizer = self.model.begin_training()
-            if self.config.get('init_tok2vec', default = None) is not None:
+            if self.config.get('init_tok2vec', None) is not None:
                 init_tok2vec = Path(self.config['init_tok2vec'])
                 with init_tok2vec.open("rb") as file_:
                     textcat.model.tok2vec.from_bytes(file_.read())

@@ -33,15 +33,14 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
+    scripts=[
+        'bin/tk-nn-train.py',
+        'bin/tk-nn-infer.py'
+    ],
     test_suite="tests",
     setup_requires=setup_requirements,
     tests_require=test_requirements,
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
-    entry_points={
-        "console_scripts": [
-            "tk-nn=recruitment_agency_detector.__main__:main",
-        ],
-    },
     zip_safe=False
 )

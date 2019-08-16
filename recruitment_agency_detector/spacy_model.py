@@ -73,7 +73,7 @@ def get_data_with_details(data_dir):
         else:
             category = 0.5
         data.append(
-                    (mined['values']['fulltext.0.fulltext'],
+                    (mined['values']['sec_vacancy.0.sec_vacancy'],
                      category,
                      mined['values']['Document.0.correlationid'],
                      mined['values']['derived_org_name.0.derived_org_name'],
@@ -85,7 +85,7 @@ def get_data_with_details(data_dir):
 
 
 def get_data(data_dir):
-    trxml_miner = TRXMLMiner("fulltext.0.fulltext,derived_source_type.0.derived_source_type")
+    trxml_miner = TRXMLMiner("sec_vacancy.0.sec_vacancy,derived_source_type.0.derived_source_type")
     data = []
     for mined in trxml_miner.mine(data_dir):
         if mined['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
@@ -94,7 +94,7 @@ def get_data(data_dir):
             category = 0
         else:
             category = 0.5
-        data.append( (mined['values']['fulltext.0.fulltext'], category) )
+        data.append( (mined['values']['sec_vacancy.0.sec_vacancy'], category) )
     return data
 
 

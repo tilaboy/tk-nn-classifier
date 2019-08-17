@@ -1,14 +1,5 @@
 #!/usr/bin/env python
 # coding: utf8
-"""Train a convolutional neural network text classifier on the
-IMDB dataset, using the TextCategorizer component. The dataset will be loaded
-automatically via Thinc's built-in dataset loader. The model is added to
-spacy.pipeline, and predictions are available via `doc.cats`. For more details,
-see the documentation:
-* Training: https://spacy.io/usage/training
-
-Compatible with: spaCy v2.0.0+
-"""
 from __future__ import unicode_literals, print_function
 import spacy
 import random
@@ -21,10 +12,17 @@ def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):
     fh_output = open(output_file, 'w')
     fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
     for test_text, category, id, orgname, site, url in get_data_with_details('data/random_trxmls'):
+        test_text = prepare_input_text(text)
         doc = nlp(test_text)
         predict_cat = 1 if doc.cats['POSITIVE'] > doc.cats['NEGATIVE'] else 0
         fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{doc.cats}\n")
     fh_output.close()
+
+
+def prepare_input_text(text):
+    lines = text.split("\n")
+    return "\n".join(lines[:50])
+
 
 def evaluate_trxml_batch(model_path, data_path):
     nlp = spacy.load(model_path)
@@ -35,14 +33,9 @@ def evaluate_trxml_batch(model_path, data_path):
 
 
 def compute_score(nlp, texts, labels):
-
-    cats = [{"POSITIVE": bool(y), "NEGATIVE": not bool(y)} for y in labels]
-
     textcat = nlp.get_pipe("textcat")
     optimizer = nlp.begin_training()
-
     with textcat.model.use_params(optimizer.averages):
-        # evaluate on the dev data split off in load_data()
         scores = evaluate(nlp.tokenizer, textcat, texts, cats)
     print(
         "{0:.3f}\t{1:.3f}\t{2:.3f}".format(  # print a simple table
@@ -55,7 +48,7 @@ def compute_score(nlp, texts, labels):
 
 def get_data_with_details(data_dir):
     fields = [
-        'fulltext.0.fulltext',
+        'sec_vacancy.0.sec_vacancy',
         'derived_source_type.0.derived_source_type',
         'Document.0.correlationid',
         'derived_org_name.0.derived_org_name',
@@ -63,38 +56,22 @@ def get_data_with_details(data_dir):
         'derived_norm_url.0.derived_norm_url'
     ]
     trxml_miner = TRXMLMiner(','.join(fields))
-    data = []
 
-    for mined in trxml_miner.mine(data_dir):
-        if mined['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
-            category = 1
-        elif mined['values']['derived_source_type.0.derived_source_type'] == 'other':
-            category = 0
-        else:
-            category = 0.5
-        data.append(
-                    (mined['values']['sec_vacancy.0.sec_vacancy'],
-                     category,
-                     mined['values']['Document.0.correlationid'],
-                     mined['values']['derived_org_name.0.derived_org_name'],
-                     mined['values']['derived_source_site.0.derived_source_site'],
-                     mined['values']['derived_norm_url.0.derived_norm_url']
-                     )
-                    )
-    return data
+    for trxml in trxml_miner.mine(data_dir):
+        yield (trxml['values'][field] for field in fields)
 
 
 def get_data(data_dir):
     trxml_miner = TRXMLMiner("sec_vacancy.0.sec_vacancy,derived_source_type.0.derived_source_type")
     data = []
-    for mined in trxml_miner.mine(data_dir):
-        if mined['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
+    for trxml in trxml_miner.mine(data_dir):
+        if trxml['values']['derived_source_type.0.derived_source_type'] == 'wervenuitzendsite':
             category = 1
-        elif mined['values']['derived_source_type.0.derived_source_type'] == 'other':
+        elif trxml['values']['derived_source_type.0.derived_source_type'] == 'other':
             category = 0
         else:
             category = 0.5
-        data.append( (mined['values']['sec_vacancy.0.sec_vacancy'], category) )
+        data.append( (prepare_input_text(trxml['values']['sec_vacancy.0.sec_vacancy']), category) )
     return data
 
 

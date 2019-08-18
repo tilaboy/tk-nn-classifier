@@ -4,15 +4,13 @@ import spacy
 from argparse import ArgumentParser
 from recruitment_agency_detector.model import Model
 from recruitment_agency_detector.config import load_config
-from recruitment_agency_detector.spacy_model import load_data
 
 def main(config):
     config = load_config(config)
+    config['action'] = 'train'
     model = Model(config)
-    model.build_graph()
-    (train_texts, train_cats), (dev_texts, dev_cats) = load_data(config)
-    model.train(train_texts, train_cats, dev_texts, dev_cats)
-    model.save_spacy_model(config['model_path'])
+    model.build_and_train()
+    model.save(config['model_path'])
 
 def get_args():
     '''get arguments'''

@@ -15,7 +15,7 @@ def file_itt(data_file):
             if not line.isspace():
                 yield line.rstrip("\n")
 
-class DataReader:
+class DataEncoder:
     '''
     data reader class to prepare the data in the expected format
     '''

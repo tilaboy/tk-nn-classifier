@@ -3,7 +3,7 @@ import random
 from pathlib import Path
 
 from spacy.util import minibatch, compounding
-from ..utils.data_reader import get_data_from_trxml
+from ..utils.trxml_reader import get_train_data
 from .. import LOGGER
 
 class SpaceClassifier:
@@ -40,8 +40,8 @@ class SpaceClassifier:
     def train(self, train_data, eval_data):
         textcat = self.model.get_pipe("textcat")
 
-        textcat.add_label("POSITIVE")
-        textcat.add_label("NEGATIVE")
+        textcat.add_label("yes")
+        textcat.add_label("no")
 
 
         # get names of other pipes to disable them during training
@@ -84,11 +84,10 @@ class SpaceClassifier:
 
     def prepare_train_test_data(self):
         """prepare data from our dataset."""
-        train_data = get_data_from_trxml(self.config['train_data_path'])
+        train_data = list(get_train_data(self.config['train_data_path']))
         random.shuffle(train_data)
         texts, labels = zip(*train_data)
-        cats = [{"POSITIVE": bool(y), "NEGATIVE": not bool(y)} for y in labels]
-
+        cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
         split = int(len(train_data) * self.config['split_ratio'])
 
         return (
@@ -111,7 +110,7 @@ class SpaceClassifier:
             for label, score in doc.cats.items():
                 if label not in gold:
                     continue
-                if label == "NEGATIVE":
+                if label == "no":
                     continue
                 if score >= 0.5 and gold[label] >= 0.5:
                     tp += 1.0

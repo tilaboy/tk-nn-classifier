@@ -3,7 +3,7 @@
 import re
 import numpy as np
 from tk_preprocessing.common_processor import char_normalization
-from word_vector import WordVector, maxabs
+from .word_vector import WordVector, maxabs
 
 CONTEXT_SEPARATOR = "\t"
 

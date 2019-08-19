@@ -50,6 +50,6 @@ def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):
     for test_text, category, id, orgname, site, url in get_data_with_details('data/random_trxmls'):
         test_text = prepare_input_text(text)
         doc = nlp(test_text)
-        predict_cat = 1 if doc.cats['POSITIVE'] > doc.cats['NEGATIVE'] else 0
+        predict_cat = 1 if doc.cats['yes'] > doc.cats['no'] else 0
         fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{doc.cats}\n")
     fh_output.close()

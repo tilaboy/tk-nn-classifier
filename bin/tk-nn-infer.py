@@ -17,6 +17,7 @@ def main(model_dir, test_dir, output_file='result.txt'):
         fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{doc.cats}\n")
     fh_output.close()
 
+
 def get_args():
     '''get arguments'''
     parser = ArgumentParser(description='''

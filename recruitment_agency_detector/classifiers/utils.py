@@ -66,27 +66,18 @@ class TrainHelper:
     @staticmethod
     def confusion_matrix(eval, gold):
         categories = {lable: i for i,label in enumerate(gold[0].keys())}
-        gold_label = _max_dict_value(gold)
-        eval_label = _max_dict_value(eval)
+        gold_labels = max_dict_value(gold)
+        eval_labels = max_dict_value(eval)
 
 
         cm = numpy.zeros((length(categories), length(categories)))
-        for i, result in enumerate(eval):
-            for j, cat in enumerate(categories):
-                if result[cat] >= 0.5 and gold[i][cat] >= 0.5:
-                    cm[j][j] += 1
-                elif result[cat] >= 0.5 and gold[i][cat] < 0.5:
-                    fp += 1.0
-                elif result[cat] < 0.5 and gold[i][cat] < 0.5:
-                    tn += 1
-                elif result[cat] < 0.5 and gold[i][cat] >= 0.5:
-                    fn += 1
+        for eval_label, gold_label in zip(eval_labels, gold_labels):
+            cm[categories[eval_label]][categories[gold_label]] += 1
 
+        print(cm)
 
-def _max_dict_value(cats_dicts):
+def max_dict_value(cats_dicts):
     return [max(item, key=item.get) for cats_ict in cats_dicts]
-
-
 
 
 def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):

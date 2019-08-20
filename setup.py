@@ -24,7 +24,7 @@ setup(
     description='''a detector to detect whether vacancy is from a recruitment
     agency''',
     author="Chao Li",
-    author_email="chao@textkernel.com",
+    author_email="chaoli.job@google.com",
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

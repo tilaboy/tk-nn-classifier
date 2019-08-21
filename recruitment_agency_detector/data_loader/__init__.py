@@ -5,7 +5,7 @@ from .word_vector import WordVector
 
 __all__ = [
     'DataEncoder',
-    'WordVector', 
+    'WordVector',
     'get_train_data',
     'get_data_with_details']
-name = 'utils'
+name = 'data_loader'

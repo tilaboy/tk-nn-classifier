@@ -3,7 +3,7 @@ from __future__ import unicode_literals, print_function
 import spacy
 from argparse import ArgumentParser
 from recruitment_agency_detector.utils import get_data_with_details
-
+from recruitment_agency_detector import LOGGER
 
 def main(model_dir, test_dir, output_file='result.txt'):
     print("Loading from", model_dir)

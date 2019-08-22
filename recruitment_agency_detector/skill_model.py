@@ -1,9 +1,7 @@
 '''Use the skill-validation Neural Network model'''
 
-import logging
 from tensorflow import keras
-
-from data_utils import DataReader
+from data_loader import DataReader
 
 class SkillModel:
     """Dedicated class for inference"""
@@ -14,16 +12,11 @@ class SkillModel:
         Set up the tensorflow session config.
         """
 
-        self.logger = logging.getLogger(__name__)
-
-        self.logger.info(
-            "Load word-embeddings model from %s", embeddings_model_file)
         self.embeddings_reader = DataReader(
             embeddings_model_file,
             token_encoding="max_embedding",
             data_format="service_mode")
 
-        self.logger.info("Load classification model from %s", nn_model_file)
         self.classifier = keras.models.load_model(nn_model_file)
 
     def predict_skill_likelihood(self, match):

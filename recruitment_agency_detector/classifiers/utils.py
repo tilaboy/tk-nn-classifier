@@ -1,4 +1,5 @@
 import numpy
+import pandas as pd
 from .. import LOGGER
 
 class Evaluater:
@@ -64,20 +65,20 @@ class TrainHelper:
 
 
     @staticmethod
-    def confusion_matrix(eval, gold):
-        categories = {lable: i for i,label in enumerate(gold[0].keys())}
-        gold_labels = max_dict_value(gold)
-        eval_labels = max_dict_value(eval)
+    def evaluate_confusion_matrix(eval, gold):
+        categories = {label: i for i,label in enumerate(gold[0].keys())}
+        gold_labels = _max_dict_value(gold)
+        eval_labels = _max_dict_value(eval)
 
-
-        cm = numpy.zeros((length(categories), length(categories)))
-        for eval_label, gold_label in zip(eval_labels, gold_labels):
-            cm[categories[eval_label]][categories[gold_label]] += 1
-
+        cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
+                         pd.Series(eval_labels, name='Predicted')
+                         )
+        LOGGER.info("Confusion matrix:")
         print(cm)
+        return cm
 
-def max_dict_value(cats_dicts):
-    return [max(item, key=item.get) for cats_ict in cats_dicts]
+def _max_dict_value(cats_dicts):
+    return [max(cats_dict, key=cats_dict.get) for cats_dict in cats_dicts]
 
 
 def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):

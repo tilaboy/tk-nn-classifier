@@ -3,9 +3,9 @@ import random
 from pathlib import Path
 
 from spacy.util import minibatch, compounding
-from ..utils.trxml_reader import get_train_data
-from .utils import TrainHelper
+from ..data_loader import get_train_data
 from .. import LOGGER
+from .utils import TrainHelper
 
 class SpaceClassifier:
     def __init__(self, config):
@@ -64,6 +64,7 @@ class SpaceClassifier:
                     scores = self.evaluate(eval_data)
 
                 TrainHelper.print_progress(losses["textcat"], scores)
+            self.confusion_matrix(eval_data)
 
     def _update_one_epoch(self, train_data, batch_sizes, optimizer):
         losses = {}
@@ -99,6 +100,12 @@ class SpaceClassifier:
         docs = (self.model.tokenizer(text) for text in texts)
         for doc in textcat.pipe(docs):
             yield doc.cats
+
+
+    def confusion_matrix(self, eval_data):
+        texts, cats = zip(*eval_data)
+        return TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
+
 
     def evaluate(self, eval_data):
         texts, cats = zip(*eval_data)

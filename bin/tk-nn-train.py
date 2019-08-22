@@ -2,8 +2,11 @@ from __future__ import unicode_literals, print_function
 
 import spacy
 from argparse import ArgumentParser
+import logging
+
 from recruitment_agency_detector.model import Model
 from recruitment_agency_detector.config import load_config
+from recruitment_agency_detector import set_logging_level, LOGGER
 
 def main(config):
     config = load_config(config)
@@ -22,5 +25,7 @@ def get_args():
 
 
 if __name__ == "__main__":
+    set_logging_level(logging.INFO)
+    LOGGER.info("starting...")
     args = get_args()
     main(args.config)

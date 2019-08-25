@@ -36,6 +36,18 @@ class TrainHelper:
         )
 
     @staticmethod
+    def print_test_score(test_set_name, scores):
+        print(
+            "{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
+                test_set_name,
+                scores["precision"],
+                scores["recall"],
+                scores["f1"],
+            )
+        )
+
+
+    @staticmethod
     def evaluate_score(eval, gold):
         tp = 0.0  # True positives
         fp = 1e-8  # False positives

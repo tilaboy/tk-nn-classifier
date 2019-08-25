@@ -1,4 +1,6 @@
+import random
 from xml_miner.miner import TRXMLMiner
+
 
 def _get_values_from_trxml(fields, data_dir):
     # the first element in the fields is the input text to the data models
@@ -15,12 +17,25 @@ def _prepare_input_text(text):
     return "\n".join(lines[:50])
 
 
-def get_train_data(data_dir):
+def _get_data_from_trxml(data_dir):
     fields = [
         'sec_vacancy.0.sec_vacancy',
         'derived_vac_intermediary.0.derived_vac_intermediary'
     ]
     return _get_values_from_trxml(fields, data_dir)
+
+def get_spacy_data(data_dir, shuffle=False, train_mode=False):
+    data_set = list(_get_data_from_trxml(data_dir))
+    if shuffle:
+        random.shuffle(data_set)
+    texts, labels = zip(*data_set)
+    cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
+    if train_mode:
+        cats = [{"cats": cat} for cat in cats]
+
+    return (list(zip(texts, cats)))
+
+
 
 
 def get_data_with_details(data_dir):

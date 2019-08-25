@@ -3,7 +3,7 @@ import random
 from pathlib import Path
 
 from spacy.util import minibatch, compounding
-from ..data_loader import get_train_data
+from ..data_loader import get_spacy_data
 from .. import LOGGER
 from .utils import TrainHelper
 
@@ -14,8 +14,17 @@ class SpaceClassifier:
 
     def build_and_train(self):
         self.build_graph()
-        train_data, test_data = self.prepare_train_test_data()
-        self.train(train_data, test_data)
+        train_data, eval_data = self.prepare_data_sets()
+        self.train(train_data, eval_data)
+        if 'test' in self.config['datasets']:
+            self.evaluate_on_tests()
+
+    def evaluate_on_tests(self):
+        for test_set in  self.config['datasets']['test']:
+            test_data = get_spacy_data(self.config['datasets']['test'][test_set])
+            scores = self.evaluate(test_data)
+            TrainHelper.print_test_score(test_set, scores)
+            self.confusion_matrix(test_data)
 
     def build_graph(self):
         if self.config["spacy_model"] is not None:
@@ -48,7 +57,7 @@ class SpaceClassifier:
         other_pipes = [pipe for pipe in self.model.pipe_names if pipe != "textcat"]
 
         with self.model.disable_pipes(*other_pipes):  # only train textcat
-            optimizer = self.model.begin_training()
+            self.optimizer = self.model.begin_training()
             if self.config.get('init_tok2vec', None) is not None:
                 init_tok2vec = Path(self.config['init_tok2vec'])
                 with init_tok2vec.open("rb") as file_:
@@ -58,15 +67,13 @@ class SpaceClassifier:
             batch_sizes = compounding(4.0, 32.0, 1.001)
 
             for i in range(self.config['num_epochs']):
-                losses = self._update_one_epoch(train_data, batch_sizes, optimizer)
-                with textcat.model.use_params(optimizer.averages):
-                    # evaluate on the dev data split off in load_data()
-                    scores = self.evaluate(eval_data)
-
+                losses = self._update_one_epoch(train_data, batch_sizes)
+                scores = self.evaluate(eval_data)
                 TrainHelper.print_progress(losses["textcat"], scores)
             self.confusion_matrix(eval_data)
 
-    def _update_one_epoch(self, train_data, batch_sizes, optimizer):
+
+    def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
         # batch up the examples using spaCy's minibatch
         random.shuffle(train_data)
@@ -76,15 +83,27 @@ class SpaceClassifier:
             self.model.update(
                               texts,
                               annotations,
-                              sgd=optimizer,
+                              sgd=self.optimizer,
                               drop=self.config["dropout_rate"],
                               losses=losses
                               )
         return losses
 
-    def prepare_train_test_data(self):
+    def prepare_data_sets(self):
+
+        train_data=get_spacy_data(
+            self.config['datasets']['train'],
+            shuffle=True,
+            train_mode=True
+        )
+        eval_data=get_spacy_data(self.config['datasets']['eval'])
+
+        return train_data, eval_data
+
+
+    def split_train_test_data(self):
         """prepare data from our dataset."""
-        train_data = list(get_train_data(self.config['train_data_path']))
+        train_data = list(get_spacy_data(self.config['train_data_path']))
         random.shuffle(train_data)
         texts, labels = zip(*train_data)
         cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
@@ -104,13 +123,16 @@ class SpaceClassifier:
 
     def confusion_matrix(self, eval_data):
         texts, cats = zip(*eval_data)
-        return TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
+        with textcat.model.use_params(self.optimizer.averages):
+            TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
 
 
     def evaluate(self, eval_data):
+        textcat = self.model.get_pipe("textcat")
         texts, cats = zip(*eval_data)
-        return TrainHelper.evaluate_score(self.predict_batch(texts), cats)
-
+        with textcat.model.use_params(self.optimizer.averages):
+            score = TrainHelper.evaluate_score(self.predict_batch(texts), cats)
+        return score
 
 
     def save(self, output_dir):
@@ -118,7 +140,6 @@ class SpaceClassifier:
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
-            optimizer = self.model.begin_training()
-            with self.model.use_params(optimizer.averages):
+            with self.model.use_params(self.optimizer.averages):
                 self.model.to_disk(output_dir)
             print("Saved model to", output_dir)

@@ -15,11 +15,14 @@ class Model:
     def build_graph(self):
         self.classifier.build_graph()
 
-    def train(self, x_train, y_train, x_test, y_test):
-        self.classifier.train(x_train, y_train, x_test, y_test)
+    def train(self, train_data, eval_data):
+        self.classifier.train(train_data, eval_data)
 
     def save(self, output_path):
         self.classifier.save(output_path)
 
     def build_and_train(self):
         self.classifier.build_and_train()
+
+    def evaluate(self, test_data_path):
+        self.classifier.evaluate(test_data_path)

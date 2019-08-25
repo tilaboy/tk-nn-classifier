@@ -18,7 +18,7 @@ def main(config):
 def get_args():
     '''get arguments'''
     parser = ArgumentParser(description='''
-                            the skill validation model
+                            train a model
                             ''')
     parser.add_argument('config', help='training config file', type=str)
     return parser.parse_args()

@@ -123,8 +123,7 @@ class SpaceClassifier:
 
     def confusion_matrix(self, eval_data):
         texts, cats = zip(*eval_data)
-        with textcat.model.use_params(self.optimizer.averages):
-            TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
+        TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
 
 
     def evaluate(self, eval_data):

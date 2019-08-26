@@ -1,6 +1,10 @@
 import random
+import re
 from xml_miner.miner import TRXMLMiner
+from tk_preprocessing.common_processor import char_normalization
 
+HAS_TOKEN_REGEXP = re.compile(r'\w')
+TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 
 def _get_values_from_trxml(fields, data_dir):
     # the first element in the fields is the input text to the data models
@@ -33,10 +37,27 @@ def get_spacy_data(data_dir, shuffle=False, train_mode=False):
     if train_mode:
         cats = [{"cats": cat} for cat in cats]
 
-    return (list(zip(texts, cats)))
+    return list(zip(texts, cats))
 
+def tokenize(string):
+    string = char_normalization(string)
+    tokens = []
+    if re.search(HAS_TOKEN_REGEXP, string):
+        tokens = [
+            match.group().upper()
+            for match in TOKEN_REGEXP.finditer(string)
+            if re.search(HAS_TOKEN_REGEXP, match.group())
+        ]
+    return tokens
+    
 
+def get_tf_data(data_dir):
+    data_set = list(_get_data_from_trxml(data_dir))
 
+    texts, labels = zip(*data_set)
+    cats = [1 if label=="yes" else 0 for label in labels]
+
+    return list(zip(texts, cats))
 
 def get_data_with_details(data_dir):
     fields = [

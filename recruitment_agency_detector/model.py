@@ -15,11 +15,17 @@ class Model:
     def build_graph(self):
         self.classifier.build_graph()
 
-    def train(self, train_data, eval_data):
-        self.classifier.train(train_data, eval_data)
+    def train(self, train_data=None, eval_data=None):
+        if train_data:
+            self.classifier.train(train_data, eval_data)
+        else:
+            self.classifier.train()
 
     def save(self, output_path):
         self.classifier.save(output_path)
+
+    def load(self, model_dir):
+        self.classifier.load_model()
 
     def build_and_train(self):
         self.classifier.build_and_train()

@@ -100,6 +100,8 @@ class SpaceClassifier:
 
         return train_data, eval_data
 
+    def load_model(self):
+        self.model = spacy.load(config['model_path'])
 
     def split_train_test_data(self):
         """prepare data from our dataset."""

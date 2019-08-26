@@ -1,4 +1,5 @@
 {
+    "model_type": "tf",
     "features_enabled": false,
     "token_encoding": "max_embedding",
     "dropout_rate": 0.5,
@@ -7,12 +8,20 @@
     "num_epochs": 50,
     "batch_size": 128,
     "log_dir": "log",
-    "input_dimension": 450,
+    "input_dimension": 150,
     "l_rate": 0.02,
+    "max_sequence_length": 500,
+    "embedding_trainable": false,
     "model_name": "all_skills",
-    "embedding_file": "resources/en-wiki-and-cv-data-till-2016.bin",
-    "train_data": "resources/en-train.tsv",
-    "test_data": "resources/en-test-cv.tsv",
-    "devel_data": "resources/en-test-vac.tsv",
+    "embedding_file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+    "datasets": {
+        "train": "../recruitment_agency_data/train_small",
+        "eval": "../recruitment_agency_data/test_small",
+        "test": {
+            "unindentified": "../recruitment_agency_data/unidentified/",
+            "annotated": "../recruitment_agency_data/annotated/"
+        }
+    },
+    "model_path": "models/tf",
     "model_file": "models/en-model.h5"
 }

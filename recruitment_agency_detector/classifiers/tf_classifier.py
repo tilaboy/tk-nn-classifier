@@ -100,8 +100,6 @@ class TFClassifier:
         output: neural netword model
         """
 
-        head = tf.contrib.estimator.binary_classification_head()
-
         input_layer = tf.contrib.layers.embed_sequence(
             features['x'],
             self.embedding.vocab_size,
@@ -133,24 +131,40 @@ class TFClassifier:
 
         logits = tf.layers.dense(inputs=dropout_hidden, units=1)
 
+        predictions = {
+            # Generate predictions (for PREDICT and EVAL mode)
+            "classes": tf.argmax(input=logits, axis=1),
+            # Add `softmax_tensor` to the graph. It is used for PREDICT and by the
+            # `logging_hook`.
+            "probabilities": tf.nn.softmax(logits, name="softmax_tensor")
+        }
+
+        if mode == tf.estimator.ModeKeys.PREDICT:
+            return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions)
+
         # This will be None when predicting
         if labels is not None:
             labels = tf.reshape(labels, [-1, 1])
 
+        # Calculate Loss (for both TRAIN and EVAL modes)
+        loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits)
+        accuracy = tf.metrics.accuracy(labels, predictions['classes'])
 
-        optimizer = tf.train.AdamOptimizer()
+        # Add evaluation metrics (for EVAL mode)
+        eval_metric_ops = {"accuracy": accuracy}
+        if mode == tf.estimator.ModeKeys.EVAL:
+            return tf.estimator.EstimatorSpec(
+                    mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
 
-        def _train_op_fn(loss):
-            return optimizer.minimize(
+        # Configure the Training Op (for TRAIN mode)
+        if mode == tf.estimator.ModeKeys.TRAIN:
+            optimizer = tf.train.AdamOptimizer(self.config['learning_rate'])
+            train_op = optimizer.minimize(
                 loss=loss,
-                global_step=tf.compat.v1.train.get_global_step())
+                global_step=tf.train.get_global_step())
+            tf.summary.scalar('my_accuracy', accuracy[1])
 
-        return head.create_estimator_spec(
-            features=features,
-            labels=labels,
-            mode=mode,
-            logits=logits,
-            train_op_fn=_train_op_fn)
+            return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
 
 
     def train(self):
@@ -161,13 +175,4 @@ class TFClassifier:
         (x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
 
         eval_results = self.classifier.evaluate(input_fn=self.eval_input_fn)
-        predictions = np.array([p['logistic'][0] for p in self.classifier.predict(input_fn=self.eval_input_fn)])
-
-        # Reset the graph to be able to reuse name scopes
-        tf.reset_default_graph()
-        # Add a PR summary in addition to the summaries that the classifier writes
-        pr = summary_lib.pr_curve('precision_recall', predictions=predictions, labels=y_test.astype(bool), num_thresholds=21)
-        with tf.Session() as sess:
-            writer = tf.summary.FileWriter(os.path.join(self.classifier.model_dir, 'eval'), sess.graph)
-            writer.add_summary(sess.run(pr), global_step=0)
-            writer.close()
+        #predictions = np.array([p['classes'][0] for p in self.classifier.predict(input_fn=self.eval_input_fn)])

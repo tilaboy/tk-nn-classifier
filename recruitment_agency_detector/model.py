@@ -1,3 +1,4 @@
+import tensorflow as tf
 from . import LOGGER
 from .classifiers import TFClassifier, SpaceClassifier
 
@@ -7,6 +8,7 @@ class Model:
         self.type = config['model_type']
         if self.type == 'tf':
             self.classifier = TFClassifier(config)
+            tf.logging.set_verbosity(tf.logging.INFO)
         elif self.type == 'spacy':
             self.classifier = SpaceClassifier(config)
         else:

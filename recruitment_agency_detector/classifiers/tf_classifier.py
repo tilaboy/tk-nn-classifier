@@ -21,8 +21,6 @@ class TFClassifier:
         self.build_graph()
         self.train()
 
-
-
     def load_embedding(self):
         self.embedding = WordVector(self.config['embedding_file'])
 
@@ -81,19 +79,23 @@ class TFClassifier:
 
         #params = {'embedding_initializer': tf.random_uniform_initializer(-1.0, 1.0)}
         params = {'embedding_initializer': my_initializer}
-        self.classifier = tf.estimator.Estimator(model_fn=self.cnn_model_fn,
-                                                model_dir=os.path.join(self.config['model_path'], 'cnn'),
-                                                params=params)
+        self.classifier = tf.estimator.Estimator(
+                model_fn=self.cnn_model_fn,
+                model_dir=os.path.join(self.config['model_path'], 'cnn'),
+                params=params
+        )
 
 
 
     def cnn_model_fn(self, features, labels, mode, params):
         """
-        A hard coded training graph
+        cnn model
 
         params:
-            - input_dimension: the dimension of the input data
-            - l_rate: the learning rate
+            - feature: the vector index of the input token sequence
+            - labels: the training labels
+            - mode: session model, train, eval, or predict
+            - params: other parameters, e.g. the initializer of Word Embedding
 
         output: neural netword model
         """
@@ -104,11 +106,13 @@ class TFClassifier:
             features['x'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
-            initializer=params['embedding_initializer'])
+            initializer=params['embedding_initializer'],
+            trainable=False
+        )
 
         training = mode == tf.estimator.ModeKeys.TRAIN
         dropout_emb = tf.layers.dropout(inputs=input_layer,
-                                        rate=0.2,
+                                        rate=self.config['dropout_rate'],
                                         training=training)
 
         conv = tf.layers.conv1d(
@@ -152,7 +156,7 @@ class TFClassifier:
     def train(self):
         """Training process"""
         # Save a reference to the classifier to run predictions later
-        self.classifier.train(input_fn=self.train_input_fn, steps=50)
+        self.classifier.train(input_fn=self.train_input_fn, steps=self.config['num_epochs'])
 
         (x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
 

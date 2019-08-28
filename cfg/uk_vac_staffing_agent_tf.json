@@ -5,18 +5,18 @@
     "dropout_rate": 0.2,
     "optimizer": "Adam",
     "learning_rate": 0.05,
-    "num_epochs": 500,
+    "num_epochs": 1000,
     "batch_size": 128,
     "log_dir": "log",
     "input_dimension": 150,
     "l_rate": 0.02,
-    "max_sequence_length": 500,
+    "max_sequence_length": 512,
     "embedding_trainable": false,
     "model_name": "all_skills",
     "embedding_file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
     "datasets": {
-        "train": "../recruitment_agency_data/train_small",
-        "eval": "../recruitment_agency_data/test_small",
+        "train": "../recruitment_agency_data/train",
+        "eval": "../recruitment_agency_data/eval",
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/"

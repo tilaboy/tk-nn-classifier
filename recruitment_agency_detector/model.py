@@ -1,5 +1,8 @@
+import sys
 import tensorflow as tf
+from pathlib import Path
 from . import LOGGER
+import logging
 from .classifiers import TFClassifier, SpaceClassifier
 
 class Model:
@@ -9,6 +12,12 @@ class Model:
         if self.type == 'tf':
             self.classifier = TFClassifier(config)
             tf.logging.set_verbosity(tf.logging.INFO)
+            Path('logs').mkdir(exist_ok=True)
+            handlers = [
+                logging.FileHandler('logs/main.log'),
+                logging.StreamHandler(sys.stdout)
+            ]
+            logging.getLogger('tensorflow').handlers = handlers
         elif self.type == 'spacy':
             self.classifier = SpaceClassifier(config)
         else:

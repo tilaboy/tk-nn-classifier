@@ -10,6 +10,8 @@ from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from ..data_loader import WordVector
 from ..data_loader.trxml_reader import get_tf_data, tokenize
+from .. import LOGGER
+
 
 class TFClassifier:
     def __init__(self, config):
@@ -56,17 +58,16 @@ class TFClassifier:
         return features, y
 
     def input_fn(self, data_path, shuffle_and_repeat=False ):
+        LOGGER.info("load data from %s", data_path)
         (data, labels, data_length) = self.load_data_set(data_path)
 
         dataset = tf.data.Dataset.from_tensor_slices((data, data_length, labels))
         if shuffle_and_repeat:
             dataset = dataset.shuffle(buffer_size=len(data))
+            dataset = dataset.repeat(self.config['num_epochs'])
 
         dataset = dataset.batch(self.config['batch_size'])
         dataset = dataset.map(self._data_parser)
-
-        if shuffle_and_repeat:
-            dataset = dataset.repeat(self.config['num_epochs'])
 
         iterator = dataset.make_one_shot_iterator()
         return iterator.get_next()
@@ -83,17 +84,16 @@ class TFClassifier:
         self.model_dir = os.path.join(self.config['model_path'], 'cnn')
 
         run_config = tf.estimator.RunConfig(save_checkpoints_steps=100,
-                                            log_step_count_steps=100,
                                             save_summary_steps=100,
                                             model_dir=self.model_dir,
                                             keep_checkpoint_max=3)
 
         self.classifier = tf.estimator.Estimator(
                 model_fn=self.cnn_model_fn,
-                config=run_config,
+                #config=run_config,
+                model_dir=self.model_dir,
                 params=params
         )
-
 
     def cnn_model_fn(self, features, labels, mode, params):
         training = mode == tf.estimator.ModeKeys.TRAIN
@@ -118,12 +118,19 @@ class TFClassifier:
             padding="same",
             activation=tf.nn.relu)
 
-        pool = tf.reduce_max(input_tensor=conv, axis=1)
-        hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
-        dropout_hidden = tf.layers.dropout(inputs=hidden,
-                                           rate=0.2,
-                                           training=training)
-        logits = tf.layers.dense(inputs=dropout_hidden, units=2)
+        pool = tf.layers.max_pooling1d(inputs=conv, pool_size=2, strides=2, padding='same')
+        flat = tf.contrib.layers.flatten(pool)
+        dropout_flat = tf.layers.dropout(inputs=flat,
+                                         rate=self.config['dropout_rate'],
+                                         training=training)
+        logits = tf.layers.dense(inputs=dropout_flat, units=2)
+
+        #pool = tf.reduce_max(input_tensor=conv, axis=1)
+        #hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
+        #dropout_hidden = tf.layers.dropout(inputs=hidden,
+        #                                   rate=0.2,
+        #                                   training=training)
+        #logits = tf.layers.dense(inputs=dropout_hidden, units=2)
 
         predictions = {
             # Generate predictions (for PREDICT and EVAL mode)
@@ -134,7 +141,15 @@ class TFClassifier:
         }
 
         if mode == tf.estimator.ModeKeys.PREDICT:
-            return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions)
+
+            export_outputs = {
+                'predictions': tf.estimator.export.PredictOutput(predictions)}
+
+            return tf.estimator.EstimatorSpec(
+                mode=mode,
+                predictions=predictions,
+                export_outputs=export_outputs
+            )
 
         # This will be None when predicting
         if labels is not None:
@@ -143,33 +158,30 @@ class TFClassifier:
 
         # Calculate Loss (for both TRAIN and EVAL modes)
         loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
-        accuracy = tf.metrics.accuracy(labels, predictions['classes'])
-        auc = tf.metrics.auc(labels, predictions['classes'])
+
+        metric_ops = {
+            "accuracy": tf.metrics.accuracy(labels, predictions['classes']),
+            "auc": tf.metrics.auc(labels, predictions['classes'])
+        }
+
+        for metric_type, metric_op in metric_ops.items():
+            # v[1] is the update op of the metrics object
+            tf.summary.scalar(metric_type, metric_op[1])
 
         if mode == tf.estimator.ModeKeys.EVAL:
-            # Add evaluation metrics (for EVAL mode)
-            eval_metric_ops = {"accuracy": accuracy, "auc": auc}
-
-            #eval_summary_hook = tf.train.SummarySaverHook(
-            #    save_steps=100,
-            #    output_dir=self.model_dir,
-            #    summary_op=tf.summary.scalar("validation", accuracy[1])
-            #)
 
             return tf.estimator.EstimatorSpec(
                     mode=mode,
                     loss=loss,
-                    eval_metric_ops=eval_metric_ops)
-                    #evaluation_hooks=[eval_summary_hook])
-
+                    eval_metric_ops=metric_ops)
 
         # Configure the Training Op (for TRAIN mode)
         if mode == tf.estimator.ModeKeys.TRAIN:
+
             optimizer = tf.train.AdamOptimizer(self.config['learning_rate'])
             train_op = optimizer.minimize(
                 loss=loss,
                 global_step=tf.train.get_global_step())
-            tf.summary.scalar('train_accuracy', accuracy[1])
 
             return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
 
@@ -231,21 +243,22 @@ class TFClassifier:
             padding="same",
             activation=tf.nn.relu)
 
-        #pool_3 = tf.layers.max_pooling1d(inputs=conv_3, pool_size=2, strides=2, padding='same')
+        pool_3 = tf.layers.max_pooling1d(inputs=conv_3, pool_size=2, strides=2, padding='same')
 
         # fully connection layer
         #flat = tf.reshape(pool_3, (-1, 64*32))
-        #dropout_flat = tf.layers.dropout(inputs=flat,
-        #                                 rate=self.config['dropout_rate'],
-        #                                 training=training)
+        flat = tf.contrib.layers.flatten(pool_3)
+        dropout_flat = tf.layers.dropout(inputs=flat,
+                                         rate=self.config['dropout_rate'],
+                                         training=training)
 
-        pool = tf.reduce_max(input_tensor=conv_3, axis=1)
-        hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
-        dropout_hidden = tf.layers.dropout(inputs=hidden,
-                                           rate=0.2,
-                                           training=training)
+        #pool = tf.reduce_max(input_tensor=conv_3, axis=1)
+        #hidden = tf.layers.dense(inputs=dropout_flat, units=128, activation=tf.nn.relu)
+        #dropout_hidden = tf.layers.dropout(inputs=hidden,
+        #                                   rate=0.2,
+        #                                   training=training)
 
-        logits = tf.layers.dense(inputs=dropout_flat, units=2, activation=None)
+        logits = tf.layers.dense(inputs=dropout_flat, units=2)
 
         predictions = {
             # Generate predictions (for PREDICT and EVAL mode)
@@ -256,7 +269,15 @@ class TFClassifier:
         }
 
         if mode == tf.estimator.ModeKeys.PREDICT:
-            return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions)
+
+            export_outputs = {
+                'predictions': tf.estimator.export.PredictOutput(predictions)}
+
+            return tf.estimator.EstimatorSpec(
+                mode=mode,
+                predictions=predictions,
+                export_outputs=export_outputs
+            )
 
         # This will be None when predicting
         if labels is not None:
@@ -265,14 +286,22 @@ class TFClassifier:
 
         # Calculate Loss (for both TRAIN and EVAL modes)
         loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
-        accuracy = tf.metrics.accuracy(labels, predictions['classes'])
-        auc = tf.metrics.auc(labels, predictions['classes'])
+
+        metric_ops = {
+            "accuracy": tf.metrics.accuracy(labels, predictions['classes']),
+            "auc": tf.metrics.auc(labels, predictions['classes'])
+        }
+
+        for metric_type, metric_op in metric_ops.items():
+            # v[1] is the update op of the metrics object
+            tf.summary.scalar(metric_type, metric_op[1])
+
 
         if mode == tf.estimator.ModeKeys.EVAL:
             # Add evaluation metrics (for EVAL mode)
-            eval_metric_ops = {"accuracy": accuracy, "auc": auc}
+
             return tf.estimator.EstimatorSpec(
-                    mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
+                    mode=mode, loss=loss, eval_metric_ops=metric_ops)
 
 
         # Configure the Training Op (for TRAIN mode)
@@ -281,17 +310,29 @@ class TFClassifier:
             train_op = optimizer.minimize(
                 loss=loss,
                 global_step=tf.train.get_global_step())
-            tf.summary.scalar('train_accuracy', accuracy[1])
 
             return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
 
+        else:
+            raise NotImplementedError('Unknown mode {}'.format(mode))
+
     def train(self):
         # setup train spec
+        hook = tf.estimator.experimental.stop_if_no_increase_hook(
+                self.classifier,
+                'accuracy',
+                300,
+                min_steps=500,
+                run_every_steps=100,
+                run_every_secs=None
+        )
+
         train_spec = tf.estimator.TrainSpec(
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['train'],
                                            shuffle_and_repeat=True),
-                max_steps=self.config['num_epochs']
+                max_steps=self.config['num_epochs'],
+                hooks=[hook]
         )
 
         # setup eval spec evaluating ever n seconds
@@ -299,12 +340,11 @@ class TFClassifier:
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['eval']),
                 steps=100,
-                throttle_secs=1
+                throttle_secs=60
         )
 
         # run train and evaluate
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
-
         #self.classifier.evaluate(input_fn=self.eval_input_fn)
 
     def train_old(self):
@@ -312,13 +352,13 @@ class TFClassifier:
         # Save a reference to the classifier to run predictions later
         self.classifier.train(input_fn=self.train_input_fn, steps=self.config['num_epochs'])
 
-        (x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
+        #(x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
 
-        eval_results = self.classifier.evaluate(input_fn=self.eval_input_fn)
+        eval_results = self.classifier.evaluate(input_fn=self.eval_input_fn, steps=100)
 
         #predictions = np.array([p['classes'][0] for p in self.classifier.predict(input_fn=self.eval_input_fn)])
-        print('Accuracy: {0:f}'.format(eval_results['accuracy']))
-        print('AUC: {0:f}'.format(eval_results['auc']))
+        #print('Accuracy: {0:f}'.format(eval_results['accuracy']))
+        #print('AUC: {0:f}'.format(eval_results['auc']))
 
 
         #predictions = list(self.classifier.predict(input_fn=self.eval_input_fn))

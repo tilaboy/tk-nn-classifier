@@ -12,12 +12,12 @@ class Model:
         if self.type == 'tf':
             self.classifier = TFClassifier(config)
             tf.logging.set_verbosity(tf.logging.INFO)
-            Path('logs').mkdir(exist_ok=True)
-            handlers = [
-                logging.FileHandler('logs/main.log'),
-                logging.StreamHandler(sys.stdout)
-            ]
-            logging.getLogger('tensorflow').handlers = handlers
+            #Path('logs').mkdir(exist_ok=True)
+            #handlers = [
+            #    logging.FileHandler('logs/main.log'),
+            #    logging.StreamHandler(sys.stdout)
+            #]
+            #logging.getLogger('tensorflow').handlers = handlers
         elif self.type == 'spacy':
             self.classifier = SpaceClassifier(config)
         else:

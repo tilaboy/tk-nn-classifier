@@ -106,8 +106,6 @@ class TrainHelper:
         eval_labels = _max_dict_value(eval)
 
         cm = self.evaluate_confusion_matrix_binary_class(eval_labels, gold_labels)
-        LOGGER.info("Confusion matrix:")
-        print(cm)
         return cm
 
     @staticmethod

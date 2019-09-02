@@ -36,6 +36,7 @@ class TFClassifier:
             scores = TrainHelper.evaluate_score_on_class(predicted_classes, lables)
             TrainHelper.print_test_score(test_set_name, scores)
             cm = TrainHelper.evaluate_confusion_matrix_binary_class(predicted_classes, lables)
+            LOGGER.info("Confusion matrix:")
             print(cm)
 
     def predict_batch(self, data_path):

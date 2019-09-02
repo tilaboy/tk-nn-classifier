@@ -24,7 +24,9 @@ class SpaceClassifier:
             test_data = get_spacy_data(self.config['datasets']['test'][test_set])
             scores = self.evaluate(test_data)
             TrainHelper.print_test_score(test_set, scores)
-            self.confusion_matrix(test_data)
+            cm = self.confusion_matrix(test_data)
+            LOGGER.info("Confusion matrix:")
+            print(cm)
 
     def build_graph(self):
         if self.config["spacy_model"] is not None:

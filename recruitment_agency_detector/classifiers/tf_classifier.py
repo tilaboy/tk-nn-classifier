@@ -39,6 +39,9 @@ class TFClassifier:
             LOGGER.info("Confusion matrix:")
             print(cm)
 
+    def evaluate(self):
+        print("to implement")
+
     def predict_batch(self, data_path):
 
         predicted_classes = [

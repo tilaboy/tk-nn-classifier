@@ -90,8 +90,8 @@ class TFClassifier:
 
         self.classifier = tf.estimator.Estimator(
                 model_fn=self.cnn_model_fn,
-                #config=run_config,
-                model_dir=self.model_dir,
+                config=run_config,
+                #model_dir=self.model_dir,
                 params=params
         )
 
@@ -322,7 +322,7 @@ class TFClassifier:
                 self.classifier,
                 'accuracy',
                 300,
-                min_steps=500,
+                #min_steps=500,
                 run_every_steps=100,
                 run_every_secs=None
         )
@@ -340,7 +340,7 @@ class TFClassifier:
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['eval']),
                 steps=100,
-                throttle_secs=10
+                throttle_secs=1
         )
 
         # run train and evaluate
@@ -351,16 +351,11 @@ class TFClassifier:
         """Training process"""
         # Save a reference to the classifier to run predictions later
         self.classifier.train(input_fn=self.train_input_fn, steps=self.config['num_epochs'])
-
-        #(x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
-
         eval_results = self.classifier.evaluate(input_fn=self.eval_input_fn, steps=100)
-
         #predictions = np.array([p['classes'][0] for p in self.classifier.predict(input_fn=self.eval_input_fn)])
         #print('Accuracy: {0:f}'.format(eval_results['accuracy']))
         #print('AUC: {0:f}'.format(eval_results['auc']))
-
-
         #predictions = list(self.classifier.predict(input_fn=self.eval_input_fn))
+        #(x_test, y_test, y_length) = self.load_data_set(self.config['datasets']['eval'])
         #for p, l in zip(predictions, y_test):
         #    print(p['classes'], l)

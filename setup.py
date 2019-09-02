@@ -5,7 +5,7 @@ NAME = "recruitment_agency_detector"
 VERSION = os.environ.get("RECRUITMENT_AGENCY_DETECTOR", '0.0.0')
 
 INSTALL_REQUIRES = [
-    "tensorflow>=1.13.1",
+    "tensorflow>=1.14.0",
     "numpy>=1.16.0",
     "spacy>=2.1.8",
     "xml-miner>=0.0.3",

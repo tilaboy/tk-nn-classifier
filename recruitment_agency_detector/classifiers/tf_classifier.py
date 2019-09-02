@@ -11,6 +11,7 @@ from tensorflow.python.keras.preprocessing import sequence
 from ..data_loader import WordVector
 from ..data_loader.trxml_reader import get_tf_data, tokenize
 from .. import LOGGER
+from .utils import TrainHelper
 
 
 class TFClassifier:
@@ -24,6 +25,30 @@ class TFClassifier:
         self.load_embedding()
         self.build_graph()
         self.train()
+        if 'test' in self.config['datasets']:
+            self.evaluate_on_tests()
+
+    def evaluate_on_tests(self):
+        for test_set_name in self.config['datasets']['test']:
+            data_path = self.config['datasets']['test'][test_set_name]
+            predicted_classes = self.predict_batch(data_path)
+            _, lables, data_length = self.load_data_set(data_path)
+            scores = TrainHelper.evaluate_score_on_class(predicted_classes, lables)
+            TrainHelper.print_test_score(test_set_name, scores)
+            cm = TrainHelper.evaluate_confusion_matrix_binary_class(predicted_classes, lables)
+            print(cm)
+
+    def predict_batch(self, data_path):
+
+        predicted_classes = [
+                predict['classes']
+                for predict in
+                self.classifier.predict(
+                    input_fn=functools.partial(self.input_fn, data_path)
+                )
+        ]
+        return predicted_classes
+
 
     def load_embedding(self):
         self.embedding = WordVector(self.config['embedding_file'])
@@ -109,6 +134,8 @@ class TFClassifier:
         dropout_emb = tf.layers.dropout(inputs=input_layer,
                                         rate=self.config['dropout_rate'],
                                         training=training)
+
+
 
         # (batch, 512, 150) -> (batch, 256, 32)
         conv = tf.layers.conv1d(

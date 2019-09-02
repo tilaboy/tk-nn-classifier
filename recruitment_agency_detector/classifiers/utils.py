@@ -46,6 +46,29 @@ class TrainHelper:
             )
         )
 
+    @staticmethod
+    def evaluate_score_on_class(eval, gold, target_cat=1):
+        tp = 0.0  # True positives
+        fp = 1e-8  # False positives
+        fn = 1e-8  # False negatives
+        tn = 0.0  # True negatives
+        for i, cat in enumerate(eval):
+            if cat == gold[i] == target_cat:
+                tp += 1.0
+            elif cat == target_cat and gold[i] != target_cat:
+                fp += 1.0
+            elif cat != target_cat and gold[i] != target_cat:
+                tn += 1.0
+            elif cat != target_cat and gold[i] == target_cat:
+                fn += 1.0
+        precision = tp / (tp + fp)
+        recall = tp / (tp + fn)
+        if (precision + recall) == 0:
+            f_score = 0.0
+        else:
+            f_score = 2 * (precision * recall) / (precision + recall)
+        return {"precision": precision, "recall": recall, "f1": f_score}
+
 
     @staticmethod
     def evaluate_score(eval, gold):
@@ -82,11 +105,16 @@ class TrainHelper:
         gold_labels = _max_dict_value(gold)
         eval_labels = _max_dict_value(eval)
 
+        cm = self.evaluate_confusion_matrix_binary_class(eval_labels, gold_labels)
+        LOGGER.info("Confusion matrix:")
+        print(cm)
+        return cm
+
+    @staticmethod
+    def evaluate_confusion_matrix_binary_class(eval_labels, gold_labels):
         cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
                          pd.Series(eval_labels, name='Predicted')
                          )
-        LOGGER.info("Confusion matrix:")
-        print(cm)
         return cm
 
 def _max_dict_value(cats_dicts):

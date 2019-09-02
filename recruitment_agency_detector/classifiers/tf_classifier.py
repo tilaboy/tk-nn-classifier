@@ -120,7 +120,6 @@ class TFClassifier:
         self.classifier = tf.estimator.Estimator(
                 model_fn=self.multi_layer_cnn_model_fn,
                 config=run_config,
-                #model_dir=self.model_dir,
                 params=params
         )
 
@@ -246,7 +245,7 @@ class TFClassifier:
                                         rate=self.config['dropout_rate'],
                                         training=training)
 
-        for i in range(3):
+        for i in range(self.config['nr_cnn_layers']):
             conv = tf.layers.conv1d(
                 inputs=next_input,
                 filters=32,

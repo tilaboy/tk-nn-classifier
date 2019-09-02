@@ -118,19 +118,19 @@ class TFClassifier:
             padding="same",
             activation=tf.nn.relu)
 
-        pool = tf.layers.max_pooling1d(inputs=conv, pool_size=2, strides=2, padding='same')
-        flat = tf.contrib.layers.flatten(pool)
-        dropout_flat = tf.layers.dropout(inputs=flat,
-                                         rate=self.config['dropout_rate'],
-                                         training=training)
-        logits = tf.layers.dense(inputs=dropout_flat, units=2)
+        #pool = tf.layers.max_pooling1d(inputs=conv, pool_size=2, strides=2, padding='same')
+        #flat = tf.contrib.layers.flatten(pool)
+        #dropout_flat = tf.layers.dropout(inputs=flat,
+        #                                 rate=self.config['dropout_rate'],
+        #                                 training=training)
+        #logits = tf.layers.dense(inputs=dropout_flat, units=2)
 
-        #pool = tf.reduce_max(input_tensor=conv, axis=1)
-        #hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
-        #dropout_hidden = tf.layers.dropout(inputs=hidden,
-        #                                   rate=0.2,
-        #                                   training=training)
-        #logits = tf.layers.dense(inputs=dropout_hidden, units=2)
+        pool = tf.reduce_max(input_tensor=conv, axis=1)
+        hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
+        dropout_hidden = tf.layers.dropout(inputs=hidden,
+                                           rate=0.2,
+                                           training=training)
+        logits = tf.layers.dense(inputs=dropout_hidden, units=2)
 
         predictions = {
             # Generate predictions (for PREDICT and EVAL mode)
@@ -340,7 +340,7 @@ class TFClassifier:
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['eval']),
                 steps=100,
-                throttle_secs=60
+                throttle_secs=10
         )
 
         # run train and evaluate

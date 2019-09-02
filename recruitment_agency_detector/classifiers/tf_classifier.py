@@ -118,7 +118,7 @@ class TFClassifier:
                                             keep_checkpoint_max=3)
 
         self.classifier = tf.estimator.Estimator(
-                model_fn=self.cnn_model_fn,
+                model_fn=self.multi_layer_cnn_model_fn,
                 config=run_config,
                 #model_dir=self.model_dir,
                 params=params
@@ -242,43 +242,26 @@ class TFClassifier:
         )
 
         training = mode == tf.estimator.ModeKeys.TRAIN
-        dropout_emb = tf.layers.dropout(inputs=input_layer,
+        next_input = tf.layers.dropout(inputs=input_layer,
                                         rate=self.config['dropout_rate'],
                                         training=training)
 
-        # (batch, 512, 150) -> (batch, 256, 32)
-        conv_1 = tf.layers.conv1d(
-            inputs=dropout_emb,
-            filters=32,
-            kernel_size=3,
-            padding="same",
-            activation=tf.nn.relu)
+        for i in range(3):
+            conv = tf.layers.conv1d(
+                inputs=next_input,
+                filters=32,
+                kernel_size=3,
+                padding="same",
+                activation=tf.nn.relu)
 
-        pool_1 = tf.layers.max_pooling1d(inputs=conv_1, pool_size=2, strides=2, padding='same')
+            next_input = tf.layers.max_pooling1d(inputs=conv, pool_size=2, strides=2, padding='same')
 
-        # (batch, 256, 32) -> (batch, 128, 32)
-        conv_2 = tf.layers.conv1d(
-            inputs=pool_1,
-            filters=32,
-            kernel_size=3,
-            padding="same",
-            activation=tf.nn.relu)
 
-        pool_2 = tf.layers.max_pooling1d(inputs=conv_2, pool_size=2, strides=2, padding='same')
 
-        # (batch, 128, 32) -> (batch, 64, 32)
-        conv_3 = tf.layers.conv1d(
-            inputs=pool_2,
-            filters=32,
-            kernel_size=3,
-            padding="same",
-            activation=tf.nn.relu)
-
-        pool_3 = tf.layers.max_pooling1d(inputs=conv_3, pool_size=2, strides=2, padding='same')
 
         # fully connection layer
         #flat = tf.reshape(pool_3, (-1, 64*32))
-        flat = tf.contrib.layers.flatten(pool_3)
+        flat = tf.contrib.layers.flatten(next_input)
         dropout_flat = tf.layers.dropout(inputs=flat,
                                          rate=self.config['dropout_rate'],
                                          training=training)

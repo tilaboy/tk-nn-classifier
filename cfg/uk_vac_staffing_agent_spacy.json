@@ -1,5 +1,5 @@
 {
-    "model_type": "spacy",
+    "model_type": "spacy_simple",
     "dropout_rate": 0.2,
     "spacy_model": "en_core_web_sm",
     "language": "en",

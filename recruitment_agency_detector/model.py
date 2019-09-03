@@ -9,7 +9,7 @@ class Model:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
-        if self.type == 'tf':
+        if self.type.startswith('tf'):
             self.classifier = TFClassifier(config)
             tf.logging.set_verbosity(tf.logging.INFO)
             #Path('logs').mkdir(exist_ok=True)
@@ -18,7 +18,7 @@ class Model:
             #    logging.StreamHandler(sys.stdout)
             #]
             #logging.getLogger('tensorflow').handlers = handlers
-        elif self.type == 'spacy':
+        elif self.type.startswith('spacy'):
             self.classifier = SpaceClassifier(config)
         else:
             raise ValueError("unknown classifier type [{}]".format(self.type))

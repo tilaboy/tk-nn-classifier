@@ -4,12 +4,12 @@ import json
 
 DEFAULTS = {
     # Data reading params
-    "features_enabled": True,
-    "token_encoding": "word_embedding",
+    "model_type": '',
+    "features_enabled": False,
 
     # Training config
     "optimizer": "Adam",
-    "learning_rate": 0.002,
+    "learning_rate": 0.02,
     "num_epochs": 100,
     "batch_size": 64,
 
@@ -18,11 +18,11 @@ DEFAULTS = {
     "model_name": None,
 
     # Embedding
-    "embedding_file": None,
+    "embedding": {},
+    "cnn": {},
 
     # Training data files
-    "train_data": None,
-    "test_sets": {},
+    "datasets": {},
 }
 
 

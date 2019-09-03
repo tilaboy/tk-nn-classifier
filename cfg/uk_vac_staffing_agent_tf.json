@@ -1,20 +1,31 @@
 {
-    "model_type": "tf",
+    "model_type": "tf_cnn_multi",
+    "model_name": "staffing_agency_detector",
+    "model_path": "models/tf",
+    "model_file": "models/tf/sa_detector.h5",
+
     "features_enabled": false,
-    "token_encoding": "max_embedding",
     "dropout_rate": 0.5,
     "optimizer": "Adam",
-    "nr_cnn_layers": 2,
     "learning_rate": 0.02,
-    "num_epochs": 2000,
+    "num_epochs": 20,
     "batch_size": 128,
     "log_dir": "log",
-    "input_dimension": 150,
-    "l_rate": 0.02,
     "max_sequence_length": 512,
-    "embedding_trainable": false,
-    "model_name": "all_skills",
-    "embedding_file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+
+    "cnn": {
+        "nr_layers": 4,
+        "filter_size": 32,
+        "kernel_size": 3
+    },
+
+    "embedding": {
+        "file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+        "dimension": 150,
+        "token_encoding": "max_embedding",
+        "trainable": false
+    },
+
     "datasets": {
         "train": "../recruitment_agency_data/train",
         "eval": "../recruitment_agency_data/eval",
@@ -23,7 +34,6 @@
             "annotated": "../recruitment_agency_data/annotated/",
             "eval": "../recruitment_agency_data/eval"
         }
-    },
-    "model_path": "models/tf",
-    "model_file": "models/en-model.h5"
+    }
+
 }

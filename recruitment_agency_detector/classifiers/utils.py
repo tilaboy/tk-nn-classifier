@@ -99,8 +99,7 @@ class TrainHelper:
         return {"precision": precision, "recall": recall, "f1": f_score}
 
 
-    @staticmethod
-    def evaluate_confusion_matrix(eval, gold):
+    def evaluate_confusion_matrix(self, eval, gold):
         categories = {label: i for i,label in enumerate(gold[0].keys())}
         gold_labels = _max_dict_value(gold)
         eval_labels = _max_dict_value(eval)

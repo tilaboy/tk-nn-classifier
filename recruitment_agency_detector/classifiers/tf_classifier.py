@@ -147,7 +147,8 @@ class TFClassifier:
         if mode == tf.estimator.ModeKeys.PREDICT:
 
             export_outputs = {
-                'predictions': tf.estimator.export.PredictOutput(predictions)}
+                'predictions': tf.estimator.export.PredictOutput(predictions)
+            }
 
             return tf.estimator.EstimatorSpec(
                 mode=mode,

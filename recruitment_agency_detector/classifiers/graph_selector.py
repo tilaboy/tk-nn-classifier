@@ -105,16 +105,19 @@ class GraphSelector:
             initializer=embedding_initializer,
             trainable=False
         )
-        #rnn_layers = []
-        #for _ in range(self.config['lstm']['nr_layers']):
-        #    cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
-        #    rnn_layers.append(cell)
+        rnn_layers = [
+            tf.compat.v1.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
+            for _ in range(self.config['lstm']['nr_layers'])
+        ]
 
-        #multi_rnn_cell = tf.nn.rnn_cell.MultiRNNCell(rnn_layers)
-        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
-        outputs, final_state = tf.nn.dynamic_rnn(
-            cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
+        multi_rnn_cell = tf.compat.v1.nn.rnn_cell.MultiRNNCell(rnn_layers)
+        outputs, final_state = tf.compat.v1.nn.dynamic_rnn(
+            cell=multi_rnn_cell,
+            inputs=input_layer,
+            sequence_length=input['len'],
+            dtype=tf.float32
+        )
 
-        #outputs = final_state.h
-        logits = tf.layers.dense(inputs=outputs[-1], units=2)
+        final_outputs = tf.transpose(outputs, [1,0,2])[-1]
+        logits = tf.layers.dense(inputs=final_outputs, units=2)
         return logits

@@ -164,13 +164,13 @@ class TFClassifier:
         loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
 
         metric_ops = {
-            "accuracy": tf.metrics.accuracy(labels, predictions['classes']),
-            "auc": tf.metrics.auc(labels, predictions['classes'])
+            "accuracy": tf.compat.v1.metrics.accuracy(labels, predictions['classes']),
+            "auc": tf.compat.v1.metrics.auc(labels, predictions['classes'])
         }
 
         for metric_type, metric_op in metric_ops.items():
             # v[1] is the update op of the metrics object
-            tf.summary.scalar(metric_type, metric_op[1])
+            tf.compat.v1.summary.scalar(metric_type, metric_op[1])
 
         if mode == tf.estimator.ModeKeys.EVAL:
             return tf.estimator.EstimatorSpec(
@@ -180,10 +180,10 @@ class TFClassifier:
 
         # Configure the Training Op (for TRAIN mode)
         if mode == tf.estimator.ModeKeys.TRAIN:
-            optimizer = tf.train.AdamOptimizer(self.config['learning_rate'])
+            optimizer = tf.compat.v1.train.AdamOptimizer(self.config['learning_rate'])
             train_op = optimizer.minimize(
                 loss=loss,
-                global_step=tf.train.get_global_step())
+                global_step=tf.compat.v1.train.get_global_step())
             return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
 
         else:

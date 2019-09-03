@@ -18,6 +18,7 @@ from .graph_selector import GraphSelector
 TODO:
    - save all ckpt, but remove if not better, which make the evaluation only using the best models
    - predict using serving, and export the model
+   https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
 '''
 class TFClassifier:
     def __init__(self, config):

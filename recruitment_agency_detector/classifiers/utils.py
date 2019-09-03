@@ -98,13 +98,15 @@ class TrainHelper:
             f_score = 2 * (precision * recall) / (precision + recall)
         return {"precision": precision, "recall": recall, "f1": f_score}
 
-
-    def evaluate_confusion_matrix(self, eval, gold):
+    @staticmethod
+    def evaluate_confusion_matrix(eval, gold):
         categories = {label: i for i,label in enumerate(gold[0].keys())}
         gold_labels = _max_dict_value(gold)
         eval_labels = _max_dict_value(eval)
 
-        cm = self.evaluate_confusion_matrix_binary_class(eval_labels, gold_labels)
+        cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
+                         pd.Series(eval_labels, name='Predicted')
+                         )
         return cm
 
     @staticmethod

@@ -10,7 +10,9 @@ class GraphSelector:
             return self._cnn_simple(input, training_mode, embedding_initializer)
         elif self.config['model_type'] == 'tf_cnn_multi':
             return self._cnn_multi_layer(input, training_mode, embedding_initializer)
-        elif self.config['model_type'] == 'tf_lstm':
+        elif self.config['model_type'] == 'tf_lstm_simple':
+            return self._lstm_simple(input, training_mode, embedding_initializer)
+        elif self.config['model_type'] == 'tf_lstm_multi':
             return self._lstm_multi_layer(input, training_mode, embedding_initializer)
 
 
@@ -78,6 +80,23 @@ class GraphSelector:
         logits = tf.layers.dense(inputs=dropout_flat, units=2)
         return logits
 
+    def _lstm_simple(self, input, training_mode, embedding_initializer):
+        input_layer = tf.contrib.layers.embed_sequence(
+            input['x'],
+            self.embedding.vocab_size,
+            self.embedding.vector_size,
+            initializer=embedding_initializer,
+            trainable=False
+        )
+        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        _, final_state = tf.nn.dynamic_rnn(
+            cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
+
+        outputs = final_state.h
+        logits = tf.layers.dense(inputs=outputs, units=2)
+        return logits
+
+
     def _lstm_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
             input['x'],
@@ -93,9 +112,9 @@ class GraphSelector:
 
         #multi_rnn_cell = tf.nn.rnn_cell.MultiRNNCell(rnn_layers)
         cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
-        _, final_state = tf.nn.dynamic_rnn(
+        outputs, final_state = tf.nn.dynamic_rnn(
             cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
 
-        outputs = final_state.h
-        logits = tf.layers.dense(inputs=outputs, units=2)
+        #outputs = final_state.h
+        logits = tf.layers.dense(inputs=outputs[-1], units=2)
         return logits

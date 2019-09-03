@@ -1,5 +1,5 @@
 {
-    "model_type": "tf_lstm",
+    "model_type": "tf_lstm_multi",
     "model_name": "staffing_agency_detector",
     "model_path": "models/tf/lstm",
     "model_file": "models/tf/sa_detector.h5",
@@ -15,7 +15,7 @@
 
     "lstm": {
         "hidden_size": 150,
-        "nr_layers": 1
+        "nr_layers": 3
     },
 
     "cnn": {

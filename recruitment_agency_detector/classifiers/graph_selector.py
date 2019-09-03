@@ -6,7 +6,7 @@ class GraphSelector:
         self.embedding = embedding
 
     def add_graph(self, input, training_mode, embedding_initializer):
-        if self.config["model_type"] == 'tf_cnn_simple':
+        if self.config['model_type'] == 'tf_cnn_simple':
             return self._cnn_simple(input, training_mode, embedding_initializer)
         elif self.config['model_type'] == 'tf_cnn_multi':
             return self._cnn_multi_layer(input, training_mode, embedding_initializer)
@@ -17,7 +17,7 @@ class GraphSelector:
     def _cnn_simple(self, input, training_mode, embedding_initializer):
 
         input_layer = tf.contrib.layers.embed_sequence(
-            input,
+            input['x'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
@@ -32,7 +32,7 @@ class GraphSelector:
             inputs=dropout_emb,
             filters=self.config['cnn']['filter_size'],
             kernel_size=self.config['cnn']['kernel_size'],
-            padding="same",
+            padding='same',
             activation=tf.nn.relu)
 
         pool = tf.reduce_max(input_tensor=conv, axis=1)
@@ -45,7 +45,7 @@ class GraphSelector:
 
     def _cnn_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
-            input,
+            input['x'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
@@ -61,7 +61,7 @@ class GraphSelector:
                 inputs=next_input,
                 filters=self.config['cnn']['filter_size'],
                 kernel_size=self.config['cnn']['kernel_size'],
-                padding="same",
+                padding='same',
                 activation=tf.nn.relu)
 
             next_input = tf.layers.max_pooling1d(
@@ -80,11 +80,22 @@ class GraphSelector:
 
     def _lstm_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
-            input,
+            input['x'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
             trainable=False
         )
+        #rnn_layers = []
+        #for _ in range(self.config['lstm']['nr_layers']):
+        #    cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        #    rnn_layers.append(cell)
 
-        lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(self.config["lstm"]["hidden_size"])
+        #multi_rnn_cell = tf.nn.rnn_cell.MultiRNNCell(rnn_layers)
+        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        _, final_state = tf.nn.dynamic_rnn(
+            cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
+
+        outputs = final_state.h
+        logits = tf.layers.dense(inputs=outputs, units=2)
+        return logits

@@ -116,7 +116,7 @@ class TFClassifier:
         #params = {'embedding_initializer': tf.random_uniform_initializer(-1.0, 1.0)}
         params = {'embedding_initializer': embedding_initializer}
 
-        self.model_dir = os.path.join(self.config['model_path'], 'cnn')
+        self.model_dir = self.config['model_path']
 
         run_config = tf.estimator.RunConfig(save_checkpoints_steps=100,
                                             save_summary_steps=100,
@@ -135,7 +135,7 @@ class TFClassifier:
         graph_selector = GraphSelector(self.config, self.embedding)
 
         logits = graph_selector.add_graph(
-            features['x'],
+            features,
             training,
             params['embedding_initializer'])
 

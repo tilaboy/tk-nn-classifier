@@ -11,7 +11,8 @@ class Model:
         self.type = config['model_type']
         if self.type.startswith('tf'):
             self.classifier = TFClassifier(config)
-            tf.logging.set_verbosity(tf.logging.INFO)
+            #tf.logging.set_verbosity(tf.logging.INFO)
+            tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
             #Path('logs').mkdir(exist_ok=True)
             #handlers = [
             #    logging.FileHandler('logs/main.log'),

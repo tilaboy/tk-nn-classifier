@@ -1,7 +1,7 @@
 {
-    "model_type": "tf_cnn_multi",
+    "model_type": "tf_lstm",
     "model_name": "staffing_agency_detector",
-    "model_path": "models/tf",
+    "model_path": "models/tf/lstm",
     "model_file": "models/tf/sa_detector.h5",
 
     "features_enabled": false,
@@ -12,6 +12,11 @@
     "batch_size": 128,
     "log_dir": "log",
     "max_sequence_length": 512,
+
+    "lstm": {
+        "hidden_size": 150,
+        "nr_layers": 1
+    },
 
     "cnn": {
         "nr_layers": 4,

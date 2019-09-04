@@ -88,7 +88,7 @@ class GraphSelector:
             initializer=embedding_initializer,
             trainable=False
         )
-        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        cell = tf.compat.v1.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         _, final_state = tf.nn.dynamic_rnn(
             cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
 
@@ -118,6 +118,7 @@ class GraphSelector:
             dtype=tf.float32
         )
 
-        final_outputs = tf.transpose(outputs, [1,0,2])[-1]
+        #final_outputs = tf.transpose(outputs, [1,0,2])[-1]
+        final_outputs = final_state.h
         logits = tf.layers.dense(inputs=final_outputs, units=2)
         return logits

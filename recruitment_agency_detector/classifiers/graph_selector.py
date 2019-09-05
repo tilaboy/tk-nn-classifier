@@ -1,4 +1,5 @@
 import tensorflow as tf
+from .. import LOGGER
 
 class GraphSelector:
     def __init__(self, config, embedding):
@@ -114,7 +115,7 @@ class GraphSelector:
             for _ in range(self.config['lstm']['nr_layers'])
         ]
 
-        multi_rnn_cell = tf.compat.v1.nn.rnn_cell.MultiRNNCell(rnn_layers)
+        multi_rnn_cell = tf.keras.layers.StackedRNNCells(rnn_layers)
         outputs, final_state = tf.compat.v1.nn.dynamic_rnn(
             cell=multi_rnn_cell,
             inputs=input_layer,
@@ -123,6 +124,6 @@ class GraphSelector:
         )
 
         #final_outputs = tf.transpose(outputs, [1,0,2])[-1]
-        final_outputs = final_state.h
+        final_outputs = final_state[-1].h
         logits = tf.layers.dense(inputs=final_outputs, units=2)
         return logits

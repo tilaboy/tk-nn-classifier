@@ -111,11 +111,11 @@ class GraphSelector:
             trainable=False
         )
         rnn_layers = [
-            tf.compat.v1.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
+            tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
             for _ in range(self.config['lstm']['nr_layers'])
         ]
 
-        multi_rnn_cell = tf.keras.layers.StackedRNNCells(rnn_layers)
+        multi_rnn_cell = tf.contrib.rnn.MultiRNNCell(rnn_layers)
         outputs, final_state = tf.compat.v1.nn.dynamic_rnn(
             cell=multi_rnn_cell,
             inputs=input_layer,

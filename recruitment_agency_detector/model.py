@@ -9,6 +9,7 @@ class Model:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
+        LOGGER.info("model type: %s", self.type)
         if self.type.startswith('tf'):
             self.classifier = TFClassifier(config)
             #tf.logging.set_verbosity(tf.logging.INFO)

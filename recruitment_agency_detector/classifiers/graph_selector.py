@@ -7,12 +7,16 @@ class GraphSelector:
 
     def add_graph(self, input, training_mode, embedding_initializer):
         if self.config['model_type'] == 'tf_cnn_simple':
+            LOGGER.info("create model: cnn_simple")
             return self._cnn_simple(input, training_mode, embedding_initializer)
         elif self.config['model_type'] == 'tf_cnn_multi':
+            LOGGER.info("create model: cnn_multi")
             return self._cnn_multi_layer(input, training_mode, embedding_initializer)
         elif self.config['model_type'] == 'tf_lstm_simple':
+            LOGGER.info("create model: lstm_simple")
             return self._lstm_simple(input, training_mode, embedding_initializer)
         elif self.config['model_type'] == 'tf_lstm_multi':
+            LOGGER.info("create model: lstm_multi")
             return self._lstm_multi_layer(input, training_mode, embedding_initializer)
 
 

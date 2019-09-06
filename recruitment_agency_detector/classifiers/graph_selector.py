@@ -110,12 +110,18 @@ class GraphSelector:
             initializer=embedding_initializer,
             trainable=False
         )
-        rnn_layers = [
-            tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
-            for _ in range(self.config['lstm']['nr_layers'])
-        ]
-
-        multi_rnn_cell = tf.contrib.rnn.MultiRNNCell(rnn_layers)
+        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        cell = tf.nn.rnn_cell.DropoutWrapper(
+                cell,
+                input_keep_prob=self.config['dropout_rate'],
+                output_keep_prob=self.config['dropout_rate'],
+                state_keep_prob=self.config['dropout_rate'],
+                variational_recurrent=True,
+                # note that if the lstm hidden state is different with then input embedding size
+                # the input_size need to be adjusted
+                input_size=input_layer.get_shape()[-1],
+                dtype=tf.float32)
+        multi_rnn_cell = tf.contrib.rnn.MultiRNNCell([cell] * self.config['lstm']['nr_layers'])
         outputs, final_state = tf.compat.v1.nn.dynamic_rnn(
             cell=multi_rnn_cell,
             inputs=input_layer,

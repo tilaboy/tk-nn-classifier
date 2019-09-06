@@ -94,6 +94,15 @@ class GraphSelector:
             trainable=False
         )
         cell = tf.compat.v1.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
+        cell = tf.nn.rnn_cell.DropoutWrapper(
+                cell,
+                input_keep_prob=self.config['dropout_rate'],
+                output_keep_prob=self.config['dropout_rate'],
+                state_keep_prob=self.config['dropout_rate'],
+                variational_recurrent=True,
+                input_size=input_layer.get_shape()[-1],
+                dtype=tf.float32)
+
         _, final_state = tf.nn.dynamic_rnn(
             cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
 

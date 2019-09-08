@@ -93,7 +93,7 @@ class GraphSelector:
             initializer=embedding_initializer,
             trainable=False
         )
-        cell = tf.compat.v1.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
+        cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
                 input_keep_prob=self.config['dropout_rate'],
@@ -101,9 +101,9 @@ class GraphSelector:
                 state_keep_prob=self.config['dropout_rate'],
                 variational_recurrent=True,
                 input_size=input_layer.get_shape()[-1],
-                dtype=tf.float32)
-
-        _, final_state = tf.nn.dynamic_rnn(
+                dtype=tf.float32
+        )
+        _, final_state = tf.compat.v1.nn.dynamic_rnn(
             cell, input_layer, sequence_length=input['len'], dtype=tf.float32)
 
         outputs = final_state.h
@@ -119,7 +119,7 @@ class GraphSelector:
             initializer=embedding_initializer,
             trainable=False
         )
-        cell = tf.nn.rnn_cell.BasicLSTMCell(self.config['lstm']['hidden_size'])
+        cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
                 input_keep_prob=self.config['dropout_rate'],

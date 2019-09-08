@@ -7,11 +7,14 @@
     "features_enabled": false,
     "dropout_rate": 0.5,
     "optimizer": "Adam",
-    "learning_rate": 0.02,
+    "learning_rate": 0.003,
     "num_epochs": 100,
     "batch_size": 128,
     "log_dir": "log",
     "max_sequence_length": 512,
+    "max_steps_without_increase": 500,
+    "min_train_steps": 1000,
+    "check_per_steps": 100,
 
     "lstm": {
         "hidden_size": 150,

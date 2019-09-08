@@ -118,8 +118,8 @@ class TFClassifier:
 
         self.model_dir = self.config['model_path']
 
-        run_config = tf.estimator.RunConfig(save_checkpoints_steps=100,
-                                            save_summary_steps=100,
+        run_config = tf.estimator.RunConfig(save_checkpoints_steps=self.config['check_per_steps'],
+                                            save_summary_steps=self.config['check_per_steps'],
                                             model_dir=self.model_dir,
                                             keep_checkpoint_max=5)
 
@@ -194,9 +194,9 @@ class TFClassifier:
         hook = tf.estimator.experimental.stop_if_no_increase_hook(
                 self.classifier,
                 'accuracy',
-                500,
-                #min_steps=500,
-                run_every_steps=100,
+                self.config['max_steps_without_increase'],
+                min_steps=self.config['min_train_steps'],
+                run_every_steps=self.config['check_per_steps'],
                 run_every_secs=None
         )
 
@@ -227,7 +227,7 @@ class TFClassifier:
         eval_results = self.classifier.evaluate(
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['eval']),
-                steps=100
+                steps=self.config['check_per_steps']
         )
         print('Accuracy: {0:f}'.format(eval_results['accuracy']))
         print('AUC: {0:f}'.format(eval_results['auc']))

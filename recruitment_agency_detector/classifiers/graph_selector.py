@@ -96,9 +96,9 @@ class GraphSelector:
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
-                input_keep_prob=self.config['dropout_rate'],
-                output_keep_prob=self.config['dropout_rate'],
-                state_keep_prob=self.config['dropout_rate'],
+                #input_keep_prob=self.config['dropout_keep_rate'],
+                output_keep_prob=self.config['dropout_keep_rate'],
+                state_keep_prob=self.config['dropout_keep_rate'],
                 variational_recurrent=True,
                 input_size=input_layer.get_shape()[-1],
                 dtype=tf.float32
@@ -122,9 +122,9 @@ class GraphSelector:
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
-                input_keep_prob=self.config['dropout_rate'],
-                output_keep_prob=self.config['dropout_rate'],
-                state_keep_prob=self.config['dropout_rate'],
+                #input_keep_prob=self.config['dropout_keep_rate'],
+                output_keep_prob=self.config['dropout_keep_rate'],
+                state_keep_prob=self.config['dropout_keep_rate'],
                 variational_recurrent=True,
                 # note that if the lstm hidden state is different with then input embedding size
                 # the input_size need to be adjusted

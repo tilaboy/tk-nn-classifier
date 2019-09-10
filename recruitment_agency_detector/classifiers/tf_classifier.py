@@ -88,9 +88,9 @@ class TFClassifier:
 
 
     @staticmethod
-    def _data_parser(x, length, y):
-        features = {"x": x, "len": length}
-        return features, y
+    def _data_parser(input, length, label):
+        features = {"input": input, "len": length}
+        return features, label
 
     def input_fn(self, data_path, shuffle_and_repeat=False):
         LOGGER.info("load data from %s", data_path)
@@ -208,9 +208,14 @@ class TFClassifier:
                 hooks=[hook]
         )
 
+        best_exporter = BestCheckpointsExporter(
+                serving_input_receiver_fn=serving_input_receiver_fn
+        )
+
         eval_spec = tf.estimator.EvalSpec(
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['eval']),
+                exporters=best_exporter,
                 throttle_secs=1
         )
 

@@ -24,7 +24,7 @@ class GraphSelector:
     def _cnn_simple(self, input, training_mode, embedding_initializer):
 
         input_layer = tf.contrib.layers.embed_sequence(
-            input['x'],
+            input['input'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
@@ -52,7 +52,7 @@ class GraphSelector:
 
     def _cnn_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
-            input['x'],
+            input['input'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
@@ -87,7 +87,7 @@ class GraphSelector:
 
     def _lstm_simple(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
-            input['x'],
+            input['input'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,
@@ -113,7 +113,7 @@ class GraphSelector:
 
     def _lstm_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = tf.contrib.layers.embed_sequence(
-            input['x'],
+            input['input'],
             self.embedding.vocab_size,
             self.embedding.vector_size,
             initializer=embedding_initializer,

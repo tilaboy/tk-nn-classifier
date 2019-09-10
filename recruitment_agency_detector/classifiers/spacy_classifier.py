@@ -11,6 +11,8 @@ class SpaceClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
+        self.textcat_type = 'textcat' if self.type.endwith('simple') else 'pytt_textcat'
+
 
     def build_and_train(self):
         self.build_graph()
@@ -36,9 +38,9 @@ class SpaceClassifier:
 
         # add the text classifier to the pipeline if it doesn't exist
         # nlp.create_pipe works for built-ins that are registered with spaCy
-        if "textcat" not in model.pipe_names:
+        if self.textcat_type not in model.pipe_names:
             textcat = model.create_pipe(
-                "textcat",
+                self.textcat_type,
                 config={
                     "exclusive_classes": True,
                     "architecture": "simple_cnn",
@@ -48,13 +50,13 @@ class SpaceClassifier:
         self.model =  model
 
     def train(self, train_data, eval_data):
-        textcat = self.model.get_pipe("textcat")
+        textcat = self.model.get_pipe(self.textcat_type)
 
         textcat.add_label("yes")
         textcat.add_label("no")
 
         # get names of other pipes to disable them during training
-        other_pipes = [pipe for pipe in self.model.pipe_names if pipe != "textcat"]
+        other_pipes = [pipe for pipe in self.model.pipe_names if pipe != self.textcat_type]
 
         with self.model.disable_pipes(*other_pipes):  # only train textcat
             self.optimizer = self.model.begin_training()
@@ -69,7 +71,7 @@ class SpaceClassifier:
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
                 scores = self.evaluate(eval_data)
-                TrainHelper.print_progress(losses["textcat"], scores)
+                TrainHelper.print_progress(losses[self.textcat_type], scores)
             self.confusion_matrix(eval_data)
 
 
@@ -117,7 +119,7 @@ class SpaceClassifier:
         )
 
     def predict_batch(self, texts):
-        textcat = self.model.get_pipe("textcat")
+        textcat = self.model.get_pipe(self.textcat_type)
         docs = (self.model.tokenizer(text) for text in texts)
         for doc in textcat.pipe(docs):
             yield doc.cats
@@ -131,7 +133,7 @@ class SpaceClassifier:
 
 
     def evaluate(self, eval_data):
-        textcat = self.model.get_pipe("textcat")
+        textcat = self.model.get_pipe(self.textcat_type)
         texts, cats = zip(*eval_data)
         with textcat.model.use_params(self.optimizer.averages):
             score = TrainHelper.evaluate_score(self.predict_batch(texts), cats)

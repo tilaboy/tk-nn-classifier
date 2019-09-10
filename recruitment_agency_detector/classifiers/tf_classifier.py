@@ -9,7 +9,7 @@ import functools
 from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from ..data_loader import WordVector
-from ..data_loader.trxml_reader import get_tf_data, tokenize
+from ..data_loader.data_reader import get_tf_data, tokenize
 from .. import LOGGER
 from .utils import TrainHelper
 from .graph_selector import GraphSelector

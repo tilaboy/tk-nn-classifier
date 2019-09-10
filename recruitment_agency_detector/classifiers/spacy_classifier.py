@@ -11,7 +11,7 @@ class SpaceClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
-        self.textcat_type = 'textcat' if self.type.endwith('simple') else 'pytt_textcat'
+        self.textcat_type = 'textcat' if self.type.endswith('simple') else 'pytt_textcat'
 
 
     def build_and_train(self):

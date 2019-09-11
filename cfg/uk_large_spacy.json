@@ -12,9 +12,9 @@
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
-            "us": "../recruitment_agency_data/us_small.csv"
+            "us": "../recruitment_agency_data/us.csv"
         }
     },
     "split_ratio": 0.8,
-    "model_path": "models/uk_vac_staffing_agency_spacy_v3_sec_vacancy"
+    "model_path": "models/uk_vac_staffing_agency_spacy_v4_sec_vacancy"
 }

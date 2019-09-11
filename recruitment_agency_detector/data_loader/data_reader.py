@@ -39,6 +39,8 @@ def _get_data_set(data_path):
         data_set = list(_get_data_from_trxml(data_path))
     elif os.path.isfile(data_path) and data_path.endswith('.csv'):
         data_set = list(_get_data_from_csv(data_path))
+    else:
+        raise FileNotFoundError(f'{data_path} not found')
     return data_set
 
 def _get_csv_details(data_path):

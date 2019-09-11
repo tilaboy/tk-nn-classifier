@@ -13,6 +13,7 @@ from ..data_loader.data_reader import get_tf_data, tokenize
 from .. import LOGGER
 from .utils import TrainHelper
 from .graph_selector import GraphSelector
+from .tf_best_export import BestCheckpointsExporter
 
 '''
 TODO:
@@ -189,6 +190,25 @@ class TFClassifier:
         else:
             raise NotImplementedError('Unknown mode {}'.format(mode))
 
+    @staticmethod
+    def serving_input_receiver_fn():
+        """For the sake of the example, let's assume your input to the network will be a 28x28 grayscale image that you'll then preprocess as needed"""
+        input_text = tf.placeholder(
+                dtype=tf.int32,
+                shape=[None, 512],
+                name='input_text'
+        )
+        seq_length = tf.placeholder(
+                dtype=tf.int32,
+                shape=[None],
+                name='seq_length'
+        )
+
+        features = {'input' : input_text, 'len': seq_length}
+        receiver_tensors = {'input': input_text}
+        return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+
+
     def train(self):
 
         hook = tf.estimator.experimental.stop_if_no_increase_hook(
@@ -209,7 +229,9 @@ class TFClassifier:
         )
 
         best_exporter = BestCheckpointsExporter(
-                serving_input_receiver_fn=serving_input_receiver_fn
+                name="best_exporter",
+                serving_input_receiver_fn=self.serving_input_receiver_fn,
+                exports_to_keep=2
         )
 
         eval_spec = tf.estimator.EvalSpec(

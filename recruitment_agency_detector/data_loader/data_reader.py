@@ -7,6 +7,7 @@ from tk_preprocessing.common_processor import char_normalization
 
 HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
+MAX_LINES = 50
 
 def get_spacy_data(data_path, shuffle=False, train_mode=False):
     data_set = _get_data_set(data_path)
@@ -80,7 +81,7 @@ def _get_values_from_trxml(fields, data_dir):
 
 def _prepare_input_text(text):
     lines = text.split("\n")
-    return "\n".join(lines[:50])
+    return "\n".join(lines[:MAX_LINES])
 
 
 def _get_data_from_trxml(data_dir):

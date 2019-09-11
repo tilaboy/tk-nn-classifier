@@ -13,7 +13,8 @@ def main(config):
     config['action'] = 'train'
     model = Model(config)
     model.build_and_train()
-    #model.save(config['model_path'])
+    if model.type.startswith('spacy'):
+        model.save(config['model_path'])
 
 def get_args():
     '''get arguments'''

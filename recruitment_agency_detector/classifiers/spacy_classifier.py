@@ -39,14 +39,18 @@ class SpaceClassifier:
         # add the text classifier to the pipeline if it doesn't exist
         # nlp.create_pipe works for built-ins that are registered with spaCy
         if self.textcat_type not in model.pipe_names:
+
             textcat = model.create_pipe(
                 self.textcat_type,
                 config={
                     "exclusive_classes": True,
-                    "architecture": "simple_cnn",
+                    # "architecture": "simple_cnn",
+                    "architecture": "softmax_last_hidden",
+                    "words_per_batch": 1000
                 }
             )
-            model.add_pipe(textcat, last=True)
+            #model.add_pipe(textcat, last=True)
+            model.add_pipe(textcat)
         self.model =  model
 
     def train(self, train_data, eval_data):
@@ -56,14 +60,14 @@ class SpaceClassifier:
         textcat.add_label("no")
 
         # get names of other pipes to disable them during training
-        other_pipes = [pipe for pipe in self.model.pipe_names if pipe != self.textcat_type]
+        other_pipes = [] #[pipe for pipe in self.model.pipe_names if pipe != self.textcat_type]
 
         with self.model.disable_pipes(*other_pipes):  # only train textcat
-            self.optimizer = self.model.begin_training()
-            if self.config.get('init_tok2vec', None) is not None:
-                init_tok2vec = Path(self.config['init_tok2vec'])
-                with init_tok2vec.open("rb") as file_:
-                    textcat.model.tok2vec.from_bytes(file_.read())
+            self.optimizer = self.model.resume_training()
+            #if self.config.get('init_tok2vec', None) is not None:
+            #    init_tok2vec = Path(self.config['init_tok2vec'])
+            #    with init_tok2vec.open("rb") as file_:
+            #        textcat.model.tok2vec.from_bytes(file_.read())
             LOGGER.info("Training the model...")
             TrainHelper.print_progress_header()
             batch_sizes = compounding(4.0, 32.0, 1.001)

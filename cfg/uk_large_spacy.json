@@ -1,0 +1,20 @@
+{
+    "model_type": "spacy_simple",
+    "dropout_rate": 0.2,
+    "spacy_model": "en_core_web_sm",
+    "language": "en",
+    "architecture": "simple_cnn",
+    "num_epochs": 10,
+    "model_name": "uk_vac_staffing_agency_spacy",
+    "datasets": {
+        "train": "../recruitment_agency_data/train_big",
+        "eval": "../recruitment_agency_data/eval_big",
+        "test": {
+            "unindentified": "../recruitment_agency_data/unidentified/",
+            "annotated": "../recruitment_agency_data/annotated/",
+            "us": "../recruitment_agency_data/us_small.csv"
+        }
+    },
+    "split_ratio": 0.8,
+    "model_path": "models/uk_vac_staffing_agency_spacy_v3_sec_vacancy"
+}

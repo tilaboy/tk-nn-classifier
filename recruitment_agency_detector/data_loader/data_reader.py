@@ -21,54 +21,46 @@ def get_spacy_data(data_path, shuffle=False, train_mode=False):
     return list(zip(texts, cats))
 
 
-def get_tf_data(data_path):
-    data_set = _get_data_set(data_path)
+def get_tf_data(data_path, config):
+    data_set = _get_data_set(data_path, config)
     texts, labels = zip(*data_set)
     cats = [1 if label=="yes" else 0 for label in labels]
 
     return list(zip(texts, cats))
 
-def get_data_with_details(data_path):
+def get_data_with_details(data_path, config):
     if os.path.isdir(data_path):
         return _get_trxml_details(data_path)
     elif os.path.isfile(data_path) and data_path.endswith('.csv'):
         return _get_csv_details(data_path)
 
-def _get_data_set(data_path):
+def _get_data_set(data_path, config):
     if os.path.isdir(data_path):
-        data_set = list(_get_data_from_trxml(data_path))
+        data_set = list(_get_data_from_trxml(data_path, config))
     elif os.path.isfile(data_path) and data_path.endswith('.csv'):
-        data_set = list(_get_data_from_csv(data_path))
+        data_set = list(_get_data_from_csv(data_path, config))
     else:
         raise FileNotFoundError(f'{data_path} not found')
     return data_set
 
-def _get_csv_details(data_path):
-    fields = [
-        'posting_id',
-        'advertiser_name',
-        'source_website',
-        'source_url'
-    ]
+def _get_csv_details(data_path, config):
+    fields = [config['csv_fields']['doc_id']] + \
+        config['csv_fields']['extra']
     with open(data_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             fields_values = [
-                _prepare_input_text(row['full_text']),
-                _transfer_source_type(row['source_type']),
+                _prepare_input_text(row[config['csv_fields']['features']]),
+                _transfer_source_type(row[config['csv_fields']['class']]),
             ]
             details = [ row[field] for field in fields ]
             yield fields_values + details
 
-def _get_trxml_details(date_path):
-    fields = [
-        'sec_vacancy.0.sec_vacancy',
-        'derived_vac_intermediary.0.derived_vac_intermediary',
-        'Document.0.correlationid',
-        'derived_org_name.0.derived_org_name',
-        'derived_source_site.0.derived_source_site',
-        'derived_norm_url.0.derived_norm_url'
-    ]
+def _get_trxml_details(date_path, config):
+    fields = [config['trxml_fields']['features'],
+              config['trxml_fields']['class'],
+              config['trxml_fields']['doc_id']]
+    fields += config['trxml_fields']['extra']
     return _get_values_from_trxml(fields, data_dir)
 
 
@@ -86,11 +78,9 @@ def _prepare_input_text(text):
     return "\n".join(lines[:MAX_LINES])
 
 
-def _get_data_from_trxml(data_dir):
-    fields = [
-        'sec_vacancy.0.sec_vacancy',
-        'derived_vac_intermediary.0.derived_vac_intermediary'
-    ]
+def _get_data_from_trxml(data_dir, config):
+    fields = [config['trxml_fields']['features'],
+              config['trxml_fields']['class']]
     return _get_values_from_trxml(fields, data_dir)
 
 
@@ -105,13 +95,13 @@ def tokenize(string):
         ]
     return tokens
 
-def _get_data_from_csv(data_path):
+def _get_data_from_csv(data_path, config):
     with open(data_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             yield [
-                _prepare_input_text(row['full_text']),
-                _transfer_source_type(row['source_type'])
+                _prepare_input_text(row[config['csv_fields']['features']]),
+                _transfer_source_type(row[config['csv_fields']['class']])
             ]
 
 

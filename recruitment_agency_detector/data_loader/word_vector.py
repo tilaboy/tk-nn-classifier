@@ -30,9 +30,16 @@ class WordVector:
         self.vocab = vocab
         self.vectors = vectors
 
-        self.vocab_to_index = {}
-        for index, word in enumerate(self.vocab):
-            self.vocab_to_index[word] = index
+        self.vocab_to_index = create_vocab_index_dict(self.vocab)
+
+    @staticmethod
+    def create_vocab_index_dict(vocab):
+        vocab_to_index = {}
+        for index, word in enumerate(vocab):
+            vocab_to_index[word] = index
+        return vocab_to_index
+
+
 
     @property
     def vocab_size(self):
@@ -217,7 +224,6 @@ class WordVector:
                 vocab_size,
                 vector_size,
                 filename))
-
 
 def unitvec(vec):
     '''

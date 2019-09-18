@@ -14,25 +14,31 @@ class SpaceClassifier:
 
     def build_and_train(self):
         self.build_graph()
-        train_data, eval_data = self.prepare_data_sets()
+        train_data=get_spacy_data(
+            self.config['datasets']['train'],
+            shuffle=True,
+            train_mode=True
+        )
+        eval_data=get_spacy_data(self.config['datasets']['eval'])
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
     def evaluate_on_tests(self):
+        textcat = self.model.get_pipe("textcat")
         for test_set in  self.config['datasets']['test']:
             test_data = get_spacy_data(self.config['datasets']['test'][test_set])
-            scores = self.evaluate(test_data)
-            TrainHelper.print_test_score(test_set, scores)
-            self.confusion_matrix(test_data)
+            texts, cats = zip(*test_data)
+            predicted_classes = list(self.predict_batch(texts))
+            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
 
     def build_graph(self):
-        if self.config["spacy_model"] is not None:
-            model = spacy.load(self.config["spacy_model"])  # load existing spaCy model
-            LOGGER.info("Loaded model '%s'" % self.config["spacy_model"])
+        if self.config["spacy"]["model"] is not None:
+            model = spacy.load(self.config["spacy"]["model"])
+            LOGGER.info("Loaded model '%s'" % self.config["spacy"]["model"])
         else:
-            model = spacy.blank(self.config["language"])  # create blank Language class
-            LOGGER.info("Created blank '%s' model" % self.config["language"])
+            model = spacy.blank(self.config["spacy"]["language"])  # create blank Language class
+            LOGGER.info("Created blank '%s' model" % self.config["spacy"]["language"])
 
         # add the text classifier to the pipeline if it doesn't exist
         # nlp.create_pipe works for built-ins that are registered with spaCy
@@ -41,7 +47,7 @@ class SpaceClassifier:
                 "textcat",
                 config={
                     "exclusive_classes": True,
-                    "architecture": "simple_cnn",
+                    "architecture": self.config["spacy"]["architecture"],
                 }
             )
             model.add_pipe(textcat, last=True)
@@ -89,19 +95,23 @@ class SpaceClassifier:
                               )
         return losses
 
-    def prepare_data_sets(self):
-
-        train_data=get_spacy_data(
-            self.config['datasets']['train'],
-            shuffle=True,
-            train_mode=True
-        )
-        eval_data=get_spacy_data(self.config['datasets']['eval'])
-
-        return train_data, eval_data
-
     def load_model(self):
         self.model = spacy.load(config['model_path'])
+
+    def save(self, output_dir):
+        if output_dir is not None:
+            output_dir = Path(output_dir)
+            if not output_dir.exists():
+                output_dir.mkdir()
+            with self.model.use_params(self.optimizer.averages):
+                self.model.to_disk(output_dir)
+            print("Saved model to", output_dir)
+
+    def predict_batch(self, texts):
+        textcat = self.model.get_pipe("textcat")
+        docs = (self.model.tokenizer(text) for text in texts)
+        for doc in textcat.pipe(docs):
+            yield doc.cats
 
     def split_train_test_data(self):
         """prepare data from our dataset."""
@@ -115,34 +125,3 @@ class SpaceClassifier:
             list(zip(texts[:split], [{"cats": cats} for cats in cats[:split]])),
             list(zip(texts[split:], cats[split:]))
         )
-
-    def predict_batch(self, texts):
-        textcat = self.model.get_pipe("textcat")
-        docs = (self.model.tokenizer(text) for text in texts)
-        for doc in textcat.pipe(docs):
-            yield doc.cats
-
-
-    def confusion_matrix(self, eval_data):
-        texts, cats = zip(*eval_data)
-        cm = TrainHelper.evaluate_confusion_matrix(self.predict_batch(texts), cats)
-        LOGGER.info("Confusion matrix:")
-        print(cm)
-
-
-    def evaluate(self, eval_data):
-        textcat = self.model.get_pipe("textcat")
-        texts, cats = zip(*eval_data)
-        with textcat.model.use_params(self.optimizer.averages):
-            score = TrainHelper.evaluate_score(self.predict_batch(texts), cats)
-        return score
-
-
-    def save(self, output_dir):
-        if output_dir is not None:
-            output_dir = Path(output_dir)
-            if not output_dir.exists():
-                output_dir.mkdir()
-            with self.model.use_params(self.optimizer.averages):
-                self.model.to_disk(output_dir)
-            print("Saved model to", output_dir)

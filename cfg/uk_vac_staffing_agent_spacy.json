@@ -1,11 +1,33 @@
 {
     "model_type": "spacy_simple",
-    "dropout_rate": 0.2,
-    "spacy_model": "en_core_web_sm",
-    "language": "en",
-    "architecture": "simple_cnn",
-    "num_epochs": 20,
     "model_name": "uk_vac_staffing_agency_spacy",
+    "model_path": "models/uk_vac_staffing_agency_spacy_v3_sec_vacancy",
+    "split_ratio": 0.8,
+
+    "dropout_rate": 0.2,
+    "num_epochs": 20,
+    "spacy": {
+        "model": "en_core_web_sm",
+        "lang": "en",
+        "arch": "simple_cnn",
+    },
+    
+    "trxml_fields": {
+        "features": ["sec_vacancy.0.sec_vacancy"],
+        "class": "derived_vac_intermediary.0.derived_vac_intermediary",
+        "doc_id": "Document.0.correlationid",
+        "extra": ["derived_org_name.0.derived_org_name",
+            "derived_source_site.0.derived_source_site",
+            "derived_norm_url.0.derived_norm_urltest"]
+    },
+
+    "csv_fields": {
+        "features": ["full_text"],
+        "class": "source_type",
+        "doc_id": "posting_id",
+        "extra": ["advertiser_name", "source_website", "source_url"]
+    },
+
     "datasets": {
         "train": "../recruitment_agency_data/train",
         "eval": "../recruitment_agency_data/eval",
@@ -13,7 +35,5 @@
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/"
         }
-    },
-    "split_ratio": 0.8,
-    "model_path": "models/uk_vac_staffing_agency_spacy_v3_sec_vacancy"
+    }
 }

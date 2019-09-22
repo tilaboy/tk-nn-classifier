@@ -1,6 +1,22 @@
+import os
 import numpy
 import pandas as pd
 from .. import LOGGER
+
+class FileHelper:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def last_modified_folder(model_path):
+        model_names = [
+                os.path.join(model_path, name)
+                for name in os.listdir(model_path)
+        ]
+        model_path = min(model_names,
+                         key=labmda x: int(os.stat(x).st_birthday)
+                        )
+        return model_path
 
 
 class TrainHelper:

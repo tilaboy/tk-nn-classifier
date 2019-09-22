@@ -95,8 +95,15 @@ class SpaceClassifier:
                               )
         return losses
 
-    def load_model(self):
-        self.model = spacy.load(config['model_path'])
+    def load_saved_model(self, model_path==None):
+        if model_path is None:
+            model_path = self.config['model_path']
+        self.model = spacy.load(model_path)
+
+    def process_with_saved_model(self, input):
+        result = self.model(input)
+        doc = classifier(test_text)
+        return [ doc.cats[label] for lable in uniq_lables ]
 
     def save(self, output_dir):
         if output_dir is not None:

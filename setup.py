@@ -34,8 +34,7 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     scripts=[
-        'bin/tk-nn-train.py',
-        'bin/tk-nn-infer.py'
+        'bin/tk-nn-train.py'
     ],
     test_suite="tests",
     setup_requires=setup_requirements,

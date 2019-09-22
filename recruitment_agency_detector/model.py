@@ -41,11 +41,17 @@ class Model:
     def save(self, output_path):
         self.classifier.save(output_path)
 
-    def load(self, model_dir):
-        self.classifier.load_model()
-
     def build_and_train(self):
         self.classifier.build_and_train()
 
     def evaluate(self, test_data_path):
         self.classifier.evaluate(test_data_path)
+
+    def load(self, model_path):
+        self.classifier.load_saved_model(model_path)
+
+    def process_with_saved_mode(self):
+        self.classifier.process_with_saved_mode()
+
+    def predict_on_text(self, text):
+        self.classifier.predict_on_text(text)

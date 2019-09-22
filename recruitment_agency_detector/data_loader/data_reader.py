@@ -9,6 +9,8 @@ HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 MAX_LINES = 50
 
+
+
 def get_spacy_data(data_path, shuffle=False, train_mode=False):
     data_set = _get_data_set(data_path)
     if shuffle:
@@ -30,9 +32,9 @@ def get_tf_data(data_path, config):
 
 def get_data_with_details(data_path, config):
     if os.path.isdir(data_path):
-        return _get_trxml_details(data_path)
+        return _get_trxml_details(data_path, config)
     elif os.path.isfile(data_path) and data_path.endswith('.csv'):
-        return _get_csv_details(data_path)
+        return _get_csv_details(data_path, config)
 
 def _get_data_set(data_path, config):
     if os.path.isdir(data_path):

@@ -46,7 +46,6 @@ class TFClassifier:
             TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
 
     def predict_batch(self, data_path):
-
         predicted_classes = [
                 predict['classes']
                 for predict in
@@ -71,11 +70,6 @@ class TFClassifier:
         dataset = dataset.map(self._data_parser)
         iterator = dataset.make_one_shot_iterator()
         return iterator.get_next()
-
-
-    def predict_on_text(self, text):
-        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
-
 
     def load_embedding(self):
         if self.embedding is None:
@@ -225,9 +219,7 @@ class TFClassifier:
         receiver_tensors = {'input': input_text}
         return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
 
-
     def train(self):
-
         hook = tf.estimator.experimental.stop_if_no_increase_hook(
                 self.classifier,
                 'accuracy',
@@ -261,7 +253,10 @@ class TFClassifier:
         # train and evaluate
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
-    def load_saved_model(self, model_path==None):
+    def predict_on_text(self, text):
+        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
+
+    def load_saved_model(self, model_path=None):
         if model_path is None:
             model_path = FileHelper.last_modified_folder(
                     os.path.join(
@@ -270,27 +265,28 @@ class TFClassifier:
                             'best_exporter'
                             )
                     )
-
+        LOGGER.info("loading model from %s", model_path)
         self.model = predictor.from_saved_model(model_path)
         self._load_vocab()
 
     def _load_vocab(self):
-        vocab, _ = WordVector.read_embeddings(config['embedding']['file'])
+        vocab, _ = WordVector.read_embeddings(self.config['embedding']['file'])
         self.vocab_to_ids = WordVector.create_vocab_index_dict(vocab)
 
     def process_with_saved_model(self, input):
         data = self._input_text_to_pad_id(input)
         result = self.model(data)
-        return result['probabilities'][0]
+        probabilities = result['probabilities'][0]
+        return probabilities
 
     def _input_text_to_pad_id(self, text):
         data_id = [
                 self.vocab_to_ids[token]
-                if token in vocab_to_ids else WordVector.UNK_ID
+                if token in self.vocab_to_ids else WordVector.UNK_ID
                 for token in tokenize(text)
                 ]
         data = sequence.pad_sequences([data_id],
-                                 maxlen=config['max_sequence_length'],
+                                 maxlen=self.max_sequence_length,
                                  truncating='post',
                                  padding='post',
                                  value=WordVector.PAD_ID)

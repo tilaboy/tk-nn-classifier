@@ -13,8 +13,8 @@ class FileHelper:
                 os.path.join(model_path, name)
                 for name in os.listdir(model_path)
         ]
-        model_path = min(model_names,
-                         key=labmda x: int(os.stat(x).st_birthday)
+        model_path = max(model_names,
+                         key=lambda x: int(os.stat(x).st_birthtime)
                         )
         return model_path
 

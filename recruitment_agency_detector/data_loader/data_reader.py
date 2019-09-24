@@ -9,8 +9,6 @@ HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 MAX_LINES = 50
 
-
-
 def get_spacy_data(data_path, shuffle=False, train_mode=False):
     data_set = _get_data_set(data_path)
     if shuffle:
@@ -19,7 +17,6 @@ def get_spacy_data(data_path, shuffle=False, train_mode=False):
     cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
     if train_mode:
         cats = [{"cats": cat} for cat in cats]
-
     return list(zip(texts, cats))
 
 
@@ -27,7 +24,6 @@ def get_tf_data(data_path, config):
     data_set = _get_data_set(data_path, config)
     texts, labels = zip(*data_set)
     cats = [1 if label=="yes" else 0 for label in labels]
-
     return list(zip(texts, cats))
 
 def get_data_with_details(data_path, config):
@@ -58,18 +54,18 @@ def _get_csv_details(data_path, config):
             details = [ row[field] for field in fields ]
             yield fields_values + details
 
-def _get_trxml_details(date_path, config):
+def _get_trxml_details(data_path, config):
     fields = [config['trxml_fields']['features'],
               config['trxml_fields']['class'],
               config['trxml_fields']['doc_id']]
     fields += config['trxml_fields']['extra']
-    return _get_values_from_trxml(fields, data_dir)
+    return _get_values_from_trxml(fields, data_path)
 
 
-def _get_values_from_trxml(fields, data_dir):
+def _get_values_from_trxml(fields, data_path):
     # the first element in the fields is the input text to the data models
     trxml_miner = TRXMLMiner(','.join(fields))
-    for trxml in trxml_miner.mine(data_dir):
+    for trxml in trxml_miner.mine(data_path):
         trxml['values'][fields[0]] = _prepare_input_text(
                 trxml['values'][fields[0]])
         yield [trxml['values'][field] for field in fields]

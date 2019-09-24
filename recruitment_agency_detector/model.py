@@ -47,11 +47,11 @@ class Model:
     def evaluate(self, test_data_path):
         self.classifier.evaluate(test_data_path)
 
-    def load(self, model_path):
+    def load(self, model_path=None):
         self.classifier.load_saved_model(model_path)
 
-    def process_with_saved_mode(self):
-        self.classifier.process_with_saved_mode()
+    def process_with_saved_model(self, input):
+        return self.classifier.process_with_saved_model(input)
 
     def predict_on_text(self, text):
-        self.classifier.predict_on_text(text)
+        return self.classifier.predict_on_text(text)

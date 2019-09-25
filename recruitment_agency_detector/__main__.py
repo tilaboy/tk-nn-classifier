@@ -13,8 +13,8 @@ def process_batch(model, test_dir, output_file, config):
     for test_text, category, id, orgname, site, url in get_data_with_details(test_dir, config):
         probabilities = model.process_with_saved_model(test_text)
         # todo: this is the index of classes, still need to map back
-        predict_cat = min(range(len(probabilities)), key=values.__getitem__)
-
+        predicted_class = min(range(len(probabilities)), key=probabilities.__getitem__)
+        #predicted_label = class_to_label()
         fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{probabilities}\n")
     fh_output.close()
 
@@ -84,7 +84,11 @@ def get_args():
     return parser.parse_args()
 
 
-if __name__ == "__main__":
+def main():
     set_logging_level(logging.INFO)
     args = get_args()
     args.func(args)
+
+
+if __name__ == "__main__":
+    main()

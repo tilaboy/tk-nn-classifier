@@ -1,5 +1,6 @@
 import spacy
 import random
+import json
 from pathlib import Path
 
 from spacy.util import minibatch, compounding
@@ -11,6 +12,10 @@ class SpaceClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
+        if 'label_map_file' in config:
+            self.label_mapper_file = config['label_map_file']
+        else:
+            self.label_mapper_file = os.path.join(config[model_path], 'labels.json')
 
     def build_and_train(self):
         self.build_graph()
@@ -20,9 +25,26 @@ class SpaceClassifier:
             train_mode=True
         )
         eval_data=get_spacy_data(self.config['datasets']['eval'])
+        _, train_lables = zip(*train_data)
+        self.classes_to_label = {
+                label:i
+                for label,i in enumerate(sorted(set(labels)))
+        }
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
+
+    def labels_mapper(self, labels):
+        if os.path.isfile(self.label_mapper_file):
+            with open(self.label_mapper_file, 'r') as l_fh:
+                self.classes_to_label = json.load(l_fh)
+        else:
+            self.classes_to_label = {
+                label:i
+                for label,i in enumerate(sorted(set(labels)))
+            }
+            with open(self.label_mapper_file, 'w') as l_fh:
+                json.dump(self.class_to_label)
 
     def evaluate_on_tests(self):
         textcat = self.model.get_pipe("textcat")

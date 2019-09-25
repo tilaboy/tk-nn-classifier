@@ -33,9 +33,11 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    scripts=[
-        'bin/tk-nn-train.py'
-    ],
+    entry_points={
+        "console_scripts": [
+            "tk-nn-classifier=recruitment_agency_detector.__main__:main",
+        ],
+    },
     test_suite="tests",
     setup_requires=setup_requirements,
     tests_require=test_requirements,

@@ -26,10 +26,6 @@ class SpaceClassifier:
         )
         eval_data=get_spacy_data(self.config['datasets']['eval'])
         _, train_lables = zip(*train_data)
-        self.classes_to_label = {
-                label:i
-                for label,i in enumerate(sorted(set(labels)))
-        }
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
@@ -40,8 +36,8 @@ class SpaceClassifier:
                 self.classes_to_label = json.load(l_fh)
         else:
             self.classes_to_label = {
-                label:i
-                for label,i in enumerate(sorted(set(labels)))
+                i:label
+                for i, label in enumerate(sorted(set(labels)))
             }
             with open(self.label_mapper_file, 'w') as l_fh:
                 json.dump(self.class_to_label)

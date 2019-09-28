@@ -5,9 +5,8 @@ import csv
 from xml_miner.miner import TRXMLMiner
 from tk_preprocessing.common_processor import char_normalization
 
-HAS_TOKEN_REGEXP = re.compile(r'\w')
-TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 MAX_LINES = 50
+
 
 def get_spacy_data(data_path, shuffle=False, train_mode=False):
     data_set = _get_data_set(data_path)
@@ -26,11 +25,13 @@ def get_tf_data(data_path, config):
     cats = [1 if label=="yes" else 0 for label in labels]
     return list(zip(texts, cats))
 
+
 def get_data_with_details(data_path, config):
     if os.path.isdir(data_path):
         return _get_trxml_details(data_path, config)
     elif os.path.isfile(data_path) and data_path.endswith('.csv'):
         return _get_csv_details(data_path, config)
+
 
 def _get_data_set(data_path, config):
     if os.path.isdir(data_path):
@@ -40,6 +41,7 @@ def _get_data_set(data_path, config):
     else:
         raise FileNotFoundError(f'{data_path} not found')
     return data_set
+
 
 def _get_csv_details(data_path, config):
     fields = [config['csv_fields']['doc_id']] + \
@@ -53,6 +55,7 @@ def _get_csv_details(data_path, config):
             ]
             details = [ row[field] for field in fields ]
             yield fields_values + details
+
 
 def _get_trxml_details(data_path, config):
     fields = [config['trxml_fields']['features'],
@@ -81,17 +84,6 @@ def _get_data_from_trxml(data_dir, config):
               config['trxml_fields']['class']]
     return _get_values_from_trxml(fields, data_dir)
 
-
-def tokenize(string):
-    string = char_normalization(string)
-    tokens = []
-    if re.search(HAS_TOKEN_REGEXP, string):
-        tokens = [
-            match.group().upper()
-            for match in TOKEN_REGEXP.finditer(string)
-            if re.search(HAS_TOKEN_REGEXP, match.group())
-        ]
-    return tokens
 
 def _get_data_from_csv(data_path, config):
     with open(data_path, newline='') as csvfile:

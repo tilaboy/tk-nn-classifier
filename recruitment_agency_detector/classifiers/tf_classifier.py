@@ -8,10 +8,12 @@ from pathlib import Path
 import functools
 from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
+from tensorflow.contrib import predictor
+
 from ..data_loader import WordVector
 from ..data_loader.data_reader import get_tf_data, tokenize
 from .. import LOGGER
-from .utils import TrainHelper
+from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
@@ -27,6 +29,7 @@ class TFClassifier:
         self.type = config['model_type']
         self.max_sequence_length = config['max_sequence_length']
         self.data_sets = {}
+        self.embedding = None
 
     def build_and_train(self):
         self.load_embedding()
@@ -40,17 +43,9 @@ class TFClassifier:
             data_path = self.config['datasets']['test'][test_set_name]
             predicted_classes = self.predict_batch(data_path)
             _, lables, data_length = self.load_data_set(data_path)
-            scores = TrainHelper.evaluate_score_on_class(predicted_classes, lables)
-            TrainHelper.print_test_score(test_set_name, scores)
-            cm = TrainHelper.evaluate_confusion_matrix_binary_class(predicted_classes, lables)
-            LOGGER.info("Confusion matrix:")
-            print(cm)
-
-    def evaluate(self):
-        print("to implement")
+            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
 
     def predict_batch(self, data_path):
-
         predicted_classes = [
                 predict['classes']
                 for predict in
@@ -60,9 +55,25 @@ class TFClassifier:
         ]
         return predicted_classes
 
+    def _parepare_single_input(self, text):
+        data_id = [
+                self.embedding.get_index(token)
+                for token in tokenize(text)
+                ]
+        data_length = min(len(data_id), self.max_sequence_length)
+        data = sequence.pad_sequences([data_ids],
+                                 maxlen=self.max_sequence_length,
+                                 truncating='post',
+                                 padding='post',
+                                 value=WordVector.PAD_ID)
+        dataset = tf.data.Dataset.from_tensor_slices((data, [data_length], [0]))
+        dataset = dataset.map(self._data_parser)
+        iterator = dataset.make_one_shot_iterator()
+        return iterator.get_next()
 
     def load_embedding(self):
-        self.embedding = WordVector(self.config['embedding']['file'])
+        if self.embedding is None:
+            self.embedding = WordVector(self.config['embedding']['file'])
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
@@ -208,9 +219,7 @@ class TFClassifier:
         receiver_tensors = {'input': input_text}
         return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
 
-
     def train(self):
-
         hook = tf.estimator.experimental.stop_if_no_increase_hook(
                 self.classifier,
                 'accuracy',
@@ -244,19 +253,41 @@ class TFClassifier:
         # train and evaluate
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
-    def separated_train_and_eval(self):
-        """Training process"""
-        # Save a reference to the classifier to run predictions later
-        self.classifier.train(
-                input_fn=functools.partial(self.input_fn,
-                                          self.config['datasets']['train']),
-        )
-        eval_results = self.classifier.evaluate(
-                input_fn=functools.partial(self.input_fn,
-                                           self.config['datasets']['eval']),
-                steps=self.config['check_per_steps']
-        )
-        print('Accuracy: {0:f}'.format(eval_results['accuracy']))
-        print('AUC: {0:f}'.format(eval_results['auc']))
+    def predict_on_text(self, text):
+        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
 
-        predictions = np.array([p['classes'][0] for p in self.classifier.predict(input_fn=self.eval_input_fn)])
+    def load_saved_model(self, model_path=None):
+        if model_path is None:
+            model_path = FileHelper.last_modified_folder(
+                    os.path.join(
+                            self.config['model_path'],
+                            'export',
+                            'best_exporter'
+                            )
+                    )
+        LOGGER.info("loading model from %s", model_path)
+        self.model = predictor.from_saved_model(model_path)
+        self._load_vocab()
+
+    def _load_vocab(self):
+        vocab, _ = WordVector.read_embeddings(self.config['embedding']['file'])
+        self.vocab_to_ids = WordVector.create_vocab_index_dict(vocab)
+
+    def process_with_saved_model(self, input):
+        data = self._input_text_to_pad_id(input)
+        result = self.model(data)
+        probabilities = result['probabilities'][0]
+        return probabilities
+
+    def _input_text_to_pad_id(self, text):
+        data_id = [
+                self.vocab_to_ids[token]
+                if token in self.vocab_to_ids else WordVector.UNK_ID
+                for token in tokenize(text)
+                ]
+        data = sequence.pad_sequences([data_id],
+                                 maxlen=self.max_sequence_length,
+                                 truncating='post',
+                                 padding='post',
+                                 value=WordVector.PAD_ID)
+        return {'input':data}

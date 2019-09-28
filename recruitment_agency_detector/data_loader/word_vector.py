@@ -25,14 +25,17 @@ class WordVector:
         params:
             inputfile: a single filepath as string
         '''
-
         vocab, vectors = self.read_embeddings(inputfile)
         self.vocab = vocab
         self.vectors = vectors
+        self.vocab_to_index = self.create_vocab_index_dict(self.vocab)
 
-        self.vocab_to_index = {}
-        for index, word in enumerate(self.vocab):
-            self.vocab_to_index[word] = index
+    @staticmethod
+    def create_vocab_index_dict(vocab):
+        vocab_to_index = {}
+        for index, word in enumerate(vocab):
+            vocab_to_index[word] = index
+        return vocab_to_index
 
     @property
     def vocab_size(self):
@@ -217,7 +220,6 @@ class WordVector:
                 vocab_size,
                 vector_size,
                 filename))
-
 
 def unitvec(vec):
     '''

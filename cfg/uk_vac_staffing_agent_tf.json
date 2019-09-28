@@ -1,7 +1,7 @@
 {
-    "model_type": "tf_lstm_multi",
+    "model_type": "tf_cnn_simple",
     "model_name": "staffing_agency_detector",
-    "model_path": "models/tf/lstm",
+    "model_path": "models/tf/cnn",
     "model_file": "models/tf/sa_detector.h5",
 
     "features_enabled": false,
@@ -15,6 +15,22 @@
     "max_steps_without_increase": 500,
     "min_train_steps": 1000,
     "check_per_steps": 100,
+
+    "trxml_fields": {
+        "features": "sec_vacancy.0.sec_vacancy",
+        "class": "derived_vac_intermediary.0.derived_vac_intermediary",
+        "doc_id": "Document.0.correlationid",
+        "extra": ["derived_org_name.0.derived_org_name",
+            "derived_source_site.0.derived_source_site",
+            "derived_norm_url.0.derived_norm_urltest"]
+    },
+
+    "csv_fields": {
+        "features": "full_text",
+        "class": "source_type",
+        "doc_id": "posting_id",
+        "extra": ["advertiser_name", "source_website", "source_url"]
+    },
 
     "lstm": {
         "hidden_size": 150,
@@ -35,12 +51,13 @@
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train",
-        "eval": "../recruitment_agency_data/eval",
+        "train": "../recruitment_agency_data/train_big",
+        "eval": "../recruitment_agency_data/eval_big",
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval"
+            "eval": "../recruitment_agency_data/eval",
+            "us": "../recruitment_agency_data/us.csv"
         }
     }
 

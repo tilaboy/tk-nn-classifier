@@ -6,6 +6,16 @@ class GraphSelector:
         self.config = config
         self.embedding = embedding
 
+    def _input_layer(self, input, embedding_initializer):
+        input_layer = tf.contrib.layers.embed_sequence(
+            input['input'],
+            self.embedding.vocab_size,
+            self.embedding.vector_size,
+            initializer=embedding_initializer,
+            trainable=False
+        )
+        return input_layer
+
     def add_graph(self, input, training_mode, embedding_initializer):
         if self.config['model_type'] == 'tf_cnn_simple':
             LOGGER.info("create model: cnn_simple")
@@ -22,15 +32,7 @@ class GraphSelector:
 
 
     def _cnn_simple(self, input, training_mode, embedding_initializer):
-
-        input_layer = tf.contrib.layers.embed_sequence(
-            input['input'],
-            self.embedding.vocab_size,
-            self.embedding.vector_size,
-            initializer=embedding_initializer,
-            trainable=False
-        )
-
+        input_layer = self._input_layer(input, embedding_initializer)
         dropout_emb = tf.layers.dropout(inputs=input_layer,
                                         rate=self.config['dropout_rate'],
                                         training=training_mode)
@@ -51,13 +53,7 @@ class GraphSelector:
         return logits
 
     def _cnn_multi_layer(self, input, training_mode, embedding_initializer):
-        input_layer = tf.contrib.layers.embed_sequence(
-            input['input'],
-            self.embedding.vocab_size,
-            self.embedding.vector_size,
-            initializer=embedding_initializer,
-            trainable=False
-        )
+        input_layer = self._input_layer(input, embedding_initializer)
 
         next_input = tf.layers.dropout(inputs=input_layer,
                                         rate=self.config['dropout_rate'],
@@ -86,13 +82,7 @@ class GraphSelector:
         return logits
 
     def _lstm_simple(self, input, training_mode, embedding_initializer):
-        input_layer = tf.contrib.layers.embed_sequence(
-            input['input'],
-            self.embedding.vocab_size,
-            self.embedding.vector_size,
-            initializer=embedding_initializer,
-            trainable=False
-        )
+        input_layer = self._input_layer(input, embedding_initializer)
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
@@ -112,13 +102,7 @@ class GraphSelector:
 
 
     def _lstm_multi_layer(self, input, training_mode, embedding_initializer):
-        input_layer = tf.contrib.layers.embed_sequence(
-            input['input'],
-            self.embedding.vocab_size,
-            self.embedding.vector_size,
-            initializer=embedding_initializer,
-            trainable=False
-        )
+        input_layer = self._input_layer(input, embedding_initializer)
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,

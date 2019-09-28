@@ -1,19 +1,22 @@
+import os
 import numpy
 import pandas as pd
 from .. import LOGGER
 
-class Evaluater:
-    def __init__(self, type):
-        self.type = type
+class FileHelper:
+    def __init__(self):
+        pass
 
-    def tf_evaluation(model, test_file, data_reader):
-        """Evaluate on the data set"""
-
-        text_lines, x_eval, y_eval = data_reader.read_file(test_file)
-        results = model.predict(x_eval)
-        for text, i in enumerate(text_lines):
-            LOGGER.info("predicted={:0.2f}\tclass={}\ttext={}".format(
-                results[i][0], y_eval[i], text))
+    @staticmethod
+    def last_modified_folder(model_path):
+        model_names = [
+                os.path.join(model_path, name)
+                for name in os.listdir(model_path)
+        ]
+        model_path = max(model_names,
+                         key=lambda x: int(os.stat(x).st_birthtime)
+                        )
+        return model_path
 
 
 class TrainHelper:
@@ -36,7 +39,19 @@ class TrainHelper:
         )
 
     @staticmethod
-    def print_test_score(test_set_name, scores):
+    def eval_and_print(test_set, predicted_classes, labels):
+        scores = self._evaluate_score_on_class(predicted_classes, labels)
+        self.print_test_score(test_set, scores)
+        if type(predicted_classes[0]) == dict:
+            cm = self._evaluate_confusion_matrix(predicted_classes, labels)
+        else:
+            cm = self._evaluate_confusion_matrix_binary_class(predicted_classes, lables)
+        LOGGER.info("Confusion matrix:")
+        print(cm)
+
+
+    @staticmethod
+    def _print_test_score(test_set_name, scores):
         print(
             "{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
                 test_set_name,
@@ -47,7 +62,7 @@ class TrainHelper:
         )
 
     @staticmethod
-    def evaluate_score_on_class(eval, gold, target_cat=1):
+    def _evaluate_score_on_class(eval, gold, target_cat=1):
         tp = 0.0  # True positives
         fp = 1e-8  # False positives
         fn = 1e-8  # False negatives
@@ -71,7 +86,7 @@ class TrainHelper:
 
 
     @staticmethod
-    def evaluate_score(eval, gold):
+    def _evaluate_score(eval, gold):
         tp = 0.0  # True positives
         fp = 1e-8  # False positives
         fn = 1e-8  # False negatives
@@ -99,7 +114,7 @@ class TrainHelper:
         return {"precision": precision, "recall": recall, "f1": f_score}
 
     @staticmethod
-    def evaluate_confusion_matrix(eval, gold):
+    def _evaluate_confusion_matrix(eval, gold):
         categories = {label: i for i,label in enumerate(gold[0].keys())}
         gold_labels = _max_dict_value(gold)
         eval_labels = _max_dict_value(eval)
@@ -110,7 +125,7 @@ class TrainHelper:
         return cm
 
     @staticmethod
-    def evaluate_confusion_matrix_binary_class(eval_labels, gold_labels):
+    def _evaluate_confusion_matrix_binary_class(eval_labels, gold_labels):
         cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
                          pd.Series(eval_labels, name='Predicted')
                          )
@@ -118,17 +133,3 @@ class TrainHelper:
 
 def _max_dict_value(cats_dicts):
     return [max(cats_dict, key=cats_dict.get) for cats_dict in cats_dicts]
-
-
-def predict_trxml_batch(model_dir='first_model', output_file='result.txt'):
-    print("Loading from", model_dir)
-    nlp = spacy.load(model_dir)
-
-    fh_output = open(output_file, 'w')
-    fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
-    for test_text, category, id, orgname, site, url in get_data_with_details('data/random_trxmls'):
-        test_text = prepare_input_text(text)
-        doc = nlp(test_text)
-        predict_cat = 1 if doc.cats['yes'] > doc.cats['no'] else 0
-        fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{doc.cats}\n")
-    fh_output.close()

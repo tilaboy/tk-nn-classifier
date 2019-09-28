@@ -25,22 +25,9 @@ class SpaceClassifier:
             train_mode=True
         )
         eval_data=get_spacy_data(self.config['datasets']['eval'])
-        _, train_lables = zip(*train_data)
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
-
-    def labels_mapper(self, labels):
-        if os.path.isfile(self.label_mapper_file):
-            with open(self.label_mapper_file, 'r') as l_fh:
-                self.classes_to_label = json.load(l_fh)
-        else:
-            self.classes_to_label = {
-                i:label
-                for i, label in enumerate(sorted(set(labels)))
-            }
-            with open(self.label_mapper_file, 'w') as l_fh:
-                json.dump(self.class_to_label)
 
     def evaluate_on_tests(self):
         textcat = self.model.get_pipe("textcat")

@@ -167,6 +167,7 @@ class SpacyDataReader(DataReader):
             for label in labels
         ]
 
+    @staticmethod
     def _wrap_training_categories(cats):
         return [{"cats": cats} for cats in cats[:split]]
 

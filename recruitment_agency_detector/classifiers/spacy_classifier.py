@@ -1,10 +1,10 @@
+import os
 import spacy
-import random
 import json
 from pathlib import Path
 
 from spacy.util import minibatch, compounding
-from ..data_loader import get_spacy_data
+from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from .utils import TrainHelper
 
@@ -12,19 +12,17 @@ class SpaceClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
-        if 'label_map_file' in config:
-            self.label_mapper_file = config['label_map_file']
-        else:
-            self.label_mapper_file = os.path.join(config[model_path], 'labels.json')
+        self.data_reader = SpacyDataReader(self.config)
 
     def build_and_train(self):
         self.build_graph()
-        train_data=get_spacy_data(
+
+        train_data=self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=True,
             train_mode=True
         )
-        eval_data=get_spacy_data(self.config['datasets']['eval'])
+        eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
@@ -32,7 +30,8 @@ class SpaceClassifier:
     def evaluate_on_tests(self):
         textcat = self.model.get_pipe("textcat")
         for test_set in  self.config['datasets']['test']:
-            test_data = get_spacy_data(self.config['datasets']['test'][test_set])
+            test_data = self.data_reader.get_data(
+                    self.config['datasets']['test'][test_set])
             texts, cats = zip(*test_data)
             predicted_classes = list(self.predict_batch(texts))
             TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
@@ -52,7 +51,7 @@ class SpaceClassifier:
                 "textcat",
                 config={
                     "exclusive_classes": True,
-                    "architecture": self.config["spacy"]["architecture"],
+                    "architecture": self.config["spacy"]["arch"],
                 }
             )
             model.add_pipe(textcat, last=True)
@@ -60,9 +59,8 @@ class SpaceClassifier:
 
     def train(self, train_data, eval_data):
         textcat = self.model.get_pipe("textcat")
-
-        textcat.add_label("yes")
-        textcat.add_label("no")
+        for label in self.data_reader.label_mapper.label_to_classid:
+            textcat.add_label(label)
 
         # get names of other pipes to disable them during training
         other_pipes = [pipe for pipe in self.model.pipe_names if pipe != "textcat"]
@@ -124,16 +122,3 @@ class SpaceClassifier:
         docs = (self.model.tokenizer(text) for text in texts)
         for doc in textcat.pipe(docs):
             yield doc.cats
-
-    def split_train_test_data(self):
-        """prepare data from our dataset."""
-        train_data = list(get_spacy_data(self.config['train_data_path']))
-        random.shuffle(train_data)
-        texts, labels = zip(*train_data)
-        cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
-        split = int(len(train_data) * self.config['split_ratio'])
-
-        return (
-            list(zip(texts[:split], [{"cats": cats} for cats in cats[:split]])),
-            list(zip(texts[split:], cats[split:]))
-        )

@@ -42,7 +42,7 @@ class LabelClassMapperTestCases(TestCase):
         )
 
     def test_mapper_from_list(self):
-        labels = ['foo', 'bar', 'zoo']
+        labels = ['foo', 'bar', 'zoo', 'foo', 'zoo', 'foo']
         mapper = LabelClassMapper.from_labels(labels)
 
         self.assertEqual(
@@ -79,3 +79,11 @@ class LabelClassMapperTestCases(TestCase):
 
         self.assertEqual( mapper.class_id('zoo'), '2')
         self.assertEqual( mapper.label_name('2'), 'zoo')
+
+    def test_equal_mapper(self):
+        mapper = LabelClassMapper.from_file(self.gold_mapping_file)
+        other_mapper = LabelClassMapper.from_labels(
+                ['foo', 'zoo', 'foo', 'zoo', 'foo', 'bar', 'bar'])
+        print(mapper)
+        print(other_mapper)
+        self.assertEqual(mapper, other_mapper)

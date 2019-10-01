@@ -24,9 +24,9 @@ class SpaceClassifier:
             train_mode=True
         )
         eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
-        textcat = self.train(train_data, eval_data)
+        self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
-            self.evaluate_on_tests(textcat)
+            self.evaluate_on_tests()
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
@@ -69,10 +69,8 @@ class SpaceClassifier:
 
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                scores = self.evaluate(eval_data, textcat)
-                TrainHelper.print_progress(losses["textcat"], scores)
+                pred, gold = self.evaluate(eval_data, 'train', losses["textcat"])
 
-        return textcat
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
@@ -107,22 +105,31 @@ class SpaceClassifier:
     def process_with_saved_model(self, input):
         result = self.model(input)
         doc = self.model(test_text)
-        return [ doc.cats[label] for lable in uniq_lables ]
+        return TrainHelper.max_dict_value(doc.cats)
 
-    def evaluate_on_tests(self, textcat):
+    def evaluate_on_tests(self):
+        train_helper = TrainHelper()
         for test_set in self.config['datasets']['test']:
+            print('test_set:')
             test_data = self.data_reader.get_data(
                     self.config['datasets']['test'][test_set])
-            texts, cats = zip(*test_data)
-            predicted_classes = list(self.predict_batch(texts))
-            TrainHelper.eval_and_print(test_set, predicted_classes, lables)
+            eval, gold = self.evaluate(test_data, 'test')
 
-    def evaluate(self, eval_data, textcat):
-        texts, cats = zip(*eval_data)
-        predicted_cats = list(self.predict_batch(texts))
-        with textcat.model.use_params(self.optimizer.averages):
-            score = TrainHelper._evaluate_score(predicted_cats, cats)
-        return score
+    def evaluate(self, dataset, mode='train', losses=0):
+        eval, gold = self.prediction_on_set(dataset)
+        if mode == 'test':
+            TrainHelper.print_test_result(eval, gold)
+        elif mode == 'train':
+            accu = TrainHelper.accuracy(eval, gold)
+            TrainHelper.print_progress(losses, accu)
+        return eval, gold
+
+    def prediction_on_set(self, dataset):
+        texts, cats = zip(*dataset)
+        predicted_prob = list(self.predict_batch(texts))
+        gold_classes = TrainHelper.max_dict_value(cats)
+        predicted_classes = TrainHelper.max_dict_value(predicted_prob)
+        return predicted_classes, gold_classes
 
     def predict_batch(self, texts):
         textcat = self.model.get_pipe("textcat")

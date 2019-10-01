@@ -2,8 +2,9 @@ import os
 import spacy
 import json
 from pathlib import Path
-
+import random
 from spacy.util import minibatch, compounding
+
 from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from .utils import TrainHelper
@@ -23,18 +24,9 @@ class SpaceClassifier:
             train_mode=True
         )
         eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
-        self.train(train_data, eval_data)
+        textcat = self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
-            self.evaluate_on_tests()
-
-    def evaluate_on_tests(self):
-        textcat = self.model.get_pipe("textcat")
-        for test_set in  self.config['datasets']['test']:
-            test_data = self.data_reader.get_data(
-                    self.config['datasets']['test'][test_set])
-            texts, cats = zip(*test_data)
-            predicted_classes = list(self.predict_batch(texts))
-            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
+            self.evaluate_on_tests(textcat)
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
@@ -77,10 +69,10 @@ class SpaceClassifier:
 
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                scores = self.evaluate(eval_data)
+                scores = self.evaluate(eval_data, textcat)
                 TrainHelper.print_progress(losses["textcat"], scores)
-            self.confusion_matrix(eval_data)
 
+        return textcat
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
@@ -103,11 +95,6 @@ class SpaceClassifier:
             model_path = self.config['model_path']
         self.model = spacy.load(model_path)
 
-    def process_with_saved_model(self, input):
-        result = self.model(input)
-        doc = self.model(test_text)
-        return [ doc.cats[label] for lable in uniq_lables ]
-
     def save(self, output_dir):
         if output_dir is not None:
             output_dir = Path(output_dir)
@@ -116,6 +103,26 @@ class SpaceClassifier:
             with self.model.use_params(self.optimizer.averages):
                 self.model.to_disk(output_dir)
             print("Saved model to", output_dir)
+
+    def process_with_saved_model(self, input):
+        result = self.model(input)
+        doc = self.model(test_text)
+        return [ doc.cats[label] for lable in uniq_lables ]
+
+    def evaluate_on_tests(self, textcat):
+        for test_set in self.config['datasets']['test']:
+            test_data = self.data_reader.get_data(
+                    self.config['datasets']['test'][test_set])
+            texts, cats = zip(*test_data)
+            predicted_classes = list(self.predict_batch(texts))
+            TrainHelper.eval_and_print(test_set, predicted_classes, lables)
+
+    def evaluate(self, eval_data, textcat):
+        texts, cats = zip(*eval_data)
+        predicted_cats = list(self.predict_batch(texts))
+        with textcat.model.use_params(self.optimizer.averages):
+            score = TrainHelper._evaluate_score(predicted_cats, cats)
+        return score
 
     def predict_batch(self, texts):
         textcat = self.model.get_pipe("textcat")

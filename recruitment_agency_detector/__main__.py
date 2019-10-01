@@ -4,13 +4,13 @@ from argparse import ArgumentParser
 import logging
 from recruitment_agency_detector.model import Model
 from recruitment_agency_detector.config import load_config
-from recruitment_agency_detector.data_loader import get_data_with_details
+from recruitment_agency_detector.data_loader import DataReader
 from recruitment_agency_detector import set_logging_level, LOGGER
 
 def process_batch(model, test_dir, output_file, config):
     fh_output = open(output_file, 'w')
     fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
-    for test_text, category, id, orgname, site, url in get_data_with_details(test_dir, config):
+    for test_text, category, id, orgname, site, url in DataReader.get_data_set_with_detail(test_dir, config):
         probabilities = model.process_with_saved_model(test_text)
         # todo: this is the index of classes, still need to map back
         predicted_class = min(range(len(probabilities)), key=probabilities.__getitem__)

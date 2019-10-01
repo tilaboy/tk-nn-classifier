@@ -15,6 +15,7 @@ class Model:
         self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
 
         if self.type.startswith('tf'):
+            self.config['classifier_frame'] = 'tensorflow'
             self.classifier = TFClassifier(config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
             # TODO: commented out due to log comflict
@@ -25,6 +26,7 @@ class Model:
             #]
             #logging.getLogger('tensorflow').handlers = handlers
         elif self.type.startswith('spacy'):
+            self.config['classifier_frame'] = 'spacy'
             self.classifier = SpaceClassifier(config)
         else:
             raise ValueError("unknown classifier type [{}]".format(self.type))

@@ -11,7 +11,7 @@ from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 
 from ..data_loader import WordVector
-from ..data_loader.data_reader import get_tf_data, tokenize
+from ..data_loader.data_reader import DataReader
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
@@ -30,6 +30,7 @@ class TFClassifier:
         self.max_sequence_length = config['max_sequence_length']
         self.data_sets = {}
         self.embedding = None
+        self.data_reader = TFDataReader(self.config)
 
     def build_and_train(self):
         self.load_embedding()
@@ -77,7 +78,7 @@ class TFClassifier:
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
-            data_set = get_tf_data(data_path)
+            data_set = self.data_reader.get_data(data_path)
 
             texts, labels = zip(*data_set)
 

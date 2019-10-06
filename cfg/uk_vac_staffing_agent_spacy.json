@@ -20,7 +20,7 @@
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
             "derived_source_site.0.derived_source_site",
-            "derived_norm_url.0.derived_norm_urltest"]
+            "derived_norm_url.0.derived_norm_url"]
     },
 
     "csv_fields": {

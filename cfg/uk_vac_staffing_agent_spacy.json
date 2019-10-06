@@ -35,7 +35,9 @@
         "eval": "../recruitment_agency_data/eval",
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
-            "annotated": "../recruitment_agency_data/annotated/"
+            "annotated": "../recruitment_agency_data/annotated/",
+            "eval": "../recruitment_agency_data/eval_small",
+            "us": "../recruitment_agency_data/us.csv"
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"
     }

@@ -100,17 +100,16 @@ class SpaceClassifier:
                 output_dir.mkdir()
             with self.model.use_params(self.optimizer.averages):
                 self.model.to_disk(output_dir)
-            print("Saved model to", output_dir)
+            LOGGER.info("Saved model to", output_dir)
 
     def process_with_saved_model(self, input):
         result = self.model(input)
-        doc = self.model(test_text)
-        return TrainHelper.max_dict_value(doc.cats)
+        return result.cats
 
     def evaluate_on_tests(self):
         train_helper = TrainHelper()
         for test_set in self.config['datasets']['test']:
-            print('test_set:')
+            LOGGER.info('test_set:', test_set)
             test_data = self.data_reader.get_data(
                     self.config['datasets']['test'][test_set])
             eval, gold = self.evaluate(test_data, 'test')

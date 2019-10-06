@@ -111,6 +111,10 @@ class DataReader():
             raise FileNotFoundError(f'{data_path} not found')
         return data_reader
 
+    def _detail_fields(self, data_path):
+        data_reader =  self._data_reader_by_input_type(data_path)
+        return data_reader._detail_fields()
+
     def _get_data_set(self, data_path):
         data_reader =  self._data_reader_by_input_type(data_path)
         return data_reader.get_train_data(data_path)

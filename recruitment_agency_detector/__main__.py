@@ -7,17 +7,24 @@ from recruitment_agency_detector.config import load_config
 from recruitment_agency_detector.data_loader import DataReader
 from recruitment_agency_detector import set_logging_level, LOGGER
 
-def process_batch(model, test_dir, output_file, config):
-    fh_output = open(output_file, 'w')
-    fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
-    for test_text, category, id, orgname, site, url in DataReader.get_data_set_with_detail(test_dir, config):
+def process_batch(model, reader, data_set, config):
+    result = []
+    input_data = reader.get_data_set_with_detail(
+            config['datasets']['test'][data_set]
+    )
+
+    detail_fields = reader._detail_fields(config['datasets']['test'][data_set])
+    header = [detail_fields[2], detail_fields[1] + '_new',  detail_fields[1] ] + detail_fields[3:] + ['probablities']
+    result.append(header)
+    for test_text, category, id, *extra in input_data:
         probabilities = model.process_with_saved_model(test_text)
         # todo: this is the index of classes, still need to map back
-        predicted_class = min(range(len(probabilities)), key=probabilities.__getitem__)
+        predicted_class = max(probabilities, key=probabilities.get)
         #predicted_label = class_to_label()
-        fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{probabilities}\n")
-    fh_output.close()
-
+        result.append(
+            [id, predicted_class, category, *extra, str(probabilities)]
+        )
+    return result
 
 def train(args):
     config = load_config(args.config)
@@ -42,19 +49,28 @@ def predict(args):
     else:
         test_sets = config['datasets']['test']
 
-    os.makedirs(args.output_dir, exist_ok=True)
+    data_reader = DataReader(config)
 
     for data_set in test_sets:
-        output_file = os.path.join(args.output_dir, data_set + '.tsv')
-        LOGGER.info('process test_set [%s] and save result to [%s]',
-                    data_set, output_file)
-
-        process_batch(
+        LOGGER.info('process test_set [%s]', data_set)
+        result = process_batch(
             model,
-            config['datasets']['test'][data_set],
-            output_file,
+            data_reader,
+            data_set,
             config
         )
+        write_to_output(
+            result,
+            args.output_dir,
+            data_set
+        )
+
+def write_to_output(result, output_dir, data_set):
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, data_set + '.tsv')
+    with open(output_file, 'w') as fh_output:
+        for line in result:
+            fh_output.write("\t".join(line) + "\n")
 
 
 def get_args():

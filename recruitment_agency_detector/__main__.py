@@ -14,7 +14,7 @@ def process_batch(model, reader, data_set, config):
     )
 
     detail_fields = reader._detail_fields(config['datasets']['test'][data_set])
-    header = [detail_fields[2], detail_fields[1] + '_new',  detail_fields[1] ] + detail_fields[3:] + ['probablities']
+    header = [detail_fields[2], 'new',  'old' ] + detail_fields[3:] + ['probablities']
     result.append(header)
     for test_text, category, id, *extra in input_data:
         probabilities = model.process_with_saved_model(test_text)

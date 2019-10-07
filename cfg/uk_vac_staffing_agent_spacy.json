@@ -31,12 +31,12 @@
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train",
-        "eval": "../recruitment_agency_data/eval",
+        "train": "../recruitment_agency_data/train_big",
+        "eval": "../recruitment_agency_data/eval_big",
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval_small",
+            "eval": "../recruitment_agency_data/eval",
             "us": "../recruitment_agency_data/us.csv"
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"

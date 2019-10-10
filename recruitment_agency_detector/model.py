@@ -18,13 +18,6 @@ class Model:
             self.config['classifier_frame'] = 'tensorflow'
             self.classifier = TFClassifier(config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
-            # TODO: commented out due to log comflict
-            #Path('logs').mkdir(exist_ok=True)
-            #handlers = [
-            #    logging.FileHandler('logs/main.log'),
-            #    logging.StreamHandler(sys.stdout)
-            #]
-            #logging.getLogger('tensorflow').handlers = handlers
         elif self.type.startswith('spacy'):
             self.config['classifier_frame'] = 'spacy'
             self.classifier = SpaceClassifier(config)

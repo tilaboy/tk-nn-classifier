@@ -10,8 +10,7 @@ from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 
-from ..data_loader import WordVector
-from ..data_loader.data_reader import DataReader
+from ..data_loader import WordVector, TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
@@ -43,8 +42,8 @@ class TFClassifier:
         for test_set_name in self.config['datasets']['test']:
             data_path = self.config['datasets']['test'][test_set_name]
             predicted_classes = self.predict_batch(data_path)
-            _, lables, data_length = self.load_data_set(data_path)
-            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
+            _, labels, data_length = self.load_data_set(data_path)
+            TrainHelper.print_test_result(predicted_classes, labels)
 
     def predict_batch(self, data_path):
         predicted_classes = [
@@ -171,7 +170,7 @@ class TFClassifier:
 
         # This will be None when predicting
         if labels is not None:
-            onehot_labels = tf.one_hot(labels, 2, 1, 0)
+            onehot_labels = tf.one_hot(labels, 2, 1.0, 0.0)
 
         # Calculate Loss (for both TRAIN and EVAL modes)
         loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
@@ -278,7 +277,7 @@ class TFClassifier:
         data = self._input_text_to_pad_id(input)
         result = self.model(data)
         probabilities = result['probabilities'][0]
-        return probabilities
+        return probabilities.tolist()
 
     def _input_text_to_pad_id(self, text):
         data_id = [

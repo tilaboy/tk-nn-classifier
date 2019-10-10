@@ -36,7 +36,7 @@ class TrainHelper:
     def print_test_result(eval, gold):
         scores = TrainHelper._evaluate_f1_score(eval, gold)
 
-        print("{:^5}\t{:^5}\t{:^5}\t{:^5}".format("lable", "Prec", "Reca", "F1"))
+        print("{:^5}\t{:^5}\t{:^5}\t{:^5}".format("label", "Prec", "Reca", "F1"))
         for label in scores:
             print(
                 "{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
@@ -70,9 +70,10 @@ class TrainHelper:
 
     @staticmethod
     def _evaluate_f1_score(eval, gold):
-        uniq_lables = set(eval + gold)
+        uniq_labels = set(eval)
+        uniq_labels.union(set(gold))
         scores = {}
-        for label in uniq_lables:
+        for label in uniq_labels:
             tp = 0.0  # True positives
             fp = 1e-8  # False positives
             fn = 1e-8  # False negatives

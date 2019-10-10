@@ -14,15 +14,22 @@ def process_batch(model, reader, data_set, config):
     )
 
     detail_fields = reader._detail_fields(config['datasets']['test'][data_set])
-    header = [detail_fields[2], 'new',  'old' ] + detail_fields[3:] + ['probablities']
+    header = [detail_fields[2], 'new',  'old' ] + detail_fields[3:] + ['probabilities']
     result.append(header)
     for test_text, category, id, *extra in input_data:
         probabilities = model.process_with_saved_model(test_text)
-        # todo: this is the index of classes, still need to map back
-        predicted_class = max(probabilities, key=probabilities.get)
-        #predicted_label = class_to_label()
+        if type(probabilities) is list:
+            predicted_class = max(range(len(probabilities)), key=probabilities.__getitem__)
+            predicted_class = reader.label_mapper.label_name(predicted_class)
+        elif type(probabilities) is dict:
+            predicted_class = max(probabilities, key=probabilities.get)
+        else:
+            raise ValueError("unknown type", type(probabilities))
+
         result.append(
-            [id, predicted_class, category, *extra, str(probabilities)]
+            [   entry if entry is not None else ''
+                for entry in [id, predicted_class, category, *extra, str(probabilities)]
+            ]
         )
     return result
 
@@ -50,8 +57,10 @@ def predict(args):
         test_sets = config['datasets']['test']
 
     data_reader = DataReader(config)
+    os.makedirs(args.output_dir, exist_ok=True)
 
     for data_set in test_sets:
+        output_file = os.path.join(args.output_dir, data_set + '.tsv')
         LOGGER.info('process test_set [%s]', data_set)
         result = process_batch(
             model,
@@ -59,18 +68,20 @@ def predict(args):
             data_set,
             config
         )
-        write_to_output(
+        LOGGER.info('save result to [%s]', output_file)
+        write_to_output_file(
             result,
-            args.output_dir,
+            output_file,
             data_set
         )
 
-def write_to_output(result, output_dir, data_set):
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, data_set + '.tsv')
+def write_to_output_file(result, output_file, data_set):
     with open(output_file, 'w') as fh_output:
         for line in result:
-            fh_output.write("\t".join(line) + "\n")
+            try:
+                fh_output.write("\t".join(line) + "\n")
+            except:
+                raise ValueError('Failed to write line: [{}]'.format(line))
 
 
 def get_args():

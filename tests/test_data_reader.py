@@ -1,7 +1,10 @@
 """unit tests for classifier utils functions"""
 import os
+import tempfile
+import shutil
 from unittest import TestCase
 from recruitment_agency_detector.data_loader.data_reader import DataReader
+from recruitment_agency_detector.data_loader.data_reader import _iter_flatten
 
 class DataReaderTestCases(TestCase):
     """unit tests"""
@@ -13,7 +16,7 @@ class DataReaderTestCases(TestCase):
             "max_lines": 50,
             "model_path": 'foo',
             "trxml_fields": {
-                "features": "sec_vacancy.0.sec_vacancy",
+                "features": ["sec_vacancy.0.sec_vacancy"],
                 "class": "derived_vac_intermediary.0.derived_vac_intermediary",
                 "doc_id": "Document.0.correlationid",
                 "extra": ["derived_org_name.0.derived_org_name",
@@ -21,7 +24,7 @@ class DataReaderTestCases(TestCase):
                     "derived_norm_url.0.derived_norm_url"]
             },
             "csv_fields": {
-                "features": "full_text",
+                "features": ["full_text"],
                 "class": "source_type",
                 "doc_id": "posting_id",
                 "extra": ["advertiser_name", "source_website", "source_url"]
@@ -30,22 +33,60 @@ class DataReaderTestCases(TestCase):
         }
         self.data_reader = DataReader(self.config)
 
+    def test_flatten_array(self):
+        mixed_array = [[0,1,2],3,4,5,[6,[7,8]],9]
+        self.assertEqual(list(_iter_flatten(mixed_array)), [0,1,2,3,4,5,6,7,8,9])
+
+
+
+    def test_trxml_train_fields_list (self):
+        self.assertEqual(self.data_reader._train_fields(self.trxml_dir),
+                [['sec_vacancy.0.sec_vacancy'],
+                 'derived_vac_intermediary.0.derived_vac_intermediary']
+        )
+
+    def test_trxml_detailed_fields_list (self):
+        self.assertEqual(self.data_reader._detail_fields(self.trxml_dir),
+                [['sec_vacancy.0.sec_vacancy'],
+                 'derived_vac_intermediary.0.derived_vac_intermediary',
+                 'Document.0.correlationid',
+                 'derived_org_name.0.derived_org_name',
+                 'derived_source_site.0.derived_source_site',
+                 'derived_norm_url.0.derived_norm_url']
+        )
+
+    def test_csv_train_fields_list (self):
+        self.assertEqual(self.data_reader._train_fields(self.csv_file),
+                [['full_text'],
+                 'source_type']
+        )
+
+    def test_csv_detailed_fields_list (self):
+        self.assertEqual(self.data_reader._detail_fields(self.csv_file),
+                [['full_text'],
+                 'source_type',
+                 'posting_id',
+                 'advertiser_name',
+                 'source_website',
+                 'source_url']
+        )
+
 
     def test_trxml_reading(self):
-        train_examples = list(self.data_reader._get_data_set(self.trxml_dir))
+        train_examples = list(self.data_reader.get_data_set(self.trxml_dir))
         self.assertEqual(len(train_examples), 10)
         full_text, categories = zip(*train_examples)
         self.assertEqual(
                 categories,
                 ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
         )
-        self.assertEqual(full_text[4], self._get_expected_trxml_full_text())
+        self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
 
     def test_trxml_details(self):
         train_examples = list(self.data_reader.get_data_set_with_detail(self.trxml_dir))
         self.assertEqual(len(train_examples), 10)
         text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
-        self.assertEqual(text[4], self._get_expected_trxml_full_text())
+        self.assertEqual(text[4][0], self._get_expected_trxml_full_text())
         self.assertEqual(
                 categories,
                 ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
@@ -73,19 +114,19 @@ class DataReaderTestCases(TestCase):
 
 
     def test_csv_reading(self):
-        train_examples = list(self.data_reader._get_data_set(self.csv_file))
+        train_examples = list(self.data_reader.get_data_set(self.csv_file))
         self.assertEqual(len(train_examples), 30)
         full_text, categories = zip(*train_examples)
         self.assertEqual(categories[4], 'yes')
         self.assertEqual(categories[5], 'no')
 
-        self.assertEqual(full_text[4], self._get_expected_csv_full_text())
+        self.assertEqual(full_text[4][0], self._get_expected_csv_full_text())
 
     def test_csv_details(self):
         train_examples = list(self.data_reader.get_data_set_with_detail(self.csv_file))
         self.assertEqual(len(train_examples), 30)
         text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
-        self.assertEqual(text[4], self._get_expected_csv_full_text())
+        self.assertEqual(text[4][0], self._get_expected_csv_full_text())
 
         self.assertEqual(
                 categories[:10],

@@ -1,10 +1,11 @@
+import os
 import spacy
-import random
 import json
 from pathlib import Path
-
+import random
 from spacy.util import minibatch, compounding
-from ..data_loader import get_spacy_data
+
+from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from .utils import TrainHelper
 
@@ -12,43 +13,20 @@ class SpaceClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
-        if 'label_map_file' in config:
-            self.label_mapper_file = config['label_map_file']
-        else:
-            self.label_mapper_file = os.path.join(config[model_path], 'labels.json')
+        self.data_reader = SpacyDataReader(self.config)
 
     def build_and_train(self):
         self.build_graph()
-        train_data=get_spacy_data(
+
+        train_data=self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=True,
             train_mode=True
         )
-        eval_data=get_spacy_data(self.config['datasets']['eval'])
-        _, train_lables = zip(*train_data)
+        eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
-
-    def labels_mapper(self, labels):
-        if os.path.isfile(self.label_mapper_file):
-            with open(self.label_mapper_file, 'r') as l_fh:
-                self.classes_to_label = json.load(l_fh)
-        else:
-            self.classes_to_label = {
-                i:label
-                for i, label in enumerate(sorted(set(labels)))
-            }
-            with open(self.label_mapper_file, 'w') as l_fh:
-                json.dump(self.class_to_label)
-
-    def evaluate_on_tests(self):
-        textcat = self.model.get_pipe("textcat")
-        for test_set in  self.config['datasets']['test']:
-            test_data = get_spacy_data(self.config['datasets']['test'][test_set])
-            texts, cats = zip(*test_data)
-            predicted_classes = list(self.predict_batch(texts))
-            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
@@ -65,7 +43,7 @@ class SpaceClassifier:
                 "textcat",
                 config={
                     "exclusive_classes": True,
-                    "architecture": self.config["spacy"]["architecture"],
+                    "architecture": self.config["spacy"]["arch"],
                 }
             )
             model.add_pipe(textcat, last=True)
@@ -73,9 +51,8 @@ class SpaceClassifier:
 
     def train(self, train_data, eval_data):
         textcat = self.model.get_pipe("textcat")
-
-        textcat.add_label("yes")
-        textcat.add_label("no")
+        for label in self.data_reader.label_mapper.label_to_classid:
+            textcat.add_label(label)
 
         # get names of other pipes to disable them during training
         other_pipes = [pipe for pipe in self.model.pipe_names if pipe != "textcat"]
@@ -92,9 +69,7 @@ class SpaceClassifier:
 
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                scores = self.evaluate(eval_data)
-                TrainHelper.print_progress(losses["textcat"], scores)
-            self.confusion_matrix(eval_data)
+                pred, gold = self.evaluate(eval_data, 'train', losses["textcat"])
 
 
     def _update_one_epoch(self, train_data, batch_sizes):
@@ -118,11 +93,6 @@ class SpaceClassifier:
             model_path = self.config['model_path']
         self.model = spacy.load(model_path)
 
-    def process_with_saved_model(self, input):
-        result = self.model(input)
-        doc = self.model(test_text)
-        return [ doc.cats[label] for lable in uniq_lables ]
-
     def save(self, output_dir):
         if output_dir is not None:
             output_dir = Path(output_dir)
@@ -130,23 +100,38 @@ class SpaceClassifier:
                 output_dir.mkdir()
             with self.model.use_params(self.optimizer.averages):
                 self.model.to_disk(output_dir)
-            print("Saved model to", output_dir)
+            LOGGER.info("Saved model to", output_dir)
+
+    def process_with_saved_model(self, input):
+        result = self.model(input)
+        return result.cats
+
+    def evaluate_on_tests(self):
+        train_helper = TrainHelper()
+        for test_set in self.config['datasets']['test']:
+            LOGGER.info('test_set:', test_set)
+            test_data = self.data_reader.get_data(
+                    self.config['datasets']['test'][test_set])
+            eval, gold = self.evaluate(test_data, 'test')
+
+    def evaluate(self, dataset, mode='train', losses=0):
+        eval, gold = self.prediction_on_set(dataset)
+        if mode == 'test':
+            TrainHelper.print_test_result(eval, gold)
+        elif mode == 'train':
+            accu = TrainHelper.accuracy(eval, gold)
+            TrainHelper.print_progress(losses, accu)
+        return eval, gold
+
+    def prediction_on_set(self, dataset):
+        texts, cats = zip(*dataset)
+        predicted_prob = list(self.predict_batch(texts))
+        gold_classes = TrainHelper.max_dict_value(cats)
+        predicted_classes = TrainHelper.max_dict_value(predicted_prob)
+        return predicted_classes, gold_classes
 
     def predict_batch(self, texts):
         textcat = self.model.get_pipe("textcat")
         docs = (self.model.tokenizer(text) for text in texts)
         for doc in textcat.pipe(docs):
             yield doc.cats
-
-    def split_train_test_data(self):
-        """prepare data from our dataset."""
-        train_data = list(get_spacy_data(self.config['train_data_path']))
-        random.shuffle(train_data)
-        texts, labels = zip(*train_data)
-        cats = [{"yes": label == "yes", "no": label == "no"} for label in labels]
-        split = int(len(train_data) * self.config['split_ratio'])
-
-        return (
-            list(zip(texts[:split], [{"cats": cats} for cats in cats[:split]])),
-            list(zip(texts[split:], cats[split:]))
-        )

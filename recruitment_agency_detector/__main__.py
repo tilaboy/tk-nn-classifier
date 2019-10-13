@@ -4,20 +4,34 @@ from argparse import ArgumentParser
 import logging
 from recruitment_agency_detector.model import Model
 from recruitment_agency_detector.config import load_config
-from recruitment_agency_detector.data_loader import get_data_with_details
+from recruitment_agency_detector.data_loader import DataReader
 from recruitment_agency_detector import set_logging_level, LOGGER
 
-def process_batch(model, test_dir, output_file, config):
-    fh_output = open(output_file, 'w')
-    fh_output.write('id\torg_name\tsite\tnew_predict\told_predict\turl\tscore\n')
-    for test_text, category, id, orgname, site, url in get_data_with_details(test_dir, config):
-        probabilities = model.process_with_saved_model(test_text)
-        # todo: this is the index of classes, still need to map back
-        predicted_class = min(range(len(probabilities)), key=probabilities.__getitem__)
-        #predicted_label = class_to_label()
-        fh_output.write(f"{id}\t{orgname}\t{site}\t{predict_cat}\t{category}\t{url}\t{probabilities}\n")
-    fh_output.close()
+def process_batch(model, reader, data_set, config):
+    result = []
+    input_data = reader.get_data_set_with_detail(
+            config['datasets']['test'][data_set]
+    )
 
+    detail_fields = reader._detail_fields(config['datasets']['test'][data_set])
+    header = [detail_fields[2], 'new',  'old' ] + detail_fields[3:] + ['probabilities']
+    result.append(header)
+    for test_text, category, id, *extra in input_data:
+        probabilities = model.process_with_saved_model(test_text)
+        if type(probabilities) is list:
+            predicted_class = max(range(len(probabilities)), key=probabilities.__getitem__)
+            predicted_class = reader.label_mapper.label_name(predicted_class)
+        elif type(probabilities) is dict:
+            predicted_class = max(probabilities, key=probabilities.get)
+        else:
+            raise ValueError("unknown type", type(probabilities))
+
+        result.append(
+            [   entry if entry is not None else ''
+                for entry in [id, predicted_class, category, *extra, str(probabilities)]
+            ]
+        )
+    return result
 
 def train(args):
     config = load_config(args.config)
@@ -42,19 +56,32 @@ def predict(args):
     else:
         test_sets = config['datasets']['test']
 
+    data_reader = DataReader(config)
     os.makedirs(args.output_dir, exist_ok=True)
 
     for data_set in test_sets:
         output_file = os.path.join(args.output_dir, data_set + '.tsv')
-        LOGGER.info('process test_set [%s] and save result to [%s]',
-                    data_set, output_file)
-
-        process_batch(
+        LOGGER.info('process test_set [%s]', data_set)
+        result = process_batch(
             model,
-            config['datasets']['test'][data_set],
-            output_file,
+            data_reader,
+            data_set,
             config
         )
+        LOGGER.info('save result to [%s]', output_file)
+        write_to_output_file(
+            result,
+            output_file,
+            data_set
+        )
+
+def write_to_output_file(result, output_file, data_set):
+    with open(output_file, 'w') as fh_output:
+        for line in result:
+            try:
+                fh_output.write("\t".join(line) + "\n")
+            except:
+                raise ValueError('Failed to write line: [{}]'.format(line))
 
 
 def get_args():

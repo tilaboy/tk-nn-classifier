@@ -10,11 +10,14 @@
     "learning_rate": 0.003,
     "num_epochs": 100,
     "batch_size": 128,
+    "max_lines":50,
+
     "log_dir": "log",
     "max_sequence_length": 512,
     "max_steps_without_increase": 500,
     "min_train_steps": 1000,
     "check_per_steps": 100,
+
 
     "trxml_fields": {
         "features": "sec_vacancy.0.sec_vacancy",
@@ -22,7 +25,7 @@
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
             "derived_source_site.0.derived_source_site",
-            "derived_norm_url.0.derived_norm_urltest"]
+            "derived_norm_url.0.derived_norm_url"]
     },
 
     "csv_fields": {
@@ -57,8 +60,10 @@
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
             "eval": "../recruitment_agency_data/eval",
+            "random": "../recruitment_agency_data/final_eval/random",            
             "us": "../recruitment_agency_data/us.csv"
-        }
+        },
+        "label_mapper": "../recruitment_agency_data/label_mapper.json"
     }
 
 }

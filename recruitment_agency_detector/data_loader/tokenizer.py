@@ -1,3 +1,6 @@
+import re
+from tk_preprocessing.common_processor import char_normalization
+
 HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 

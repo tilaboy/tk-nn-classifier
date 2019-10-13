@@ -10,8 +10,7 @@ from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 
-from ..data_loader import WordVector
-from ..data_loader.data_reader import get_tf_data, tokenize
+from ..data_loader import WordVector, TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
@@ -30,6 +29,7 @@ class TFClassifier:
         self.max_sequence_length = config['max_sequence_length']
         self.data_sets = {}
         self.embedding = None
+        self.data_reader = TFDataReader(self.config)
 
     def build_and_train(self):
         self.load_embedding()
@@ -42,8 +42,8 @@ class TFClassifier:
         for test_set_name in self.config['datasets']['test']:
             data_path = self.config['datasets']['test'][test_set_name]
             predicted_classes = self.predict_batch(data_path)
-            _, lables, data_length = self.load_data_set(data_path)
-            TrainHelper.eval_and_print(test_set_name, predicted_classes, lables)
+            _, labels, data_length = self.load_data_set(data_path)
+            TrainHelper.print_test_result(predicted_classes, labels)
 
     def predict_batch(self, data_path):
         predicted_classes = [
@@ -77,7 +77,7 @@ class TFClassifier:
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
-            data_set = get_tf_data(data_path)
+            data_set = self.data_reader.get_data(data_path)
 
             texts, labels = zip(*data_set)
 
@@ -170,7 +170,7 @@ class TFClassifier:
 
         # This will be None when predicting
         if labels is not None:
-            onehot_labels = tf.one_hot(labels, 2, 1, 0)
+            onehot_labels = tf.one_hot(labels, 2, 1.0, 0.0)
 
         # Calculate Loss (for both TRAIN and EVAL modes)
         loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
@@ -277,7 +277,7 @@ class TFClassifier:
         data = self._input_text_to_pad_id(input)
         result = self.model(data)
         probabilities = result['probabilities'][0]
-        return probabilities
+        return probabilities.tolist()
 
     def _input_text_to_pad_id(self, text):
         data_id = [

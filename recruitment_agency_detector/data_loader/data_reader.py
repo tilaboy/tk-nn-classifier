@@ -3,7 +3,18 @@ import re
 import os
 import csv
 from xml_miner.miner import TRXMLMiner
+from collections import Iterable
 from .label_class_mapper import LabelClassMapper
+
+def _iter_flatten(items):
+    """Yield items from any nested iterable; see Reference."""
+    for item in items:
+        if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+            for sub_item in _iter_flatten(item):
+                yield sub_item
+        else:
+            yield item
+
 
 class CommonDataReader:
     def __init__ (self, config):
@@ -14,6 +25,7 @@ class CommonDataReader:
         lines = text.split("\n")
         return "\n".join(lines[:self.max_lines])
 
+
     def get_train_data(self, data_path):
         raise NotImplementedError('get_train_data needs to be implemented')
 
@@ -22,7 +34,6 @@ class CommonDataReader:
 
 
 class TRXMLDataReader(CommonDataReader):
-
     def get_train_data(self, data_path):
         fields = self._train_fields()
         return self._get_values_from_trxml(fields, data_path)
@@ -33,11 +44,17 @@ class TRXMLDataReader(CommonDataReader):
 
     def _get_values_from_trxml(self, fields, data_path):
         # the first element in the fields is the input text to the data models
-        trxml_miner = TRXMLMiner(','.join(fields))
+        trxml_miner = TRXMLMiner(','.join(list(_iter_flatten(fields))))
         for trxml in trxml_miner.mine(data_path):
-            trxml['values'][fields[0]] = self._prepare_input_text(
-                    trxml['values'][fields[0]])
-            yield [trxml['values'][field] for field in fields]
+            yield [
+                trxml['values'][field] if isinstance(field, str) else
+                [
+                    self._prepare_input_text(trxml['values'][sub_field])
+                    for sub_field in field
+                ]
+                for field in fields
+            ]
+
 
     def _train_fields(self):
         fields = [self.config['trxml_fields']['features'],
@@ -65,8 +82,15 @@ class CSVDataReader(CommonDataReader):
         with open(data_path, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                row[fields[0]] = self._prepare_input_text(row[fields[0]])
-                yield [row[field] for field in fields]
+                yield [
+                    row[field] if isinstance(field, str) else
+                    [
+                        self._prepare_input_text(row[sub_field])
+                        for sub_field in field
+                    ]
+                    for field in fields
+                ]
+
 
     def _train_fields(self):
         fields = [self.config['csv_fields']['features'],

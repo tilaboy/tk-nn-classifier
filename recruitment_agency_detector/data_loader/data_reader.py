@@ -115,7 +115,11 @@ class DataReader():
         data_reader =  self._data_reader_by_input_type(data_path)
         return data_reader._detail_fields()
 
-    def _get_data_set(self, data_path):
+    def _train_fields(self, data_path):
+        data_reader =  self._data_reader_by_input_type(data_path)
+        return data_reader._train_fields()
+
+    def get_data_set(self, data_path):
         data_reader =  self._data_reader_by_input_type(data_path)
         return data_reader.get_train_data(data_path)
 

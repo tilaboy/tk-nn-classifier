@@ -3,7 +3,7 @@ from .data_reader import DataReader
 
 class SpacyDataReader(DataReader):
     def get_data(self, data_path, shuffle=False, train_mode=False):
-        data_set = list(self._get_data_set(data_path))
+        data_set = list(self.get_data_set(data_path))
         if shuffle:
             random.shuffle(data_set)
         texts, labels = zip(*data_set)

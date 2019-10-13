@@ -3,7 +3,7 @@ from .data_reader import DataReader
 
 class TFDataReader(DataReader):
     def get_data(self, data_path):
-        data_set = list(self._get_data_set(data_path))
+        data_set = list(self.get_data_set(data_path))
         texts, labels = zip(*data_set)
         self._build_label_mapper(labels)
         cats = [

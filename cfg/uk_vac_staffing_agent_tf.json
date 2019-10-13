@@ -60,6 +60,7 @@
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
             "eval": "../recruitment_agency_data/eval",
+            "random": "../recruitment_agency_data/final_eval/random",            
             "us": "../recruitment_agency_data/us.csv"
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"

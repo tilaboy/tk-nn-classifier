@@ -15,7 +15,7 @@
     },
 
     "trxml_fields": {
-        "features": "sec_vacancy.0.sec_vacancy",
+        "features": ["sec_vacancy.0.sec_vacancy"],
         "class": "derived_vac_intermediary.0.derived_vac_intermediary",
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
@@ -24,7 +24,7 @@
     },
 
     "csv_fields": {
-        "features": "full_text",
+        "features": ["full_text"],
         "class": "source_type",
         "doc_id": "posting_id",
         "extra": ["advertiser_name", "source_website", "source_url"]
@@ -37,6 +37,7 @@
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
             "eval": "../recruitment_agency_data/eval",
+            "random": "../recruitment_agency_data/final_eval/random",
             "us": "../recruitment_agency_data/us.csv"
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"

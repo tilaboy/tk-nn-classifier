@@ -6,25 +6,26 @@ from xml_miner.miner import TRXMLMiner
 from collections import Iterable
 from .label_class_mapper import LabelClassMapper
 
-def _iter_flatten(items):
-    """Yield items from any nested iterable; see Reference."""
-    for item in items:
-        if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
-            for sub_item in _iter_flatten(item):
-                yield sub_item
-        else:
-            yield item
-
 
 class CommonDataReader:
     def __init__ (self, config):
         self.max_lines = config['max_lines']
         self.config = config
 
-    def _prepare_input_text(self, text):
-        lines = text.split("\n")
-        return "\n".join(lines[:self.max_lines])
+    def _prepare_input_text(self, text, to_clean=False):
+        if to_clean:
+            lines = text.split("\n")
+            text = "\n".join(lines[:self.max_lines])
+        return text
 
+    def _iter_flatten(self, items):
+        """Yield items from any nested iterable; see Reference."""
+        for item in items:
+            if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+                for sub_item in self._iter_flatten(item):
+                    yield sub_item
+            else:
+                yield item
 
     def get_train_data(self, data_path):
         raise NotImplementedError('get_train_data needs to be implemented')
@@ -44,17 +45,16 @@ class TRXMLDataReader(CommonDataReader):
 
     def _get_values_from_trxml(self, fields, data_path):
         # the first element in the fields is the input text to the data models
-        trxml_miner = TRXMLMiner(','.join(list(_iter_flatten(fields))))
+        trxml_miner = TRXMLMiner(','.join(list(self._iter_flatten(fields))))
         for trxml in trxml_miner.mine(data_path):
             yield [
                 trxml['values'][field] if isinstance(field, str) else
                 [
-                    self._prepare_input_text(trxml['values'][sub_field])
+                    self._prepare_input_text(trxml['values'][sub_field], index==0)
                     for sub_field in field
                 ]
-                for field in fields
+                for index, field in enumerate(fields)
             ]
-
 
     def _train_fields(self):
         fields = [self.config['trxml_fields']['features'],
@@ -85,10 +85,10 @@ class CSVDataReader(CommonDataReader):
                 yield [
                     row[field] if isinstance(field, str) else
                     [
-                        self._prepare_input_text(row[sub_field])
+                        self._prepare_input_text(row[sub_field], index==0)
                         for sub_field in field
                     ]
-                    for field in fields
+                    for index, field in enumerate(fields)
                 ]
 
 
@@ -145,11 +145,11 @@ class DataReader():
 
     def get_data_set(self, data_path):
         data_reader =  self._data_reader_by_input_type(data_path)
-        return data_reader.get_train_data(data_path)
+        return list(data_reader.get_train_data(data_path))
 
     def get_data_set_with_detail(self, data_path):
         data_reader =  self._data_reader_by_input_type(data_path)
-        return data_reader.get_details(data_path)
+        return list(data_reader.get_details(data_path))
 
     def _build_label_mapper(self, labels):
         if self.label_mapper is None:

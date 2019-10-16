@@ -1,9 +1,11 @@
 """unit tests for classifier utils functions"""
 import os
+from unittest import TestCase
 import tempfile
 import shutil
-from unittest import TestCase
-from recruitment_agency_detector.data_loader.data_reader import DataReader
+from recruitment_agency_detector.data_loader import DataReader
+from recruitment_agency_detector.data_loader import TFDataReader
+from recruitment_agency_detector.data_loader import SpacyDataReader
 from recruitment_agency_detector.data_loader.data_reader import CommonDataReader
 
 class DataReaderTestCases(TestCase):
@@ -12,9 +14,11 @@ class DataReaderTestCases(TestCase):
     def setUp(self):
         self.trxml_dir = 'tests/resource/samples'
         self.csv_file = 'tests/resource/us_small.csv'
+        self.test_dir = tempfile.mkdtemp()
+
         self.config= {
             "max_lines": 5,
-            "model_path": 'foo',
+            "model_path": self.test_dir,
             "trxml_fields": {
                 "features": ["sec_vacancy.0.sec_vacancy", 'derived_org_name.0.derived_org_name'],
                 "class": "derived_vac_intermediary.0.derived_vac_intermediary",
@@ -32,6 +36,10 @@ class DataReaderTestCases(TestCase):
             "datasets": {}
         }
         self.data_reader = DataReader(self.config)
+
+    def tearDown(self):
+        '''clean up the temp dir after test'''
+        shutil.rmtree(self.test_dir)
 
     def test_flatten_array(self):
         common_reader = CommonDataReader(self.config)
@@ -156,6 +164,36 @@ class DataReaderTestCases(TestCase):
                 urls[0:2],
                 ('https://weatherbyhealthcare.com/job/JOB-2599560', 'http://aquent.com/find-work/151393')
         )
+
+    def test_tf_data_reader(self):
+        self.tf_data_reader = TFDataReader(self.config)
+
+        trxml_examples, trxml_label = self.tf_data_reader.get_data(self.trxml_dir)
+        self.assertEqual(len(trxml_examples), 10)
+
+        self.assertEqual(trxml_examples[4][0], self._get_expected_trxml_full_text())
+
+        self.assertEqual(
+                trxml_label,
+                [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+        )
+
+    def test_spacy_data_reader(self):
+        self.sp_data_reader = SpacyDataReader(self.config)
+
+        data_set = self.sp_data_reader.get_data(self.trxml_dir)
+        self.assertEqual(len(data_set), 10)
+
+        full_text, categories = zip(*data_set)
+        print(full_text)
+        self.assertEqual(categories[4], {'no': True, 'yes': False})
+        self.assertEqual(categories[5], {'no': True, 'yes': False})
+        expected_org_name = 'ASQ EDUCATION'
+        self.assertEqual(
+                full_text[4],
+                self._get_expected_trxml_full_text() + '\n' + expected_org_name
+        )
+
 
 
     def _get_expected_csv_full_text(self):

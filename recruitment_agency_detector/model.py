@@ -3,22 +3,28 @@ import tensorflow as tf
 from pathlib import Path
 from . import LOGGER
 import logging
-from .classifiers import TFClassifier, SpaceClassifier
+from .classifiers import TFClassifier, SpaceClassifier, TFMultiFeatClassifier
 
 class Model:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
-        LOGGER.info("model type: %s", self.type)
 
         # derived parameters
         self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
 
-        if self.type.startswith('tf'):
+        if self.type.startswith('tf_multi_feat'):
+            LOGGER.info('use tensorflow with multi feature support %s' % self.type)
+            self.config['classifier_frame'] = 'tensorflow_multi_feat'
+            self.classifier = TFMultiFeatClassifier(config)
+            tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
+        elif self.type.startswith('tf'):
+            LOGGER.info('use tensorflow %s' % self.type)
             self.config['classifier_frame'] = 'tensorflow'
             self.classifier = TFClassifier(config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
         elif self.type.startswith('spacy'):
+            LOGGER.info('use spacy %s' % self.type)
             self.config['classifier_frame'] = 'spacy'
             self.classifier = SpaceClassifier(config)
         else:

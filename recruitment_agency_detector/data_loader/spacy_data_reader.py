@@ -1,4 +1,5 @@
 import random
+from collections import Iterable
 from .data_reader import DataReader
 
 class SpacyDataReader(DataReader):
@@ -14,13 +15,12 @@ class SpacyDataReader(DataReader):
             random.shuffle(data_set)
         features, labels = zip(*data_set)
 
-        # texts are array of input features given in the config
-        texts = ['\n'.join(feature) for feature in features]
+        texts = [
+            feature if isinstance(feature, str) else '\n'.join(feature)
+            for feature in features]
         self._build_label_mapper(labels)
         cats = self._prepare_label(labels)
         return texts, cats
-
-
 
     def split_train_test_data(self, data_path):
         """prepare data from our dataset."""

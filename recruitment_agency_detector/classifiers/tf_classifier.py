@@ -1,12 +1,9 @@
 import os
 import tensorflow as tf
-from tensorflow import keras
-from tensorboard import summary as summary_lib
 import numpy as np
 import random
 from pathlib import Path
 import functools
-from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 
@@ -77,9 +74,7 @@ class TFClassifier:
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
-            data_set = self.data_reader.get_data(data_path)
-
-            texts, labels = zip(*data_set)
+            texts, labels = self.data_reader.get_data(data_path)
 
             data_ids = [ [
                     self.embedding.get_index(token)
@@ -279,6 +274,9 @@ class TFClassifier:
         probabilities = result['probabilities'][0]
         return probabilities.tolist()
 
+    # todo:
+    # is the padding still needed,
+    # if needed, should use the text length as max_sequence_length
     def _input_text_to_pad_id(self, text):
         data_id = [
                 self.vocab_to_ids[token]

@@ -255,7 +255,7 @@ class TFMultiFeatClassifier:
         )
         input_1 = tf.placeholder(
                 dtype=tf.int32,
-                shape=[None, 512],
+                shape=[None, 20],
                 name='input_text'
         )
         seq_length = tf.placeholder(
@@ -328,15 +328,17 @@ class TFMultiFeatClassifier:
         probabilities = result['probabilities'][0]
         return probabilities.tolist()
 
-    def _input_text_to_pad_id(self, text):
-        data_id = [
+    def _input_text_to_pad_id(self, texts):
+        features = [ [
                 self.vocab_to_ids[token]
                 if token in self.vocab_to_ids else WordVector.UNK_ID
                 for token in tokenize(text)
-                ]
-        data = sequence.pad_sequences([data_id],
-                                 maxlen=self.max_sequence_length,
+                ] for text in texts ]
+        data = [ sequence.pad_sequences([feature_column],
+                                 maxlen=self.max_sequence_length[column_index],
                                  truncating='post',
                                  padding='post',
                                  value=WordVector.PAD_ID)
-        return {'input':data}
+                for column_index, feature_column in enumerate(features)
+        ]
+        return {'input_' + str(index): data[index] for index in range(len(data))}

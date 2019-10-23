@@ -65,20 +65,16 @@ class MultiFeatTestCases(TestCase):
                  ]
 
         expected_id = [
-            [ [2, 3, 4, 0], [6, 0] ],
-            [ [2, 3, 4, 5], [6, 8] ],
-            [ [5, 4, 0, 0], [7, 8] ]
+            [ [2, 3, 4, 0], [2, 3, 4, 5], [5, 4, 0, 0] ],
+            [ [6, 0], [6, 8], [7, 8] ]
         ]
         expected_length = [
             [3, 1], [4, 2], [2, 2]
         ]
 
         (transfered_id, transfered_length) = self.classifier._inputs_to_features(inputs)
-        # TODO: seems not compare anything, manually checked here
-        #print(transfered_id)
-        #print(transfered_length)
-        np.array_equal(transfered_id, expected_id)
-        np.array_equal(transfered_length, expected_length)
+        self.assertEqual(transfered_id, expected_id)
+        self.assertEqual(transfered_length, expected_length)
 
     def test_data_to_tf_input(self):
         def _data_parser(length, label, *inputs):
@@ -93,25 +89,39 @@ class MultiFeatTestCases(TestCase):
                     ['boo zoo', 'old rule new']
                  ]
         labels = [1,0,1]
+
+        expected_id = [
+            [ [2, 3, 4, 0], [6, 0] ],
+            [ [2, 3, 4, 5], [6, 8] ],
+            [ [5, 4, 0, 0], [7, 8] ]
+        ]
+
         (data, data_length) = self.classifier._inputs_to_features(inputs)
         ds = tf.data.Dataset.from_tensor_slices((data_length, labels, *data))
-        print(ds.output_types, end=' : ')
-        print(ds.output_shapes)
-        for e in ds:
-            print (e)
-
         ds = ds.map(_data_parser)
-        iterator = ds.make_one_shot_iterator()
+        for e in ds:
+            print(e)
 
         i = 0
-        for item in iterator:
-            #self.assertEqual(item["input_0"], data[0][i])
-            print(item)
+        for item in ds:
+            item_list_0 = item[0]["input_0"].numpy().tolist()
+            item_list_1 = item[0]["input_1"].numpy().tolist()
+            self.assertEqual(item_list_0, expected_id[i][0])
+            self.assertEqual(item_list_1, expected_id[i][1])
+            self.assertEqual(item[1].numpy(), labels[i])
             i += 1
 
-        self.assertEqual(len(ds), 5)
 
-    #def test_input_to_features(self):
+    def test_input_text_to_pad_id(self):
+        test_text = ['foo bar zoo boo foo', 'new rule']
+        self.classifier._load_vocab()
+        data = self.classifier._input_text_to_pad_id(test_text)
+        print(data["input_0"].tolist())
+
+        self.assertEqual(len(data), 2)
+
+        self.assertEqual(data["input_0"].tolist(), [[2, 3, 4, 5]])
+        self.assertEqual(data["input_1"].tolist(), [[6, 8]])
 
 
     @staticmethod

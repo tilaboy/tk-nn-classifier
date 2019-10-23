@@ -246,26 +246,32 @@ class TFMultiFeatClassifier:
             raise NotImplementedError('Unknown mode {}'.format(mode))
 
     @staticmethod
-    def serving_input_receiver_fn():
-        """For the sake of the example, let's assume your input to the network will be a 28x28 grayscale image that you'll then preprocess as needed"""
-        input_0 = tf.placeholder(
-                dtype=tf.int32,
-                shape=[None, 512],
-                name='input_text'
-        )
-        input_1 = tf.placeholder(
-                dtype=tf.int32,
-                shape=[None, 20],
-                name='input_text'
-        )
+    def serving_input_receiver_fn(max_sequence_length):
+        '''
+        input shape:
+           input_0: [batch_size, max_sequence_length[0] ]
+           input_1: [batch_size, max_sequence_length[1] ]
+           ......
+           len: [batch_size, number_of_input ]
+        '''
+        features = {}
+        receiver_tensors = {}
+
         seq_length = tf.placeholder(
                 dtype=tf.int32,
-                shape=[None, 2],
+                shape=[None, len(max_sequence_length)],
                 name='seq_length'
         )
-
-        features = {'input_0' : input_0, 'input_1': input_1, 'len': seq_length}
-        receiver_tensors = {'input_0' : input_0, 'input_1': input_1}
+        features['len'] = seq_length
+        for index, length in enumerate(max_sequence_length):
+            input_name = 'input_' + str(index)
+            input = tf.placeholder(
+                    dtype=tf.int32,
+                    shape=[None, length],
+                    name= input_name
+            )
+            features[input_name] = input
+            receiver_tensors[input_name] = input
         return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
 
     def train(self):
@@ -288,7 +294,10 @@ class TFMultiFeatClassifier:
 
         best_exporter = BestCheckpointsExporter(
                 name="best_exporter",
-                serving_input_receiver_fn=self.serving_input_receiver_fn,
+                serving_input_receiver_fn=functools.partial(
+                                              self.serving_input_receiver_fn,
+                                              self.max_sequence_length
+                                          ),
                 exports_to_keep=2
         )
 

@@ -1,8 +1,8 @@
 import os
 from setuptools import setup, find_packages
 
-NAME = "recruitment_agency_detector"
-VERSION = os.environ.get("RECRUITMENT_AGENCY_DETECTOR", '0.0.0')
+NAME = "tk_nn_classifier"
+VERSION = os.environ.get("TK_NN_CLASSIFIER", '0.0.0')
 
 INSTALL_REQUIRES = [
     "tensorflow>=1.14.0",
@@ -35,7 +35,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "tk-nn-classifier=recruitment_agency_detector.__main__:main",
+            "tk-nn-classifier=tk_nn_classifier.__main__:main",
         ],
     },
     test_suite="tests",

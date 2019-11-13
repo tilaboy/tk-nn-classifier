@@ -3,10 +3,10 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from recruitment_agency_detector.data_loader import DataReader
-from recruitment_agency_detector.data_loader import TFDataReader
-from recruitment_agency_detector.data_loader import SpacyDataReader
-from recruitment_agency_detector.data_loader.data_reader import CommonDataReader
+from tk_nn_classifier.data_loader import DataReader
+from tk_nn_classifier.data_loader import TFDataReader
+from tk_nn_classifier.data_loader import SpacyDataReader
+from tk_nn_classifier.data_loader.data_reader import CommonDataReader
 
 class DataReaderTestCases(TestCase):
     """unit tests"""

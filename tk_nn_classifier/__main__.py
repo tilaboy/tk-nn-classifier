@@ -2,10 +2,10 @@ from __future__ import unicode_literals, print_function
 import os
 from argparse import ArgumentParser
 import logging
-from recruitment_agency_detector.model import Model
-from recruitment_agency_detector.config import load_config
-from recruitment_agency_detector.data_loader import DataReader
-from recruitment_agency_detector import set_logging_level, LOGGER
+from tk_nn_classifier.model import Model
+from tk_nn_classifier.config import load_config
+from tk_nn_classifier.data_loader import DataReader
+from tk_nn_classifier import set_logging_level, LOGGER
 
 def process_batch(model, reader, data_set, config):
     result = []

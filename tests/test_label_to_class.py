@@ -5,7 +5,7 @@ import json
 import filecmp
 import shutil
 from unittest import TestCase
-from recruitment_agency_detector.data_loader.label_class_mapper import LabelClassMapper
+from tk_nn_classifier.data_loader.label_class_mapper import LabelClassMapper
 
 class LabelClassMapperTestCases(TestCase):
     """unit tests"""

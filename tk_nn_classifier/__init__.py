@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Top-level package for recruitment_agency_detector
+Top-level package for tk_nn_classifier
 """
 import sys
 import logging
@@ -8,7 +8,7 @@ import logging
 __author__ = """Chao Li"""
 __email__ = 'chaoli.job@google.com'
 __version__ = '0.0.0'
-name = "recruitment_agency_detector"
+name = "tk_nn_classifier"
 
 
 def define_logger(mod_name):

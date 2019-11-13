@@ -5,7 +5,7 @@ import tempfile
 import shutil
 import numpy as np
 import tensorflow as tf
-from recruitment_agency_detector.classifiers import TFMultiFeatClassifier
+from tk_nn_classifier.classifiers import TFMultiFeatClassifier
 tf.enable_eager_execution()
 
 class MultiFeatTestCases(TestCase):

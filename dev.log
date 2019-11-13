@@ -90,7 +90,7 @@ Actual
 
 # tf: simple lstm
 eval    0.901   0.943   0.921
-I [2019-09-03 16:04:12,863] [recruitment_agency_detector] Confusion matrix:
+I [2019-09-03 16:04:12,863] [tk_nn_classifier] Confusion matrix:
 Predicted    0    1
 Actual
 0          854  108
@@ -98,14 +98,14 @@ Actual
 
 
 unindentified   1.000   0.918   0.957
-I [2019-09-03 16:03:04,564] [recruitment_agency_detector] Confusion matrix:
+I [2019-09-03 16:03:04,564] [tk_nn_classifier] Confusion matrix:
 Predicted    0     1
 Actual
 1          377  4237
 
 
 annotated       0.770   0.916   0.837
-I [2019-09-03 16:04:08,662] [recruitment_agency_detector] Confusion matrix:
+I [2019-09-03 16:04:08,662] [tk_nn_classifier] Confusion matrix:
 Predicted     0     1
 Actual
 0          2977  1119

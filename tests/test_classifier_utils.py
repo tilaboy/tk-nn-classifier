@@ -1,7 +1,7 @@
 """unit tests for classifier utils functions"""
 import os
 from unittest import TestCase
-from recruitment_agency_detector.classifiers.utils import TrainHelper
+from tk_nn_classifier.classifiers.utils import TrainHelper
 
 class ClassifierUtilTestCases(TestCase):
     """unit tests"""

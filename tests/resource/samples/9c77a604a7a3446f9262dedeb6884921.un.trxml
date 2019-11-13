@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult user="1" lang="english" content_type="text/xml" source="text/xml"><Document content_type="text/xml" correlationid="9c77a604a7a3446f9262dedeb6884921" country="UK" external_cleansite="glosjobs.co.uk" external_displaysite="glosjobs.co.uk" external_importdate="2019-06-29" external_normurl="glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352" external_spiderdate="2019-06-26" external_spidersource="feederscript" formatting="YTozOC41NiwzOC42NixfWE1MREVQVEhfLDYsaHJlZiwvZW1haWwtdXBkYXRlcy8saWQsMix0a19pZCw2NnxkaXY6MS4zLDM4LjY3LF9YTUxERVBUSF8sMyxpZCwxMSxvcmlnaW5hbElELGNvbnRlbnQsdGtfaWQsNjoxLjMsMzguNjcsX1hNTERFUFRIXyw0LGlkLDEzLG9yaWdpbmFsSUQsam9iLWRldGFpbHMsdGtfaWQsOToxLjMsMTIuOSxfWE1MREVQVEhfLDUsaWQsMTQsb3JpZ2luYWxJRCxjb250YWN0LWRldGFpbHMsdGtfaWQsMTB8aDI6MTQuMCwxNC4xNixfWE1MREVQVEhfLDUsaWQsMjEsdGtfaWQsMzd8c3Ryb25nOjEuMywxLjIzLF9YTUxERVBUSF8sNyxpZCwzLHRrX2lkLDE0OjEwLjMsMTAuNyxfWE1MREVQVEhfLDcsaWQsNCx0a19pZCwyMzoxMi4zLDEyLjksX1hNTERFUFRIXyw3LGlkLDUsdGtfaWQsMjY6MzMuMywzMy4xMCxfWE1MREVQVEhfLDYsaWQsNix0a19pZCw1NjozNS4zLDM1Ljk4LF9YTUxERVBUSF8sNixpZCw3LHRrX2lkLDU4OjM3LjMsMzcuMTMsX1hNTERFUFRIXyw2LGlkLDgsdGtfaWQsNjQ=" has_formatting="yes" has_sec_vacancy="yes" id="0" lang="english" maxProcessingTime="30" source="text/xml" url="https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352"><sec_vacancy id="23"><sec_summary id="116">   Contact Information:
+   Class People
+   Class People is a trading name of LB Education Services Ltd
+   Eagletower
+   <vac_location id="152" priority="1" type="vac_location_validated">Montpellier Drive</vac_location>
+   <vac_location id="153" priority="2" type="vac_location_validated">Cheltenham
+   Gloucestershire
+   GL50 1QB</vac_location>
+
+   Tel: <org_phone id="146" type="Rule1"><org_phone id="29">01242 898124</org_phone></org_phone>
+</sec_summary>
+   Email:
+
+<vac_ref_no id="61">HLTA - HLTA26</vac_ref_no><vac_apply_date id="60">/06</vac_apply_date>
+
+   <vac_location id="154" priority="3" type="vac_location_validated">Bristol</vac_location>
+
+<sec_job_descr conf="0.90" id="151">   <vac_job_title id="110">COVER TEACHERS</vac_job_title> ARE LOOKING FOR HTLAs TO JOIN OUR AGENCY TO SUPPLY OUR SCHOOLS IN AND AROUND BRISTOL ON A <cond_working_hours id="27">DAY TO DAY OR LONG TERM BASIS</cond_working_hours>!
+
+   With <cond_working_hours id="28">flexible working hours</cond_working_hours> available, <fulltext_keywords id="134" type="gazetteer">teaching</fulltext_keywords> assistants looking for either day to day supply on a part or full time basis, or a longer term post are encouraged to apply.
+
+   As a <vac_job_title id="111">HLTA</vac_job_title> you will be responsible for delivering pre-planned lessons to classes in KS1 and KS2 covering for teacher PPA or short term absences.
+</sec_job_descr>
+   The ideal candidate will:
+
+<sec_candidate_descr conf="0.90" id="150">   * Hold a <fulltext_keywords id="135" type="uppercase"><prof_drivers_license id="31">HLTA</prof_drivers_license></fulltext_keywords> <prof_education id="54">qualification or relevant BA Education/Childcare degree</prof_education>
+   * Have previous experience in the <prof_competence id="34">same/similar role which can be referenced</prof_competence>
+   * Have excellent <fulltext_keywords id="136" type="context"><prof_competence id="35">classroom management</prof_competence> experience</fulltext_keywords>
+   * Be <prof_competence id="36">committed to high standards</prof_competence> of <prof_competence id="37"><fulltext_keywords id="137" type="gazetteer">teaching</fulltext_keywords> and <fulltext_keywords id="138" type="gazetteer_expansion">learning</fulltext_keywords></prof_competence>
+</sec_candidate_descr>
+<sec_application_descr conf="0.90" id="149">   If this sounds like the role for you, then please click apply or email your CV to <org_contact_person id="26">Holly</org_contact_person> at <org_email id="145" type="Rule1"><org_email id="41">holly@coverteachers.co.uk</org_email></org_email> , otherwise for more information, please contact us on <org_phone id="147" type="Rule1"><org_phone id="30">0117 973 5695</org_phone></org_phone> .
+</sec_application_descr>
+<sec_conditions_descr conf="0.73" id="148">   Salary: <salary id="108">£65 - 75 per day</salary>
+</sec_conditions_descr>
+   To Apply: Contact the advertiser in the contact details on the right of the advert on GlosJobs.
+
+   Newsletter
+   To sign up up for GlosJobs weekly newsletter, please click here.
+</sec_vacancy>
+
+</Document>
+<DocumentStructure>
+	<ItemGroup count="1" key="Document">
+		<Item index="0">
+			<Field key="content_type"><Value>text/xml</Value></Field>
+			<Field key="correlationid"><Value>9c77a604a7a3446f9262dedeb6884921</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-29</Value></Field>
+			<Field key="external_normurl"><Value>glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-26</Value></Field>
+			<Field key="external_spidersource"><Value>feederscript</Value></Field>
+			<Field key="formatting"><Value>YTozOC41NiwzOC42NixfWE1MREVQVEhfLDYsaHJlZiwvZW1haWwtdXBkYXRlcy8saWQsMix0a19pZCw2NnxkaXY6MS4zLDM4LjY3LF9YTUxERVBUSF8sMyxpZCwxMSxvcmlnaW5hbElELGNvbnRlbnQsdGtfaWQsNjoxLjMsMzguNjcsX1hNTERFUFRIXyw0LGlkLDEzLG9yaWdpbmFsSUQsam9iLWRldGFpbHMsdGtfaWQsOToxLjMsMTIuOSxfWE1MREVQVEhfLDUsaWQsMTQsb3JpZ2luYWxJRCxjb250YWN0LWRldGFpbHMsdGtfaWQsMTB8aDI6MTQuMCwxNC4xNixfWE1MREVQVEhfLDUsaWQsMjEsdGtfaWQsMzd8c3Ryb25nOjEuMywxLjIzLF9YTUxERVBUSF8sNyxpZCwzLHRrX2lkLDE0OjEwLjMsMTAuNyxfWE1MREVQVEhfLDcsaWQsNCx0a19pZCwyMzoxMi4zLDEyLjksX1hNTERFUFRIXyw3LGlkLDUsdGtfaWQsMjY6MzMuMywzMy4xMCxfWE1MREVQVEhfLDYsaWQsNix0a19pZCw1NjozNS4zLDM1Ljk4LF9YTUxERVBUSF8sNixpZCw3LHRrX2lkLDU4OjM3LjMsMzcuMTMsX1hNTERFUFRIXyw2LGlkLDgsdGtfaWQsNjQ=</Value></Field>
+			<Field key="has_formatting"><Value>yes</Value></Field>
+			<Field key="has_sec_vacancy"><Value>yes</Value></Field>
+			<Field key="id"><Value>0</Value></Field>
+			<Field key="lang"><Value>english</Value></Field>
+			<Field key="lang_code"><Value>en</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="overall_conf" docCoords="18.0-23.0,26.0-30.0,31.0-32.0,33.0-34.0" docMarkupId="151+150+149+148"><Value>0.86</Value></Field>
+			<Field key="source"><Value>text/xml</Value></Field>
+			<Field key="url"><Value>https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="3" key="__APPLIED_EXTRACTION__">
+		<Item index="0">
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="__MODEL_VERSION__">
+		<Item index="0">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>VacancyPreprocessor</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151980</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>a611c3f2e4dc745c4e122bb4208c58f04d29030e</Value></Field>
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+			<Field key="model"><Value>MatchTxtor</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-150995</Value></Field>
+			<Field key="model_git_sha1"><Value>79e172f998afdb5a4bea103293f2ac8d62e65641</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="26" key="__PHRASEFILE_INFO__">
+		<Item index="0">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_init.phrs</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="filename"><Value>VacENExtractor:phraserules/english_v2.phrs</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_fields.phrs</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/wrapped_fields_v2.phrs</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/combined_fields_v2.phrs</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_url.phrs</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/common_derived_v2.phrs</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/common_jobfeed_fields.phrs</Value></Field>
+		</Item>
+		<Item index="8">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_conf.phrs</Value></Field>
+		</Item>
+		<Item index="9">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_fulltext_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="10">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/skills.phrs</Value></Field>
+		</Item>
+		<Item index="11">
+			<Field key="filename"><Value>Vac-UK-Normalizer:../core/phraserules/DataModel1/common_derived_v2.phrs</Value></Field>
+		</Item>
+		<Item index="12">
+			<Field key="filename"><Value>Vac-UK-Normalizer:../core/phraserules/common_legacy.phrs</Value></Field>
+		</Item>
+		<Item index="13">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/init.phrs</Value></Field>
+		</Item>
+		<Item index="14">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/vac_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="15">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/common_vac.phrs</Value></Field>
+		</Item>
+		<Item index="16">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_location.phrs</Value></Field>
+		</Item>
+		<Item index="17">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_jobtitle.phrs</Value></Field>
+		</Item>
+		<Item index="18">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_education.phrs</Value></Field>
+		</Item>
+		<Item index="19">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_compskills.phrs</Value></Field>
+		</Item>
+		<Item index="20">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_langskills.phrs</Value></Field>
+		</Item>
+		<Item index="21">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_experience_years.phrs</Value></Field>
+		</Item>
+		<Item index="22">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_derived_profession_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="23">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_normalization_codes.phrs</Value></Field>
+		</Item>
+		<Item index="24">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/keyword_postprocessing.phrs</Value></Field>
+		</Item>
+		<Item index="25">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/legacy.phrs</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="__PHRASE_INFO__">
+		<Item index="0">
+			<Field key="cond_contract_type" cardinality="all"><Value></Value></Field>
+			<Field key="cond_employment_type" cardinality="all"><Value></Value></Field>
+			<Field key="cond_hours_per_week" cardinality="all"><Value></Value></Field>
+			<Field key="cond_working_hours" cardinality="all"><Value></Value></Field>
+			<Field key="derived_has_sec_vacancy" cardinality="first"><Value></Value></Field>
+			<Field key="employer_anonymous" cardinality="all"><Value></Value></Field>
+			<Field key="fulltext" cardinality="first"><Value></Value></Field>
+			<Field key="language"><Value></Value></Field>
+			<Field key="org_address" cardinality="all"><Value></Value></Field>
+			<Field key="org_contact_person" cardinality="all"><Value></Value></Field>
+			<Field key="org_contact_person_function" cardinality="all"><Value></Value></Field>
+			<Field key="org_email" cardinality="all"><Value></Value></Field>
+			<Field key="org_fax" cardinality="all"><Value></Value></Field>
+			<Field key="org_industry" cardinality="all"><Value></Value></Field>
+			<Field key="org_name" cardinality="multiple"><Value></Value></Field>
+			<Field key="org_num_employees" cardinality="all"><Value></Value></Field>
+			<Field key="org_phone" cardinality="all"><Value></Value></Field>
+			<Field key="org_website" cardinality="all"><Value></Value></Field>
+			<Field key="prof_competence" cardinality="all"><Value></Value></Field>
+			<Field key="prof_computer_skills" cardinality="all"><Value></Value></Field>
+			<Field key="prof_drivers_license" cardinality="all"><Value></Value></Field>
+			<Field key="prof_education" cardinality="all"><Value></Value></Field>
+			<Field key="prof_experience" cardinality="all"><Value></Value></Field>
+			<Field key="prof_languages" cardinality="all"><Value></Value></Field>
+			<Field key="salary" cardinality="all"><Value></Value></Field>
+			<Field key="sec_application_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_candidate_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_conditions_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_employer_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_job_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_summary" cardinality="multiple"><Value></Value></Field>
+			<Field key="sec_vacancy" cardinality="all"><Value></Value></Field>
+			<Field key="vac_apply_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_job_title" cardinality="multiple"><Value></Value></Field>
+			<Field key="vac_location" cardinality="multiple"><Value></Value></Field>
+			<Field key="vac_num_positions" cardinality="all"><Value></Value></Field>
+			<Field key="vac_posted_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_ref_no" cardinality="all"><Value></Value></Field>
+			<Field key="vac_start_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_title" cardinality="multiple"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="__RUNTIME_PARAMS__">
+		<Item index="0">
+			<Field key="config-name"><Value>VacancyPreprocessor</Value></Field>
+			<Field key="correlationid"><Value>9c77a604a7a3446f9262dedeb6884921</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-29</Value></Field>
+			<Field key="external_normurl"><Value>glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-26</Value></Field>
+			<Field key="external_spidersource"><Value>feederscript</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="url"><Value>https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+			<Field key="correlationid"><Value>9c77a604a7a3446f9262dedeb6884921</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>glosjobs.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-29</Value></Field>
+			<Field key="external_normurl"><Value>glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-26</Value></Field>
+			<Field key="external_spidersource"><Value>feederscript</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="url"><Value>https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+			<Field key="correlationid"><Value>9c77a604a7a3446f9262dedeb6884921</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+			<Field key="correlationid"><Value>9c77a604a7a3446f9262dedeb6884921</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="acquisition_disallowed_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="acquisition_disallowed_wrapped">
+		<Item index="0">
+			<Field key="acquisition_disallowed_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="advertiser_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="advertiser_wrapped">
+		<Item index="0">
+			<Field key="advertiser_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="apply_url_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="co_keywords">
+		<Item index="0">
+			<Field key="co_keywords"><Value>classroom management</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="companyid">
+		<Item index="0">
+			<Field key="companyid" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+			<Field key="exact" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+			<Field key="national_industry_code" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+			<Field key="query" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+			<Field key="tk_sector" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_contract_type">
+		<Item index="0">
+			<Field key="cond_contract_type"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="cond_contract_type_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_contract_type_wrapped">
+		<Item index="0">
+			<Field key="cond_contract_type_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_employment_type">
+		<Item index="0">
+			<Field key="cond_employment_type"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="cond_employment_type_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_employment_type_wrapped">
+		<Item index="0">
+			<Field key="cond_employment_type_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_hours_per_week">
+		<Item index="0">
+			<Field key="cond_hours_per_week"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="cond_hours_per_week_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_hours_per_week_wrapped">
+		<Item index="0">
+			<Field key="cond_hours_per_week_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_working_hours">
+		<Item index="0">
+			<Field key="cond_working_hours" docCoords="18.108-18.137,20.8-20.30" docMarkupId="27+28"><Value>DAY TO DAY OR LONG TERM BASIS, flexible working hours</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_working_hours_combined">
+		<Item index="0">
+			<Field key="cond_working_hours_combined" docCoords="18.108-18.137,20.8-20.30" docMarkupId="27+28"><Value>DAY TO DAY OR LONG TERM BASIS, flexible working hours</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_working_hours_wrapped">
+		<Item index="0">
+			<Field key="cond_working_hours_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="deeplink">
+		<Item index="0">
+			<Field key="deeplink"><Value>yes</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="deeplink_url">
+		<Item index="0">
+			<Field key="deeplink_url"><Value>https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_acquisition_disallowed">
+		<Item index="0">
+			<Field key="derived_acquisition_disallowed"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_advertiser">
+		<Item index="0">
+			<Field key="derived_advertiser"><Value>Class People</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_apply_url">
+		<Item index="0">
+			<Field key="derived_apply_url"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_contract_type">
+		<Item index="0">
+			<Field key="contract_type_code"><Value>0</Value></Field>
+			<Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_employment_type">
+		<Item index="0">
+			<Field key="derived_cond_employment_type"><Value>1</Value></Field>
+			<Field key="description"><Value>fulltime</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_hours_per_week">
+		<Item index="0">
+			<Field key="derived_cond_hours_per_week"><Value></Value></Field>
+			<Field key="derived_cond_hours_per_week_from"><Value></Value></Field>
+			<Field key="derived_cond_hours_per_week_to"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_working_hours">
+		<Item index="0">
+			<Field key="derived_cond_working_hours" docCoords="18.108-18.137,20.8-20.30" docMarkupId="27+28"><Value>2</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_display_site">
+		<Item index="0">
+			<Field key="derived_display_site"><Value>glosjobs.co.uk</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_employer">
+		<Item index="0">
+			<Field key="derived_employer" docCoords="31.94-31.119" docMarkupId="145"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_employer_anonymous">
+		<Item index="0">
+			<Field key="derived_employer_anonymous"><Value>no</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_expired">
+		<Item index="0">
+			<Field key="derived_expired"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_has_sec_vacancy">
+		<Item index="0">
+			<Field key="derived_has_sec_vacancy" docCoords="" docMarkupId=""><Value>1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="derived_location_hash">
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_norm_url">
+		<Item index="0">
+			<Field key="derived_norm_url"><Value>glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_address">
+		<Item index="0">
+			<Field key="derived_org_addr_extra"><Value></Value></Field>
+			<Field key="derived_org_address"><Value></Value></Field>
+			<Field key="derived_org_country_nodefault"><Value></Value></Field>
+			<Field key="derived_org_countrycode_nodefault"><Value></Value></Field>
+			<Field key="derived_org_location"><Value></Value></Field>
+			<Field key="derived_org_number"><Value></Value></Field>
+			<Field key="derived_org_pc"><Value></Value></Field>
+			<Field key="derived_org_post_box_no"><Value></Value></Field>
+			<Field key="derived_org_postbox_city"><Value></Value></Field>
+			<Field key="derived_org_postbox_pc"><Value></Value></Field>
+			<Field key="derived_org_region"><Value></Value></Field>
+			<Field key="derived_org_street"><Value></Value></Field>
+			<Field key="latitude"><Value></Value></Field>
+			<Field key="longitude"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_contact_person">
+		<Item index="0">
+			<Field key="derived_org_contact_fname" docCoords="31.85-31.90,31.94-31.119" docMarkupId="26+145"><Value></Value></Field>
+			<Field key="derived_org_contact_lname" docCoords="31.85-31.90,31.94-31.119" docMarkupId="26+145"><Value>Holly</Value></Field>
+			<Field key="derived_org_contact_person" docCoords="31.85-31.90,31.94-31.119" docMarkupId="26+145"><Value> Holly</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_email">
+		<Item index="0">
+			<Field key="derived_org_email" docCoords="31.94-31.119" docMarkupId="145"><Value>holly@coverteachers.co.uk</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_fax">
+		<Item index="0">
+			<Field key="derived_org_fax" docCoords="10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="146+147+61"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_industry">
+		<Item index="0">
+			<Field key="debug_code"><Value></Value></Field>
+			<Field key="debug_confidence"><Value></Value></Field>
+			<Field key="debug_description"><Value></Value></Field>
+			<Field key="debug_indicator"><Value></Value></Field>
+			<Field key="debug_tk_sector"><Value></Value></Field>
+			<Field key="national_code"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_name">
+		<Item index="0">
+			<Field key="derived_org_name"><Value>Class People</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_name_norm">
+		<Item index="0">
+			<Field key="derived_org_name_norm"><Value>Class People</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_national_id">
+		<Item index="0">
+			<Field key="derived_org_national_id"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_phone">
+		<Item index="0">
+			<Field key="derived_org_phone" docCoords="10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="146+147+61"><Value>01242898124, 01179735695</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_website">
+		<Item index="0">
+			<Field key="derived_org_website"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_education">
+		<Item index="0">
+			<Field key="degreetype" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>Bachelor</Value></Field>
+			<Field key="derived_prof_education" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3</Value></Field>
+			<Field key="derived_prof_education_descr" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>Bachelor&apos;s degree</Value></Field>
+			<Field key="derived_prof_education_from_profession" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_experience">
+		<Item index="0">
+			<Field key="derived_prof_experience"><Value></Value></Field>
+			<Field key="derived_prof_experience_from"><Value></Value></Field>
+			<Field key="derived_prof_experience_level"><Value></Value></Field>
+			<Field key="derived_prof_experience_norm_from"><Value></Value></Field>
+			<Field key="derived_prof_experience_norm_to"><Value></Value></Field>
+			<Field key="derived_prof_experience_to"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="derived_prof_experience_min_max">
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_languages">
+		<Item index="0">
+			<Field key="derived_prof_languages"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_code">
+		<Item index="0">
+			<Field key="derived_profession_attractor"><Value>Host</Value></Field>
+			<Field key="derived_profession_class"><Value>0</Value></Field>
+			<Field key="derived_profession_class_match"><Value></Value></Field>
+			<Field key="derived_profession_code"><Value>0</Value></Field>
+			<Field key="derived_profession_code_match"><Value></Value></Field>
+			<Field key="derived_profession_code_match_dist"><Value>-3:0.160714285714286</Value></Field>
+			<Field key="derived_profession_code_match_inst"><Value></Value></Field>
+			<Field key="derived_profession_code_match_list"><Value>649+14.000000+2594+14.000000+3105+14.000000</Value></Field>
+			<Field key="derived_profession_confidence"><Value>-2.839285875</Value></Field>
+			<Field key="derived_profession_distance"><Value>14</Value></Field>
+			<Field key="derived_profession_group"><Value>0</Value></Field>
+			<Field key="derived_profession_group_match"><Value></Value></Field>
+			<Field key="derived_profession_level_code"><Value></Value></Field>
+			<Field key="derived_profession_name"><Value>HLTA - HLTA26/06</Value></Field>
+			<Field key="derived_profession_name_clean"><Value>hlta hlta26</Value></Field>
+			<Field key="derived_profession_name_clean_checklist"><Value>hlta hlta26</Value></Field>
+			<Field key="derived_profession_name_clean_norewrite"><Value>HLTA HLTA26</Value></Field>
+			<Field key="derived_vac_job_title"><Value>HLTA - HLTA26/06</Value></Field>
+			<Field key="derived_vac_job_title_clean"><Value>hlta hlta26</Value></Field>
+			<Field key="derived_vac_title"><Value>HLTA - HLTA26/06</Value></Field>
+			<Field key="derived_vac_title_clean"><Value>hlta hlta26</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_final">
+		<Item index="0">
+			<Field key="derived_profession_final"><Value>hlta hlta26</Value></Field>
+			<Field key="setting"><Value>^</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_final_short">
+		<Item index="0">
+			<Field key="derived_profession_final_short"><Value>hlta hlta26</Value></Field>
+			<Field key="setting"><Value>^</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer_main">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer_main"><Value>HLTA26</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer_rest">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer_rest"><Value>HLTA</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer_templated">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer_templated"><Value></Value></Field>
+			<Field key="setting"><Value>^</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_salary">
+		<Item index="0">
+			<Field key="derived_salary" docCoords="33.11-33.27" docMarkupId="108"><Value>£65 - 75 per day</Value></Field>
+			<Field key="derived_salary_from" docCoords="33.11-33.27" docMarkupId="108"><Value>16900</Value></Field>
+			<Field key="derived_salary_from_orig" docCoords="33.11-33.27" docMarkupId="108"><Value>65</Value></Field>
+			<Field key="derived_salary_time_scale" docCoords="33.11-33.27" docMarkupId="108"><Value>J</Value></Field>
+			<Field key="derived_salary_to" docCoords="33.11-33.27" docMarkupId="108"><Value>19500</Value></Field>
+			<Field key="derived_salary_to_orig" docCoords="33.11-33.27" docMarkupId="108"><Value>75</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_source_site">
+		<Item index="0">
+			<Field key="derived_source_site"><Value>glosjobs.co.uk</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_source_type">
+		<Item index="0">
+			<Field key="derived_source_type"><Value>jobsite</Value></Field>
+			<Field key="source_type_code"><Value>1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_apply_date">
+		<Item index="0">
+			<Field key="derived_vac_apply_date" docCoords="14.13-14.16" docMarkupId="60"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_areacode">
+		<Item index="0">
+			<Field key="areacode_descr" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>Bristol</Value></Field>
+			<Field key="derived_vac_areacode" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>2654675</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_intermediary">
+		<Item index="0">
+			<Field key="derived_vac_intermediary" docCoords="31.94-31.119" docMarkupId="145"><Value>no</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_location">
+		<Item index="0">
+			<Field key="derived_vac_location" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>Bristol</Value></Field>
+			<Field key="latitude" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value></Value></Field>
+			<Field key="longitude" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value></Value></Field>
+			<Field key="vac_location_term" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119,1.0-39.0" docMarkupId="152+153+154+145+23"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_posted_date">
+		<Item index="0">
+			<Field key="derived_vac_posted_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_ref_no">
+		<Item index="0">
+			<Field key="derived_vac_ref_no" docCoords="14.0-14.13" docMarkupId="61"><Value>HLTA - HLTA26</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_region">
+		<Item index="0">
+			<Field key="derived_vac_region" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>ENG</Value></Field>
+			<Field key="vac_region_descr" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>England</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_start_date">
+		<Item index="0">
+			<Field key="derived_vac_start_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_sub_region">
+		<Item index="0">
+			<Field key="derived_vac_sub_region" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>B7</Value></Field>
+			<Field key="sub_region_descr" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119" docMarkupId="152+153+154+145"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_anonymous">
+		<Item index="0">
+			<Field key="employer_anonymous"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="employer_anonymous_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_anonymous_wrapped">
+		<Item index="0">
+			<Field key="employer_anonymous_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="employer_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_wrapped">
+		<Item index="0">
+			<Field key="employer_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="fulltext">
+		<Item index="0">
+			<Field key="fulltext" docCoords="" docMarkupId=""><Value>  Contact Information:
+  Class People
+  Class People is a trading name of LB Education Services Ltd
+  Eagletower
+  Montpellier Drive
+  Cheltenham
+  Gloucestershire
+  GL50 1QB
+
+  Tel: 01242 898124
+
+  Email:
+
+  HLTA - HLTA26/06
+
+  Bristol
+
+  COVER TEACHERS ARE LOOKING FOR HTLAs TO JOIN OUR AGENCY TO SUPPLY OUR SCHOOLS IN AND AROUND BRISTOL ON A DAY TO DAY OR LONG TERM BASIS!
+
+  With flexible working hours available, teaching assistants looking for either day to day supply on a part or full time basis, or a longer term post are encouraged to apply.
+
+  As a HLTA you will be responsible for delivering pre-planned lessons to classes in KS1 and KS2 covering for teacher PPA or short term absences.
+
+  The ideal candidate will:
+
+  * Hold a HLTA qualification or relevant BA Education/Childcare degree
+  * Have previous experience in the same/similar role which can be referenced
+  * Have excellent classroom management experience
+  * Be committed to high standards of teaching and learning
+
+  If this sounds like the role for you, then please click apply or email your CV to Holly at holly@coverteachers.co.uk , otherwise for more information, please contact us on 0117 973 5695 .
+
+  Salary: £65 - 75 per day
+
+  To Apply: Contact the advertiser in the contact details on the right of the advert on GlosJobs.
+
+  Newsletter
+  To sign up up for GlosJobs weekly newsletter, please click here.</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="3" key="fulltext_keywords">
+		<Item index="0">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;teaching&quot;</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;classroom management experience&quot;</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>context</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;learning&quot;</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer_expansion</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="guid">
+		<Item index="0">
+			<Field key="guid"><Value>cffd079f6cb3c096608591cbf2c0e407</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="6" key="gz_keywords">
+		<Item index="0">
+			<Field key="gz_keywords"><Value>management</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="gz_keywords"><Value>teaching</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="gz_keywords"><Value>teaching</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="gz_keywords"><Value>full time</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="gz_keywords"><Value>AROUND BRISTOL</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="gz_keywords"><Value>part</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="highesteducationitem">
+		<Item index="0">
+			<Field key="education_descr" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>Bachelor&apos;s degree</Value></Field>
+			<Field key="education_international" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3</Value></Field>
+			<Field key="education_international_dist" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>-11.000000</Value></Field>
+			<Field key="education_international_inst" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value></Value></Field>
+			<Field key="education_international_list" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3+-11.000000</Value></Field>
+			<Field key="education_local" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="init_lang">
+		<Item index="0">
+			<Field key="init_lang"><Value>english</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="jfsector">
+		<Item index="0">
+			<Field key="jfsector" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="2" key="jobtitle_keywords">
+		<Item index="0">
+			<Field key="jobtitle_keywords"><Value>&quot;HLTA&quot;</Value></Field>
+			<Field key="setting"><Value>^</Value></Field>
+			<Field key="weight"><Value>4.3</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="jobtitle_keywords"><Value>&quot;HLTA26&quot;</Value></Field>
+			<Field key="setting"><Value>^</Value></Field>
+			<Field key="weight"><Value>4.3</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_address">
+		<Item index="0">
+			<Field key="org_address"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_address_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_address_wrapped">
+		<Item index="0">
+			<Field key="org_address_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact">
+		<Item index="0">
+			<Field key="org_contact" docCoords="31.85-31.90,31.94-31.119" docMarkupId="26+145"><Value> Holly</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person">
+		<Item index="0">
+			<Field key="org_contact_person" docCoords="31.85-31.90" docMarkupId="26"><Value>Holly</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="org_contact_person_combined" docCoords="31.85-31.90" docMarkupId="26"><Value>Holly</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person_function">
+		<Item index="0">
+			<Field key="org_contact_person_function"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person_wrapped">
+		<Item index="0">
+			<Field key="org_contact_person_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_email">
+		<Item index="0">
+			<Field key="org_email" docCoords="31.94-31.119" docMarkupId="145"><Value>holly@coverteachers.co.uk</Value></Field>
+			<Field key="type" docCoords="31.94-31.119" docMarkupId="145"><Value>Rule1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_email_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="org_email_combined" docCoords="31.94-31.119" docMarkupId="145"><Value>holly@coverteachers.co.uk</Value></Field>
+			<Field key="type" docCoords="31.94-31.119" docMarkupId="145"><Value>Rule1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_email_wrapped">
+		<Item index="0">
+			<Field key="org_email_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_fax">
+	</ItemGroup>
+	<ItemGroup count="0" key="org_fax_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_fax_wrapped">
+		<Item index="0">
+			<Field key="org_fax_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_industry">
+		<Item index="0">
+			<Field key="org_industry"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_industry_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_industry_wrapped">
+		<Item index="0">
+			<Field key="org_industry_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_info">
+		<Item index="0">
+			<Field key="industry_id"><Value></Value></Field>
+			<Field key="name"><Value></Value></Field>
+			<Field key="national_id"><Value></Value></Field>
+			<Field key="size_id"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name">
+		<Item index="0">
+			<Field key="org_name"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="org_name_combined"><Value>Class People</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="org_name_wrapped"><Value>Class People</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_national_id_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_national_id_wrapped">
+		<Item index="0">
+			<Field key="org_national_id_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_num_employees">
+		<Item index="0">
+			<Field key="org_num_employees"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_num_employees_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_num_employees_wrapped">
+		<Item index="0">
+			<Field key="org_num_employees_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone">
+		<Item index="0">
+			<Field key="org_phone" docCoords="10.8-10.20,31.175-31.188" docMarkupId="146+147"><Value>01242 898124, 0117 973 5695</Value></Field>
+			<Field key="type" docCoords="10.8-10.20" docMarkupId="146"><Value>Rule1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="org_phone_combined" docCoords="10.8-10.20,31.175-31.188" docMarkupId="146+147"><Value>01242 898124, 0117 973 5695</Value></Field>
+			<Field key="type" docCoords="10.8-10.20" docMarkupId="146"><Value>Rule1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone_wrapped">
+		<Item index="0">
+			<Field key="org_phone_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_website">
+	</ItemGroup>
+	<ItemGroup count="0" key="org_website_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_website_wrapped">
+		<Item index="0">
+			<Field key="org_website_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence">
+		<Item index="0">
+			<Field key="prof_competence" docCoords="27.37-27.78,28.20-28.40,29.8-29.35,29.39-29.60" docMarkupId="34+35+36+37"><Value>same/similar role which can be referenced, classroom management, committed to high standards, teaching and learning</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_competence_combined" docCoords="27.37-27.78,28.20-28.40,29.8-29.35,29.39-29.60" docMarkupId="34+35+36+37"><Value>same/similar role which can be referenced, classroom management, committed to high standards, teaching and learning</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence_wrapped">
+		<Item index="0">
+			<Field key="prof_competence_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_computer_skills">
+		<Item index="0">
+			<Field key="prof_computer_skills"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_computer_skills_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_computer_skills_wrapped">
+		<Item index="0">
+			<Field key="prof_computer_skills_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_drivers_license">
+		<Item index="0">
+			<Field key="prof_drivers_license" docCoords="26.12-26.16" docMarkupId="31"><Value>HLTA</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_drivers_license_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_drivers_license_combined" docCoords="26.12-26.16" docMarkupId="31"><Value>HLTA</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_drivers_license_wrapped">
+		<Item index="0">
+			<Field key="prof_drivers_license_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education">
+		<Item index="0">
+			<Field key="prof_education" docCoords="26.17-26.72" docMarkupId="54"><Value>qualification or relevant BA Education/Childcare degree</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_education_combined" docCoords="26.17-26.72" docMarkupId="54"><Value>qualification or relevant BA Education/Childcare degree</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education_wrapped">
+		<Item index="0">
+			<Field key="prof_education_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_experience">
+		<Item index="0">
+			<Field key="prof_experience"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_experience_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_experience_wrapped">
+		<Item index="0">
+			<Field key="prof_experience_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_languages">
+		<Item index="0">
+			<Field key="prof_languages"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_languages_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_languages_wrapped">
+		<Item index="0">
+			<Field key="prof_languages_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="reject_indicator_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="reject_indicator_wrapped">
+		<Item index="0">
+			<Field key="reject_indicator_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary">
+		<Item index="0">
+			<Field key="salary" docCoords="33.11-33.27" docMarkupId="108"><Value>£65 - 75 per day</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="salary_combined" docCoords="33.11-33.27" docMarkupId="108"><Value>£65 - 75 per day</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary_wrapped">
+		<Item index="0">
+			<Field key="salary_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="31.0-32.0" docMarkupId="149"><Value>0.90</Value></Field>
+			<Field key="sec_application_descr" docCoords="31.0-32.0" docMarkupId="149"><Value>If this sounds like the role for you, then please click apply or email your CV to Holly at holly@coverteachers.co.uk , otherwise for more information, please contact us on 0117 973 5695 .</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="31.0-32.0" docMarkupId="149"><Value>0.90</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_application_descr_combined" docCoords="31.0-32.0" docMarkupId="149"><Value>If this sounds like the role for you, then please click apply or email your CV to Holly at holly@coverteachers.co.uk , otherwise for more information, please contact us on 0117 973 5695 .</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_application_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="26.0-30.0" docMarkupId="150"><Value>0.90</Value></Field>
+			<Field key="sec_candidate_descr" docCoords="26.0-30.0" docMarkupId="150"><Value>* Hold a HLTA qualification or relevant BA Education/Childcare degree * Have previous experience in the same/similar role which can be referenced * Have excellent classroom management experience * Be committed to high standards of teaching and learning</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="26.0-30.0" docMarkupId="150"><Value>0.90</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_candidate_descr_combined" docCoords="26.0-30.0" docMarkupId="150"><Value>* Hold a HLTA qualification or relevant BA Education/Childcare degree * Have previous experience in the same/similar role which can be referenced * Have excellent classroom management experience * Be committed to high standards of teaching and learning</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_candidate_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="33.0-34.0" docMarkupId="148"><Value>0.73</Value></Field>
+			<Field key="sec_conditions_descr" docCoords="33.0-34.0" docMarkupId="148"><Value>Salary: £65 - 75 per day</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="33.0-34.0" docMarkupId="148"><Value>0.73</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_conditions_descr_combined" docCoords="33.0-34.0" docMarkupId="148"><Value>Salary: £65 - 75 per day</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_conditions_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+			<Field key="sec_employer_descr"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr_combined">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_employer_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="18.0-23.0" docMarkupId="151"><Value>0.90</Value></Field>
+			<Field key="sec_job_descr" docCoords="18.0-23.0" docMarkupId="151"><Value>COVER TEACHERS ARE LOOKING FOR HTLAs TO JOIN OUR AGENCY TO SUPPLY OUR SCHOOLS IN AND AROUND BRISTOL ON A DAY TO DAY OR LONG TERM BASIS! With flexible working hours available, teaching assistants looking for either day to day supply on a part or full time basis, or a longer term post are encouraged to apply. As a HLTA you will be responsible for delivering pre-planned lessons to classes in KS1 and KS2 covering for teacher PPA or short term absences.</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="18.0-23.0" docMarkupId="151"><Value>0.90</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_job_descr_combined" docCoords="18.0-23.0" docMarkupId="151"><Value>COVER TEACHERS ARE LOOKING FOR HTLAs TO JOIN OUR AGENCY TO SUPPLY OUR SCHOOLS IN AND AROUND BRISTOL ON A DAY TO DAY OR LONG TERM BASIS! With flexible working hours available, teaching assistants looking for either day to day supply on a part or full time basis, or a longer term post are encouraged to apply. As a HLTA you will be responsible for delivering pre-planned lessons to classes in KS1 and KS2 covering for teacher PPA or short term absences.</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_job_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary">
+		<Item index="0">
+			<Field key="sec_summary" docCoords="1.0-11.0" docMarkupId="116"><Value>Contact Information: Class People Class People is a trading name of LB Education Services Ltd Eagletower Montpellier Drive Cheltenham Gloucestershire GL50 1QB Tel: 01242 898124</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_summary_combined" docCoords="1.0-11.0" docMarkupId="116"><Value>Contact Information: Class People Class People is a trading name of LB Education Services Ltd Eagletower Montpellier Drive Cheltenham Gloucestershire GL50 1QB Tel: 01242 898124</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary_wrapped">
+		<Item index="0">
+			<Field key="sec_summary_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_vacancy">
+		<Item index="0">
+			<Field key="sec_vacancy" docCoords="1.0-39.0" docMarkupId="23" formatting="1"><Value>Contact Information:
+   Class People
+   Class People is a trading name of LB Education Services Ltd
+   Eagletower
+   Montpellier Drive
+   Cheltenham
+   Gloucestershire
+   GL50 1QB
+
+   Tel: 01242 898124
+
+   Email:
+
+HLTA - HLTA26/06
+
+   Bristol
+
+   COVER TEACHERS ARE LOOKING FOR HTLAs TO JOIN OUR AGENCY TO SUPPLY OUR SCHOOLS IN AND AROUND BRISTOL ON A DAY TO DAY OR LONG TERM BASIS!
+
+   With flexible working hours available, teaching assistants looking for either day to day supply on a part or full time basis, or a longer term post are encouraged to apply.
+
+   As a HLTA you will be responsible for delivering pre-planned lessons to classes in KS1 and KS2 covering for teacher PPA or short term absences.
+
+   The ideal candidate will:
+
+   * Hold a HLTA qualification or relevant BA Education/Childcare degree
+   * Have previous experience in the same/similar role which can be referenced
+   * Have excellent classroom management experience
+   * Be committed to high standards of teaching and learning
+
+   If this sounds like the role for you, then please click apply or email your CV to Holly at holly@coverteachers.co.uk , otherwise for more information, please contact us on 0117 973 5695 .
+
+   Salary: £65 - 75 per day
+
+   To Apply: Contact the advertiser in the contact details on the right of the advert on GlosJobs.
+
+   Newsletter
+   To sign up up for GlosJobs weekly newsletter, please click here.</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sizokey">
+		<Item index="0">
+			<Field key="sizokey" docCoords="31.94-31.119,5.3-5.20,6.3-8.11,16.3-16.10,10.8-10.20,31.175-31.188,14.0-14.13" docMarkupId="145+152+153+154+146+147+61"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="skill">
+		<Item index="0">
+			<Field key="debug_code_dist" docCoords="20.42-20.50" docMarkupId="134"><Value>18:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="20.42-20.50" docMarkupId="134"><Value>Teaching</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="skill" docCoords="20.42-20.50" docMarkupId="134"><Value>teaching</Value></Field>
+			<Field key="skill_codes" docCoords="20.42-20.50" docMarkupId="134"><Value>300,1586</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="debug_code_dist" docCoords="26.12-26.16" docMarkupId="135"><Value>-1:0.382978723404255</Value></Field>
+			<Field key="debug_code_inst" docCoords="26.12-26.16" docMarkupId="135"><Value>Vta</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="skill" docCoords="26.12-26.16" docMarkupId="135"><Value>HLTA</Value></Field>
+			<Field key="skill_codes" docCoords="26.12-26.16" docMarkupId="135"><Value></Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="debug_code_dist" docCoords="28.20-28.51" docMarkupId="136"><Value>32:0.638795986622074</Value></Field>
+			<Field key="debug_code_inst" docCoords="28.20-28.51" docMarkupId="136"><Value>Classroom Management Skills</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="skill" docCoords="28.20-28.51" docMarkupId="136"><Value>classroom management experience</Value></Field>
+			<Field key="skill_codes" docCoords="28.20-28.51" docMarkupId="136"><Value>300,1586</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="debug_code_dist" docCoords="29.52-29.60" docMarkupId="138"><Value>18:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="29.52-29.60" docMarkupId="138"><Value>learning</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="skill" docCoords="29.52-29.60" docMarkupId="138"><Value>learning</Value></Field>
+			<Field key="skill_codes" docCoords="29.52-29.60" docMarkupId="138"><Value>100,1635</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="source_url">
+		<Item index="0">
+			<Field key="source_url"><Value>https://www.glosjobs.co.uk/primary-teacher-jobs-in-bristol/hlta-472456/?l3c_id=352</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="split_education">
+		<Item index="0">
+			<Field key="education_code" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3</Value></Field>
+			<Field key="education_code_dist" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>-11.000000</Value></Field>
+			<Field key="education_code_list" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>3+-11.000000</Value></Field>
+			<Field key="education_international_inst" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="split_education" docCoords="26.17-26.72,31.0-32.0" docMarkupId="54+149"><Value>Bachelor&apos;s degree</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="timestamp">
+		<Item index="0">
+			<Field key="timestamp"><Value>1561584086</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="user_area">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date">
+		<Item index="0">
+			<Field key="vac_apply_date" docCoords="14.13-14.16" docMarkupId="60"><Value>06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="vac_apply_date_combined" docCoords="14.13-14.16" docMarkupId="60"><Value>06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date_wrapped">
+		<Item index="0">
+			<Field key="vac_apply_date_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="2" key="vac_job_title">
+		<Item index="0">
+			<Field key="vac_job_title" docCoords="18.3-18.17" docMarkupId="110"><Value>COVER TEACHERS</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="vac_job_title" docCoords="22.8-22.12" docMarkupId="111"><Value>HLTA</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_job_title_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_job_title_combined"><Value>HLTA - HLTA26/06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_job_title_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_job_title_wrapped"><Value>HLTA - HLTA26/06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="3" key="vac_location">
+		<Item index="0">
+			<Field key="priority" docCoords="5.3-5.20" docMarkupId="152"><Value>1</Value></Field>
+			<Field key="type" docCoords="5.3-5.20" docMarkupId="152"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="5.3-5.20" docMarkupId="152"><Value>Montpellier Drive</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="priority" docCoords="6.3-8.11" docMarkupId="153"><Value>2</Value></Field>
+			<Field key="type" docCoords="6.3-8.11" docMarkupId="153"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="6.3-8.11" docMarkupId="153"><Value>Cheltenham Gloucestershire GL50 1QB</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="priority" docCoords="16.3-16.10" docMarkupId="154"><Value>3</Value></Field>
+			<Field key="type" docCoords="16.3-16.10" docMarkupId="154"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="16.3-16.10" docMarkupId="154"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_location_cleaned">
+		<Item index="0">
+			<Field key="vac_location_cleaned" docCoords="5.3-5.20,6.3-8.11,16.3-16.10,31.94-31.119,1.0-39.0" docMarkupId="152+153+154+145+23"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="vac_location_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_location_combined"><Value>Bristol</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="5.3-5.20" docMarkupId="152"><Value>1</Value></Field>
+			<Field key="type" docCoords="5.3-5.20" docMarkupId="152"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="5.3-5.20" docMarkupId="152"><Value>Montpellier Drive</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="6.3-8.11" docMarkupId="153"><Value>2</Value></Field>
+			<Field key="type" docCoords="6.3-8.11" docMarkupId="153"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="6.3-8.11" docMarkupId="153"><Value>Cheltenham Gloucestershire GL50 1QB</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="16.3-16.10" docMarkupId="154"><Value>3</Value></Field>
+			<Field key="type" docCoords="16.3-16.10" docMarkupId="154"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="16.3-16.10" docMarkupId="154"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_location_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_location_wrapped"><Value>Bristol</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_num_positions">
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_num_positions_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_num_positions_wrapped">
+		<Item index="0">
+			<Field key="vac_num_positions_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_posted_date">
+		<Item index="0">
+			<Field key="vac_posted_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_posted_date_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_posted_date_wrapped">
+		<Item index="0">
+			<Field key="vac_posted_date_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_ref_no">
+		<Item index="0">
+			<Field key="vac_ref_no" docCoords="14.0-14.13" docMarkupId="61"><Value>HLTA - HLTA26</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_ref_no_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="vac_ref_no_combined" docCoords="14.0-14.13" docMarkupId="61"><Value>HLTA - HLTA26</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_ref_no_wrapped">
+		<Item index="0">
+			<Field key="vac_ref_no_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_start_date">
+		<Item index="0">
+			<Field key="vac_start_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_start_date_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_start_date_wrapped">
+		<Item index="0">
+			<Field key="vac_start_date_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title">
+		<Item index="0">
+			<Field key="vac_title"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_title_combined"><Value>HLTA - HLTA26/06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_title_wrapped"><Value>HLTA - HLTA26/06</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="wrapstatus">
+		<Item index="0">
+			<Field key="wrapstatus"><Value>1110000010000000000000000000000000000000</Value></Field>
+		</Item>
+	</ItemGroup>
+</DocumentStructure>
+</TextractorResult>

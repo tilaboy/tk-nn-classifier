@@ -1,0 +1,1885 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult user="1" lang="english" content_type="text/xml" source="text/xml"><Document content_type="text/xml" correlationid="62dc87a15ca44296abf934e8909f384a" country="UK" external_cleansite="independent.co.uk" external_displaysite="independent.co.uk" external_importdate="2019-06-22" external_normurl="independent.co.uk/job/13754880/junior-accountant" external_spiderdate="2019-06-21" external_spidersource="getterscript" formatting="YToyMi4xMCwyMi4yMSxfWE1MREVQVEhfLDEzLGhyZWYsL2pvYnMvYWNjb3VudGFuY3kvLGlkLDEsdGtfaWQsNDg6MjUuMTAsMjUuMTksX1hNTERFUFRIXywxMyxocmVmLC9qb2JzL3Blcm1hbmVudC8saWQsMix0a19pZCw1MzoyOC4xMCwyOC4xOSxfWE1MREVQVEhfLDEzLGhyZWYsL2pvYnMvZnVsbC10aW1lLyxpZCwzLHRrX2lkLDU4OjY3LjMsNjcuOCxfWE1MREVQVEhfLDExLGNsYXNzLGpzLXdlYnVpLXBvcG92ZXIgaGlkZSBqcy1zaG93LGRhdGEtcG9wb3Zlci1jb250ZW50LCNzb2NpYWwtYnV0dG9ucyxocmVmLCNzb2NpYWwtYnV0dG9ucyxpZCw0LHJlbCxub2ZvbGxvdyx0a19pZCwxMDE6NjguMyw2OC44LF9YTUxERVBUSF8sMTEsY2xhc3MsaWNvbi1hZnRlciBidXR0b24gYnV0dG9uLS1icmFuZCBidXR0b24tLWFwcGx5IGljb24td2hpdGUgLGRhdGEtaWNvbizihpcsaHJlZiwvYXBwbHkvMTM3NTQ4ODAvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9Sm9iRGV0YWlscyZjb3VudHJ5Y29kZT1HQixpZCw1LHJlbCxub2ZvbGxvdyx0YXJnZXQsX2JsYW5rLHRpdGxlLFRoaXMgd2lsbCBvcGVuIGluIGEgbmV3IHdpbmRvdyx0a19pZCwxMDY6NzQuMCw3NC4xNyxfWE1MREVQVEhfLDE0LGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzk4MTg3L2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsNix0a19pZCwxMTM6NzguMjQsNzguMzEsX1hNTERFUFRIXywxNyxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzk4MTg3JkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDcsdGtfaWQsMTI5Ojc4LjM1LDc4LjUyLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5ODE4NyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCw4LHRrX2lkLDEzMDo4Mi4wLDgyLjE3LF9YTUxERVBUSF8sMTQsY2xhc3MsanMtY2xpY2thYmxlLWFyZWEtbGluayxocmVmLCAgIC9qb2IvMTM3OTUyMTkvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9U2ltaWxhckpvYlBsYXRmb3JtICAgICxpZCw5LHRrX2lkLDEzNTo4Ni4yNCw4Ni4zMSxfWE1MREVQVEhfLDE3LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3OTUyMTkmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMTAsdGtfaWQsMTUxOjg2LjM1LDg2LjUyLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5NTIxOSZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxMSx0a19pZCwxNTI6OTAuMCw5MC4xNyxfWE1MREVQVEhfLDE0LGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzg0NzkzL2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsMTIsdGtfaWQsMTU3Ojk0LjI0LDk0LjMxLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc4NDc5MyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxMyx0a19pZCwxNzM6OTQuMzUsOTQuNTIsX1hNTERFUFRIXywxNyxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzg0NzkzJkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDE0LHRrX2lkLDE3NDoxMDAuMCwxMDAuMTcsX1hNTERFUFRIXywxMixjbGFzcyxqcy1jbGlja2FibGUtYXJlYS1saW5rLGhyZWYsICAgL2pvYi8xMzc5ODE4Ny9qdW5pb3ItYWNjb3VudGFudC8/TGlua1NvdXJjZT1TaW1pbGFySm9iUGxhdGZvcm0gICAgLGlkLDE1LHRrX2lkLDE4MjoxMDQuMjQsMTA0LjMxLF9YTUxERVBUSF8sMTUsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5ODE4NyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxNix0a19pZCwxOTg6MTA0LjM1LDEwNC41MixfWE1MREVQVEhfLDE1LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3OTgxODcmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMTcsdGtfaWQsMTk5OjEwOC4wLDEwOC4xNyxfWE1MREVQVEhfLDEyLGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzk1MjE5L2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsMTgsdGtfaWQsMjA0OjExMi4yNCwxMTIuMzEsX1hNTERFUFRIXywxNSxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzk1MjE5JkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDE5LHRrX2lkLDIyMDoxMTIuMzUsMTEyLjUyLF9YTUxERVBUSF8sMTUsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5NTIxOSZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwyMCx0a19pZCwyMjE6MTE2LjAsMTE2LjE3LF9YTUxERVBUSF8sMTIsY2xhc3MsanMtY2xpY2thYmxlLWFyZWEtbGluayxocmVmLCAgIC9qb2IvMTM3ODQ3OTMvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9U2ltaWxhckpvYlBsYXRmb3JtICAgICxpZCwyMSx0a19pZCwyMjY6MTIwLjI0LDEyMC4zMSxfWE1MREVQVEhfLDE1LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3ODQ3OTMmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMjIsdGtfaWQsMjQyOjEyMC4zNSwxMjAuNTIsX1hNTERFUFRIXywxNSxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzg0NzkzJkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDIzLHRrX2lkLDI0M3xkaXY6MS4wLDEyMy42LF9YTUxERVBUSF8sMyxjbGFzcyxtYWluLGlkLDI1LG9yaWdpbmFsSUQsbWFpbixyb2xlLG1haW4sdGtfaWQsNzoxLjAsMTIzLjYsX1hNTERFUFRIXyw0LGNsYXNzLHdyYXBwZXIsaWQsMjYsdGtfaWQsODoxLjAsMTIzLjYsX1hNTERFUFRIXyw1LGNsYXNzLGpzLWpvYi1kZXRhaWwsZGF0YS1qb2JpZCwxMzc1NDg4MCxpZCwyNyx0a19pZCw5OjEuMCw5NC42MCxfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZCxpZCwyOCx0a19pZCwxMDoxLjAsOTQuNjAsX1hNTERFUFRIXyw3LGNsYXNzLGdyaWQtaXRlbSBmb3VyLWZpZnRocyBsYXAtb25lLXdob2xlICBwYWxtLW9uZS13aG9sZSxpZCwyOSx0a19pZCwxMTozLjMsMjguMTksX1hNTERFUFRIXyw4LGNsYXNzLGdyaWQsaWQsMzAsdGtfaWQsMTM6My4zLDI4LjE5LF9YTUxERVBUSF8sOSxjbGFzcyxncmlkLWl0ZW0gZml2ZS10d2VsZnRocyBwYWxtLW9uZS13aG9sZSBzdGlja3ksaWQsMzEsdGtfaWQsMTQ6My4zLDQuMjMsX1hNTERFUFRIXywxMCxjbGFzcyxibG9jay0tbGFyZ2VyIGNhcmQgaGlnaGxpZ2h0LWxpZ2h0ZXIsaWQsMzIsdGtfaWQsMTU6Ni4zLDcuMTIsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fbG9jYXRpb24saWQsMzQsdGtfaWQsMjE6OS4zLDEwLjIxLF9YTUxERVBUSF8sMTAsY2xhc3MsY2YgbWFyZ2luLWJvdHRvbS01IGpvYi1kZXRhaWwtZGVzY3JpcHRpb25fX3NhbGFyeSxpZCwzNSx0a19pZCwyNjoxMi4zLDEzLjIxLF9YTUxERVBUSF8sMTAsY2xhc3MsY2YgbWFyZ2luLWJvdHRvbS01IGpvYi1kZXRhaWwtZGVzY3JpcHRpb25fX3Bvc3RlZC1kYXRlLGlkLDM2LHRrX2lkLDMxOjE1LjMsMTYuMjEsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fZW5kLWRhdGUsaWQsMzcsdGtfaWQsMzY6MTguMywxOS4yMCxfWE1MREVQVEhfLDEwLGNsYXNzLGNmIG1hcmdpbi1ib3R0b20tNSBqb2ItZGV0YWlsLWRlc2NyaXB0aW9uX19qb2ItcmVmLGlkLDM4LHRrX2lkLDQwOjIxLjMsMjIuMjEsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fY2F0ZWdvcnktU2VjdG9yLGlkLDM5LHRrX2lkLDQ0OjI0LjMsMjUuMTksX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fY2F0ZWdvcnktQ29udHJhY3RUeXBlLGlkLDQwLHRrX2lkLDQ5OjI3LjMsMjguMTksX1hNTERFUFRIXywxMCxjbGFzcyxjZiBqb2ItZGV0YWlsLWRlc2NyaXB0aW9uX19jYXRlZ29yeS1Ib3VycyxpZCw0MSx0a19pZCw1NDozMC4zLDk0LjYwLF9YTUxERVBUSF8sOCxjbGFzcyxncmlkLWl0ZW0gc2V2ZW4tdHdlbGZ0aHMgcGFsbS1vbmUtd2hvbGUsaWQsNDMsdGtfaWQsNjA6MzAuMyw2Ni40NixfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgZml4LXRleHQgam9iLWRlc2NyaXB0aW9uLGlkLDQ1LHRrX2lkLDYyOjY3LjMsNjcuOCxfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgY2YsaWQsNDYsdGtfaWQsOTk6NjcuMyw2Ny44LF9YTUxERVBUSF8sMTAsY2xhc3MsZmxvYXQtcmlnaHQsaWQsNDcsdGtfaWQsMTAwOjY4LjMsNjguOCxfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgY2YsaWQsNDgsdGtfaWQsMTA0OjY4LjMsNjguOCxfWE1MREVQVEhfLDEwLGNsYXNzLGZsb2F0LXJpZ2h0IGJsb2NrLGlkLDQ5LHRrX2lkLDEwNTo3MC4wLDk0LjYwLF9YTUxERVBUSF8sOSxjbGFzcyxibG9jayBzaW1pbGFyLWpvYnMgZGVzay1oaWRkZW4gLGlkLDUwLHRrX2lkLDEwNzo3NC4wLDc3LjI1LF9YTUxERVBUSF8sMTIsY2xhc3MsbGlzdGVyX19kZXRhaWxzIGNmIGpzLWNsaWNrYWJsZSxpZCw1MSx0a19pZCwxMTE6NzguMTIsNzguNjAsX1hNTERFUFRIXywxMixjbGFzcyxsaXN0ZXJfX2Zvb3RlciBjZixpZCw1Mix0a19pZCwxMTk6NzguMTIsNzguNjAsX1hNTERFUFRIXywxNixjbGFzcywganMtaGlkZSxpZCw1MyxvcmlnaW5hbElELHNhdmUtam9iLWFsZXJ0LXRleHQtMTM3OTgxODcsdGtfaWQsMTI4OjgyLjAsODUuMjksX1hNTERFUFRIXywxMixjbGFzcyxsaXN0ZXJfX2RldGFpbHMgY2YganMtY2xpY2thYmxlLGlkLDU0LHRrX2lkLDEzMzo4Ni4xMiw4Ni42MCxfWE1MREVQVEhfLDEyLGNsYXNzLGxpc3Rlcl9fZm9vdGVyIGNmLGlkLDU1LHRrX2lkLDE0MTo4Ni4xMiw4Ni42MCxfWE1MREVQVEhfLDE2LGNsYXNzLCBqcy1oaWRlLGlkLDU2LG9yaWdpbmFsSUQsc2F2ZS1qb2ItYWxlcnQtdGV4dC0xMzc5NTIxOSx0a19pZCwxNTA6OTAuMCw5My4yMyxfWE1MREVQVEhfLDEyLGNsYXNzLGxpc3Rlcl9fZGV0YWlscyBjZiBqcy1jbGlja2FibGUsaWQsNTcsdGtfaWQsMTU1Ojk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTIsY2xhc3MsbGlzdGVyX19mb290ZXIgY2YsaWQsNTgsdGtfaWQsMTYzOjk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTYsY2xhc3MsIGpzLWhpZGUsaWQsNTksb3JpZ2luYWxJRCxzYXZlLWpvYi1hbGVydC10ZXh0LTEzNzg0NzkzLHRrX2lkLDE3Mjo5Ni4wLDEyMC42MCxfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZC1pdGVtIG9uZS1maWZ0aCBsYXAtaGlkZGVuICBwYWxtLWhpZGRlbixpZCw2MCx0a19pZCwxNzU6OTYuMCwxMjAuNjAsX1hNTERFUFRIXyw3LGNsYXNzLGJsb2NrIHNpbWlsYXItam9icyAgc2ltaWxhci1qb2JzLS1zaWRlYmFyLGlkLDYxLHRrX2lkLDE3NjoxMDAuMCwxMDMuMjUsX1hNTERFUFRIXywxMCxjbGFzcyxsaXN0ZXJfX2RldGFpbHMgY2YganMtY2xpY2thYmxlLGlkLDYyLHRrX2lkLDE4MDoxMDQuMTIsMTA0LjYwLF9YTUxERVBUSF8sMTAsY2xhc3MsbGlzdGVyX19mb290ZXIgY2YsaWQsNjMsdGtfaWQsMTg4OjEwNC4xMiwxMDQuNjAsX1hNTERFUFRIXywxNCxjbGFzcywganMtaGlkZSxpZCw2NCxvcmlnaW5hbElELHNhdmUtam9iLWFsZXJ0LXRleHQtMTM3OTgxODcsdGtfaWQsMTk3OjEwOC4wLDExMS4yOSxfWE1MREVQVEhfLDEwLGNsYXNzLGxpc3Rlcl9fZGV0YWlscyBjZiBqcy1jbGlja2FibGUsaWQsNjUsdGtfaWQsMjAyOjExMi4xMiwxMTIuNjAsX1hNTERFUFRIXywxMCxjbGFzcyxsaXN0ZXJfX2Zvb3RlciBjZixpZCw2Nix0a19pZCwyMTA6MTEyLjEyLDExMi42MCxfWE1MREVQVEhfLDE0LGNsYXNzLCBqcy1oaWRlLGlkLDY3LG9yaWdpbmFsSUQsc2F2ZS1qb2ItYWxlcnQtdGV4dC0xMzc5NTIxOSx0a19pZCwyMTk6MTE2LjAsMTE5LjIzLF9YTUxERVBUSF8sMTAsY2xhc3MsbGlzdGVyX19kZXRhaWxzIGNmIGpzLWNsaWNrYWJsZSxpZCw2OCx0a19pZCwyMjQ6MTIwLjEyLDEyMC42MCxfWE1MREVQVEhfLDEwLGNsYXNzLGxpc3Rlcl9fZm9vdGVyIGNmLGlkLDY5LHRrX2lkLDIzMjoxMjAuMTIsMTIwLjYwLF9YTUxERVBUSF8sMTQsY2xhc3MsIGpzLWhpZGUsaWQsNzAsb3JpZ2luYWxJRCxzYXZlLWpvYi1hbGVydC10ZXh0LTEzNzg0NzkzLHRrX2lkLDI0MToxMjIuMywxMjIuNixfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZC1pdGVtIG9uZS1maWZ0aCBsYXAtaGlkZGVuICBwYWxtLWhpZGRlbixpZCw3MSx0a19pZCwyNDR8Zm9ybTo3OC4xMiw3OC42MCxfWE1MREVQVEhfLDE1LGFjdGlvbiwveW91ci1qb2JzLyxjbGFzcyxqcy1zaG9ydGxpc3QtZm9ybSxpZCw3OSxtZXRob2QscG9zdCx0a19pZCwxMjI6ODYuMTIsODYuNjAsX1hNTERFUFRIXywxNSxhY3Rpb24sL3lvdXItam9icy8sY2xhc3MsanMtc2hvcnRsaXN0LWZvcm0saWQsODAsbWV0aG9kLHBvc3QsdGtfaWQsMTQ0Ojk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTUsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgxLG1ldGhvZCxwb3N0LHRrX2lkLDE2NjoxMDQuMTIsMTA0LjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgyLG1ldGhvZCxwb3N0LHRrX2lkLDE5MToxMTIuMTIsMTEyLjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgzLG1ldGhvZCxwb3N0LHRrX2lkLDIxMzoxMjAuMTIsMTIwLjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDg0LG1ldGhvZCxwb3N0LHRrX2lkLDIzNXxoMToxLjAsMS4xNyxfWE1MREVQVEhfLDgsaWQsODUsdGtfaWQsMTJ8aDM6NzAuMCw3MC4xMixfWE1MREVQVEhfLDEwLGNsYXNzLG1hcmdpbi1ib3R0b20tNSxpZCw4Nix0a19pZCwxMDg6NzQuMCw3NC4xNyxfWE1MREVQVEhfLDEzLGNsYXNzLGxpc3Rlcl9faGVhZGVyLGlkLDg3LHRrX2lkLDExMjo4Mi4wLDgyLjE3LF9YTUxERVBUSF8sMTMsY2xhc3MsbGlzdGVyX19oZWFkZXIsaWQsODgsdGtfaWQsMTM0OjkwLjAsOTAuMTcsX1hNTERFUFRIXywxMyxjbGFzcyxsaXN0ZXJfX2hlYWRlcixpZCw4OSx0a19pZCwxNTY6OTYuMCw5Ni4xMixfWE1MREVQVEhfLDgsY2xhc3MsbWFyZ2luLWJvdHRvbS01LGlkLDkwLHRrX2lkLDE3NzoxMDAuMCwxMDAuMTcsX1hNTERFUFRIXywxMSxjbGFzcyxsaXN0ZXJfX2hlYWRlcixpZCw5MSx0a19pZCwxODE6MTA4LjAsMTA4LjE3LF9YTUxERVBUSF8sMTEsY2xhc3MsbGlzdGVyX19oZWFkZXIsaWQsOTIsdGtfaWQsMjAzOjExNi4wLDExNi4xNyxfWE1MREVQVEhfLDExLGNsYXNzLGxpc3Rlcl9faGVhZGVyLGlkLDkzLHRrX2lkLDIyNQ==" has_formatting="yes" has_sec_vacancy="yes" id="0" lang="english" maxProcessingTime="30" source="text/xml" url="https://independentjobs.independent.co.uk/job/13754880/junior-accountant/"><sec_vacancy id="95"><vac_title id="358"><vac_job_title id="340"><prof_experience id="416">Junior</prof_experience> Accountant</vac_job_title>
+</vac_title>
+<sec_summary id="360">   Recruiter
+          <org_name id="97">NLB Solutions</org_name>
+
+   Location
+          <vac_location id="429" priority="1" type="vac_location_validated">UK</vac_location>
+
+   Salary
+          <salary id="324">Competitive</salary>
+
+   Posted
+          <vac_posted_date id="111">18 Jun 2019</vac_posted_date>
+
+   Closes
+          <org_address id="426">18 Jul</org_address> <vac_posted_date id="112">2019</vac_posted_date>
+
+   Ref
+          <org_phone id="110">1178470367</org_phone>
+
+   Sector
+          Accountancy
+
+   Contract Type
+          <cond_contract_type id="100">Permanent</cond_contract_type>
+
+   Hours
+          <cond_employment_type id="127">Full Time</cond_employment_type>
+</sec_summary>
+<sec_job_descr conf="0.08" id="425">   An exciting opportunity to join an expanding practice with a number of offices across <vac_location id="430" priority="2" type="vac_location_validated">London</vac_location> and Head Office just outside on Wimbledon. Ideally you will have at least a years experience in a <prof_competence id="120">practice environment with client facing exposur</prof_competence>. Ideally you will be <prof_education id="158">studying <fulltext_keywords id="382" type="gazetteer">AAT</fulltext_keywords>, <fulltext_keywords id="383" type="gazetteer_expansion">ACCA</fulltext_keywords> or <fulltext_keywords id="384" type="gazetteer">ACA</fulltext_keywords></prof_education> and looking to complete this with the support of your new employer. The company has rapidly expanded over the last three years and in preperation for further growth are looking for individuals with a growth mindset to join them.
+
+   You will have your own client base and will be responsible for looking after those clients from start to finish.
+
+   The business offers a supportive senior team and there is clear opportunity for development which will lead to further internal growth and opportunities.
+
+   Salary is <salary id="325">dependent on experience</salary>.
+
+   Duties:
+
+   * Provide <fulltext_keywords id="385" type="gazetteer">accountancy</fulltext_keywords> services within agreed time frames
+
+   * Maintain and grow client base
+
+   * Completion and filing of accounts, corporation <fulltext_keywords id="386" type="gazetteer">tax</fulltext_keywords>, <fulltext_keywords id="387" type="gazetteer">payroll</fulltext_keywords>, vat
+
+   * Assistance with year-end accounts
+
+   * Constant and consistent clear <fulltext_keywords id="388" type="gazetteer">communication</fulltext_keywords> and assistance with clients when <keyword_desirability id="428" link="388" required="1">required</keyword_desirability>
+
+   Progression Opportunities:
+
+   * Internal progression available
+</sec_job_descr>
+   * Growing practice looking for those who wish to grow with them
+
+   * Study programme and support through to qualification
+
+   Person spec:
+
+   * One year or more experience in Practice
+
+<sec_candidate_descr conf="0.90" id="424">   * <prof_education id="159">Studying <fulltext_keywords id="389" type="uppercase">ACCA</fulltext_keywords> / <fulltext_keywords id="390" type="gazetteer">ACA</fulltext_keywords> / <fulltext_keywords id="391" type="gazetteer">AAT</fulltext_keywords> (</prof_education>not just exemptions)
+
+   * Exposure <prof_competence id="121">to clients</prof_competence>
+
+   * <prof_competence id="122">Outgoing with strong <fulltext_keywords id="392" type="context">communication skills</fulltext_keywords></prof_competence>
+</sec_candidate_descr>   Share
+   Apply
+
+Similar jobs
+
+     *
+
+<prof_experience id="417">Junior</prof_experience> <vac_job_title id="341">Accountant</vac_job_title>
+          + <vac_location id="431" priority="3" type="vac_location_validated">London, UK</vac_location>
+<sec_conditions_descr conf="0.02" id="423">          + <salary id="326"><prof_competence id="123">Competitive</prof_competence></salary>
+          + <prof_competence id="124">Halliday Marx</prof_competence>
+          + You need to sign in or create an account to save
+       New
+     *
+</sec_conditions_descr>
+<vac_job_title id="342"><prof_experience id="418">Junior</prof_experience> Accountant</vac_job_title>
+          + <vac_location id="432" priority="4" type="vac_location_validated">Stockport, UK</vac_location>
+          + <salary id="327">Competitive</salary>
+          + Spear Recruitment
+          + You need to sign in or create an account to save
+       New
+     *
+
+<prof_experience id="419">Junior</prof_experience> <vac_job_title id="343">Accountant</vac_job_title>
+          + <vac_location id="433" priority="5" type="vac_location_validated">Southampton, UK</vac_location>
+          + <salary id="328">Competitive</salary>
+          + AJ Chambers
+          + You need to sign in or create an account to save
+
+Similar jobs
+
+     *
+
+<prof_experience id="420">Junior</prof_experience> <vac_job_title id="344">Accountant</vac_job_title>
+          + <vac_location id="434" priority="6" type="vac_location_validated">London, UK</vac_location>
+          + <salary id="329">Competitive</salary>
+          + Halliday Marx
+          + You need to sign in or create an account to save
+       New
+     *
+
+<vac_job_title id="345"><prof_experience id="421">Junior</prof_experience> Accountant</vac_job_title>
+          + <vac_location id="435" priority="7" type="vac_location_validated">Stockport, UK</vac_location>
+          + <salary id="330">Competitive</salary>
+          + Spear Recruitment
+          + You need to sign in or create an account to save
+       New
+     *
+
+<vac_job_title id="346"><prof_experience id="422">Junior</prof_experience> Accountant</vac_job_title>
+          + <vac_location id="436" priority="8" type="vac_location_validated">Southampton, UK</vac_location>
+          + <salary id="331">Competitive</salary>
+          + AJ Chambers
+          + You need to <cond_contract_type id="101">sign in</cond_contract_type> or create an account to save
+
+   --&gt;
+   --&gt;
+</sec_vacancy>
+
+</Document>
+<DocumentStructure>
+	<ItemGroup count="1" key="Document">
+		<Item index="0">
+			<Field key="content_type"><Value>text/xml</Value></Field>
+			<Field key="correlationid"><Value>62dc87a15ca44296abf934e8909f384a</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-22</Value></Field>
+			<Field key="external_normurl"><Value>independent.co.uk/job/13754880/junior-accountant</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-21</Value></Field>
+			<Field key="external_spidersource"><Value>getterscript</Value></Field>
+			<Field key="formatting"><Value>YToyMi4xMCwyMi4yMSxfWE1MREVQVEhfLDEzLGhyZWYsL2pvYnMvYWNjb3VudGFuY3kvLGlkLDEsdGtfaWQsNDg6MjUuMTAsMjUuMTksX1hNTERFUFRIXywxMyxocmVmLC9qb2JzL3Blcm1hbmVudC8saWQsMix0a19pZCw1MzoyOC4xMCwyOC4xOSxfWE1MREVQVEhfLDEzLGhyZWYsL2pvYnMvZnVsbC10aW1lLyxpZCwzLHRrX2lkLDU4OjY3LjMsNjcuOCxfWE1MREVQVEhfLDExLGNsYXNzLGpzLXdlYnVpLXBvcG92ZXIgaGlkZSBqcy1zaG93LGRhdGEtcG9wb3Zlci1jb250ZW50LCNzb2NpYWwtYnV0dG9ucyxocmVmLCNzb2NpYWwtYnV0dG9ucyxpZCw0LHJlbCxub2ZvbGxvdyx0a19pZCwxMDE6NjguMyw2OC44LF9YTUxERVBUSF8sMTEsY2xhc3MsaWNvbi1hZnRlciBidXR0b24gYnV0dG9uLS1icmFuZCBidXR0b24tLWFwcGx5IGljb24td2hpdGUgLGRhdGEtaWNvbizihpcsaHJlZiwvYXBwbHkvMTM3NTQ4ODAvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9Sm9iRGV0YWlscyZjb3VudHJ5Y29kZT1HQixpZCw1LHJlbCxub2ZvbGxvdyx0YXJnZXQsX2JsYW5rLHRpdGxlLFRoaXMgd2lsbCBvcGVuIGluIGEgbmV3IHdpbmRvdyx0a19pZCwxMDY6NzQuMCw3NC4xNyxfWE1MREVQVEhfLDE0LGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzk4MTg3L2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsNix0a19pZCwxMTM6NzguMjQsNzguMzEsX1hNTERFUFRIXywxNyxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzk4MTg3JkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDcsdGtfaWQsMTI5Ojc4LjM1LDc4LjUyLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5ODE4NyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCw4LHRrX2lkLDEzMDo4Mi4wLDgyLjE3LF9YTUxERVBUSF8sMTQsY2xhc3MsanMtY2xpY2thYmxlLWFyZWEtbGluayxocmVmLCAgIC9qb2IvMTM3OTUyMTkvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9U2ltaWxhckpvYlBsYXRmb3JtICAgICxpZCw5LHRrX2lkLDEzNTo4Ni4yNCw4Ni4zMSxfWE1MREVQVEhfLDE3LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3OTUyMTkmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMTAsdGtfaWQsMTUxOjg2LjM1LDg2LjUyLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5NTIxOSZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxMSx0a19pZCwxNTI6OTAuMCw5MC4xNyxfWE1MREVQVEhfLDE0LGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzg0NzkzL2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsMTIsdGtfaWQsMTU3Ojk0LjI0LDk0LjMxLF9YTUxERVBUSF8sMTcsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc4NDc5MyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxMyx0a19pZCwxNzM6OTQuMzUsOTQuNTIsX1hNTERFUFRIXywxNyxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzg0NzkzJkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDE0LHRrX2lkLDE3NDoxMDAuMCwxMDAuMTcsX1hNTERFUFRIXywxMixjbGFzcyxqcy1jbGlja2FibGUtYXJlYS1saW5rLGhyZWYsICAgL2pvYi8xMzc5ODE4Ny9qdW5pb3ItYWNjb3VudGFudC8/TGlua1NvdXJjZT1TaW1pbGFySm9iUGxhdGZvcm0gICAgLGlkLDE1LHRrX2lkLDE4MjoxMDQuMjQsMTA0LjMxLF9YTUxERVBUSF8sMTUsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5ODE4NyZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwxNix0a19pZCwxOTg6MTA0LjM1LDEwNC41MixfWE1MREVQVEhfLDE1LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3OTgxODcmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMTcsdGtfaWQsMTk5OjEwOC4wLDEwOC4xNyxfWE1MREVQVEhfLDEyLGNsYXNzLGpzLWNsaWNrYWJsZS1hcmVhLWxpbmssaHJlZiwgICAvam9iLzEzNzk1MjE5L2p1bmlvci1hY2NvdW50YW50Lz9MaW5rU291cmNlPVNpbWlsYXJKb2JQbGF0Zm9ybSAgICAsaWQsMTgsdGtfaWQsMjA0OjExMi4yNCwxMTIuMzEsX1hNTERFUFRIXywxNSxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzk1MjE5JkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDE5LHRrX2lkLDIyMDoxMTIuMzUsMTEyLjUyLF9YTUxERVBUSF8sMTUsaHJlZixodHRwc19fPUNPTE9OPV9fLy9pbmRlcGVuZGVudGpvYnMuaW5kZXBlbmRlbnQuY28udWsveW91ci1qb2JzLz9Kb2JJZD0xMzc5NTIxOSZBY3Rpb249U2hvcnRsaXN0Sm9iJlJldHVyblVybD1+L3lvdXItam9icz9BY3RpdmVTZWN0aW9uPVNob3J0TGlzdCxpZCwyMCx0a19pZCwyMjE6MTE2LjAsMTE2LjE3LF9YTUxERVBUSF8sMTIsY2xhc3MsanMtY2xpY2thYmxlLWFyZWEtbGluayxocmVmLCAgIC9qb2IvMTM3ODQ3OTMvanVuaW9yLWFjY291bnRhbnQvP0xpbmtTb3VyY2U9U2ltaWxhckpvYlBsYXRmb3JtICAgICxpZCwyMSx0a19pZCwyMjY6MTIwLjI0LDEyMC4zMSxfWE1MREVQVEhfLDE1LGhyZWYsaHR0cHNfXz1DT0xPTj1fXy8vaW5kZXBlbmRlbnRqb2JzLmluZGVwZW5kZW50LmNvLnVrL3lvdXItam9icy8/Sm9iSWQ9MTM3ODQ3OTMmQWN0aW9uPVNob3J0bGlzdEpvYiZSZXR1cm5Vcmw9fi95b3VyLWpvYnM/QWN0aXZlU2VjdGlvbj1TaG9ydExpc3QsaWQsMjIsdGtfaWQsMjQyOjEyMC4zNSwxMjAuNTIsX1hNTERFUFRIXywxNSxocmVmLGh0dHBzX189Q09MT049X18vL2luZGVwZW5kZW50am9icy5pbmRlcGVuZGVudC5jby51ay95b3VyLWpvYnMvP0pvYklkPTEzNzg0NzkzJkFjdGlvbj1TaG9ydGxpc3RKb2ImUmV0dXJuVXJsPX4veW91ci1qb2JzP0FjdGl2ZVNlY3Rpb249U2hvcnRMaXN0LGlkLDIzLHRrX2lkLDI0M3xkaXY6MS4wLDEyMy42LF9YTUxERVBUSF8sMyxjbGFzcyxtYWluLGlkLDI1LG9yaWdpbmFsSUQsbWFpbixyb2xlLG1haW4sdGtfaWQsNzoxLjAsMTIzLjYsX1hNTERFUFRIXyw0LGNsYXNzLHdyYXBwZXIsaWQsMjYsdGtfaWQsODoxLjAsMTIzLjYsX1hNTERFUFRIXyw1LGNsYXNzLGpzLWpvYi1kZXRhaWwsZGF0YS1qb2JpZCwxMzc1NDg4MCxpZCwyNyx0a19pZCw5OjEuMCw5NC42MCxfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZCxpZCwyOCx0a19pZCwxMDoxLjAsOTQuNjAsX1hNTERFUFRIXyw3LGNsYXNzLGdyaWQtaXRlbSBmb3VyLWZpZnRocyBsYXAtb25lLXdob2xlICBwYWxtLW9uZS13aG9sZSxpZCwyOSx0a19pZCwxMTozLjMsMjguMTksX1hNTERFUFRIXyw4LGNsYXNzLGdyaWQsaWQsMzAsdGtfaWQsMTM6My4zLDI4LjE5LF9YTUxERVBUSF8sOSxjbGFzcyxncmlkLWl0ZW0gZml2ZS10d2VsZnRocyBwYWxtLW9uZS13aG9sZSBzdGlja3ksaWQsMzEsdGtfaWQsMTQ6My4zLDQuMjMsX1hNTERFUFRIXywxMCxjbGFzcyxibG9jay0tbGFyZ2VyIGNhcmQgaGlnaGxpZ2h0LWxpZ2h0ZXIsaWQsMzIsdGtfaWQsMTU6Ni4zLDcuMTIsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fbG9jYXRpb24saWQsMzQsdGtfaWQsMjE6OS4zLDEwLjIxLF9YTUxERVBUSF8sMTAsY2xhc3MsY2YgbWFyZ2luLWJvdHRvbS01IGpvYi1kZXRhaWwtZGVzY3JpcHRpb25fX3NhbGFyeSxpZCwzNSx0a19pZCwyNjoxMi4zLDEzLjIxLF9YTUxERVBUSF8sMTAsY2xhc3MsY2YgbWFyZ2luLWJvdHRvbS01IGpvYi1kZXRhaWwtZGVzY3JpcHRpb25fX3Bvc3RlZC1kYXRlLGlkLDM2LHRrX2lkLDMxOjE1LjMsMTYuMjEsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fZW5kLWRhdGUsaWQsMzcsdGtfaWQsMzY6MTguMywxOS4yMCxfWE1MREVQVEhfLDEwLGNsYXNzLGNmIG1hcmdpbi1ib3R0b20tNSBqb2ItZGV0YWlsLWRlc2NyaXB0aW9uX19qb2ItcmVmLGlkLDM4LHRrX2lkLDQwOjIxLjMsMjIuMjEsX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fY2F0ZWdvcnktU2VjdG9yLGlkLDM5LHRrX2lkLDQ0OjI0LjMsMjUuMTksX1hNTERFUFRIXywxMCxjbGFzcyxjZiBtYXJnaW4tYm90dG9tLTUgam9iLWRldGFpbC1kZXNjcmlwdGlvbl9fY2F0ZWdvcnktQ29udHJhY3RUeXBlLGlkLDQwLHRrX2lkLDQ5OjI3LjMsMjguMTksX1hNTERFUFRIXywxMCxjbGFzcyxjZiBqb2ItZGV0YWlsLWRlc2NyaXB0aW9uX19jYXRlZ29yeS1Ib3VycyxpZCw0MSx0a19pZCw1NDozMC4zLDk0LjYwLF9YTUxERVBUSF8sOCxjbGFzcyxncmlkLWl0ZW0gc2V2ZW4tdHdlbGZ0aHMgcGFsbS1vbmUtd2hvbGUsaWQsNDMsdGtfaWQsNjA6MzAuMyw2Ni40NixfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgZml4LXRleHQgam9iLWRlc2NyaXB0aW9uLGlkLDQ1LHRrX2lkLDYyOjY3LjMsNjcuOCxfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgY2YsaWQsNDYsdGtfaWQsOTk6NjcuMyw2Ny44LF9YTUxERVBUSF8sMTAsY2xhc3MsZmxvYXQtcmlnaHQsaWQsNDcsdGtfaWQsMTAwOjY4LjMsNjguOCxfWE1MREVQVEhfLDksY2xhc3MsYmxvY2sgY2YsaWQsNDgsdGtfaWQsMTA0OjY4LjMsNjguOCxfWE1MREVQVEhfLDEwLGNsYXNzLGZsb2F0LXJpZ2h0IGJsb2NrLGlkLDQ5LHRrX2lkLDEwNTo3MC4wLDk0LjYwLF9YTUxERVBUSF8sOSxjbGFzcyxibG9jayBzaW1pbGFyLWpvYnMgZGVzay1oaWRkZW4gLGlkLDUwLHRrX2lkLDEwNzo3NC4wLDc3LjI1LF9YTUxERVBUSF8sMTIsY2xhc3MsbGlzdGVyX19kZXRhaWxzIGNmIGpzLWNsaWNrYWJsZSxpZCw1MSx0a19pZCwxMTE6NzguMTIsNzguNjAsX1hNTERFUFRIXywxMixjbGFzcyxsaXN0ZXJfX2Zvb3RlciBjZixpZCw1Mix0a19pZCwxMTk6NzguMTIsNzguNjAsX1hNTERFUFRIXywxNixjbGFzcywganMtaGlkZSxpZCw1MyxvcmlnaW5hbElELHNhdmUtam9iLWFsZXJ0LXRleHQtMTM3OTgxODcsdGtfaWQsMTI4OjgyLjAsODUuMjksX1hNTERFUFRIXywxMixjbGFzcyxsaXN0ZXJfX2RldGFpbHMgY2YganMtY2xpY2thYmxlLGlkLDU0LHRrX2lkLDEzMzo4Ni4xMiw4Ni42MCxfWE1MREVQVEhfLDEyLGNsYXNzLGxpc3Rlcl9fZm9vdGVyIGNmLGlkLDU1LHRrX2lkLDE0MTo4Ni4xMiw4Ni42MCxfWE1MREVQVEhfLDE2LGNsYXNzLCBqcy1oaWRlLGlkLDU2LG9yaWdpbmFsSUQsc2F2ZS1qb2ItYWxlcnQtdGV4dC0xMzc5NTIxOSx0a19pZCwxNTA6OTAuMCw5My4yMyxfWE1MREVQVEhfLDEyLGNsYXNzLGxpc3Rlcl9fZGV0YWlscyBjZiBqcy1jbGlja2FibGUsaWQsNTcsdGtfaWQsMTU1Ojk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTIsY2xhc3MsbGlzdGVyX19mb290ZXIgY2YsaWQsNTgsdGtfaWQsMTYzOjk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTYsY2xhc3MsIGpzLWhpZGUsaWQsNTksb3JpZ2luYWxJRCxzYXZlLWpvYi1hbGVydC10ZXh0LTEzNzg0NzkzLHRrX2lkLDE3Mjo5Ni4wLDEyMC42MCxfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZC1pdGVtIG9uZS1maWZ0aCBsYXAtaGlkZGVuICBwYWxtLWhpZGRlbixpZCw2MCx0a19pZCwxNzU6OTYuMCwxMjAuNjAsX1hNTERFUFRIXyw3LGNsYXNzLGJsb2NrIHNpbWlsYXItam9icyAgc2ltaWxhci1qb2JzLS1zaWRlYmFyLGlkLDYxLHRrX2lkLDE3NjoxMDAuMCwxMDMuMjUsX1hNTERFUFRIXywxMCxjbGFzcyxsaXN0ZXJfX2RldGFpbHMgY2YganMtY2xpY2thYmxlLGlkLDYyLHRrX2lkLDE4MDoxMDQuMTIsMTA0LjYwLF9YTUxERVBUSF8sMTAsY2xhc3MsbGlzdGVyX19mb290ZXIgY2YsaWQsNjMsdGtfaWQsMTg4OjEwNC4xMiwxMDQuNjAsX1hNTERFUFRIXywxNCxjbGFzcywganMtaGlkZSxpZCw2NCxvcmlnaW5hbElELHNhdmUtam9iLWFsZXJ0LXRleHQtMTM3OTgxODcsdGtfaWQsMTk3OjEwOC4wLDExMS4yOSxfWE1MREVQVEhfLDEwLGNsYXNzLGxpc3Rlcl9fZGV0YWlscyBjZiBqcy1jbGlja2FibGUsaWQsNjUsdGtfaWQsMjAyOjExMi4xMiwxMTIuNjAsX1hNTERFUFRIXywxMCxjbGFzcyxsaXN0ZXJfX2Zvb3RlciBjZixpZCw2Nix0a19pZCwyMTA6MTEyLjEyLDExMi42MCxfWE1MREVQVEhfLDE0LGNsYXNzLCBqcy1oaWRlLGlkLDY3LG9yaWdpbmFsSUQsc2F2ZS1qb2ItYWxlcnQtdGV4dC0xMzc5NTIxOSx0a19pZCwyMTk6MTE2LjAsMTE5LjIzLF9YTUxERVBUSF8sMTAsY2xhc3MsbGlzdGVyX19kZXRhaWxzIGNmIGpzLWNsaWNrYWJsZSxpZCw2OCx0a19pZCwyMjQ6MTIwLjEyLDEyMC42MCxfWE1MREVQVEhfLDEwLGNsYXNzLGxpc3Rlcl9fZm9vdGVyIGNmLGlkLDY5LHRrX2lkLDIzMjoxMjAuMTIsMTIwLjYwLF9YTUxERVBUSF8sMTQsY2xhc3MsIGpzLWhpZGUsaWQsNzAsb3JpZ2luYWxJRCxzYXZlLWpvYi1hbGVydC10ZXh0LTEzNzg0NzkzLHRrX2lkLDI0MToxMjIuMywxMjIuNixfWE1MREVQVEhfLDYsY2xhc3MsZ3JpZC1pdGVtIG9uZS1maWZ0aCBsYXAtaGlkZGVuICBwYWxtLWhpZGRlbixpZCw3MSx0a19pZCwyNDR8Zm9ybTo3OC4xMiw3OC42MCxfWE1MREVQVEhfLDE1LGFjdGlvbiwveW91ci1qb2JzLyxjbGFzcyxqcy1zaG9ydGxpc3QtZm9ybSxpZCw3OSxtZXRob2QscG9zdCx0a19pZCwxMjI6ODYuMTIsODYuNjAsX1hNTERFUFRIXywxNSxhY3Rpb24sL3lvdXItam9icy8sY2xhc3MsanMtc2hvcnRsaXN0LWZvcm0saWQsODAsbWV0aG9kLHBvc3QsdGtfaWQsMTQ0Ojk0LjEyLDk0LjYwLF9YTUxERVBUSF8sMTUsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgxLG1ldGhvZCxwb3N0LHRrX2lkLDE2NjoxMDQuMTIsMTA0LjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgyLG1ldGhvZCxwb3N0LHRrX2lkLDE5MToxMTIuMTIsMTEyLjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDgzLG1ldGhvZCxwb3N0LHRrX2lkLDIxMzoxMjAuMTIsMTIwLjYwLF9YTUxERVBUSF8sMTMsYWN0aW9uLC95b3VyLWpvYnMvLGNsYXNzLGpzLXNob3J0bGlzdC1mb3JtLGlkLDg0LG1ldGhvZCxwb3N0LHRrX2lkLDIzNXxoMToxLjAsMS4xNyxfWE1MREVQVEhfLDgsaWQsODUsdGtfaWQsMTJ8aDM6NzAuMCw3MC4xMixfWE1MREVQVEhfLDEwLGNsYXNzLG1hcmdpbi1ib3R0b20tNSxpZCw4Nix0a19pZCwxMDg6NzQuMCw3NC4xNyxfWE1MREVQVEhfLDEzLGNsYXNzLGxpc3Rlcl9faGVhZGVyLGlkLDg3LHRrX2lkLDExMjo4Mi4wLDgyLjE3LF9YTUxERVBUSF8sMTMsY2xhc3MsbGlzdGVyX19oZWFkZXIsaWQsODgsdGtfaWQsMTM0OjkwLjAsOTAuMTcsX1hNTERFUFRIXywxMyxjbGFzcyxsaXN0ZXJfX2hlYWRlcixpZCw4OSx0a19pZCwxNTY6OTYuMCw5Ni4xMixfWE1MREVQVEhfLDgsY2xhc3MsbWFyZ2luLWJvdHRvbS01LGlkLDkwLHRrX2lkLDE3NzoxMDAuMCwxMDAuMTcsX1hNTERFUFRIXywxMSxjbGFzcyxsaXN0ZXJfX2hlYWRlcixpZCw5MSx0a19pZCwxODE6MTA4LjAsMTA4LjE3LF9YTUxERVBUSF8sMTEsY2xhc3MsbGlzdGVyX19oZWFkZXIsaWQsOTIsdGtfaWQsMjAzOjExNi4wLDExNi4xNyxfWE1MREVQVEhfLDExLGNsYXNzLGxpc3Rlcl9faGVhZGVyLGlkLDkzLHRrX2lkLDIyNQ==</Value></Field>
+			<Field key="has_formatting"><Value>yes</Value></Field>
+			<Field key="has_sec_vacancy"><Value>yes</Value></Field>
+			<Field key="id"><Value>0</Value></Field>
+			<Field key="lang"><Value>english</Value></Field>
+			<Field key="lang_code"><Value>en</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="overall_conf" docCoords="30.0-53.0,62.0-67.0,76.0-81.0" docMarkupId="425+424+423"><Value>0.33</Value></Field>
+			<Field key="source"><Value>text/xml</Value></Field>
+			<Field key="url"><Value>https://independentjobs.independent.co.uk/job/13754880/junior-accountant/</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="3" key="__APPLIED_EXTRACTION__">
+		<Item index="0">
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="__MODEL_VERSION__">
+		<Item index="0">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>VacancyPreprocessor</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151966</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>0b6e9bdedbc115a0314b4ee65e36f8f552a8f15c</Value></Field>
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+			<Field key="model"><Value>jobfeed</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-153606</Value></Field>
+			<Field key="model_git_sha1"><Value>4a3796d1fe3ab96468f827118276c5811590ff5c</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="Textractor"><Value>4.5.DEV</Value></Field>
+			<Field key="Textractor-detailed"><Value>master-151980</Value></Field>
+			<Field key="Textractor-git-sha1"><Value>a611c3f2e4dc745c4e122bb4208c58f04d29030e</Value></Field>
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+			<Field key="model"><Value>MatchTxtor</Value></Field>
+			<Field key="model_branch"><Value>master</Value></Field>
+			<Field key="model_detailed"><Value>master-150995</Value></Field>
+			<Field key="model_git_sha1"><Value>79e172f998afdb5a4bea103293f2ac8d62e65641</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="26" key="__PHRASEFILE_INFO__">
+		<Item index="0">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_init.phrs</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="filename"><Value>VacENExtractor:phraserules/english_v2.phrs</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_fields.phrs</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/wrapped_fields_v2.phrs</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/combined_fields_v2.phrs</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_url.phrs</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/common_derived_v2.phrs</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/common_jobfeed_fields.phrs</Value></Field>
+		</Item>
+		<Item index="8">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_conf.phrs</Value></Field>
+		</Item>
+		<Item index="9">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/common_fulltext_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="10">
+			<Field key="filename"><Value>VacENExtractor:../../core/phraserules/DataModel1/skills.phrs</Value></Field>
+		</Item>
+		<Item index="11">
+			<Field key="filename"><Value>Vac-UK-Normalizer:../core/phraserules/DataModel1/common_derived_v2.phrs</Value></Field>
+		</Item>
+		<Item index="12">
+			<Field key="filename"><Value>Vac-UK-Normalizer:../core/phraserules/common_legacy.phrs</Value></Field>
+		</Item>
+		<Item index="13">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/init.phrs</Value></Field>
+		</Item>
+		<Item index="14">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/vac_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="15">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/common_vac.phrs</Value></Field>
+		</Item>
+		<Item index="16">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_location.phrs</Value></Field>
+		</Item>
+		<Item index="17">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_jobtitle.phrs</Value></Field>
+		</Item>
+		<Item index="18">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_education.phrs</Value></Field>
+		</Item>
+		<Item index="19">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_compskills.phrs</Value></Field>
+		</Item>
+		<Item index="20">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_langskills.phrs</Value></Field>
+		</Item>
+		<Item index="21">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_experience_years.phrs</Value></Field>
+		</Item>
+		<Item index="22">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_derived_profession_keywords.phrs</Value></Field>
+		</Item>
+		<Item index="23">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/vac_normalization_codes.phrs</Value></Field>
+		</Item>
+		<Item index="24">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/keyword_postprocessing.phrs</Value></Field>
+		</Item>
+		<Item index="25">
+			<Field key="filename"><Value>Match-EN-Vac:../Match-Common/Phraserules/DataModel1/legacy.phrs</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="__PHRASE_INFO__">
+		<Item index="0">
+			<Field key="cond_contract_type" cardinality="all"><Value></Value></Field>
+			<Field key="cond_employment_type" cardinality="all"><Value></Value></Field>
+			<Field key="cond_hours_per_week" cardinality="all"><Value></Value></Field>
+			<Field key="cond_working_hours" cardinality="all"><Value></Value></Field>
+			<Field key="derived_has_sec_vacancy" cardinality="first"><Value></Value></Field>
+			<Field key="employer_anonymous" cardinality="all"><Value></Value></Field>
+			<Field key="fulltext" cardinality="first"><Value></Value></Field>
+			<Field key="language"><Value></Value></Field>
+			<Field key="org_address" cardinality="all"><Value></Value></Field>
+			<Field key="org_contact_person" cardinality="all"><Value></Value></Field>
+			<Field key="org_contact_person_function" cardinality="all"><Value></Value></Field>
+			<Field key="org_email" cardinality="all"><Value></Value></Field>
+			<Field key="org_fax" cardinality="all"><Value></Value></Field>
+			<Field key="org_industry" cardinality="all"><Value></Value></Field>
+			<Field key="org_name" cardinality="multiple"><Value></Value></Field>
+			<Field key="org_num_employees" cardinality="all"><Value></Value></Field>
+			<Field key="org_phone" cardinality="all"><Value></Value></Field>
+			<Field key="org_website" cardinality="all"><Value></Value></Field>
+			<Field key="prof_competence" cardinality="all"><Value></Value></Field>
+			<Field key="prof_computer_skills" cardinality="all"><Value></Value></Field>
+			<Field key="prof_drivers_license" cardinality="all"><Value></Value></Field>
+			<Field key="prof_education" cardinality="all"><Value></Value></Field>
+			<Field key="prof_experience" cardinality="all"><Value></Value></Field>
+			<Field key="prof_languages" cardinality="all"><Value></Value></Field>
+			<Field key="salary" cardinality="all"><Value></Value></Field>
+			<Field key="sec_application_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_candidate_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_conditions_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_employer_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_job_descr" cardinality="all"><Value></Value></Field>
+			<Field key="sec_summary" cardinality="multiple"><Value></Value></Field>
+			<Field key="sec_vacancy" cardinality="all"><Value></Value></Field>
+			<Field key="vac_apply_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_job_title" cardinality="multiple"><Value></Value></Field>
+			<Field key="vac_location" cardinality="multiple"><Value></Value></Field>
+			<Field key="vac_num_positions" cardinality="all"><Value></Value></Field>
+			<Field key="vac_posted_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_ref_no" cardinality="all"><Value></Value></Field>
+			<Field key="vac_start_date" cardinality="all"><Value></Value></Field>
+			<Field key="vac_title" cardinality="multiple"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="4" key="__RUNTIME_PARAMS__">
+		<Item index="0">
+			<Field key="config-name"><Value>VacancyPreprocessor</Value></Field>
+			<Field key="correlationid"><Value>62dc87a15ca44296abf934e8909f384a</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-22</Value></Field>
+			<Field key="external_normurl"><Value>independent.co.uk/job/13754880/junior-accountant</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-21</Value></Field>
+			<Field key="external_spidersource"><Value>getterscript</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="url"><Value>https://independentjobs.independent.co.uk/job/13754880/junior-accountant/</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="config-name"><Value>VacENExtractor</Value></Field>
+			<Field key="correlationid"><Value>62dc87a15ca44296abf934e8909f384a</Value></Field>
+			<Field key="country"><Value>UK</Value></Field>
+			<Field key="external_cleansite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_displaysite"><Value>independent.co.uk</Value></Field>
+			<Field key="external_importdate"><Value>2019-06-22</Value></Field>
+			<Field key="external_normurl"><Value>independent.co.uk/job/13754880/junior-accountant</Value></Field>
+			<Field key="external_spiderdate"><Value>2019-06-21</Value></Field>
+			<Field key="external_spidersource"><Value>getterscript</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+			<Field key="url"><Value>https://independentjobs.independent.co.uk/job/13754880/junior-accountant/</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="config-name"><Value>Vac-UK-Normalizer</Value></Field>
+			<Field key="correlationid"><Value>62dc87a15ca44296abf934e8909f384a</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="config-name"><Value>Match-EN-Vac</Value></Field>
+			<Field key="correlationid"><Value>62dc87a15ca44296abf934e8909f384a</Value></Field>
+			<Field key="maxProcessingTime"><Value>30</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="acquisition_disallowed_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="acquisition_disallowed_wrapped">
+		<Item index="0">
+			<Field key="acquisition_disallowed_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="advertiser_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="advertiser_wrapped">
+		<Item index="0">
+			<Field key="advertiser_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="apply_url_combined">
+	</ItemGroup>
+	<ItemGroup count="4" key="co_keywords">
+		<Item index="0">
+			<Field key="co_keywords"><Value>clients</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="co_keywords"><Value>communication</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="co_keywords"><Value>clients</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="co_keywords"><Value>clients</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="companyid">
+		<Item index="0">
+			<Field key="companyid" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+			<Field key="exact" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+			<Field key="national_industry_code" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+			<Field key="query" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+			<Field key="tk_sector" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_contract_type">
+		<Item index="0">
+			<Field key="cond_contract_type" docCoords="25.10-25.19,120.24-120.31" docMarkupId="100+101"><Value>Permanent, sign in</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_contract_type_combined">
+		<Item index="0">
+			<Field key="cond_contract_type_combined" docCoords="25.10-25.19,120.24-120.31" docMarkupId="100+101"><Value>Permanent, Permanent, sign in</Value></Field>
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped, extraction</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_contract_type_wrapped">
+		<Item index="0">
+			<Field key="cond_contract_type_wrapped"><Value>Permanent</Value></Field>
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_employment_type">
+		<Item index="0">
+			<Field key="cond_employment_type" docCoords="28.10-28.19" docMarkupId="127"><Value>Full Time</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_employment_type_combined">
+		<Item index="0">
+			<Field key="cond_employment_type_combined" docCoords="28.10-28.19" docMarkupId="127"><Value>Full Time</Value></Field>
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped, extraction</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_employment_type_wrapped">
+		<Item index="0">
+			<Field key="cond_employment_type_wrapped"><Value>Full Time</Value></Field>
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_hours_per_week">
+		<Item index="0">
+			<Field key="cond_hours_per_week"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="cond_hours_per_week_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_hours_per_week_wrapped">
+		<Item index="0">
+			<Field key="cond_hours_per_week_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_working_hours">
+		<Item index="0">
+			<Field key="cond_working_hours"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="cond_working_hours_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="cond_working_hours_wrapped">
+		<Item index="0">
+			<Field key="cond_working_hours_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="deeplink">
+		<Item index="0">
+			<Field key="deeplink"><Value>yes</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="deeplink_url">
+		<Item index="0">
+			<Field key="deeplink_url"><Value>https://independentjobs.independent.co.uk/job/13754880/junior-accountant/</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_acquisition_disallowed">
+		<Item index="0">
+			<Field key="derived_acquisition_disallowed"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_advertiser">
+		<Item index="0">
+			<Field key="derived_advertiser"><Value>NLB Solutions</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_apply_url">
+		<Item index="0">
+			<Field key="derived_apply_url"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_contract_type">
+		<Item index="0">
+			<Field key="contract_type_code"><Value>1</Value></Field>
+			<Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_employment_type">
+		<Item index="0">
+			<Field key="derived_cond_employment_type" docCoords="28.10-28.19" docMarkupId="127"><Value>1</Value></Field>
+			<Field key="description" docCoords="28.10-28.19" docMarkupId="127"><Value>fulltime</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_hours_per_week">
+		<Item index="0">
+			<Field key="derived_cond_hours_per_week"><Value></Value></Field>
+			<Field key="derived_cond_hours_per_week_from"><Value></Value></Field>
+			<Field key="derived_cond_hours_per_week_to"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_cond_working_hours">
+		<Item index="0">
+			<Field key="derived_cond_working_hours"><Value>1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_display_site">
+		<Item index="0">
+			<Field key="derived_display_site"><Value>independent.co.uk</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_employer">
+		<Item index="0">
+			<Field key="derived_employer"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_employer_anonymous">
+		<Item index="0">
+			<Field key="derived_employer_anonymous"><Value>no</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_expired">
+		<Item index="0">
+			<Field key="derived_expired"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_has_sec_vacancy">
+		<Item index="0">
+			<Field key="derived_has_sec_vacancy" docCoords="" docMarkupId=""><Value>1</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="derived_location_hash">
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_norm_url">
+		<Item index="0">
+			<Field key="derived_norm_url"><Value>independent.co.uk/job/13754880/junior-accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_address">
+		<Item index="0">
+			<Field key="derived_org_addr_extra" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_address" docCoords="16.10-16.16" docMarkupId="426"><Value>18 Jul</Value></Field>
+			<Field key="derived_org_country_nodefault" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_countrycode_nodefault" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_location" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_number" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_pc" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_post_box_no" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_postbox_city" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_postbox_pc" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_region" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="derived_org_street" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="latitude" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+			<Field key="longitude" docCoords="16.10-16.16" docMarkupId="426"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_contact_person">
+		<Item index="0">
+			<Field key="derived_org_contact_fname"><Value></Value></Field>
+			<Field key="derived_org_contact_lname"><Value></Value></Field>
+			<Field key="derived_org_contact_person"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_email">
+		<Item index="0">
+			<Field key="derived_org_email"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_fax">
+		<Item index="0">
+			<Field key="derived_org_fax" docCoords="19.10-19.20" docMarkupId="110"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_industry">
+		<Item index="0">
+			<Field key="debug_code"><Value></Value></Field>
+			<Field key="debug_confidence"><Value></Value></Field>
+			<Field key="debug_description"><Value></Value></Field>
+			<Field key="debug_indicator"><Value></Value></Field>
+			<Field key="debug_tk_sector"><Value></Value></Field>
+			<Field key="national_code"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_name">
+		<Item index="0">
+			<Field key="derived_org_name"><Value>NLB Solutions</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_name_norm">
+		<Item index="0">
+			<Field key="derived_org_name_norm"><Value>NLB Solutions</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_national_id">
+		<Item index="0">
+			<Field key="derived_org_national_id"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_phone">
+		<Item index="0">
+			<Field key="derived_org_phone" docCoords="19.10-19.20" docMarkupId="110"><Value>1178470367</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_org_website">
+		<Item index="0">
+			<Field key="derived_org_website"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_education">
+		<Item index="0">
+			<Field key="degreetype" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>Vocational Training</Value></Field>
+			<Field key="derived_prof_education" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>4</Value></Field>
+			<Field key="derived_prof_education_descr" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>Professional qualification</Value></Field>
+			<Field key="derived_prof_education_from_profession" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_experience">
+		<Item index="0">
+			<Field key="derived_prof_experience" docCoords="1.0-1.6" docMarkupId="416"><Value>Junior</Value></Field>
+			<Field key="derived_prof_experience_from" docCoords="1.0-1.6" docMarkupId="416"><Value>Junior</Value></Field>
+			<Field key="derived_prof_experience_level" docCoords="1.0-1.6" docMarkupId="416"><Value>Junior</Value></Field>
+			<Field key="derived_prof_experience_norm_from" docCoords="1.0-1.6" docMarkupId="416"><Value></Value></Field>
+			<Field key="derived_prof_experience_norm_to" docCoords="1.0-1.6" docMarkupId="416"><Value></Value></Field>
+			<Field key="derived_prof_experience_to" docCoords="1.0-1.6" docMarkupId="416"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="derived_prof_experience_min_max">
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_prof_languages">
+		<Item index="0">
+			<Field key="derived_prof_languages"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_code">
+		<Item index="0">
+			<Field key="derived_profession_attractor"><Value>Accountant</Value></Field>
+			<Field key="derived_profession_class"><Value>24</Value></Field>
+			<Field key="derived_profession_class_match"><Value>24</Value></Field>
+			<Field key="derived_profession_code"><Value>4045</Value></Field>
+			<Field key="derived_profession_code_match"><Value>4045</Value></Field>
+			<Field key="derived_profession_code_match_dist"><Value>22:1</Value></Field>
+			<Field key="derived_profession_code_match_inst"><Value></Value></Field>
+			<Field key="derived_profession_code_match_list"><Value>4045+-12.000000</Value></Field>
+			<Field key="derived_profession_confidence"><Value>22.999999</Value></Field>
+			<Field key="derived_profession_distance"><Value>-12</Value></Field>
+			<Field key="derived_profession_group"><Value>218</Value></Field>
+			<Field key="derived_profession_group_match"><Value>218</Value></Field>
+			<Field key="derived_profession_level_code"><Value></Value></Field>
+			<Field key="derived_profession_name"><Value>Junior Accountant</Value></Field>
+			<Field key="derived_profession_name_clean"><Value>accountant</Value></Field>
+			<Field key="derived_profession_name_clean_checklist"><Value>accountant</Value></Field>
+			<Field key="derived_profession_name_clean_norewrite"><Value>Accountant</Value></Field>
+			<Field key="derived_vac_job_title"><Value>Junior Accountant</Value></Field>
+			<Field key="derived_vac_job_title_clean"><Value>accountant</Value></Field>
+			<Field key="derived_vac_title"><Value>Junior Accountant</Value></Field>
+			<Field key="derived_vac_title_clean"><Value>accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_final">
+		<Item index="0">
+			<Field key="derived_profession_final"><Value>accountant</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_final_short">
+		<Item index="0">
+			<Field key="derived_profession_final_short"><Value>accountant</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer_rest">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer_rest"><Value>Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_profession_gazetteer_templated">
+		<Item index="0">
+			<Field key="derived_profession_gazetteer_templated"><Value>&quot;Junior Accountant&quot;</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_salary">
+		<Item index="0">
+			<Field key="derived_salary" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value>Competitive, dependent on experience</Value></Field>
+			<Field key="derived_salary_from" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value></Value></Field>
+			<Field key="derived_salary_from_orig" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value></Value></Field>
+			<Field key="derived_salary_time_scale" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value></Value></Field>
+			<Field key="derived_salary_to" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value></Value></Field>
+			<Field key="derived_salary_to_orig" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_source_site">
+		<Item index="0">
+			<Field key="derived_source_site"><Value>independent.co.uk</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_source_type">
+		<Item index="0">
+			<Field key="derived_source_type"><Value>krantsite</Value></Field>
+			<Field key="source_type_code"><Value>3</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_apply_date">
+		<Item index="0">
+			<Field key="derived_vac_apply_date"><Value>2019-07-18</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_areacode">
+		<Item index="0">
+			<Field key="areacode_descr" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>Southampton</Value></Field>
+			<Field key="derived_vac_areacode" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>2637487</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_intermediary">
+		<Item index="0">
+			<Field key="derived_vac_intermediary"><Value>no</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_location">
+		<Item index="0">
+			<Field key="derived_vac_location" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>Southampton</Value></Field>
+			<Field key="latitude" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value></Value></Field>
+			<Field key="longitude" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value></Value></Field>
+			<Field key="vac_location_term" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16,1.0-124.0" docMarkupId="429+430+431+432+433+434+435+436+426+95"><Value>Southampton</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_posted_date">
+		<Item index="0">
+			<Field key="derived_vac_posted_date"><Value>2019-06-18</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_ref_no">
+		<Item index="0">
+			<Field key="derived_vac_ref_no"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_region">
+		<Item index="0">
+			<Field key="derived_vac_region" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>ENG</Value></Field>
+			<Field key="vac_region_descr" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>England</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_start_date">
+		<Item index="0">
+			<Field key="derived_vac_start_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="derived_vac_sub_region">
+		<Item index="0">
+			<Field key="derived_vac_sub_region" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>M4</Value></Field>
+			<Field key="sub_region_descr" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16" docMarkupId="429+430+431+432+433+434+435+436+426"><Value>Southampton</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_anonymous">
+		<Item index="0">
+			<Field key="employer_anonymous"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="employer_anonymous_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_anonymous_wrapped">
+		<Item index="0">
+			<Field key="employer_anonymous_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="employer_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="employer_wrapped">
+		<Item index="0">
+			<Field key="employer_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="2" key="experience_query_term">
+		<Item index="0">
+			<Field key="experience_index_term" docCoords="1.0-1.6" docMarkupId="416"><Value>0</Value></Field>
+			<Field key="experience_query_term" docCoords="1.0-1.6" docMarkupId="416"><Value>&lt;1</Value></Field>
+			<Field key="setting" docCoords="1.0-1.6" docMarkupId="416"><Value>%</Value></Field>
+			<Field key="weight" docCoords="1.0-1.6" docMarkupId="416"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="experience_index_term" docCoords="1.0-1.6" docMarkupId="416"><Value>1</Value></Field>
+			<Field key="experience_query_term" docCoords="1.0-1.6" docMarkupId="416"><Value>1..2</Value></Field>
+			<Field key="setting" docCoords="1.0-1.6" docMarkupId="416"><Value>%</Value></Field>
+			<Field key="weight" docCoords="1.0-1.6" docMarkupId="416"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="fulltext">
+		<Item index="0">
+			<Field key="fulltext" docCoords="" docMarkupId=""><Value>  Junior Accountant
+
+  Recruiter
+  NLB Solutions
+
+  Location
+  UK
+
+  Salary
+  Competitive
+
+  Posted
+  18 Jun 2019
+
+  Closes
+  18 Jul 2019
+
+  Ref
+  1178470367
+
+  Sector
+  Accountancy
+
+  Contract Type
+  Permanent
+
+  Hours
+  Full Time
+
+  An exciting opportunity to join an expanding practice with a number of offices across London and Head Office just outside on Wimbledon. Ideally you will have at least a years experience in a practice environment with client facing exposur. Ideally you will be studying AAT, ACCA or ACA and looking to complete this with the support of your new employer. The company has rapidly expanded over the last three years and in preperation for further growth are looking for individuals with a growth mindset to join them.
+
+  You will have your own client base and will be responsible for looking after those clients from start to finish.
+
+  The business offers a supportive senior team and there is clear opportunity for development which will lead to further internal growth and opportunities.
+
+  Salary is dependent on experience.
+
+  Duties:
+
+  * Provide accountancy services within agreed time frames
+
+  * Maintain and grow client base
+
+  * Completion and filing of accounts, corporation tax, payroll, vat
+
+  * Assistance with year-end accounts
+
+  * Constant and consistent clear communication and assistance with clients when required
+
+  Progression Opportunities:
+
+  * Internal progression available
+
+  * Growing practice looking for those who wish to grow with them
+
+  * Study programme and support through to qualification
+
+  Person spec:
+
+  * One year or more experience in Practice
+
+  * Studying ACCA / ACA / AAT (not just exemptions)
+
+  * Exposure to clients
+
+  * Outgoing with strong communication skills
+  Share
+  Apply
+
+  Similar jobs
+
+  *
+
+  Junior Accountant
+  + London, UK
+  + Competitive
+  + Halliday Marx
+  + You need to sign in or create an account to save
+  New
+  *
+
+  Junior Accountant
+  + Stockport, UK
+  + Competitive
+  + Spear Recruitment
+  + You need to sign in or create an account to save
+  New
+  *
+
+  Junior Accountant
+  + Southampton, UK
+  + Competitive
+  + AJ Chambers
+  + You need to sign in or create an account to save
+
+  Similar jobs
+
+  *
+
+  Junior Accountant
+  + London, UK
+  + Competitive
+  + Halliday Marx
+  + You need to sign in or create an account to save
+  New
+  *
+
+  Junior Accountant
+  + Stockport, UK
+  + Competitive
+  + Spear Recruitment
+  + You need to sign in or create an account to save
+  New
+  *
+
+  Junior Accountant
+  + Southampton, UK
+  + Competitive
+  + AJ Chambers
+  + You need to sign in or create an account to save
+
+  --&gt;
+  --&gt;</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="8" key="fulltext_keywords">
+		<Item index="0">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;AAT&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;ACCA&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer_expansion</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;ACA&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;accountancy&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;tax&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;payroll&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="desirability_indicator" docCoords="48.82-48.90" docMarkupId="428"><Value>required</Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;communication&quot;</Value></Field>
+			<Field key="required" docCoords="48.82-48.90" docMarkupId="428"><Value>1</Value></Field>
+			<Field key="setting" docCoords="48.82-48.90" docMarkupId="428"><Value>^</Value></Field>
+			<Field key="type"><Value>gazetteer</Value></Field>
+			<Field key="weight" docCoords="48.82-48.90" docMarkupId="428"><Value>1.0</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="fulltext_keywords"><Value>&quot;communication skills&quot;</Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="type"><Value>context</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="guid">
+		<Item index="0">
+			<Field key="guid"><Value>589556a2f6a2fa7dda4eb87ff128435e</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="13" key="gz_keywords">
+		<Item index="0">
+			<Field key="gz_keywords"><Value>ACA</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="gz_keywords"><Value>AAT</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="gz_keywords"><Value>Office</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="gz_keywords"><Value>AAT</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="gz_keywords"><Value>ACA</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="gz_keywords"><Value>support</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="gz_keywords"><Value>business</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="gz_keywords"><Value>accountancy</Value></Field>
+		</Item>
+		<Item index="8">
+			<Field key="gz_keywords"><Value>tax</Value></Field>
+		</Item>
+		<Item index="9">
+			<Field key="gz_keywords"><Value>payroll</Value></Field>
+		</Item>
+		<Item index="10">
+			<Field key="gz_keywords"><Value>ACCA</Value></Field>
+		</Item>
+		<Item index="11">
+			<Field key="gz_keywords"><Value>ACA</Value></Field>
+		</Item>
+		<Item index="12">
+			<Field key="gz_keywords"><Value>ACCA</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="highesteducationitem">
+		<Item index="0">
+			<Field key="education_descr" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>Professional qualification</Value></Field>
+			<Field key="education_international" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>2</Value></Field>
+			<Field key="education_international_dist" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>-27.000000</Value></Field>
+			<Field key="education_international_inst" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value></Value></Field>
+			<Field key="education_international_list" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>2+-27.000000+3+-27.000000</Value></Field>
+			<Field key="education_local" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>4</Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="init_lang">
+		<Item index="0">
+			<Field key="init_lang"><Value>english</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="jfsector">
+		<Item index="0">
+			<Field key="jfsector" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_address">
+		<Item index="0">
+			<Field key="org_address" docCoords="16.10-16.16" docMarkupId="426"><Value>18 Jul</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_address_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="org_address_combined" docCoords="16.10-16.16" docMarkupId="426"><Value>18 Jul</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_address_wrapped">
+		<Item index="0">
+			<Field key="org_address_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact">
+		<Item index="0">
+			<Field key="org_contact"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person">
+		<Item index="0">
+			<Field key="org_contact_person"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_contact_person_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person_function">
+		<Item index="0">
+			<Field key="org_contact_person_function"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_contact_person_wrapped">
+		<Item index="0">
+			<Field key="org_contact_person_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_email">
+	</ItemGroup>
+	<ItemGroup count="0" key="org_email_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_email_wrapped">
+		<Item index="0">
+			<Field key="org_email_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_fax">
+	</ItemGroup>
+	<ItemGroup count="0" key="org_fax_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_fax_wrapped">
+		<Item index="0">
+			<Field key="org_fax_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_industry">
+		<Item index="0">
+			<Field key="org_industry"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_industry_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_industry_wrapped">
+		<Item index="0">
+			<Field key="org_industry_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_info">
+		<Item index="0">
+			<Field key="industry_id"><Value></Value></Field>
+			<Field key="name"><Value></Value></Field>
+			<Field key="national_id"><Value></Value></Field>
+			<Field key="size_id"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name">
+		<Item index="0">
+			<Field key="org_name" docCoords="4.10-4.23" docMarkupId="97"><Value>NLB Solutions</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="org_name_combined"><Value>NLB Solutions</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_name_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="org_name_wrapped"><Value>NLB Solutions</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_national_id_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_national_id_wrapped">
+		<Item index="0">
+			<Field key="org_national_id_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_num_employees">
+		<Item index="0">
+			<Field key="org_num_employees"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_num_employees_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_num_employees_wrapped">
+		<Item index="0">
+			<Field key="org_num_employees_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone">
+		<Item index="0">
+			<Field key="org_phone" docCoords="19.10-19.20" docMarkupId="110"><Value>1178470367</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="org_phone_combined" docCoords="19.10-19.20" docMarkupId="110"><Value>1178470367</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="org_phone_wrapped">
+		<Item index="0">
+			<Field key="org_phone_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="org_website">
+	</ItemGroup>
+	<ItemGroup count="0" key="org_website_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="org_website_wrapped">
+		<Item index="0">
+			<Field key="org_website_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence">
+		<Item index="0">
+			<Field key="prof_competence" docCoords="30.194-30.241,64.14-64.24,66.5-66.46,76.12-76.23,77.12-77.25" docMarkupId="120+121+122+123+124"><Value>practice environment with client facing exposur, to clients, Outgoing with strong communication skills, Competitive, Halliday Marx</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_competence_combined" docCoords="30.194-30.241,64.14-64.24,66.5-66.46,76.12-76.23,77.12-77.25" docMarkupId="120+121+122+123+124"><Value>practice environment with client facing exposur, to clients, Outgoing with strong communication skills, Competitive, Halliday Marx</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_competence_wrapped">
+		<Item index="0">
+			<Field key="prof_competence_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_computer_skills">
+		<Item index="0">
+			<Field key="prof_computer_skills"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_computer_skills_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_computer_skills_wrapped">
+		<Item index="0">
+			<Field key="prof_computer_skills_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_drivers_license">
+		<Item index="0">
+			<Field key="prof_drivers_license"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_drivers_license_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_drivers_license_wrapped">
+		<Item index="0">
+			<Field key="prof_drivers_license_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education">
+		<Item index="0">
+			<Field key="prof_education" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>studying AAT, ACCA or ACA, Studying ACCA / ACA / AAT</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_education_combined" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>studying AAT, ACCA or ACA, Studying ACCA / ACA / AAT</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_education_wrapped">
+		<Item index="0">
+			<Field key="prof_education_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_experience">
+		<Item index="0">
+			<Field key="prof_experience" docCoords="1.0-1.6" docMarkupId="416"><Value>Junior</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_experience_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="prof_experience_combined" docCoords="1.0-1.6" docMarkupId="416"><Value>Junior</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_experience_wrapped">
+		<Item index="0">
+			<Field key="prof_experience_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_languages">
+		<Item index="0">
+			<Field key="prof_languages"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="prof_languages_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="prof_languages_wrapped">
+		<Item index="0">
+			<Field key="prof_languages_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="reject_indicator_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="reject_indicator_wrapped">
+		<Item index="0">
+			<Field key="reject_indicator_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary">
+		<Item index="0">
+			<Field key="salary" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value>Competitive, dependent on experience</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="salary_combined" docCoords="10.10-10.21,36.13-36.36" docMarkupId="324+325"><Value>Competitive, dependent on experience</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="salary_wrapped">
+		<Item index="0">
+			<Field key="salary_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+			<Field key="sec_application_descr"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr_combined">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_application_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_application_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="62.0-67.0" docMarkupId="424"><Value>0.90</Value></Field>
+			<Field key="sec_candidate_descr" docCoords="62.0-67.0" docMarkupId="424"><Value>* Studying ACCA / ACA / AAT (not just exemptions) * Exposure to clients * Outgoing with strong communication skills</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="62.0-67.0" docMarkupId="424"><Value>0.90</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_candidate_descr_combined" docCoords="62.0-67.0" docMarkupId="424"><Value>* Studying ACCA / ACA / AAT (not just exemptions) * Exposure to clients * Outgoing with strong communication skills</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_candidate_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_candidate_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="76.0-81.0" docMarkupId="423"><Value>0.02</Value></Field>
+			<Field key="sec_conditions_descr" docCoords="76.0-81.0" docMarkupId="423"><Value>+ Competitive + Halliday Marx + You need to sign in or create an account to save New *</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="76.0-81.0" docMarkupId="423"><Value>0.02</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_conditions_descr_combined" docCoords="76.0-81.0" docMarkupId="423"><Value>+ Competitive + Halliday Marx + You need to sign in or create an account to save New *</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_conditions_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_conditions_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+			<Field key="sec_employer_descr"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr_combined">
+		<Item index="0">
+			<Field key="conf"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_employer_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_employer_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr">
+		<Item index="0">
+			<Field key="conf" docCoords="30.0-53.0" docMarkupId="425"><Value>0.08</Value></Field>
+			<Field key="sec_job_descr" docCoords="30.0-53.0" docMarkupId="425"><Value>An exciting opportunity to join an expanding practice with a number of offices across London and Head Office just outside on Wimbledon. Ideally you will have at least a years experience in a practice environment with client facing exposur. Ideally you will be studying AAT, ACCA or ACA and looking to complete this with the support of your new employer. The company has rapidly expanded over the last three years and in preperation for further growth are looking for individuals with a growth mindset to join them. You will have your own client base and will be responsible for looking after those clients from start to finish. The business offers a supportive senior team and there is clear opportunity for development which will lead to further internal growth and opportunities. Salary is dependent on experience. Duties: * Provide accountancy services within agreed time frames * Maintain and grow client base * Completion and filing of accounts, corporation tax, payroll, vat * Assistance with year-end accounts * Constant and consistent clear communication and assistance with clients when required Progression Opportunities: * Internal progression available</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr_combined">
+		<Item index="0">
+			<Field key="conf" docCoords="30.0-53.0" docMarkupId="425"><Value>0.08</Value></Field>
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_job_descr_combined" docCoords="30.0-53.0" docMarkupId="425"><Value>An exciting opportunity to join an expanding practice with a number of offices across London and Head Office just outside on Wimbledon. Ideally you will have at least a years experience in a practice environment with client facing exposur. Ideally you will be studying AAT, ACCA or ACA and looking to complete this with the support of your new employer. The company has rapidly expanded over the last three years and in preperation for further growth are looking for individuals with a growth mindset to join them. You will have your own client base and will be responsible for looking after those clients from start to finish. The business offers a supportive senior team and there is clear opportunity for development which will lead to further internal growth and opportunities. Salary is dependent on experience. Duties: * Provide accountancy services within agreed time frames * Maintain and grow client base * Completion and filing of accounts, corporation tax, payroll, vat * Assistance with year-end accounts * Constant and consistent clear communication and assistance with clients when required Progression Opportunities: * Internal progression available</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_job_descr_wrapped">
+		<Item index="0">
+			<Field key="sec_job_descr_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary">
+		<Item index="0">
+			<Field key="sec_summary" docCoords="3.0-29.0" docMarkupId="360"><Value>Recruiter NLB Solutions Location UK Salary Competitive Posted 18 Jun 2019 Closes 18 Jul 2019 Ref 1178470367 Sector Accountancy Contract Type Permanent Hours Full Time</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary_combined">
+		<Item index="0">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="sec_summary_combined" docCoords="3.0-29.0" docMarkupId="360"><Value>Recruiter NLB Solutions Location UK Salary Competitive Posted 18 Jun 2019 Closes 18 Jul 2019 Ref 1178470367 Sector Accountancy Contract Type Permanent Hours Full Time</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_summary_wrapped">
+		<Item index="0">
+			<Field key="sec_summary_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sec_vacancy">
+		<Item index="0">
+			<Field key="sec_vacancy" docCoords="1.0-124.0" docMarkupId="95" formatting="1"><Value>Junior Accountant
+
+   Recruiter
+          NLB Solutions
+
+   Location
+          UK
+
+   Salary
+          Competitive
+
+   Posted
+          18 Jun 2019
+
+   Closes
+          18 Jul 2019
+
+   Ref
+          1178470367
+
+   Sector
+          Accountancy
+
+   Contract Type
+          Permanent
+
+   Hours
+          Full Time
+
+   An exciting opportunity to join an expanding practice with a number of offices across London and Head Office just outside on Wimbledon. Ideally you will have at least a years experience in a practice environment with client facing exposur. Ideally you will be studying AAT, ACCA or ACA and looking to complete this with the support of your new employer. The company has rapidly expanded over the last three years and in preperation for further growth are looking for individuals with a growth mindset to join them.
+
+   You will have your own client base and will be responsible for looking after those clients from start to finish.
+
+   The business offers a supportive senior team and there is clear opportunity for development which will lead to further internal growth and opportunities.
+
+   Salary is dependent on experience.
+
+   Duties:
+
+   * Provide accountancy services within agreed time frames
+
+   * Maintain and grow client base
+
+   * Completion and filing of accounts, corporation tax, payroll, vat
+
+   * Assistance with year-end accounts
+
+   * Constant and consistent clear communication and assistance with clients when required
+
+   Progression Opportunities:
+
+   * Internal progression available
+
+   * Growing practice looking for those who wish to grow with them
+
+   * Study programme and support through to qualification
+
+   Person spec:
+
+   * One year or more experience in Practice
+
+   * Studying ACCA / ACA / AAT (not just exemptions)
+
+   * Exposure to clients
+
+   * Outgoing with strong communication skills
+   Share
+   Apply
+
+Similar jobs
+
+     *
+
+Junior Accountant
+          + London, UK
+          + Competitive
+          + Halliday Marx
+          + You need to sign in or create an account to save
+       New
+     *
+
+Junior Accountant
+          + Stockport, UK
+          + Competitive
+          + Spear Recruitment
+          + You need to sign in or create an account to save
+       New
+     *
+
+Junior Accountant
+          + Southampton, UK
+          + Competitive
+          + AJ Chambers
+          + You need to sign in or create an account to save
+
+Similar jobs
+
+     *
+
+Junior Accountant
+          + London, UK
+          + Competitive
+          + Halliday Marx
+          + You need to sign in or create an account to save
+       New
+     *
+
+Junior Accountant
+          + Stockport, UK
+          + Competitive
+          + Spear Recruitment
+          + You need to sign in or create an account to save
+       New
+     *
+
+Junior Accountant
+          + Southampton, UK
+          + Competitive
+          + AJ Chambers
+          + You need to sign in or create an account to save
+
+   --&gt;
+   --&gt;</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="sizokey">
+		<Item index="0">
+			<Field key="sizokey" docCoords="16.10-16.16,7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,19.10-19.20" docMarkupId="426+429+430+431+432+433+434+435+436+110"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="8" key="skill">
+		<Item index="0">
+			<Field key="debug_code_dist" docCoords="30.272-30.275" docMarkupId="382"><Value>-1:0.382978723404255</Value></Field>
+			<Field key="debug_code_inst" docCoords="30.272-30.275" docMarkupId="382"><Value>Cat</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="30.272-30.275" docMarkupId="382"><Value>AAT</Value></Field>
+			<Field key="skill_codes" docCoords="30.272-30.275" docMarkupId="382"><Value></Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="debug_code_dist" docCoords="30.277-30.281" docMarkupId="383"><Value>10:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="30.277-30.281" docMarkupId="383"><Value>ACCA</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="30.277-30.281" docMarkupId="383"><Value>ACCA</Value></Field>
+			<Field key="skill_codes" docCoords="30.277-30.281" docMarkupId="383"><Value>300,1215</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="debug_code_dist" docCoords="30.285-30.288" docMarkupId="384"><Value>8:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="30.285-30.288" docMarkupId="384"><Value>ACA</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="30.285-30.288" docMarkupId="384"><Value>ACA</Value></Field>
+			<Field key="skill_codes" docCoords="30.285-30.288" docMarkupId="384"><Value>300,1215</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="debug_code_dist" docCoords="40.13-40.24" docMarkupId="385"><Value>10:0.759036144578313</Value></Field>
+			<Field key="debug_code_inst" docCoords="40.13-40.24" docMarkupId="385"><Value>Account</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="40.13-40.24" docMarkupId="385"><Value>accountancy</Value></Field>
+			<Field key="skill_codes" docCoords="40.13-40.24" docMarkupId="385"><Value></Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="debug_code_dist" docCoords="44.52-44.55" docMarkupId="386"><Value>8:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="44.52-44.55" docMarkupId="386"><Value>Tax</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="44.52-44.55" docMarkupId="386"><Value>tax</Value></Field>
+			<Field key="skill_codes" docCoords="44.52-44.55" docMarkupId="386"><Value>300,2161</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="debug_code_dist" docCoords="44.57-44.64" docMarkupId="387"><Value>16:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="44.57-44.64" docMarkupId="387"><Value>Payroll</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="44.57-44.64" docMarkupId="387"><Value>payroll</Value></Field>
+			<Field key="skill_codes" docCoords="44.57-44.64" docMarkupId="387"><Value>300,1477</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="debug_code_dist" docCoords="48.35-48.48" docMarkupId="388"><Value>28:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="48.35-48.48" docMarkupId="388"><Value>Communication</Value></Field>
+			<Field key="desirability_indicator" docCoords="48.82-48.90" docMarkupId="428"><Value>required</Value></Field>
+			<Field key="required" docCoords="48.82-48.90" docMarkupId="428"><Value>1</Value></Field>
+			<Field key="skill" docCoords="48.35-48.48" docMarkupId="388"><Value>communication</Value></Field>
+			<Field key="skill_codes" docCoords="48.35-48.48" docMarkupId="388"><Value>300,1196</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="debug_code_dist" docCoords="66.26-66.46" docMarkupId="392"><Value>42:1</Value></Field>
+			<Field key="debug_code_inst" docCoords="66.26-66.46" docMarkupId="392"><Value>Communication Skills</Value></Field>
+			<Field key="desirability_indicator"><Value></Value></Field>
+			<Field key="required"><Value></Value></Field>
+			<Field key="skill" docCoords="66.26-66.46" docMarkupId="392"><Value>communication skills</Value></Field>
+			<Field key="skill_codes" docCoords="66.26-66.46" docMarkupId="392"><Value>100,1617</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="source_url">
+		<Item index="0">
+			<Field key="source_url"><Value>https://independentjobs.independent.co.uk/job/13754880/junior-accountant/</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="split_education">
+		<Item index="0">
+			<Field key="education_code" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>2</Value></Field>
+			<Field key="education_code_dist" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>-27.000000</Value></Field>
+			<Field key="education_code_list" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>2+-27.000000+3+-27.000000</Value></Field>
+			<Field key="education_international_inst" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value></Value></Field>
+			<Field key="setting"><Value>%</Value></Field>
+			<Field key="split_education" docCoords="30.263-30.288,62.5-62.32" docMarkupId="158+159"><Value>Professional qualification</Value></Field>
+			<Field key="weight"><Value>1.0</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="timestamp">
+		<Item index="0">
+			<Field key="timestamp"><Value>1561073442</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="user_area">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date">
+		<Item index="0">
+			<Field key="vac_apply_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_apply_date_combined"><Value>18 Jul 2019</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_apply_date_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_apply_date_wrapped"><Value>18 Jul 2019</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="7" key="vac_job_title">
+		<Item index="0">
+			<Field key="vac_job_title" docCoords="1.0-1.17" docMarkupId="340"><Value>Junior Accountant</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="vac_job_title" docCoords="74.7-74.17" docMarkupId="341"><Value>Accountant</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="vac_job_title" docCoords="82.0-82.17" docMarkupId="342"><Value>Junior Accountant</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="vac_job_title" docCoords="90.7-90.17" docMarkupId="343"><Value>Accountant</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="vac_job_title" docCoords="100.7-100.17" docMarkupId="344"><Value>Accountant</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="vac_job_title" docCoords="108.0-108.17" docMarkupId="345"><Value>Junior Accountant</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="vac_job_title" docCoords="116.0-116.17" docMarkupId="346"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_job_title_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_job_title_combined"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_job_title_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_job_title_wrapped"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="8" key="vac_location">
+		<Item index="0">
+			<Field key="priority" docCoords="7.10-7.12" docMarkupId="429"><Value>1</Value></Field>
+			<Field key="type" docCoords="7.10-7.12" docMarkupId="429"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="7.10-7.12" docMarkupId="429"><Value>UK</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="priority" docCoords="30.89-30.95" docMarkupId="430"><Value>2</Value></Field>
+			<Field key="type" docCoords="30.89-30.95" docMarkupId="430"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="30.89-30.95" docMarkupId="430"><Value>London</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="priority" docCoords="75.12-75.22" docMarkupId="431"><Value>3</Value></Field>
+			<Field key="type" docCoords="75.12-75.22" docMarkupId="431"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="75.12-75.22" docMarkupId="431"><Value>London, UK</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="priority" docCoords="83.12-83.25" docMarkupId="432"><Value>4</Value></Field>
+			<Field key="type" docCoords="83.12-83.25" docMarkupId="432"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="83.12-83.25" docMarkupId="432"><Value>Stockport, UK</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="priority" docCoords="91.12-91.27" docMarkupId="433"><Value>5</Value></Field>
+			<Field key="type" docCoords="91.12-91.27" docMarkupId="433"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="91.12-91.27" docMarkupId="433"><Value>Southampton, UK</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="priority" docCoords="101.12-101.22" docMarkupId="434"><Value>6</Value></Field>
+			<Field key="type" docCoords="101.12-101.22" docMarkupId="434"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="101.12-101.22" docMarkupId="434"><Value>London, UK</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="priority" docCoords="109.12-109.25" docMarkupId="435"><Value>7</Value></Field>
+			<Field key="type" docCoords="109.12-109.25" docMarkupId="435"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="109.12-109.25" docMarkupId="435"><Value>Stockport, UK</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="priority" docCoords="117.12-117.27" docMarkupId="436"><Value>8</Value></Field>
+			<Field key="type" docCoords="117.12-117.27" docMarkupId="436"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location" docCoords="117.12-117.27" docMarkupId="436"><Value>Southampton, UK</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_location_cleaned">
+		<Item index="0">
+			<Field key="vac_location_cleaned" docCoords="7.10-7.12,30.89-30.95,75.12-75.22,83.12-83.25,91.12-91.27,101.12-101.22,109.12-109.25,117.12-117.27,16.10-16.16,1.0-124.0" docMarkupId="429+430+431+432+433+434+435+436+426+95"><Value>Southampton</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="9" key="vac_location_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_location_combined"><Value>UK</Value></Field>
+		</Item>
+		<Item index="1">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="7.10-7.12" docMarkupId="429"><Value>1</Value></Field>
+			<Field key="type" docCoords="7.10-7.12" docMarkupId="429"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="7.10-7.12" docMarkupId="429"><Value>UK</Value></Field>
+		</Item>
+		<Item index="2">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="30.89-30.95" docMarkupId="430"><Value>2</Value></Field>
+			<Field key="type" docCoords="30.89-30.95" docMarkupId="430"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="30.89-30.95" docMarkupId="430"><Value>London</Value></Field>
+		</Item>
+		<Item index="3">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="75.12-75.22" docMarkupId="431"><Value>3</Value></Field>
+			<Field key="type" docCoords="75.12-75.22" docMarkupId="431"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="75.12-75.22" docMarkupId="431"><Value>London, UK</Value></Field>
+		</Item>
+		<Item index="4">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="83.12-83.25" docMarkupId="432"><Value>4</Value></Field>
+			<Field key="type" docCoords="83.12-83.25" docMarkupId="432"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="83.12-83.25" docMarkupId="432"><Value>Stockport, UK</Value></Field>
+		</Item>
+		<Item index="5">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="91.12-91.27" docMarkupId="433"><Value>5</Value></Field>
+			<Field key="type" docCoords="91.12-91.27" docMarkupId="433"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="91.12-91.27" docMarkupId="433"><Value>Southampton, UK</Value></Field>
+		</Item>
+		<Item index="6">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="101.12-101.22" docMarkupId="434"><Value>6</Value></Field>
+			<Field key="type" docCoords="101.12-101.22" docMarkupId="434"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="101.12-101.22" docMarkupId="434"><Value>London, UK</Value></Field>
+		</Item>
+		<Item index="7">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="109.12-109.25" docMarkupId="435"><Value>7</Value></Field>
+			<Field key="type" docCoords="109.12-109.25" docMarkupId="435"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="109.12-109.25" docMarkupId="435"><Value>Stockport, UK</Value></Field>
+		</Item>
+		<Item index="8">
+			<Field key="input_type"><Value>extraction</Value></Field>
+			<Field key="priority" docCoords="117.12-117.27" docMarkupId="436"><Value>8</Value></Field>
+			<Field key="type" docCoords="117.12-117.27" docMarkupId="436"><Value>vac_location_validated</Value></Field>
+			<Field key="vac_location_combined" docCoords="117.12-117.27" docMarkupId="436"><Value>Southampton, UK</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_location_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_location_wrapped"><Value>UK</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_num_positions">
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_num_positions_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_num_positions_wrapped">
+		<Item index="0">
+			<Field key="vac_num_positions_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_posted_date">
+		<Item index="0">
+			<Field key="vac_posted_date" docCoords="13.10-13.21,16.17-16.21" docMarkupId="111+112"><Value>18 Jun 2019::2019</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_posted_date_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_posted_date_combined"><Value>18 Jun 2019</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_posted_date_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_posted_date_wrapped"><Value>18 Jun 2019</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_ref_no">
+		<Item index="0">
+			<Field key="vac_ref_no"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_ref_no_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_ref_no_wrapped">
+		<Item index="0">
+			<Field key="vac_ref_no_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_start_date">
+		<Item index="0">
+			<Field key="vac_start_date"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="0" key="vac_start_date_combined">
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_start_date_wrapped">
+		<Item index="0">
+			<Field key="vac_start_date_wrapped"><Value></Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title">
+		<Item index="0">
+			<Field key="vac_title" docCoords="1.0-2.0" docMarkupId="358"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title_combined">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="input_type"><Value>wrapped</Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_title_combined"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="vac_title_wrapped">
+		<Item index="0">
+			<Field key="disable_extraction"><Value></Value></Field>
+			<Field key="source"><Value>siterules</Value></Field>
+			<Field key="vac_title_wrapped"><Value>Junior Accountant</Value></Field>
+		</Item>
+	</ItemGroup>
+	<ItemGroup count="1" key="wrapstatus">
+		<Item index="0">
+			<Field key="wrapstatus"><Value>1110110010000000000000001100000000000000</Value></Field>
+		</Item>
+	</ItemGroup>
+</DocumentStructure>
+</TextractorResult>

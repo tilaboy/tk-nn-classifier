@@ -36,6 +36,9 @@ setup(
             "tk-nn-classifier=tk_nn_classifier.__main__:main",
         ],
     },
+    DEPENDENCY_LINKS = [
+        "http://tkn-txtor-pythonrepo-01.textkernel.net:8080/packages/tk_preprocessing-0.0.4-py3-none-any.whl"
+    ],
     test_suite="tests",
     setup_requires=setup_requirements,
     tests_require=test_requirements,

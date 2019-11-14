@@ -10,6 +10,7 @@ INSTALL_REQUIRES = [
     "xml-miner >= 0.0.4",
     "tk-preprocessing == 0.0.4",
     "spacy == 2.1.8",
+    "pandas >= 0.22.0",
     "en_core_web_sm == 2.1.0"
 ]
 

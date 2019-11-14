@@ -8,7 +8,9 @@ INSTALL_REQUIRES = [
     "tensorflow == 1.14.0",
     "numpy >= 1.16.0",
     "xml-miner >= 0.0.4",
-    "tk-preprocessing == 0.0.4"
+    "tk-preprocessing == 0.0.4",
+    "spacy == 2.1.8",
+    "en_core_web_sm == 2.1.0"
 ]
 
 setup_requirements = ['pytest-runner', ]
@@ -37,7 +39,8 @@ setup(
         ],
     },
     dependency_links = [
-        "http://tkn-txtor-pythonrepo-01.textkernel.net:8080/packages/tk_preprocessing-0.0.4-py3-none-any.whl"
+        "http://tkn-txtor-pythonrepo-01.textkernel.net:8080/packages/tk_preprocessing-0.0.4-py3-none-any.whl",
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm"
     ],
     test_suite="tests",
     setup_requires=setup_requirements,

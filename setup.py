@@ -5,10 +5,10 @@ NAME = "tk_nn_classifier"
 VERSION = os.environ.get("TK_NN_CLASSIFIER", '0.0.0')
 
 INSTALL_REQUIRES = [
-    "tensorflow>=1.14.0",
-    "numpy>=1.16.0",
-    "xml-miner>=0.0.4",
-    "tk-preprocessing>=0.0.4"
+    "tensorflow >= 1.14.0",
+    "numpy >= 1.16.0",
+    "xml-miner >= 0.0.4",
+    "tk-preprocessing == 0.0.4"
 ]
 
 setup_requirements = ['pytest-runner', ]
@@ -36,7 +36,7 @@ setup(
             "tk-nn-classifier=tk_nn_classifier.__main__:main",
         ],
     },
-    DEPENDENCY_LINKS = [
+    dependency_links = [
         "http://tkn-txtor-pythonrepo-01.textkernel.net:8080/packages/tk_preprocessing-0.0.4-py3-none-any.whl"
     ],
     test_suite="tests",

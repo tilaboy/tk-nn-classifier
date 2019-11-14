@@ -22,7 +22,7 @@ class MultiFeatTestCases(TestCase):
         config= {
             "model_type": "tf_multi_feat_2",
             "max_lines": 5,
-            "model_path": 'foo',
+            "model_path": self.test_dir,
             "max_sequence_length": [4, 2],
             "trxml_fields": {
                 "features": ["sec_vacancy.0.sec_vacancy", 'derived_org_name.0.derived_org_name'],

@@ -33,14 +33,25 @@ class CommonDataReader:
     def get_details(self, data_path):
         raise NotImplementedError('get_details needs to be implemented')
 
+    def _train_fields(self, cfg_entry):
+        fields = [self.config[cfg_entry]['features'],
+                  self.config[cfg_entry]['class']]
+        return fields
+
+    def _detail_fields(self, cfg_entry):
+        fields = [self.config[cfg_entry]['features'],
+                  self.config[cfg_entry]['class'],
+                  self.config[cfg_entry]['doc_id']]
+        fields += self.config[cfg_entry]['extra']
+        return fields
 
 class TRXMLDataReader(CommonDataReader):
     def get_train_data(self, data_path):
-        fields = self._train_fields()
+        fields = self._train_fields('trxml_fields')
         return self._get_values_from_trxml(fields, data_path)
 
     def get_details(self, data_path):
-        fields = self._detail_fields()
+        fields = self._detail_fields('trxml_fields')
         return self._get_values_from_trxml(fields, data_path)
 
     def _get_values_from_trxml(self, fields, data_path):
@@ -56,26 +67,14 @@ class TRXMLDataReader(CommonDataReader):
                 for index, field in enumerate(fields)
             ]
 
-    def _train_fields(self):
-        fields = [self.config['trxml_fields']['features'],
-                  self.config['trxml_fields']['class']]
-        return fields
-
-    def _detail_fields(self):
-        fields = [self.config['trxml_fields']['features'],
-                  self.config['trxml_fields']['class'],
-                  self.config['trxml_fields']['doc_id']]
-        fields += self.config['trxml_fields']['extra']
-        return fields
-
 
 class CSVDataReader(CommonDataReader):
     def get_train_data(self, data_path):
-        fields = self._train_fields()
+        fields = self._train_fields('csv_fields')
         return self._get_values_from_csv(fields, data_path)
 
     def get_details(self, data_path):
-        fields = self._detail_fields()
+        fields = self._detail_fields('csv_fields')
         return self._get_values_from_csv(fields, data_path)
 
     def _get_values_from_csv(self, fields, data_path):
@@ -90,19 +89,6 @@ class CSVDataReader(CommonDataReader):
                     ]
                     for index, field in enumerate(fields)
                 ]
-
-
-    def _train_fields(self):
-        fields = [self.config['csv_fields']['features'],
-                  self.config['csv_fields']['class']]
-        return fields
-
-    def _detail_fields(self):
-        fields = [self.config['csv_fields']['features'],
-                  self.config['csv_fields']['class'],
-                  self.config['csv_fields']['doc_id']]
-        fields += self.config['csv_fields']['extra']
-        return fields
 
 
 class DataReader():

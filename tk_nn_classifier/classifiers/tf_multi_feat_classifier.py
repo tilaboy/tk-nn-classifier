@@ -6,7 +6,6 @@ import numpy as np
 import random
 from pathlib import Path
 import functools
-from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 

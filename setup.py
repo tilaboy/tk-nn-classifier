@@ -8,7 +8,6 @@ INSTALL_REQUIRES = [
     "tensorflow == 1.14.0",
     "numpy == 1.16.0",
     "xml-miner >= 0.0.4",
-    "tk-preprocessing == 0.0.4",
     "spacy == 2.1.8",
     "pandas >= 0.22.0",
     "en_core_web_sm == 2.1.0"
@@ -21,9 +20,8 @@ test_requirements = ['pytest', ]
 setup(
     name=NAME,
     version=VERSION,
-    keywords='recruitment agency, vacancy, detector',
-    description='''a detector to detect whether vacancy is from a recruitment
-    agency''',
+    keywords='neural network, classifier, easy config',
+    description='''a general framework to easily setup a classifier to train and predict''',
     author="Chao Li",
     author_email="chaoli.job@google.com",
     classifiers=[
@@ -40,7 +38,6 @@ setup(
         ],
     },
     dependency_links = [
-        "http://tkn-txtor-pythonrepo-01.textkernel.net:8080/packages/tk_preprocessing-0.0.4-py3-none-any.whl",
         "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm"
     ],
     test_suite="tests",

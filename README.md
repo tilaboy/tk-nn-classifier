@@ -14,3 +14,8 @@ tk-nn-train.py config_file
 
 PROCESS BATCH:
 tk-nn-infer.py model_dir trxml_data_path output_file
+
+
+## TODOs:
+- in config: set default option to reduce the needed parameter
+- use csv or data_saver module to handle the output

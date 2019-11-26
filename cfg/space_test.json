@@ -6,6 +6,6 @@
     },
 
     "datasets": {
-        "data": "tests/resource/samples/",
+        "all_data": "tests/resource/samples/",
     }
 }

@@ -1,5 +1,4 @@
 import os
-from collections import Iterable
 from .label_class_mapper import LabelClassMapper
 from .trxml_loder import TRXMLLoader
 from .csv_loader import CSVLoader

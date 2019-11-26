@@ -1,12 +1,13 @@
+''' TRXML file reader: import data from trxml files'''
+
 import random
 from shutil import copyfile
 import os
 from os import listdir
-import csv
 from xml_miner.miner import TRXMLMiner
-from collections import Iterable
 from .label_class_mapper import LabelClassMapper
 from .common_data_reader import CommonDataReader
+
 
 class TRXMLLoader(CommonDataReader):
     def _train_fields(self):

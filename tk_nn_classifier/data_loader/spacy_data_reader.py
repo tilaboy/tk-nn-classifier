@@ -1,6 +1,7 @@
+'''Spacy data reader: prepare the train/eval data in space format'''
 import random
-from collections import Iterable
 from .data_reader import DataReader
+
 
 class SpacyDataReader(DataReader):
     def get_data(self, data_path, shuffle=False, train_mode=False):

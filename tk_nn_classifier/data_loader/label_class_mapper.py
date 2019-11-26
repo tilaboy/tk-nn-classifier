@@ -1,4 +1,6 @@
+'''Label mapping: create mapping from label to class_id'''
 import json
+
 
 class LabelClassMapper:
 

@@ -6,7 +6,9 @@ import shutil
 from tk_nn_classifier.data_loader import DataReader
 from tk_nn_classifier.data_loader import TFDataReader
 from tk_nn_classifier.data_loader import SpacyDataReader
-from tk_nn_classifier.data_loader.data_reader import CommonDataReader
+from tk_nn_classifier.data_loader import CommonLoader
+from tk_nn_classifier.data_loader import TRXMLLoader
+from tk_nn_classifier.data_loader import CSVLoader
 
 class DataReaderTestCases(TestCase):
     """unit tests"""
@@ -91,6 +93,7 @@ class DataReaderTestCases(TestCase):
                 ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
         )
         self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
+
 
     def test_trxml_details(self):
         train_examples = list(self.data_reader.get_data_set_with_detail(self.trxml_dir))
@@ -194,6 +197,10 @@ class DataReaderTestCases(TestCase):
                 self._get_expected_trxml_full_text() + '\n' + expected_org_name
         )
 
+    def test_split_data_trxml(self):
+        train_files, eval_files = CSVLoader.split_data_on_ratio(self.trxml_dir)
+        self.assertEqual(len(train_files), 8)
+        self.assertEqual(len(eval_files), 2)
 
 
     def _get_expected_csv_full_text(self):

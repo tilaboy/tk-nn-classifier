@@ -2,10 +2,10 @@
     "trxml_fields": {
         "features": "sec_vacancy.0.sec_vacancy",
         "class": "derived_vac_intermediary.0.derived_vac_intermediary",
-        "doc_id": "Document.0.correlationid",
+        "doc_id": "Document.0.correlationid"
     },
 
     "datasets": {
-        "all_data": "tests/resource/samples/",
+        "all_data": "tests/resource/samples/"
     }
 }

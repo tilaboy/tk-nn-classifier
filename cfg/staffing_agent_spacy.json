@@ -2,7 +2,6 @@
     "model_type": "spacy_simple",
     "model_name": "uk_vac_staffing_agency_spacy",
     "model_path": "models/uk_vac_staffing_agency_spacy_v4_sec_vacancy",
-    "split_ratio": 0.8,
 
     "dropout_rate": 0.2,
     "num_epochs": 20,

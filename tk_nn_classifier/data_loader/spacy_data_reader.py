@@ -1,4 +1,4 @@
-'''Spacy data reader: prepare the train/eval data in space format'''
+'''SpaCy data reader: prepare the train/eval data in spaCy format'''
 import random
 from .data_reader import DataReader
 
@@ -22,19 +22,6 @@ class SpacyDataReader(DataReader):
         self._build_label_mapper(labels)
         cats = self._prepare_label(labels)
         return texts, cats
-
-    def split_train_test_data(self, data_path):
-        """prepare data from our dataset."""
-        data_set = self.get_data(self.config['datasets']['all_data'])
-        texts, cats = self._unpack_data(data_set, shuffle=True)
-        split = int(len(data_set) * self.config['datasets']['split_ratio'])
-
-        train_set = list(zip(
-                texts[:split],
-                self._wrap_training_categories(cats[:split])
-                ))
-        eval_set = list(zip(texts[split:], cats[split:]))
-        return (train_set, eval_set)
 
     def _prepare_label(self, labels):
          return [

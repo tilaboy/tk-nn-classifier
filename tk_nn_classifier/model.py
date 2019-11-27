@@ -1,9 +1,10 @@
+'''Model class: hub to integrate methods from both spaCy and Tensorflow frame'''
 import sys
 import tensorflow as tf
 from pathlib import Path
 import logging
 from . import LOGGER
-from .config import load_config
+from .config import load_config, spacy_lang_model_consistency
 from .classifiers import TFClassifier, SpaceClassifier, TFMultiFeatClassifier
 
 class Model:
@@ -13,7 +14,7 @@ class Model:
             self.config = config
             self.type = config['model_type']
         else:
-            self.config = load_config(config.config_file_path, poc_defaults=True)
+            self.config = load_config(config['config_file_path'], poc_defaults=True)
 
         # derived parameters
         self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
@@ -23,15 +24,20 @@ class Model:
             self.config['classifier_frame'] = 'tensorflow_multi_feat'
             self.classifier = TFMultiFeatClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
+
         elif self.type.startswith('tf'):
             LOGGER.info('use tensorflow %s' % self.type)
             self.config['classifier_frame'] = 'tensorflow'
             self.classifier = TFClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
+
         elif self.type.startswith('spacy'):
             LOGGER.info('use spacy %s' % self.type)
             self.config['classifier_frame'] = 'spacy'
+            spacy_lang_model_consistency(self.config)
+            print(self.config)
             self.classifier = SpaceClassifier(self.config)
+
         else:
             raise ValueError("unknown classifier type [{}]".format(self.type))
 

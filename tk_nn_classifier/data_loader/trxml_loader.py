@@ -3,7 +3,6 @@
 import random
 from shutil import copyfile
 import os
-from os import listdir
 from xml_miner.miner import TRXMLMiner
 from .label_class_mapper import LabelClassMapper
 from .common_data_reader import CommonDataReader
@@ -36,13 +35,8 @@ class TRXMLLoader(CommonDataReader):
             ]
 
     @staticmethod
-    def split_data_on_ratio(
-                   data_path,
-                   ratio=0.8,
-                   des='models',
-                   random_shuffle=False
-                  ):
-        files = listdir(data_path)
+    def _split_files_on_ratio(data_path, ratio, random_shuffle=False):
+        files = os.listdir(data_path)
         if not files:
             raise ValueError('no file found in %s, please check config' % data_path)
         if random_shuffle == True:
@@ -54,10 +48,25 @@ class TRXMLLoader(CommonDataReader):
         return train_files, eval_files
 
 
-    def backup_splitted_data(self)
-        train_files, eval_files = self.split_data_on_ratio()
+    def split_data(self, data_path, ratio=0.8, des='models'):
+        '''split the data into train and evel'''
+        train_files, eval_files = self._split_files_on_ratio(data_path, ratio)
 
-        #copyfile()
+        if des:
+            os.makedirs(des, exist_ok=True)
+            train_folder = os.path.join(des, 'train')
+            eval_folder = os.path.join(des, 'eval'),
 
+            os.makedirs(train_folder, exist_ok=True)
+            os.makedirs(eval_folder, exist_ok=True)
+        else:
+            raise ValueError('train/eval destination needs to be specified')
 
-        # TODO copy them to the new des
+        for file in train_files:
+            copyfile(os.path.join(data_path, file),
+                     os.path.join(train_folder, file))
+
+        for file in eval_files:
+            copyfile(os.path.join(data_path, file),
+                     os.path.join(eval_folder, file))
+        return train_folder, eval_folder

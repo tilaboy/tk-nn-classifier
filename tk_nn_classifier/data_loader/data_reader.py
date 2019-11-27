@@ -50,6 +50,13 @@ class DataReader():
         data_reader =  self._data_reader_by_input_type(data_path)
         return list(data_reader.get_details(data_path))
 
+    def get_split_data(self):
+        data_reader =  self._data_reader_by_input_type(data_path)
+        return data_reader.split_data(self.config['datasets']['all_data'],
+                                      self.config['datasets']['ratio'],
+                                      self.config['model_path']
+                                     )
+
     def _build_label_mapper(self, labels):
         if self.label_mapper is None:
             self.label_mapper = LabelClassMapper.from_labels(

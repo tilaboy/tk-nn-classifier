@@ -18,12 +18,25 @@ class SpaceClassifier:
     def build_and_train(self):
         self.build_graph()
 
+        if 'all_data' in self.config['datasets']:
+            if 'train' in self.config['datasets'] or \
+            'eval' in self.config['dataset']:
+                raise ValueError("config conflict: all_data <=> train/eval")
+            else:
+                # split the data
+                train_source, eval_source = self.data_reader.get_split_data(
+                        self.config['datasets']['all_data'],
+                )
+                self.config['datasets']['train'] = train_source
+                self.config['datasets']['eval'] = eval_source
+
         train_data=self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=True,
             train_mode=True
         )
         eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
+
         self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()

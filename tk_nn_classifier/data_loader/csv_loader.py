@@ -32,15 +32,10 @@ class CSVLoader(CommonDataReader):
                 ]
 
     @staticmethod
-    def split_data_on_ratio(
-                   data_path,
-                   ratio=0.8,
-                   des='models',
-                   random_shuffle=False
-                  ):
+    def _split_files_on_ratio(data_path, ratio, random_shuffle=False):
         with open(data_path, newline='') as csvfile:
             rows = list(csv.Reader(csvfile))
-            header = reader.pop(0)
+            header = rows.pop(0)
         if not rows:
             raise ValueError('no rows found in %s, please check config' % data_path)
         if random_shuffle == True:
@@ -49,4 +44,29 @@ class CSVLoader(CommonDataReader):
         train_rows = rows[:split_point]
         eval_rows = rows[split_point:]
 
-        return train_rows, eval_rows
+        return header, train_rows, eval_rows
+
+
+    def split_data(self, data_path, ratio=0.8, des='models'):
+        '''split the data into train and evel'''
+        header, train_rows, eval_rows = self._split_files_on_ratio(data_path, ratio)
+
+        if des:
+            os.makedirs(des, exist_ok=True)
+            train_file = os.path.join(des, 'train.csv')
+            eval_file = os.path.join(des, 'eval.csv'),
+
+        else:
+            raise ValueError('train/eval destination needs to be specified')
+
+        with open(train_file, 'w', newline='') as train_fh:
+            csv_writer = csv.writer(train_fh, delimiter="\t", quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow(header)
+            csv_writer.writerows(train_rows)
+
+        with open(eval_file, 'w', newline='') as eval_fh:
+            csv_writer = csv.writer(eval_fh, delimiter="\t", quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow(header)
+            csv_writer.writerows(eval_rows)
+
+        return train_file, eval_file

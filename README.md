@@ -53,7 +53,6 @@ and then run:
 
 and you will see the following logging message:
 
-
 ```
 I [2019-11-28 12:39:10,354] [tk_nn_classifier] use spacy spacy_poc
 I [2019-11-28 12:39:10,355] [tk_nn_classifier] starting training process ...
@@ -75,17 +74,34 @@ I [2019-11-28 12:41:11,778] [tk_nn_classifier] Saved model to models/poc
 Congratulations, you just trained the first classifier. And the model is save in
 `models/poc` by default, together with a label mapping file.
 
+The package also support csv file as input, if you start with a csv file, your first
+config file will looks like this:
+
+```
+{
+    "csv_fields": {
+        "features": "full_text",
+        "class": "class",
+        "doc_id": "id"
+    },
+
+    "datasets": {
+        "all_data": "tests/resource/samples.csv"
+    }
+}
+```
+
 ### 2. What happened behind
 
    - All data specified in the dataset is splitted into train and eval, and saved.
 
-   - The learner read the feature input, tag from the train and eval
+   - The learner read the feature input text, and tags from the train and eval
 
    - And derived a mapping from tag to an internal class_id, save in the model path
 
-   - Train for a number of epochs, and report the loss and accuracy on eval for each epoch
+   - Train the model for a number of epochs, and report the loss and accuracy on eval for each epoch
 
-   - save the final model to output
+   - save the final model into the model path folder
 
 ### 3. A bit more config
 
@@ -172,8 +188,10 @@ Document.0.correlationid        new     old     probabilities
 
 ### 5. more config
 
-Now you have train and eval set, you probably don't want to change it all the time.
-Likely you can also specify it in your config. You can also specify more test sets,
+There is many options you could add, e.g. Now you have train and eval set, and
+you probably don't want to change it all the time.
+
+You can also specify it in your config. You can also specify more test sets,
 as mentioned ealier, and label mapping files. For example:
 
 ```
@@ -192,7 +210,11 @@ as mentioned ealier, and label mapping files. For example:
 ```
 
 Note that the data set can be eithor folder contains trxml/xml files, or simply csv file.
-For csv files, one needs another entry to tell the learner which fields to take, e.g.
+And you can just put them in any order in the test block or as train, or eval data.
+
+
+Just remember that for csv files, one needs another entry to tell the learner which
+ fields to take, similar to the trxml files. E.g.
 
 ```
 "csv_fields": {

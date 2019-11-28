@@ -1,8 +1,10 @@
 # tk_nn_classifier
-A framework package for the text classification. Internally, the package contains
-two frame work, `SpaCy` and `Tensorflow`. `Spacy` packages come with
-some pre-trained models, and can be used to easilly do different PoC. Once the PoC
-works, one could try with more complicated implementation, e.g. implemented `Tensorflow`
+A framework package for text classification.
+
+Internally, the package use two Deep Learning frameworks, `SpaCy` and `Tensorflow`.
+`Spacy` packages come with some pre-trained models, and can be easilly applied to
+proof of concept stories. In the ideal work flow, Once the PoC works, one could
+try with more complicated implementation, e.g. implemented `Tensorflow` DNN,
 RNN, CNN, or simple CNN type perceptrons (Attention/Transformer will be added later),
 together with in house word embeddings, with multiple feature inputs, etc.
 

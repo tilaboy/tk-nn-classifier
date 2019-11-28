@@ -1,3 +1,4 @@
+'''train and process a batch of documents'''
 from __future__ import unicode_literals, print_function
 import os
 from argparse import ArgumentParser
@@ -54,7 +55,7 @@ def predict(args):
     else:
         test_sets = config['datasets']['test']
 
-    data_reader = DataReader(config)
+    data_reader = DataReader(model.config)
     os.makedirs(args.output_dir, exist_ok=True)
 
     for data_set in test_sets:

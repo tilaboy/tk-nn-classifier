@@ -37,5 +37,6 @@ class CommonLoader:
         fields = [self.config[cfg_entry]['features'],
                   self.config[cfg_entry]['class'],
                   self.config[cfg_entry]['doc_id']]
-        fields += self.config[cfg_entry]['extra']
+        if 'extra' in self.config[cfg_entry]:
+            fields += self.config[cfg_entry]['extra']
         return fields

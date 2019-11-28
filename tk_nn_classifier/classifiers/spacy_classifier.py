@@ -115,8 +115,8 @@ class SpaceClassifier:
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
-            with self.model.use_params(self.optimizer.averages):
-                self.model.to_disk(output_dir)
+            #with self.model.use_params(self.optimizer.averages):
+            self.model.to_disk(output_dir)
             LOGGER.info("Saved model to %s" % output_dir)
 
     def process_with_saved_model(self, input):

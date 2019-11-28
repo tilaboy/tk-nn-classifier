@@ -44,7 +44,7 @@ class DataReaderTestCases(TestCase):
         shutil.rmtree(self.test_dir)
 
     def test_flatten_array(self):
-        common_reader = CommonDataReader(self.config)
+        common_reader = CommonLoader(self.config)
         mixed_array = [[0,1,2],3,4,5,[6,[7,8]],9]
         self.assertEqual(
                 list(common_reader._iter_flatten(mixed_array)),

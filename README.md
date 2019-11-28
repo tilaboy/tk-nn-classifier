@@ -111,7 +111,7 @@ config file will looks like this:
 
    - and test on another data set,  e.g. `./another_data_set`
 
-   - and you want to train on 10 epochs
+   - and you want to train on `10` epochs
 
    - and split you data with ratio `train/eval = 7:3`
 
@@ -188,11 +188,12 @@ Document.0.correlationid        new     old     probabilities
 
 ### 5. more config
 
-There is many options you could add, e.g. Now you have train and eval set, and
-you probably don't want to change it all the time.
+There are many options one can add, e.g. Now you have train and eval set, and
+you probably don't want to change it all the time, specially when tweaking the
+RNN/CNN hyper-parameters.
 
-You can also specify it in your config. You can also specify more test sets,
-as mentioned ealier, and label mapping files. For example:
+You can specify them in your config. You can also specify more test sets,
+as mentioned earlier, and label mapping files. For example:
 
 ```
 "datasets": {
@@ -234,7 +235,6 @@ To be explained later:
     "model_type": "tf_cnn_simple",
     "model_name": "staffing_agency_detector",
     "model_path": "models/tf/cnn",
-    "model_file": "models/tf/sa_detector.h5",
 
     "dropout_rate": 0.5,
     "optimizer": "Adam",
@@ -277,23 +277,23 @@ To be explained later:
     },
 
     "embedding": {
-        "file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+        "file": "../../embeddings/en-wv.bin",
         "dimension": 150,
         "token_encoding": "max_embedding",
         "trainable": false
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train_big",
-        "eval": "../recruitment_agency_data/eval_big",
+        "train": "data/train_big",
+        "eval": "data/eval_big",
         "test": {
-            "unindentified": "../recruitment_agency_data/unidentified/",
-            "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval",
-            "random": "../recruitment_agency_data/final_eval/random",
-            "us": "../recruitment_agency_data/us.csv"
+            "unindentified": "data/unidentified/",
+            "annotated": "data/annotated/",
+            "eval": "data/eval",
+            "random": "data/final_eval/random",
+            "us": "data/us.csv"
         },
-        "label_mapper": "../recruitment_agency_data/label_mapper.json"
+        "label_mapper": "models/label_mapper.json"
     }
 }
 ```

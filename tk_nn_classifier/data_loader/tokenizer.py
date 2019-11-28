@@ -8,4 +8,9 @@ TOKENIZER = Tokenizer()
 
 def tokenize(string):
     string = normalize_chars(string)
+    try:
+        TOKENIZER
+    except NameError:
+        TOKENIZER = Tokenizer()
+
     return list(TOKENIZER.tokenize(string))

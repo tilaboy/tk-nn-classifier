@@ -1,20 +1,22 @@
 # tk_nn_classifier
-Detect whether the vacancy/job is from a direct employer or a recruitment agency
+A framework package for the text classification. Internally, the package contains
+two frame work, `SpaCy` and `Tensorflow`. `Spacy` packages come with
+some pre-trained models, and can be used to easilly do different PoC. Once the PoC
+works, one could try with more complicated implementation, e.g. implemented `Tensorflow`
+RNN, CNN, or simple CNN type perceptrons (Attention/Transformer will be added later),
+together with in house word embeddings, with multiple feature inputs, etc.
+
+And the implementation of tensorflow models is fully compatiable with `tf-serving`,
+which make the releasing and deployment of the new model very simple.
+
+And the nice part of the package is, everything you need to do is to add more
+information into the config file.
+
+Let's do it gradually together, step by step.
 
 ## Installation
 
     python setup.py develop
-
-## Usage
-
-TRAIN: (example config_file can be found in cfg/)
-
-`tk-nn-classifier train config_file`
-
-PROCESS BATCH:
-
-`tk-nn-classifier predict config_file [output_folder] [test_set_name]`
-
 
 ## Tutorial
 
@@ -68,7 +70,8 @@ LOSS 	ACCU
 I [2019-11-28 12:41:11,778] [tk_nn_classifier] Saved model to models/poc
 ```
 
-Congratulations, you just trained the first classifier.
+Congratulations, you just trained the first classifier. And the model is save in
+`models/poc` by default, together with a label mapping file.
 
 ### 2. What happened behind
 
@@ -82,18 +85,7 @@ Congratulations, you just trained the first classifier.
 
    - save the final model to output
 
-### 3. What the package contains
-
-The package contains two frame work, `SpaCy` and `Tensorflow`. `Spacy` comes with
-some pre-trained models, and can be used to easilly do different PoC. Once the PoC
-works, one could try with more complicated implementation, e.g. embedded `Tensorflow`
-RNN, CNN, or simple CNN type perceptrons (Attention/Transformer will be added later),
-together with in house word embeddings, with multiple feature inputs. Everything you
-need to do is to add more items into the config.
-
-Let's do it gradually together, step by step.
-
-### 4. A bit more config
+### 3. A bit more config
 
    - assume you want to work on different field as input, say `derived_cond_contract_type`
 
@@ -159,7 +151,7 @@ Vrijwilliger                               0          0            2     0
 And also in `models/poc`, you can also find the label mapping file, it looks like this:
 `{"0": "Detachering / interim", "1": "Franchise", "2": "Freelance", "3": "Mogelijk vast", "4": "Tijdelijk", "5": "Unspecified", "6": "Vast", "7": "Vrijwilliger"}`
 
-### 5. use batch processing for test listed in test block
+### 4. use batch processing for test listed in test block
 
 You can also try the batch processing command to see which file get wrong prediction:
 
@@ -176,7 +168,7 @@ Document.0.correlationid        new     old     probabilities
 .....
 ```
 
-### 6. more config
+### 5. more config
 
 Now you have train and eval set, you probably don't want to change it all the time.
 Likely you can also specify it in your config. You can also specify more test sets,
@@ -209,7 +201,7 @@ For csv files, one needs another entry to tell the learner which fields to take,
 },
 ```
 
-## 7. even more config
+## 6. even more config
 
 To be explained later:
 
@@ -279,6 +271,15 @@ To be explained later:
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"
     }
-
 }
 ```
+
+## Usage
+
+TRAIN: (example config_file can be found in cfg/)
+
+`tk-nn-classifier train config_file`
+
+PROCESS BATCH:
+
+`tk-nn-classifier predict config_file [output_folder] [test_set_name]`

@@ -1,5 +1,6 @@
 '''Label mapping: create mapping from label to class_id'''
 import json
+import os
 from .. import LOGGER
 
 
@@ -25,6 +26,11 @@ class LabelClassMapper:
         return cls(classid_to_label, label_mapper_file)
 
     def write(self):
+        dir = os.path.dirname(self.label_mapper_file)
+
+        if dir is not '':
+            os.makedirs(dir, exist_ok=True)
+
         with open(self.label_mapper_file, 'w') as l_fh:
             json.dump( self.classid_to_label, l_fh )
 

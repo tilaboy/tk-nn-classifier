@@ -12,12 +12,13 @@ TRAIN: (example config_file can be found in cfg/)
 `tk-nn-classifier train config_file`
 
 PROCESS BATCH:
+
 `tk-nn-classifier predict config_file [output_folder] [test_set_name]`
 
 
 ## Tutorial
 
-1. simple start:
+### 1. simple start:
 
 Take the test config from `cfg/spacy_test.cfg` as example.
 
@@ -69,7 +70,7 @@ I [2019-11-28 12:41:11,778] [tk_nn_classifier] Saved model to models/poc
 
 Congratulations, you just trained the first classifier.
 
-2. What happened behind
+### 2. What happened behind
 
    - All data specified in the dataset is splitted into train and eval, and saved.
 
@@ -81,7 +82,7 @@ Congratulations, you just trained the first classifier.
 
    - save the final model to output
 
-3. What the package contains
+### 3. What the package contains
 
 The package contains two frame work, `SpaCy` and `Tensorflow`. `Spacy` comes with
 some pre-trained models, and can be used to easilly do different PoC. Once the PoC
@@ -92,7 +93,7 @@ need to do is to add more items into the config.
 
 Let's do it gradually together, step by step.
 
-4. A bit more items in config
+### 4. A bit more config
 
    - assume you want to work on different field as input, say `derived_cond_contract_type`
 
@@ -158,6 +159,8 @@ Vrijwilliger                               0          0            2     0
 And also in `models/poc`, you can also find the label mapping file, it looks like this:
 `{"0": "Detachering / interim", "1": "Franchise", "2": "Freelance", "3": "Mogelijk vast", "4": "Tijdelijk", "5": "Unspecified", "6": "Vast", "7": "Vrijwilliger"}`
 
+### 5. use batch processing for test listed in test block
+
 You can also try the batch processing command to see which file get wrong prediction:
 
 `tk-nn-classifier predict cfg/spacy_test.json`
@@ -173,7 +176,7 @@ Document.0.correlationid        new     old     probabilities
 .....
 ```
 
-5. more config
+### 6. more config
 
 Now you have train and eval set, you probably don't want to change it all the time.
 Likely you can also specify it in your config. You can also specify more test sets,
@@ -206,7 +209,7 @@ For csv files, one needs another entry to tell the learner which fields to take,
 },
 ```
 
-6. even more config
+## 7. even more config
 
 To be explained later:
 

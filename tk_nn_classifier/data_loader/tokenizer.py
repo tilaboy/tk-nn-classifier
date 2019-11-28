@@ -1,16 +1,11 @@
 import re
-from tk_preprocessing.common_processor import char_normalization
+from easy_tokenizer.normalizer import normalize_chars
+from easy_tokenizer.tokenizer import Tokenizer
 
 HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
+TOKENIZER = Tokenizer()
 
 def tokenize(string):
-    string = char_normalization(string)
-    tokens = []
-    if re.search(HAS_TOKEN_REGEXP, string):
-        tokens = [
-            match.group().upper()
-            for match in TOKEN_REGEXP.finditer(string)
-            if re.search(HAS_TOKEN_REGEXP, match.group())
-        ]
-    return tokens
+    string = normalize_chars(string)
+    return list(TOKENIZER.tokenize(string))

@@ -2,7 +2,7 @@
 
 import re
 import numpy as np
-from tk_preprocessing.common_processor import char_normalization
+from easy_tokenizer.normalizer import normalize_chars
 from .word_vector import WordVector, maxabs
 
 CONTEXT_SEPARATOR = "\t"
@@ -14,7 +14,7 @@ def file_itt(data_file):
         for line in data_fh:
             if not line.isspace():
                 yield line.rstrip("\n")
-                    
+
 
 class DataEncoder:
     '''
@@ -98,7 +98,7 @@ class DataEncoder:
 
         output: an encoded embedding to represent this line
         '''
-        line = char_normalization(line)
+        line = normalize_chars(line)
         if self.data_format == "train_mode":
             label, left_context, center_words, right_context, _, *features = \
                 line.split(CONTEXT_SEPARATOR)
@@ -141,9 +141,9 @@ class DataEncoder:
         output: an encoded embedding to represent this match
         """
 
-        left_context = char_normalization(match.left_context)
-        center_words = char_normalization(match.surface_form)
-        right_context = char_normalization(match.right_context)
+        left_context = normalize_chars(match.left_context)
+        center_words = normalize_chars(match.surface_form)
+        right_context = normalize_chars(match.right_context)
 
         encoded_left_context = self.encode_tokens(left_context)
         encoded_center_words = self.encode_tokens(center_words)

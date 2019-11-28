@@ -20,7 +20,7 @@ class SpaceClassifier:
 
         if 'all_data' in self.config['datasets']:
             if 'train' in self.config['datasets'] or \
-            'eval' in self.config['dataset']:
+            'eval' in self.config['datasets']:
                 raise ValueError("config conflict: all_data <=> train/eval")
             else:
                 # split the data
@@ -37,6 +37,9 @@ class SpaceClassifier:
         eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
 
         self.train(train_data, eval_data)
+
+        self.save(self.config['model_path'])
+
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 

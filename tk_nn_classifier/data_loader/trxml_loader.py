@@ -4,11 +4,12 @@ import random
 from shutil import copyfile
 import os
 from xml_miner.miner import TRXMLMiner
+from .. import LOGGER
 from .label_class_mapper import LabelClassMapper
-from .common_data_reader import CommonDataReader
+from .common_loader import CommonLoader
 
 
-class TRXMLLoader(CommonDataReader):
+class TRXMLLoader(CommonLoader):
     def _train_fields(self):
         return super()._get_train_fields('trxml_fields')
 
@@ -39,25 +40,33 @@ class TRXMLLoader(CommonDataReader):
         files = os.listdir(data_path)
         if not files:
             raise ValueError('no file found in %s, please check config' % data_path)
+
+
         if random_shuffle == True:
-            random.shuffle(data_set)
+            random.shuffle(files)
         split_point = int(len(files) * ratio)
         train_files = files[:split_point]
         eval_files = files[split_point:]
-
+        LOGGER.info('split %d docs into %d train and %d eval',
+                    len(files),
+                    len(train_files),
+                    len(eval_files)
+                    )
         return train_files, eval_files
 
 
     def split_data(self, data_path, ratio=0.8, des='models'):
         '''split the data into train and evel'''
-        train_files, eval_files = self._split_files_on_ratio(data_path, ratio)
+        train_files, eval_files = self._split_files_on_ratio(data_path, ratio, random_shuffle=True)
 
         if des:
             os.makedirs(des, exist_ok=True)
             train_folder = os.path.join(des, 'train')
-            eval_folder = os.path.join(des, 'eval'),
-
+            LOGGER.info('copy the train data to train folder %s' % train_folder)
             os.makedirs(train_folder, exist_ok=True)
+
+            eval_folder = os.path.join(des, 'eval')
+            LOGGER.info('copy the eval data to eval folder %s' % eval_folder)
             os.makedirs(eval_folder, exist_ok=True)
         else:
             raise ValueError('train/eval destination needs to be specified')

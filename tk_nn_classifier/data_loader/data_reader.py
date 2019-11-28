@@ -1,6 +1,8 @@
 import os
+from .. import LOGGER
+
 from .label_class_mapper import LabelClassMapper
-from .trxml_loder import TRXMLLoader
+from .trxml_loader import TRXMLLoader
 from .csv_loader import CSVLoader
 
 
@@ -51,9 +53,10 @@ class DataReader():
         return list(data_reader.get_details(data_path))
 
     def get_split_data(self):
+        data_path = self.config['datasets']['all_data']
         data_reader =  self._data_reader_by_input_type(data_path)
-        return data_reader.split_data(self.config['datasets']['all_data'],
-                                      self.config['datasets']['ratio'],
+        return data_reader.split_data(data_path,
+                                      self.config['split_ratio'],
                                       self.config['model_path']
                                      )
 

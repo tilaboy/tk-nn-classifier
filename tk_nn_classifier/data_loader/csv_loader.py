@@ -2,10 +2,11 @@
 import random
 import os
 import csv
-from .common_data_reader import CommonDataReader
+from .. import LOGGER
+from .common_loader import CommonLoader
 
 
-class CSVLoader(CommonDataReader):
+class CSVLoader(CommonLoader):
     def _train_fields(self):
         return super()._get_train_fields('csv_fields')
 
@@ -34,7 +35,7 @@ class CSVLoader(CommonDataReader):
     @staticmethod
     def _split_files_on_ratio(data_path, ratio, random_shuffle=False):
         with open(data_path, newline='') as csvfile:
-            rows = list(csv.Reader(csvfile))
+            rows = list(csv.reader(csvfile))
             header = rows.pop(0)
         if not rows:
             raise ValueError('no rows found in %s, please check config' % data_path)
@@ -44,28 +45,36 @@ class CSVLoader(CommonDataReader):
         train_rows = rows[:split_point]
         eval_rows = rows[split_point:]
 
+        LOGGER.info('split %d records into %d train and %d eval',
+                    len(rows),
+                    len(train_rows),
+                    len(eval_rows)
+                    )
+
         return header, train_rows, eval_rows
 
 
     def split_data(self, data_path, ratio=0.8, des='models'):
         '''split the data into train and evel'''
-        header, train_rows, eval_rows = self._split_files_on_ratio(data_path, ratio)
+        header, train_rows, eval_rows = self._split_files_on_ratio(data_path, ratio, random_shuffle=True)
 
         if des:
             os.makedirs(des, exist_ok=True)
             train_file = os.path.join(des, 'train.csv')
-            eval_file = os.path.join(des, 'eval.csv'),
+            eval_file = os.path.join(des, 'eval.csv')
+            LOGGER.info('write the train data to train file %s' % train_file)
+            LOGGER.info('write the eval data to eval file %s' % eval_file)
 
         else:
             raise ValueError('train/eval destination needs to be specified')
 
         with open(train_file, 'w', newline='') as train_fh:
-            csv_writer = csv.writer(train_fh, delimiter="\t", quoting=csv.QUOTE_MINIMAL)
+            csv_writer = csv.writer(train_fh, delimiter=",", quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow(header)
             csv_writer.writerows(train_rows)
 
         with open(eval_file, 'w', newline='') as eval_fh:
-            csv_writer = csv.writer(eval_fh, delimiter="\t", quoting=csv.QUOTE_MINIMAL)
+            csv_writer = csv.writer(eval_fh, delimiter=",", quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow(header)
             csv_writer.writerows(eval_rows)
 

@@ -41,8 +41,6 @@ def train(args):
     LOGGER.info("starting training process ...")
 
     model.build_and_train()
-    if model.type.startswith('spacy'):
-        model.save(config['model_path'])
 
 def predict(args):
     config = load_config(args.config)

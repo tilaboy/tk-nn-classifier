@@ -1,5 +1,6 @@
 '''TF data reader: prepare the input data'''
 from .data_reader import DataReader
+from .. import LOGGER
 
 
 class TFDataReader(DataReader):

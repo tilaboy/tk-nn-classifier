@@ -8,7 +8,6 @@ DEFAULTS = {
     "model_name": "poc_model",
     "model_path": "models/poc",
 
-    "split_ratio": 0.8,
     "dropout_rate": 0.2,
     "num_epochs": 20,
     "max_lines":50,
@@ -18,14 +17,8 @@ DEFAULTS = {
         "arch": "simple_cnn"
     },
 
-    # Embedding
-    "embedding": {},
-    "cnn": {},
-
-    # Training data files
-    "datasets": {
-        "split_ratio": 0.8
-    }
+    # split ratio for dataset
+    "split_ratio": 0.8
 }
 
 poc_spacy_lang_model = {
@@ -66,6 +59,10 @@ def spacy_lang_model_consistency(config):
             config['spacy']['model'] = poc_spacy_lang_model[language]
         else:
             raise ValueError('Sorry: %s is not supported by spaCy')
+
+    if 'arch' not in config['spacy']:
+        # default to simple_cnn
+        config['spacy']['arch'] = 'simple_cnn'
 
 
 

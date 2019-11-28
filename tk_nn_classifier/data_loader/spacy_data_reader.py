@@ -1,5 +1,6 @@
 '''SpaCy data reader: prepare the train/eval data in spaCy format'''
 import random
+from .. import LOGGER
 from .data_reader import DataReader
 
 

@@ -1,5 +1,6 @@
 ''' Basic class to read files also get the field names relevant to the training'''
-
+from collections import Iterable
+from .. import LOGGER
 
 class CommonLoader:
     def __init__ (self, config):

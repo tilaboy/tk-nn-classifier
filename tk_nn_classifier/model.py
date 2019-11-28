@@ -12,9 +12,10 @@ class Model:
 
         if 'model_type' in config:
             self.config = config
-            self.type = config['model_type']
         else:
             self.config = load_config(config['config_file_path'], poc_defaults=True)
+
+        self.type = self.config['model_type']
 
         # derived parameters
         self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
@@ -35,7 +36,6 @@ class Model:
             LOGGER.info('use spacy %s' % self.type)
             self.config['classifier_frame'] = 'spacy'
             spacy_lang_model_consistency(self.config)
-            print(self.config)
             self.classifier = SpaceClassifier(self.config)
 
         else:

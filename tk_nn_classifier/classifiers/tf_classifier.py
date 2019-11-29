@@ -15,7 +15,7 @@ from .tf_best_export import BestCheckpointsExporter
 
 '''
 TODO:
-   - save all ckpt, but remove if not better, which make the evaluation only using the best models
+   - remove ckpt if not better
    - predict using serving, and export the model
    https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
 '''
@@ -275,7 +275,7 @@ class TFClassifier:
         return probabilities.tolist()
 
     # todo:
-    # is the padding still needed,
+    # the padding is probably not needed in the predicting mode
     # if needed, should use the text length as max_sequence_length
     def _input_text_to_pad_id(self, text):
         data_id = [

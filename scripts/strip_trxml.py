@@ -52,7 +52,7 @@ def _fields_to_keep():
               "Document.0.correlationid",
               "derived_org_name.0.derived_org_name",
               "derived_source_site.0.derived_source_site",
-              "derived_norm_url.0.derived_norm_urltest",
+              "derived_norm_url.0.derived_norm_url",
               "derived_cond_contract_type.0.derived_cond_contract_type"
              ]
     return fields

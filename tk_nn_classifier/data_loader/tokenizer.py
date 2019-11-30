@@ -7,7 +7,7 @@ TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 TOKENIZER = Tokenizer()
 
 def tokenize(string):
-    string = normalize_chars(string)
+    string = normalize_chars(string.upper())
     try:
         TOKENIZER
     except NameError:

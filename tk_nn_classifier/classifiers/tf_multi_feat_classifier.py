@@ -82,7 +82,7 @@ class TFMultiFeatClassifier:
 
         features = [
             [
-                [self.embedding.get_index(token.upper())
+                [self.embedding.get_index(token)
                 for token in tokenize(text)]
                 for text in texts
             ]

@@ -83,7 +83,7 @@ Related jobs
     </ItemGroup>
     <ItemGroup key="derived_norm_url">
         <Item index="0">
-            <Field key="derived_norm_urltest"><Value></Value></Field>
+            <Field key="derived_norm_url"><Value>dwp.gov.uk/details/2443323</Value></Field>
         </Item>
     </ItemGroup>
     <ItemGroup key="derived_cond_contract_type">

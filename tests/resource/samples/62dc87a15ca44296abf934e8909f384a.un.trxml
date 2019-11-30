@@ -150,7 +150,7 @@ Junior Accountant
     </ItemGroup>
     <ItemGroup key="derived_norm_url">
         <Item index="0">
-            <Field key="derived_norm_urltest"><Value></Value></Field>
+            <Field key="derived_norm_url"><Value>independent.co.uk/job/13754880/junior-accountant</Value></Field>
         </Item>
     </ItemGroup>
     <ItemGroup key="derived_cond_contract_type">

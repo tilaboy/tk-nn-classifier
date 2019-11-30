@@ -142,7 +142,7 @@ Assessor and IQA Officer
     </ItemGroup>
     <ItemGroup key="derived_norm_url">
         <Item index="0">
-            <Field key="derived_norm_urltest"><Value></Value></Field>
+            <Field key="derived_norm_url"><Value>independent.co.uk/job/14461716/ta-s-req-for-a-all-boys-faith-school-in-nw-london-asap-on-lt</Value></Field>
         </Item>
     </ItemGroup>
     <ItemGroup key="derived_cond_contract_type">

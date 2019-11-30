@@ -64,7 +64,6 @@ def main():
 
     output_dir = args.output_dir if args.output_dir is not None else args.input_dir
     os.makedirs(output_dir, exist_ok=True)
-    print(output_dir)
 
     for selected_values in trxml_miner.mine(args.input_dir):
         doc_id =selected_values['values']['Document.0.correlationid']

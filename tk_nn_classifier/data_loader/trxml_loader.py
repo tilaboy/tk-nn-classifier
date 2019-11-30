@@ -36,7 +36,7 @@ class TRXMLLoader(CommonLoader):
             ]
 
     @staticmethod
-    def _split_files_on_ratio(data_path, ratio, random_shuffle=False):
+    def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):
         files = os.listdir(data_path)
         if not files:
             raise ValueError('no file found in %s, please check config' % data_path)
@@ -57,7 +57,7 @@ class TRXMLLoader(CommonLoader):
 
     def split_data(self, data_path, ratio=0.8, des='models'):
         '''split the data into train and evel'''
-        train_files, eval_files = self._split_files_on_ratio(data_path, ratio, random_shuffle=True)
+        train_files, eval_files = self._split_docs_on_ratio(data_path, ratio, random_shuffle=True)
 
         if des:
             os.makedirs(des, exist_ok=True)

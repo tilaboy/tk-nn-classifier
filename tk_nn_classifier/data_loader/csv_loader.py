@@ -33,7 +33,7 @@ class CSVLoader(CommonLoader):
                 ]
 
     @staticmethod
-    def _split_files_on_ratio(data_path, ratio, random_shuffle=False):
+    def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):
         with open(data_path, newline='') as csvfile:
             rows = list(csv.reader(csvfile))
             header = rows.pop(0)
@@ -56,7 +56,7 @@ class CSVLoader(CommonLoader):
 
     def split_data(self, data_path, ratio=0.8, des='models'):
         '''split the data into train and evel'''
-        header, train_rows, eval_rows = self._split_files_on_ratio(data_path, ratio, random_shuffle=True)
+        header, train_rows, eval_rows = self._split_docs_on_ratio(data_path, ratio, random_shuffle=True)
 
         if des:
             os.makedirs(des, exist_ok=True)

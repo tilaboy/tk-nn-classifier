@@ -1,17 +1,15 @@
-"""unit tests for classifier utils functions"""
+', '', '"""unit tests for classifier utils functions"""
 import os
+import csv
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.data_reader import DataReader
-from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
 from tk_nn_classifier.data_loader.csv_loader import CSVLoader
 
-class DataReaderTestCases(TestCase):
+class CSVLoaderTestCases(TestCase):
     """unit tests"""
 
     def setUp(self):
-        self.trxml_dir = 'tests/resource/samples'
         self.csv_file = 'tests/resource/us_small.csv'
         self.test_dir = tempfile.mkdtemp()
 
@@ -34,65 +32,30 @@ class DataReaderTestCases(TestCase):
             },
             "datasets": {}
         }
-        self.data_reader = DataReader(self.config)
+        self.csv_loader = CSVLoader(self.config)
 
     def tearDown(self):
         '''clean up the temp dir after test'''
         shutil.rmtree(self.test_dir)
 
-    def test_data_reader_type(self):
-        data_reader = self.data_reader._data_reader_by_input_type(self.trxml_dir)
-        self.assertEqual(type(data_reader), TRXMLLoader)
-
-        data_reader = self.data_reader._data_reader_by_input_type(self.csv_file)
-        self.assertEqual(type(data_reader), CSVLoader)
-
-
-
-    def test_trxml_reading(self):
-        train_examples = list(self.data_reader.get_data_set(self.trxml_dir))
-        self.assertEqual(len(train_examples), 10)
-        full_text, categories = zip(*train_examples)
-        self.assertEqual(
-                categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
-        )
-        self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
-
-
-    def test_trxml_details(self):
-        train_examples = list(self.data_reader.get_data_set_with_detail(self.trxml_dir))
-        self.assertEqual(len(train_examples), 10)
-        text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
-        self.assertEqual(text[4][0], self._get_expected_trxml_full_text())
-        self.assertEqual(
-                categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
-        )
-        self.assertEqual(
-                doc_ids[0:2],
-                ('3cdb9e9d9e7848909c7bd1ecd2abd99f',
-                '46cabf28675c4ec09cacac68b3a5180a')
-        )
-        self.assertEqual(
-                org_names,
-                ('Blusource', 'Red Eagle', 'NLB Solutions',
-                'Estio Healthcare Ltd', 'ASQ EDUCATION', 'Class People',
-                'West Suffolk Council', 'Estio Healthcare Ltd',
-                'Samuel Frank', '')
-        )
-        self.assertEqual(
-                sites[0:2],
-                ('reed.co.uk', 'cv-library.co.uk')
-        )
-        self.assertEqual(
-                urls[0:2],
-                ('reed.co.uk/jobs/finance-director/37941677', 'cv-library.co.uk/job/210057084/audit-senior-academies-expert')
+    def test_csv_train_fields_list (self):
+        self.assertEqual(self.csv_loader._train_fields(),
+                [['full_text','advertiser_name'],
+                 'source_type']
         )
 
+    def test_csv_detailed_fields_list (self):
+        self.assertEqual(self.csv_loader._detail_fields(),
+                [['full_text', 'advertiser_name'],
+                 'source_type',
+                 'posting_id',
+                 'advertiser_name',
+                 'source_website',
+                 'source_url']
+        )
 
     def test_csv_reading(self):
-        train_examples = list(self.data_reader.get_data_set(self.csv_file))
+        train_examples = list(self.csv_loader.get_train_data(self.csv_file))
         self.assertEqual(len(train_examples), 30)
         full_text, categories = zip(*train_examples)
         self.assertEqual(categories[4], 'yes')
@@ -101,7 +64,7 @@ class DataReaderTestCases(TestCase):
         self.assertEqual(full_text[4][0], self._get_expected_csv_full_text())
 
     def test_csv_details(self):
-        train_examples = list(self.data_reader.get_data_set_with_detail(self.csv_file))
+        train_examples = list(self.csv_loader.get_details(self.csv_file))
         self.assertEqual(len(train_examples), 30)
         text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
         self.assertEqual(text[4][0], self._get_expected_csv_full_text())
@@ -132,6 +95,38 @@ class DataReaderTestCases(TestCase):
                 urls[0:2],
                 ('https://weatherbyhealthcare.com/job/JOB-2599560', 'http://aquent.com/find-work/151393')
         )
+
+
+    def test_split_docs_on_ratio(self):
+        header, train_rows, eval_rows = CSVLoader._split_docs_on_ratio(self.csv_file, ratio=0.8)
+        header_expected = ['id', 'advertiser_name', 'advertiser_type', 'date',
+                           'full_text', 'posting_id', 'source_type',
+                           'source_url', 'source_website', 'spider_source']
+
+        self.assertEqual(header, header_expected)
+        self.assertEqual(len(train_rows), 24)
+        self.assertEqual(len(eval_rows), 6)
+
+    def test_split_data(self):
+        self.csv_loader.split_data(self.csv_file, ratio=0.8, des=self.test_dir)
+        train_file = os.path.join(self.test_dir, 'train.csv')
+        eval_file = os.path.join(self.test_dir, 'eval.csv')
+        header_expected = ['id', 'advertiser_name', 'advertiser_type', 'date',
+                           'full_text', 'posting_id', 'source_type',
+                           'source_url', 'source_website', 'spider_source']
+
+        with open(train_file, 'r', newline='') as train_fh:
+            rows = list(csv.reader(train_fh))
+            header = rows.pop(0)
+        self.assertEqual(header, header_expected)
+        self.assertEqual(len(rows), 24)
+
+        with open(eval_file, 'r', newline='') as eval_fh:
+            rows = list(csv.reader(eval_fh))
+            header = rows.pop(0)
+        self.assertEqual(header, header_expected)
+        self.assertEqual(len(rows), 6)
+
 
     def _get_expected_csv_full_text(self):
         return '''  Payroll Specialist

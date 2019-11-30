@@ -3,16 +3,13 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.data_reader import DataReader
 from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
-from tk_nn_classifier.data_loader.csv_loader import CSVLoader
 
-class DataReaderTestCases(TestCase):
+class TRXMLLoaderTestCases(TestCase):
     """unit tests"""
 
     def setUp(self):
         self.trxml_dir = 'tests/resource/samples'
-        self.csv_file = 'tests/resource/us_small.csv'
         self.test_dir = tempfile.mkdtemp()
 
         self.config= {
@@ -34,23 +31,30 @@ class DataReaderTestCases(TestCase):
             },
             "datasets": {}
         }
-        self.data_reader = DataReader(self.config)
+        self.trxml_loader = TRXMLLoader(self.config)
 
     def tearDown(self):
         '''clean up the temp dir after test'''
         shutil.rmtree(self.test_dir)
 
-    def test_data_reader_type(self):
-        data_reader = self.data_reader._data_reader_by_input_type(self.trxml_dir)
-        self.assertEqual(type(data_reader), TRXMLLoader)
+    def test_trxml_train_fields_list (self):
+        self.assertEqual(self.trxml_loader._train_fields(),
+                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
+                 'derived_vac_intermediary.0.derived_vac_intermediary']
+        )
 
-        data_reader = self.data_reader._data_reader_by_input_type(self.csv_file)
-        self.assertEqual(type(data_reader), CSVLoader)
-
-
+    def test_trxml_detailed_fields_list (self):
+        self.assertEqual(self.trxml_loader._detail_fields(),
+                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
+                 'derived_vac_intermediary.0.derived_vac_intermediary',
+                 'Document.0.correlationid',
+                 'derived_org_name.0.derived_org_name',
+                 'derived_source_site.0.derived_source_site',
+                 'derived_norm_url.0.derived_norm_url']
+        )
 
     def test_trxml_reading(self):
-        train_examples = list(self.data_reader.get_data_set(self.trxml_dir))
+        train_examples = list(self.trxml_loader.get_train_data(self.trxml_dir))
         self.assertEqual(len(train_examples), 10)
         full_text, categories = zip(*train_examples)
         self.assertEqual(
@@ -61,7 +65,7 @@ class DataReaderTestCases(TestCase):
 
 
     def test_trxml_details(self):
-        train_examples = list(self.data_reader.get_data_set_with_detail(self.trxml_dir))
+        train_examples = list(self.trxml_loader.get_details(self.trxml_dir))
         self.assertEqual(len(train_examples), 10)
         text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
         self.assertEqual(text[4][0], self._get_expected_trxml_full_text())
@@ -91,47 +95,18 @@ class DataReaderTestCases(TestCase):
         )
 
 
-    def test_csv_reading(self):
-        train_examples = list(self.data_reader.get_data_set(self.csv_file))
-        self.assertEqual(len(train_examples), 30)
-        full_text, categories = zip(*train_examples)
-        self.assertEqual(categories[4], 'yes')
-        self.assertEqual(categories[5], 'no')
+    def test_split_data_trxml(self):
+        train_files, eval_files = TRXMLLoader._split_docs_on_ratio(self.trxml_dir, ratio=0.8)
+        self.assertEqual(len(train_files), 8)
+        self.assertEqual(len(eval_files), 2)
 
-        self.assertEqual(full_text[4][0], self._get_expected_csv_full_text())
+    def test_split_data(self):
+        self.trxml_loader.split_data(self.trxml_dir, ratio=0.8, des=self.test_dir)
+        train_dir = os.path.join(self.test_dir, 'train')
+        eval_dir = os.path.join(self.test_dir, 'eval')
 
-    def test_csv_details(self):
-        train_examples = list(self.data_reader.get_data_set_with_detail(self.csv_file))
-        self.assertEqual(len(train_examples), 30)
-        text, categories, doc_ids, org_names, sites, urls = zip(*train_examples)
-        self.assertEqual(text[4][0], self._get_expected_csv_full_text())
-
-        self.assertEqual(
-                categories[:10],
-                ('yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes')
-        )
-        self.assertEqual(
-                doc_ids[0:2],
-                ('eb6de587f296446883bdf687705dc239',
-                'cc84cf72232245adb8215c287a51b004')
-        )
-        self.assertEqual(
-                org_names[:10],
-                ('Weather by Healthcare', 'Aquent', 'Mindlance',
-                'Elwood Staffing Services, Inc.', 'Accounting Principals',
-                'Crystal L. Dunson and Associates, Incorporated',
-                'Joseph Michaels, Inc', 'Joseph Michaels, Inc',
-                'Crystal L. Dunson and Associates, Incorporated',
-                'Accounting Principals')
-        )
-        self.assertEqual(
-                sites[:2],
-                ('weatherbyhealthcare.com', 'aquent.com')
-        )
-        self.assertEqual(
-                urls[0:2],
-                ('https://weatherbyhealthcare.com/job/JOB-2599560', 'http://aquent.com/find-work/151393')
-        )
+        train_files = os.listdir(train_dir)
+        self.assertEqual(len(train_files), 8)
 
     def _get_expected_csv_full_text(self):
         return '''  Payroll Specialist

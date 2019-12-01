@@ -6,7 +6,6 @@ import numpy as np
 import random
 from pathlib import Path
 import functools
-from tk_preprocessing.common_processor import char_normalization
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
 
@@ -16,12 +15,7 @@ from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
-'''
-TODO:
-   - save all ckpt, but remove if not better, which make the evaluation only using the best models
-   - predict using serving, and export the model
-   https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
-'''
+
 class TFMultiFeatClassifier:
     def __init__(self, config):
         self.config = config
@@ -55,7 +49,7 @@ class TFMultiFeatClassifier:
         ]
         return predicted_classes
 
-    def _parepare_single_input(self, text):
+    def _prepare_single_input(self, text):
         data_id = [
                 self.embedding.get_index(token)
                 for token in tokenize(text)
@@ -83,7 +77,7 @@ class TFMultiFeatClassifier:
 
         features = [
             [
-                [self.embedding.get_index(token.upper())
+                [self.embedding.get_index(token)
                 for token in tokenize(text)]
                 for text in texts
             ]
@@ -312,7 +306,7 @@ class TFMultiFeatClassifier:
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
     def predict_on_text(self, text):
-        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
+        return self.classifier.predict(input_fn=functools.partial(self._prepare_single_input, text))
 
     def load_saved_model(self, model_path=None):
         if model_path is None:

@@ -1,4 +1,6 @@
+'''TF data reader: prepare the input data'''
 from .data_reader import DataReader
+from .. import LOGGER
 
 
 class TFDataReader(DataReader):
@@ -10,5 +12,5 @@ class TFDataReader(DataReader):
         cats = [
             int(self.label_mapper.class_id(label))
             for label in labels]
-        
+
         return texts, cats

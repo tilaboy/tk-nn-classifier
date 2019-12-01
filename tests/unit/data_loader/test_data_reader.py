@@ -3,10 +3,9 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader import DataReader
-from tk_nn_classifier.data_loader import TFDataReader
-from tk_nn_classifier.data_loader import SpacyDataReader
-from tk_nn_classifier.data_loader.data_reader import CommonDataReader
+from tk_nn_classifier.data_loader.data_reader import DataReader
+from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
+from tk_nn_classifier.data_loader.csv_loader import CSVLoader
 
 class DataReaderTestCases(TestCase):
     """unit tests"""
@@ -41,45 +40,13 @@ class DataReaderTestCases(TestCase):
         '''clean up the temp dir after test'''
         shutil.rmtree(self.test_dir)
 
-    def test_flatten_array(self):
-        common_reader = CommonDataReader(self.config)
-        mixed_array = [[0,1,2],3,4,5,[6,[7,8]],9]
-        self.assertEqual(
-                list(common_reader._iter_flatten(mixed_array)),
-                [0,1,2,3,4,5,6,7,8,9]
-        )
+    def test_data_reader_type(self):
+        data_reader = self.data_reader._data_reader_by_input_type(self.trxml_dir)
+        self.assertEqual(type(data_reader), TRXMLLoader)
 
-    def test_trxml_train_fields_list (self):
-        self.assertEqual(self.data_reader._train_fields(self.trxml_dir),
-                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
-                 'derived_vac_intermediary.0.derived_vac_intermediary']
-        )
+        data_reader = self.data_reader._data_reader_by_input_type(self.csv_file)
+        self.assertEqual(type(data_reader), CSVLoader)
 
-    def test_trxml_detailed_fields_list (self):
-        self.assertEqual(self.data_reader._detail_fields(self.trxml_dir),
-                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
-                 'derived_vac_intermediary.0.derived_vac_intermediary',
-                 'Document.0.correlationid',
-                 'derived_org_name.0.derived_org_name',
-                 'derived_source_site.0.derived_source_site',
-                 'derived_norm_url.0.derived_norm_url']
-        )
-
-    def test_csv_train_fields_list (self):
-        self.assertEqual(self.data_reader._train_fields(self.csv_file),
-                [['full_text','advertiser_name'],
-                 'source_type']
-        )
-
-    def test_csv_detailed_fields_list (self):
-        self.assertEqual(self.data_reader._detail_fields(self.csv_file),
-                [['full_text', 'advertiser_name'],
-                 'source_type',
-                 'posting_id',
-                 'advertiser_name',
-                 'source_website',
-                 'source_url']
-        )
 
 
     def test_trxml_reading(self):
@@ -91,6 +58,7 @@ class DataReaderTestCases(TestCase):
                 ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
         )
         self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
+
 
     def test_trxml_details(self):
         train_examples = list(self.data_reader.get_data_set_with_detail(self.trxml_dir))
@@ -164,37 +132,6 @@ class DataReaderTestCases(TestCase):
                 urls[0:2],
                 ('https://weatherbyhealthcare.com/job/JOB-2599560', 'http://aquent.com/find-work/151393')
         )
-
-    def test_tf_data_reader(self):
-        self.tf_data_reader = TFDataReader(self.config)
-
-        trxml_examples, trxml_label = self.tf_data_reader.get_data(self.trxml_dir)
-        self.assertEqual(len(trxml_examples), 10)
-
-        self.assertEqual(trxml_examples[4][0], self._get_expected_trxml_full_text())
-
-        self.assertEqual(
-                trxml_label,
-                [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
-        )
-
-    def test_spacy_data_reader(self):
-        self.sp_data_reader = SpacyDataReader(self.config)
-
-        data_set = self.sp_data_reader.get_data(self.trxml_dir)
-        self.assertEqual(len(data_set), 10)
-
-        full_text, categories = zip(*data_set)
-        print(full_text)
-        self.assertEqual(categories[4], {'no': True, 'yes': False})
-        self.assertEqual(categories[5], {'no': True, 'yes': False})
-        expected_org_name = 'ASQ EDUCATION'
-        self.assertEqual(
-                full_text[4],
-                self._get_expected_trxml_full_text() + '\n' + expected_org_name
-        )
-
-
 
     def _get_expected_csv_full_text(self):
         return '''  Payroll Specialist

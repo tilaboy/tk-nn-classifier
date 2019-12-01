@@ -13,12 +13,7 @@ from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
-'''
-TODO:
-   - save all ckpt, but remove if not better, which make the evaluation only using the best models
-   - predict using serving, and export the model
-   https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
-'''
+
 class TFClassifier:
     def __init__(self, config):
         self.config = config
@@ -52,20 +47,20 @@ class TFClassifier:
         ]
         return predicted_classes
 
-    def _parepare_single_input(self, text):
+    def _prepare_single_input(self, text):
         data_id = [
                 self.embedding.get_index(token)
                 for token in tokenize(text)
                 ]
         data_length = min(len(data_id), self.max_sequence_length)
-        data = sequence.pad_sequences([data_ids],
+        data = sequence.pad_sequences([data_id],
                                  maxlen=self.max_sequence_length,
                                  truncating='post',
                                  padding='post',
                                  value=WordVector.PAD_ID)
         dataset = tf.data.Dataset.from_tensor_slices((data, [data_length], [0]))
         dataset = dataset.map(self._data_parser)
-        iterator = dataset.make_one_shot_iterator()
+        iterator = tf.compat.v1.data.make_one_shot_iterator(dataset)
         return iterator.get_next()
 
     def load_embedding(self):
@@ -249,7 +244,7 @@ class TFClassifier:
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
     def predict_on_text(self, text):
-        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
+        return self.classifier.predict(input_fn=functools.partial(self._prepare_single_input, text))
 
     def load_saved_model(self, model_path=None):
         if model_path is None:
@@ -275,7 +270,7 @@ class TFClassifier:
         return probabilities.tolist()
 
     # todo:
-    # is the padding still needed,
+    # the padding is probably not needed in the predicting mode
     # if needed, should use the text length as max_sequence_length
     def _input_text_to_pad_id(self, text):
         data_id = [

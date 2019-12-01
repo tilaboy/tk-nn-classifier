@@ -1,7 +1,9 @@
+'''train and process a batch of documents'''
 from __future__ import unicode_literals, print_function
 import os
 from argparse import ArgumentParser
 import logging
+import csv
 from tk_nn_classifier.model import Model
 from tk_nn_classifier.config import load_config
 from tk_nn_classifier.data_loader import DataReader
@@ -40,9 +42,6 @@ def train(args):
     LOGGER.info("starting training process ...")
 
     model.build_and_train()
-    if model.type.startswith('spacy'):
-        model.save(config['model_path'])
-
 
 def predict(args):
     config = load_config(args.config)
@@ -56,7 +55,7 @@ def predict(args):
     else:
         test_sets = config['datasets']['test']
 
-    data_reader = DataReader(config)
+    data_reader = DataReader(model.config)
     os.makedirs(args.output_dir, exist_ok=True)
 
     for data_set in test_sets:
@@ -69,19 +68,9 @@ def predict(args):
             config
         )
         LOGGER.info('save result to [%s]', output_file)
-        write_to_output_file(
-            result,
-            output_file,
-            data_set
-        )
-
-def write_to_output_file(result, output_file, data_set):
-    with open(output_file, 'w') as fh_output:
-        for line in result:
-            try:
-                fh_output.write("\t".join(line) + "\n")
-            except:
-                raise ValueError('Failed to write line: [{}]'.format(line))
+        with open(output_file, 'w', newline='') as output_fh:
+            csv_writer = csv.writer(output_fh, delimiter="\t", quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerows(result)
 
 
 def get_args():

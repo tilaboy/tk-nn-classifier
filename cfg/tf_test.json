@@ -4,12 +4,13 @@
     "model_path": "models/tf/cnn",
     "model_file": "models/tf/sa_detector.h5",
 
-    "features_enabled": false,
     "dropout_rate": 0.5,
     "optimizer": "Adam",
-    "learning_rate": 0.001,
-    "num_epochs": 2000,
+    "learning_rate": 0.003,
+    "num_epochs": 100,
     "batch_size": 128,
+    "max_lines":50,
+
     "log_dir": "log",
     "max_sequence_length": 512,
     "max_steps_without_increase": 500,

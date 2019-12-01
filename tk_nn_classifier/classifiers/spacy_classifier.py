@@ -18,22 +18,39 @@ class SpaceClassifier:
     def build_and_train(self):
         self.build_graph()
 
+        if 'all_data' in self.config['datasets']:
+            if 'train' in self.config['datasets'] or \
+            'eval' in self.config['datasets']:
+                raise ValueError("config conflict: all_data <=> train/eval")
+            else:
+                # split the data
+                LOGGER.info('split all_data into train and test')
+                train_source, eval_source = self.data_reader.get_split_data()
+                self.config['datasets']['train'] = train_source
+                self.config['datasets']['eval'] = eval_source
+
         train_data=self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=True,
             train_mode=True
         )
         eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
+
         self.train(train_data, eval_data)
+
+        self.save(self.config['model_path'])
+
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
+            # load pretrained spaCy model
             model = spacy.load(self.config["spacy"]["model"])
             LOGGER.info("Loaded model '%s'" % self.config["spacy"]["model"])
         else:
-            model = spacy.blank(self.config["spacy"]["language"])  # create blank Language class
+            # create blank Language class
+            model = spacy.blank(self.config["spacy"]["language"])
             LOGGER.info("Created blank '%s' model" % self.config["spacy"]["language"])
 
         # add the text classifier to the pipeline if it doesn't exist
@@ -98,8 +115,8 @@ class SpaceClassifier:
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
-            with self.model.use_params(self.optimizer.averages):
-                self.model.to_disk(output_dir)
+            #with self.model.use_params(self.optimizer.averages):
+            self.model.to_disk(output_dir)
             LOGGER.info("Saved model to %s" % output_dir)
 
     def process_with_saved_model(self, input):

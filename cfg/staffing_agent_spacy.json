@@ -1,22 +1,17 @@
 {
-    "model_type": "tf_cnn_simple",
-    "model_name": "staffing_agency_detector",
-    "model_path": "models/tf/cnn",
-    "model_file": "models/tf/sa_detector.h5",
+    "model_type": "spacy_simple",
+    "model_name": "uk_vac_staffing_agency_spacy",
+    "model_path": "models/uk_vac_staffing_agency_spacy_v4_sec_vacancy",
 
-    "features_enabled": false,
-    "dropout_rate": 0.5,
-    "optimizer": "Adam",
-    "learning_rate": 0.003,
-    "num_epochs": 100,
-    "batch_size": 128,
+    "dropout_rate": 0.2,
+    "num_epochs": 20,
     "max_lines":50,
 
-    "log_dir": "log",
-    "max_sequence_length": 512,
-    "max_steps_without_increase": 500,
-    "min_train_steps": 1000,
-    "check_per_steps": 100,
+    "spacy": {
+        "model": "en_core_web_sm",
+        "lang": "en",
+        "arch": "simple_cnn"
+    },
 
     "trxml_fields": {
         "features": "sec_vacancy.0.sec_vacancy",
@@ -34,24 +29,6 @@
         "extra": ["advertiser_name", "source_website", "source_url"]
     },
 
-    "lstm": {
-        "hidden_size": 150,
-        "nr_layers": 2
-    },
-
-    "cnn": {
-        "nr_layers": 1,
-        "filter_size": 32,
-        "kernel_size": 3
-    },
-
-    "embedding": {
-        "file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
-        "dimension": 150,
-        "token_encoding": "max_embedding",
-        "trainable": false
-    },
-
     "datasets": {
         "train": "../recruitment_agency_data/train_big",
         "eval": "../recruitment_agency_data/eval_big",
@@ -64,5 +41,4 @@
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"
     }
-
 }

@@ -31,7 +31,6 @@ class TrainHelper:
     def print_progress(loss, accu):
         print("{0:.3f}\t{1:.3f}".format(loss,accu))
 
-
     @staticmethod
     def print_test_result(eval, gold):
         scores = TrainHelper._evaluate_f1_score(eval, gold)
@@ -95,8 +94,6 @@ class TrainHelper:
                 f_score = 2 * (precision * recall) / (precision + recall)
             scores[label] = {"precision": precision, "recall": recall, "f1": f_score}
         return scores
-
-
 
     @staticmethod
     def _evaluate_confusion_matrix(eval_labels, gold_labels):

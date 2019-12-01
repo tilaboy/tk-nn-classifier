@@ -54,7 +54,7 @@ class TFMultiFeatClassifier:
         ]
         return predicted_classes
 
-    def _parepare_single_input(self, text):
+    def _prepare_single_input(self, text):
         data_id = [
                 self.embedding.get_index(token)
                 for token in tokenize(text)
@@ -311,7 +311,7 @@ class TFMultiFeatClassifier:
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
     def predict_on_text(self, text):
-        return self.classifier.predict(input_fn=functools.partial(self._parepare_single_input, text))
+        return self.classifier.predict(input_fn=functools.partial(self._prepare_single_input, text))
 
     def load_saved_model(self, model_path=None):
         if model_path is None:

@@ -252,7 +252,7 @@ embedding file:
 
  - swith model type from 'spacy_simple':
    currently, it support "tf_cnn_simple", "tf_cnn_multi", "tf_lstm_simple", "tf_lstm_multi", or
-"tf_multi_feat_cnn". And still expanding.
+"tf_multi_feat_cnn". And still expanding (attention and transformer is on the way).
 
 e.g. using a one lay cnn as feature extractor + fully connection layer
 

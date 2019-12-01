@@ -13,12 +13,7 @@ from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
-'''
-TODO:
-   - remove ckpt if not better
-   - predict using serving, and export the model
-   https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
-'''
+
 class TFClassifier:
     def __init__(self, config):
         self.config = config

@@ -15,12 +15,7 @@ from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
-'''
-TODO:
-   - save all ckpt, but remove if not better, which make the evaluation only using the best models
-   - predict using serving, and export the model
-   https://guillaumegenthial.github.io/serving-tensorflow-estimator.html
-'''
+
 class TFMultiFeatClassifier:
     def __init__(self, config):
         self.config = config

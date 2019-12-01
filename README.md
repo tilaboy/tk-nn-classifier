@@ -188,6 +188,25 @@ Document.0.correlationid        new     old     probabilities
 
 ### 5. more config
 
+You might give the model with different name for each version, and maybe set to
+different path to export the model. Those could be set with the follow configuration
+options:
+
+```
+"model_type": "spacy_simple",
+"model_name": "vac_staffing_agency_spacy_v2",
+"model_path": "models/spacy_v2",
+```
+
+You can also add more training parameters, e.g. the dropout rate, number of epochs:
+
+```
+"dropout_rate": 0.2,
+"num_epochs": 20,
+```
+
+### 6. and more config
+
 There are many options one can add, e.g. Now you have train and eval set, and
 you probably don't want to change it all the time, specially when tweaking the
 RNN/CNN hyper-parameters.
@@ -226,7 +245,56 @@ Just remember that for csv files, one needs another entry to tell the learner wh
 },
 ```
 
-## 6. even more config
+## 7. with tensorflow model
+
+Use tensorflow model should be as easy as switch the model type and add the
+embedding file:
+
+ - swith model type from 'spacy_simple':
+   currently, it support "tf_cnn_simple", "tf_cnn_multi", "tf_lstm_simple", "tf_lstm_multi", or
+"tf_multi_feat_cnn". And still expanding.
+
+e.g. using a one lay cnn as feature extractor + fully connection layer
+
+```
+"model_type": "tf_cnn_simple",
+"model_name": "staffing_agency_detector",
+"model_path": "models/tf/cnn_v3",
+```
+
+ - to add the embedding, add this block into your config:
+
+```
+ "embedding": {
+     "file": "../../embeddings//en-cv.bin",
+ },
+```
+
+If Tensforflow models are used, one can use all tf-serving tool to run export the
+model, show model API, and run as service direct. e.g.
+
+`saved_model_cli show --dir your_model_path --tag_set serve --signature_def serving_default`
+
+will show infor for model input and output:
+```
+The given SavedModel SignatureDef contains the following input(s):
+  inputs['input'] tensor_info:
+      dtype: DT_INT32
+      shape: (-1, 512)
+      name: input_text:0
+The given SavedModel SignatureDef contains the following output(s):
+  outputs['classes'] tensor_info:
+      dtype: DT_INT64
+      shape: (-1)
+      name: ArgMax:0
+  outputs['probabilities'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 2)
+      name: softmax_tensor:0
+Method name is: tensorflow/serving/predict
+```
+
+## 8. even more config
 
 To be explained later:
 

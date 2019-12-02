@@ -10,7 +10,7 @@ class CommonLoader:
         self.config = config
 
     def _prepare_input_text(self, text, to_clean=False):
-        if to_clean:
+        if to_clean and text:
             lines = text.split("\n")
             text = "\n".join(lines[:self.max_lines])
         return text

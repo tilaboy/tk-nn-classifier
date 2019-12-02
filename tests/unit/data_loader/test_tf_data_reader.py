@@ -10,7 +10,7 @@ class TFDataReaderTestCases(TestCase):
 
     def setUp(self):
         self.trxml_dir = 'tests/resource/samples'
-        self.csv_file = 'tests/resource/us_small.csv'
+        self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
 
         self.config= {

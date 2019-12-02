@@ -13,7 +13,7 @@ class TFClassifierTestCases(TestCase):
 
     def setUp(self):
         self.trxml_dir = 'tests/resource/samples'
-        self.csv_file = 'tests/resource/us_small.csv'
+        self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
         test_embedding_file = os.path.join(self.test_dir, 'test_embedding.txt')
         with open(test_embedding_file, 'w') as embedding_fh:

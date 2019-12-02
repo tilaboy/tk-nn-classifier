@@ -10,7 +10,7 @@ class CSVLoaderTestCases(TestCase):
     """unit tests"""
 
     def setUp(self):
-        self.csv_file = 'tests/resource/us_small.csv'
+        self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
 
         self.config= {

@@ -5,7 +5,6 @@ from shutil import copyfile
 import os
 from xml_miner.miner import TRXMLMiner
 from .. import LOGGER
-from .label_class_mapper import LabelClassMapper
 from .common_loader import CommonLoader
 
 
@@ -29,7 +28,8 @@ class TRXMLLoader(CommonLoader):
             yield [
                 trxml['values'][field] if isinstance(field, str) else
                 [
-                    self._prepare_input_text(trxml['values'][sub_field], index==0)
+                    self._prepare_input_text(trxml['values'][sub_field],
+                                             index == 0)
                     for sub_field in field
                 ]
                 for index, field in enumerate(fields)
@@ -39,10 +39,10 @@ class TRXMLLoader(CommonLoader):
     def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):
         files = os.listdir(data_path)
         if not files:
-            raise ValueError('no file found in %s, please check config' % data_path)
+            raise ValueError('no file found in %s, please check config' %
+                             data_path)
 
-
-        if random_shuffle == True:
+        if random_shuffle is True:
             random.shuffle(files)
         split_point = int(len(files) * ratio)
         train_files = files[:split_point]
@@ -54,15 +54,16 @@ class TRXMLLoader(CommonLoader):
                     )
         return train_files, eval_files
 
-
     def split_data(self, data_path, ratio=0.8, des='models'):
         '''split the data into train and evel'''
-        train_files, eval_files = self._split_docs_on_ratio(data_path, ratio, random_shuffle=True)
+        train_files, eval_files = self._split_docs_on_ratio(
+            data_path, ratio, random_shuffle=True)
 
         if des:
             os.makedirs(des, exist_ok=True)
             train_folder = os.path.join(des, 'train')
-            LOGGER.info('copy the train data to train folder %s' % train_folder)
+            LOGGER.info('copy the train data to train folder %s' %
+                        train_folder)
             os.makedirs(train_folder, exist_ok=True)
 
             eval_folder = os.path.join(des, 'eval')

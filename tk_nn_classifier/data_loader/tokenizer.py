@@ -7,11 +7,12 @@ HAS_TOKEN_REGEXP = re.compile(r'\w')
 TOKEN_REGEXP = re.compile(r'\w+|[^\w\s]+')
 TOKENIZER = Tokenizer()
 
+
 def tokenize(string):
     '''tokenize string, and return the list of normalized tokens'''
     string = normalize_chars(string)
     try:
-        TOKENIZER
+        TOKENIZER  # NOQA
     except NameError:
         TOKENIZER = Tokenizer()
 

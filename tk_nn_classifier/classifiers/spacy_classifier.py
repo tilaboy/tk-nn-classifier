@@ -1,6 +1,4 @@
-import os
 import spacy
-import json
 from pathlib import Path
 import random
 from spacy.util import minibatch, compounding
@@ -9,7 +7,8 @@ from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from .utils import TrainHelper
 
-class SpaceClassifier:
+
+class SpacyClassifier:
     def __init__(self, config):
         self.config = config
         self.type = config['model_type']
@@ -20,7 +19,7 @@ class SpaceClassifier:
 
         if 'all_data' in self.config['datasets']:
             if 'train' in self.config['datasets'] or \
-            'eval' in self.config['datasets']:
+                    'eval' in self.config['datasets']:
                 raise ValueError("config conflict: all_data <=> train/eval")
             else:
                 # split the data
@@ -29,12 +28,12 @@ class SpaceClassifier:
                 self.config['datasets']['train'] = train_source
                 self.config['datasets']['eval'] = eval_source
 
-        train_data=self.data_reader.get_data(
+        train_data = self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=True,
             train_mode=True
         )
-        eval_data=self.data_reader.get_data(self.config['datasets']['eval'])
+        eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
 
         self.train(train_data, eval_data)
 
@@ -51,7 +50,8 @@ class SpaceClassifier:
         else:
             # create blank Language class
             model = spacy.blank(self.config["spacy"]["language"])
-            LOGGER.info("Created blank '%s' model" % self.config["spacy"]["language"])
+            LOGGER.info("Created blank '%s' model" %
+                        self.config["spacy"]["language"])
 
         # add the text classifier to the pipeline if it doesn't exist
         # nlp.create_pipe works for built-ins that are registered with spaCy
@@ -64,7 +64,7 @@ class SpaceClassifier:
                 }
             )
             model.add_pipe(textcat, last=True)
-        self.model =  model
+        self.model = model
 
     def train(self, train_data, eval_data):
         textcat = self.model.get_pipe("textcat")
@@ -72,7 +72,11 @@ class SpaceClassifier:
             textcat.add_label(label)
 
         # get names of other pipes to disable them during training
-        other_pipes = [pipe for pipe in self.model.pipe_names if pipe != "textcat"]
+        other_pipes = [
+            pipe
+            for pipe in self.model.pipe_names
+            if pipe != "textcat"
+        ]
 
         with self.model.disable_pipes(*other_pipes):  # only train textcat
             self.optimizer = self.model.begin_training()
@@ -86,8 +90,8 @@ class SpaceClassifier:
 
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                pred, gold = self.evaluate(eval_data, 'train', losses["textcat"])
-
+                pred, gold = self.evaluate(eval_data, 'train',
+                                           losses["textcat"])
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
@@ -115,7 +119,7 @@ class SpaceClassifier:
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
-            #with self.model.use_params(self.optimizer.averages):
+            # with self.model.use_params(self.optimizer.averages):
             self.model.to_disk(output_dir)
             LOGGER.info("Saved model to %s" % output_dir)
 
@@ -124,7 +128,6 @@ class SpaceClassifier:
         return result.cats
 
     def evaluate_on_tests(self):
-        train_helper = TrainHelper()
         for test_set in self.config['datasets']['test']:
             LOGGER.info('test_set: %s' % test_set)
             test_data = self.data_reader.get_data(

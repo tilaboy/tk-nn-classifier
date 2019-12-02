@@ -1,7 +1,7 @@
 import os
-import numpy
 import pandas as pd
 from .. import LOGGER
+
 
 class FileHelper:
     def __init__(self):
@@ -14,8 +14,7 @@ class FileHelper:
                 for name in os.listdir(model_path)
         ]
         model_path = max(model_names,
-                         key=lambda x: int(os.stat(x).st_birthtime)
-                        )
+                         key=lambda x: int(os.stat(x).st_birthtime))
         return model_path
 
 
@@ -29,16 +28,18 @@ class TrainHelper:
 
     @staticmethod
     def print_progress(loss, accu):
-        print("{0:.3f}\t{1:.3f}".format(loss,accu))
+        print("{0:.3f}\t{1:.3f}".format(loss, accu))
 
     @staticmethod
     def print_test_result(eval, gold):
         scores = TrainHelper._evaluate_f1_score(eval, gold)
 
-        print("{:^5}\t{:^5}\t{:^5}\t{:^5}".format("label", "Prec", "Reca", "F1"))
+        print("{:^5}\t{:^5}\t{:^5}\t{:^5}".format("label",
+                                                  "Prec",
+                                                  "Reca",
+                                                  "F1"))
         for label in scores:
-            print(
-                "{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
+            print("{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
                     label,
                     scores[label]["precision"],
                     scores[label]["recall"],
@@ -50,7 +51,7 @@ class TrainHelper:
         print(cm)
 
     @staticmethod
-    def accuracy (eval, gold):
+    def accuracy(eval, gold):
         correct = 0
         wrong = 0
         for i, cat in enumerate(eval):
@@ -76,7 +77,6 @@ class TrainHelper:
             tp = 0.0  # True positives
             fp = 1e-8  # False positives
             fn = 1e-8  # False negatives
-            tn = 0.0  # True negatives
             for i, cat in enumerate(eval):
                 if label not in [cat, gold[i]]:
                     continue
@@ -92,7 +92,9 @@ class TrainHelper:
                 f_score = 0.0
             else:
                 f_score = 2 * (precision * recall) / (precision + recall)
-            scores[label] = {"precision": precision, "recall": recall, "f1": f_score}
+            scores[label] = {"precision": precision,
+                             "recall": recall,
+                             "f1": f_score}
         return scores
 
     @staticmethod

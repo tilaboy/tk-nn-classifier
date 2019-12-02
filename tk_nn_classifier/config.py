@@ -10,7 +10,7 @@ DEFAULTS = {
 
     "dropout_rate": 0.2,
     "num_epochs": 20,
-    "max_lines":50,
+    "max_lines": 50,
 
     "spacy": {
         "lang": "en",
@@ -39,6 +39,7 @@ def get_default_config():
     config = copy.deepcopy(DEFAULTS)
     return config
 
+
 def spacy_lang_model_consistency(config):
     '''
     check the consistency of the language and pretrained model:
@@ -52,8 +53,8 @@ def spacy_lang_model_consistency(config):
 
     language = config['spacy']['lang']
     if 'model' in config['spacy']:
-        assert config['spacy']['model'].startswith(language), \
-                'Config error: spacy model should start with the language iso_code'
+        assert config['spacy']['model'].startswith(language), '''Config error:
+spacy model should start with the language iso_code'''
     else:
         if language in poc_spacy_lang_model:
             config['spacy']['model'] = poc_spacy_lang_model[language]
@@ -63,7 +64,6 @@ def spacy_lang_model_consistency(config):
     if 'arch' not in config['spacy']:
         # default to simple_cnn
         config['spacy']['arch'] = 'simple_cnn'
-
 
 
 def load_config(config_file, poc_defaults=False):

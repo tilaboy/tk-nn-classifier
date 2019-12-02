@@ -4,6 +4,7 @@ import struct
 import mimetypes
 import numpy as np
 
+
 class WordVector:
     '''
     word embedding class:
@@ -100,18 +101,24 @@ class WordVector:
         with only the given list of words.
         """
 
-        known_words = [w.upper() for w in words if self.get_index(w.upper()) >= 2]
+        known_words = [
+            w.upper()
+            for w in words
+            if self.get_index(w.upper()) >= 2
+        ]
         nwords = len(known_words)
 
         with open(output_file, 'wb') as ostream:
             # store header
-            ostream.write("{} {}\n".format(nwords, self.vector_size).encode('ascii'))
+            ostream.write("{} {}\n".format(nwords,
+                                           self.vector_size).encode('ascii'))
 
             # store word and word_vector
             for word in known_words:
                 ostream.write("{} ".format(word).encode('utf-8'))
                 ostream.write(
-                    struct.pack("f" * self.vector_size, *self.get_vector(word)))
+                    struct.pack("f" * self.vector_size,
+                                *self.get_vector(word)))
                 ostream.write(" ".encode('utf-8'))
 
     @classmethod
@@ -179,7 +186,7 @@ class WordVector:
         assert vectors.shape[1] == vector_size
 
         with open(filename, 'rb') as fin:
-            _ = fin.readline() #     first line is header
+            _ = fin.readline()  # first line is header
             binary_len = np.dtype(np.float32).itemsize * vector_size
             for i in range(vocab_size):
                 word = b''
@@ -221,6 +228,7 @@ class WordVector:
                 vector_size,
                 filename))
 
+
 def unitvec(vec):
     '''
     normalize the vector
@@ -229,8 +237,8 @@ def unitvec(vec):
 
 
 def maxabs(embeddings, axis=0):
-    """Return slice of embeddings, keeping only those values that are furthest away
-    from 0 along axis"""
+    """Return slice of embeddings, keeping only those values that are
+    furthest away from 0 along axis"""
     maxa = embeddings.max(axis=axis)
     mina = embeddings.min(axis=axis)
     positive = abs(maxa) >= abs(mina)  # bool, or indices where +ve values win

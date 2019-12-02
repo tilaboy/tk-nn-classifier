@@ -1,6 +1,7 @@
 import tensorflow as tf
 from .. import LOGGER
 
+
 class GraphSelector:
     def __init__(self, config, embedding):
         self.config = config
@@ -19,17 +20,20 @@ class GraphSelector:
     def add_graph(self, input, training_mode, embedding_initializer):
         if self.config['model_type'] == 'tf_cnn_simple':
             LOGGER.info("create model: cnn_simple")
-            return self._cnn_simple(input, training_mode, embedding_initializer)
+            return self._cnn_simple(input, training_mode,
+                                    embedding_initializer)
         elif self.config['model_type'] == 'tf_cnn_multi':
             LOGGER.info("create model: cnn_multi")
-            return self._cnn_multi_layer(input, training_mode, embedding_initializer)
+            return self._cnn_multi_layer(input, training_mode,
+                                         embedding_initializer)
         elif self.config['model_type'] == 'tf_lstm_simple':
             LOGGER.info("create model: lstm_simple")
-            return self._lstm_simple(input, training_mode, embedding_initializer)
+            return self._lstm_simple(input, training_mode,
+                                     embedding_initializer)
         elif self.config['model_type'] == 'tf_lstm_multi':
             LOGGER.info("create model: lstm_multi")
-            return self._lstm_multi_layer(input, training_mode, embedding_initializer)
-
+            return self._lstm_multi_layer(input, training_mode,
+                                          embedding_initializer)
 
     def _cnn_simple(self, input, training_mode, embedding_initializer):
         input_layer = self._input_layer(input, embedding_initializer)
@@ -56,8 +60,8 @@ class GraphSelector:
         input_layer = self._input_layer(input, embedding_initializer)
 
         next_input = tf.layers.dropout(inputs=input_layer,
-                                        rate=self.config['dropout_rate'],
-                                        training=training_mode)
+                                       rate=self.config['dropout_rate'],
+                                       training=training_mode)
 
         for i in range(self.config['cnn']['nr_layers']):
             conv = tf.layers.conv1d(
@@ -86,7 +90,7 @@ class GraphSelector:
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
-                #input_keep_prob=self.config['dropout_keep_rate'],
+                # input_keep_prob=self.config['dropout_keep_rate'],
                 output_keep_prob=self.config['dropout_keep_rate'],
                 state_keep_prob=self.config['dropout_keep_rate'],
                 variational_recurrent=True,
@@ -100,21 +104,22 @@ class GraphSelector:
         logits = tf.layers.dense(inputs=outputs, units=2)
         return logits
 
-
     def _lstm_multi_layer(self, input, training_mode, embedding_initializer):
         input_layer = self._input_layer(input, embedding_initializer)
         cell = tf.nn.rnn_cell.LSTMCell(self.config['lstm']['hidden_size'])
         cell = tf.nn.rnn_cell.DropoutWrapper(
                 cell,
-                #input_keep_prob=self.config['dropout_keep_rate'],
+                # input_keep_prob=self.config['dropout_keep_rate'],
                 output_keep_prob=self.config['dropout_keep_rate'],
                 state_keep_prob=self.config['dropout_keep_rate'],
                 variational_recurrent=True,
-                # note that if the lstm hidden state is different with then input embedding size
+                # note that if the lstm hidden state is different with then
+                # input embedding size
                 # the input_size need to be adjusted
                 input_size=input_layer.get_shape()[-1],
                 dtype=tf.float32)
-        multi_rnn_cell = tf.contrib.rnn.MultiRNNCell([cell] * self.config['lstm']['nr_layers'])
+        multi_rnn_cell = tf.contrib.rnn.MultiRNNCell(
+            [cell] * self.config['lstm']['nr_layers'])
         outputs, final_state = tf.compat.v1.nn.dynamic_rnn(
             cell=multi_rnn_cell,
             inputs=input_layer,
@@ -122,7 +127,7 @@ class GraphSelector:
             dtype=tf.float32
         )
 
-        #final_outputs = tf.transpose(outputs, [1,0,2])[-1]
+        # final_outputs = tf.transpose(outputs, [1,0,2])[-1]
         final_outputs = final_state[-1].h
         logits = tf.layers.dense(inputs=final_outputs, units=2)
         return logits

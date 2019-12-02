@@ -1,9 +1,11 @@
-''' Basic class to read files also get the field names relevant to the training'''
+'''
+Basic class to read files also get the field names relevant to the training
+'''
 from collections import Iterable
-from .. import LOGGER
+
 
 class CommonLoader:
-    def __init__ (self, config):
+    def __init__(self, config):
         self.max_lines = config['max_lines']
         self.config = config
 
@@ -16,7 +18,8 @@ class CommonLoader:
     def _iter_flatten(self, items):
         """Yield items from any nested iterable; see Reference."""
         for item in items:
-            if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+            if isinstance(item, Iterable) and \
+                    not isinstance(item, (str, bytes)):
                 for sub_item in self._iter_flatten(item):
                     yield sub_item
             else:

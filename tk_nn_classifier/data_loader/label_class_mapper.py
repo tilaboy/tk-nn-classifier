@@ -1,20 +1,22 @@
 '''Label mapping: create mapping from label to class_id'''
 import json
 import os
-from .. import LOGGER
 
 
 class LabelClassMapper:
 
-    def __init__(self, classid_to_label, label_mapper_file='label_mapper.json'):
+    def __init__(self, classid_to_label,
+                 label_mapper_file='label_mapper.json'):
         self.classid_to_label = classid_to_label
-        self.label_to_classid = { label: str(class_id) for class_id, label in classid_to_label.items()}
+        self.label_to_classid = {label: str(class_id)
+                                 for class_id, label in
+                                 classid_to_label.items()}
         self.label_mapper_file = label_mapper_file
 
     @classmethod
     def from_labels(cls, labels, label_mapper_file='label_mapper.json'):
         classes_to_label = {
-                str(i):label
+                str(i): label
                 for i, label in enumerate(sorted(set(labels)))
         }
         return cls(classes_to_label, label_mapper_file)
@@ -28,11 +30,11 @@ class LabelClassMapper:
     def write(self):
         dir = os.path.dirname(self.label_mapper_file)
 
-        if dir is not '':
+        if dir != '':
             os.makedirs(dir, exist_ok=True)
 
         with open(self.label_mapper_file, 'w') as l_fh:
-            json.dump( self.classid_to_label, l_fh )
+            json.dump(self.classid_to_label, l_fh)
 
     def class_id(self, label):
         return self.label_to_classid[label]

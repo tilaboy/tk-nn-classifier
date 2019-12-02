@@ -1,10 +1,6 @@
 import os
 import tensorflow as tf
-from tensorflow import keras
-from tensorboard import summary as summary_lib
 import numpy as np
-import random
-from pathlib import Path
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
@@ -12,7 +8,6 @@ from tensorflow.contrib import predictor
 from ..data_loader import WordVector, TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
-from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
 
@@ -55,12 +50,14 @@ class TFMultiFeatClassifier:
                 for token in tokenize(text)
                 ]
         data_length = min(len(data_id), self.max_sequence_length)
-        data = sequence.pad_sequences([data_ids],
-                                 maxlen=self.max_sequence_length,
-                                 truncating='post',
-                                 padding='post',
-                                 value=WordVector.PAD_ID)
-        dataset = tf.data.Dataset.from_tensor_slices((data, [data_length], [0]))
+        data = sequence.pad_sequences([data_id],
+                                      maxlen=self.max_sequence_length,
+                                      truncating='post',
+                                      padding='post',
+                                      value=WordVector.PAD_ID)
+        dataset = tf.data.Dataset.from_tensor_slices((data,
+                                                      [data_length],
+                                                      [0]))
         dataset = dataset.map(self._data_parser)
         iterator = dataset.make_one_shot_iterator()
         return iterator.get_next()
@@ -78,7 +75,7 @@ class TFMultiFeatClassifier:
         features = [
             [
                 [self.embedding.get_index(token)
-                for token in tokenize(text)]
+                 for token in tokenize(text)]
                 for text in texts
             ]
             for texts in inputs
@@ -92,16 +89,16 @@ class TFMultiFeatClassifier:
             for feature_item in features
         ]
         data = [
-            sequence.pad_sequences(feature_column,
-                                 maxlen=self.max_sequence_length[column_index],
-                                 truncating='post',
-                                 padding='post',
-                                 value=WordVector.PAD_ID).tolist()
+            sequence.pad_sequences(
+                feature_column,
+                maxlen=self.max_sequence_length[column_index],
+                truncating='post',
+                padding='post',
+                value=WordVector.PAD_ID).tolist()
             for column_index, feature_column in enumerate(zip(*features))
         ]
 
         return (data, data_length)
-
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
@@ -109,7 +106,6 @@ class TFMultiFeatClassifier:
             (data, data_length) = self._inputs_to_features(inputs)
             self.data_sets[data_path] = (data, np.array(labels), data_length)
         return self.data_sets[data_path]
-
 
     @staticmethod
     def _data_parser(length, label, *inputs):
@@ -122,7 +118,9 @@ class TFMultiFeatClassifier:
         LOGGER.info("load data from %s", data_path)
         (data, labels, data_length) = self.load_data_set(data_path)
 
-        dataset = tf.data.Dataset.from_tensor_slices((data_length, labels, *data))
+        dataset = tf.data.Dataset.from_tensor_slices((data_length,
+                                                      labels,
+                                                      *data))
         if shuffle_and_repeat:
             dataset = dataset.shuffle(buffer_size=len(data))
             dataset = dataset.repeat(self.config['num_epochs'])
@@ -133,21 +131,24 @@ class TFMultiFeatClassifier:
         iterator = dataset.make_one_shot_iterator()
         return iterator.get_next()
 
-
     def build_graph(self):
-        def embedding_initializer(shape=None, dtype=tf.float32, partition_info=None):
+        def embedding_initializer(shape=None,
+                                  dtype=tf.float32,
+                                  partition_info=None):
             assert dtype is tf.float32
             return self.embedding.vectors
 
-        #params = {'embedding_initializer': tf.random_uniform_initializer(-1.0, 1.0)}
+        # params = {'embedding_initializer':
+        #           tf.random_uniform_initializer(-1.0, 1.0)}
         params = {'embedding_initializer': embedding_initializer}
 
         self.model_dir = self.config['model_path']
 
-        run_config = tf.estimator.RunConfig(save_checkpoints_steps=self.config['check_per_steps'],
-                                            save_summary_steps=self.config['check_per_steps'],
-                                            model_dir=self.model_dir,
-                                            keep_checkpoint_max=5)
+        run_config = tf.estimator.RunConfig(
+            save_checkpoints_steps=self.config['check_per_steps'],
+            save_summary_steps=self.config['check_per_steps'],
+            model_dir=self.model_dir,
+            keep_checkpoint_max=5)
 
         self.classifier = tf.estimator.Estimator(
                 model_fn=self.model_fn,
@@ -159,7 +160,7 @@ class TFMultiFeatClassifier:
         training = mode == tf.estimator.ModeKeys.TRAIN
 
         to_merge = []
-        #graph_selector = GraphSelector(self.config, self.embedding)
+        # graph_selector = GraphSelector(self.config, self.embedding)
         for i in range(2):
             feature = features["input_" + str(i)]
             input_layer = tf.contrib.layers.embed_sequence(
@@ -182,7 +183,8 @@ class TFMultiFeatClassifier:
                 activation=tf.nn.relu)
 
             pool = tf.reduce_max(input_tensor=conv, axis=1)
-            flat = tf.layers.dense(inputs=pool, units=256, activation=tf.nn.relu)
+            flat = tf.layers.dense(inputs=pool, units=256,
+                                   activation=tf.nn.relu)
             to_merge.append(flat)
 
         merged = tf.concat(to_merge, 1)
@@ -211,10 +213,12 @@ class TFMultiFeatClassifier:
             onehot_labels = tf.one_hot(labels, 2, 1.0, 0.0)
 
         # Calculate Loss (for both TRAIN and EVAL modes)
-        loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits)
+        loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels,
+                                               logits=logits)
 
         metric_ops = {
-            "accuracy": tf.compat.v1.metrics.accuracy(labels, predictions['classes']),
+            "accuracy": tf.compat.v1.metrics.accuracy(labels,
+                                                      predictions['classes']),
             "auc": tf.compat.v1.metrics.auc(labels, predictions['classes'])
         }
 
@@ -230,11 +234,14 @@ class TFMultiFeatClassifier:
 
         # Configure the Training Op (for TRAIN mode)
         if mode == tf.estimator.ModeKeys.TRAIN:
-            optimizer = tf.compat.v1.train.AdamOptimizer(self.config['learning_rate'])
+            optimizer = tf.compat.v1.train.AdamOptimizer(
+                self.config['learning_rate'])
             train_op = optimizer.minimize(
                 loss=loss,
                 global_step=tf.compat.v1.train.get_global_step())
-            return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
+            return tf.estimator.EstimatorSpec(mode=mode,
+                                              loss=loss,
+                                              train_op=train_op)
 
         else:
             raise NotImplementedError('Unknown mode {}'.format(mode))
@@ -262,11 +269,12 @@ class TFMultiFeatClassifier:
             input = tf.placeholder(
                     dtype=tf.int32,
                     shape=[None, length],
-                    name= input_name
+                    name=input_name
             )
             features[input_name] = input
             receiver_tensors[input_name] = input
-        return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+        return tf.estimator.export.ServingInputReceiver(features,
+                                                        receiver_tensors)
 
     def train(self):
         hook = tf.estimator.experimental.stop_if_no_increase_hook(
@@ -282,7 +290,7 @@ class TFMultiFeatClassifier:
                 input_fn=functools.partial(self.input_fn,
                                            self.config['datasets']['train'],
                                            shuffle_and_repeat=True),
-                #max_steps=self.max_steps,
+                # max_steps=self.max_steps,
                 hooks=[hook]
         )
 
@@ -306,7 +314,8 @@ class TFMultiFeatClassifier:
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
     def predict_on_text(self, text):
-        return self.classifier.predict(input_fn=functools.partial(self._prepare_single_input, text))
+        return self.classifier.predict(
+            input_fn=functools.partial(self._prepare_single_input, text))
 
     def load_saved_model(self, model_path=None):
         if model_path is None:
@@ -332,16 +341,20 @@ class TFMultiFeatClassifier:
         return probabilities.tolist()
 
     def _input_text_to_pad_id(self, texts):
-        features = [ [
+        features = [[
                 self.vocab_to_ids[token]
                 if token in self.vocab_to_ids else WordVector.UNK_ID
-                for token in tokenize(text)
-                ] for text in texts ]
-        data = [ sequence.pad_sequences([feature_column],
-                                 maxlen=self.max_sequence_length[column_index],
-                                 truncating='post',
-                                 padding='post',
-                                 value=WordVector.PAD_ID)
-                for column_index, feature_column in enumerate(features)
+                for token in tokenize(text)]
+                for text in texts]
+        data = [sequence.pad_sequences(
+            [feature_column],
+            maxlen=self.max_sequence_length[column_index],
+            truncating='post',
+            padding='post',
+            value=WordVector.PAD_ID)
+            for column_index, feature_column in enumerate(features)
         ]
-        return {'input_' + str(index): data[index] for index in range(len(data))}
+        return {
+                    'input_' + str(index): data[index]
+                    for index in range(len(data))
+                }

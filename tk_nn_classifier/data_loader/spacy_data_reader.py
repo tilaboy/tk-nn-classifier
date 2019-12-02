@@ -1,6 +1,5 @@
 '''SpaCy data reader: prepare the train/eval data in spaCy format'''
 import random
-from .. import LOGGER
 from .data_reader import DataReader
 
 
@@ -25,13 +24,10 @@ class SpacyDataReader(DataReader):
         return texts, cats
 
     def _prepare_label(self, labels):
-         return [
-            {
-                class_type: class_type == label
-                for class_type in self.label_mapper.label_to_classid
-            }
-            for label in labels
-        ]
+        return [
+            {class_type: class_type == label
+             for class_type in self.label_mapper.label_to_classid}
+            for label in labels]
 
     @staticmethod
     def _wrap_training_categories(cats):

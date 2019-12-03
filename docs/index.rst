@@ -1,5 +1,5 @@
 Welcome to tk-nn-classifier's documentation!
-======================================
+============================================
 
 .. toctree::
    :maxdepth: 2
@@ -8,7 +8,6 @@ Welcome to tk-nn-classifier's documentation!
    readme
    installation
    modules
-   authors
    history
 
 Indices and tables

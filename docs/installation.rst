@@ -32,7 +32,7 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/tilaboy/xml-minder
+    $ git clone git://github.com/tilaboy/tk-nn-classifier
 
 Or download the `tarball`_:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/tilaboy/xml-minder
+.. _Github repo: https://github.com/tilaboy/tk-nn-classifier
 .. _tarball: https://github.com/tilaboy/tk-nn-classifier/tarball/master

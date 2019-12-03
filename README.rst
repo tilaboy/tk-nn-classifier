@@ -277,7 +277,7 @@ learner which fields to take, similar to the trxml files. E.g.
     },
 
 7. with tensorflow model
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use tensorflow model should be as easy as switch the model type and add
 the embedding file:
@@ -329,7 +329,7 @@ will show infor for model input and output:
     Method name is: tensorflow/serving/predict
 
 8. even more config
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 To be explained later:
 

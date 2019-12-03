@@ -1,16 +1,18 @@
-tk\_nn\_classifier
+tk-nn-classifier
 ==================
 
 A framework package for text classification.
 
 Internally, the package use two Deep Learning frameworks, ``SpaCy`` and
-``Tensorflow``. ``Spacy`` packages come with some pre-trained models,
-and can be easilly applied to proof of concept stories. In the ideal
-work flow, Once the PoC works, one could try with more complicated
-implementation, e.g. implemented ``Tensorflow`` DNN, RNN, CNN, or simple
-CNN type perceptrons (Attention/Transformer will be added later),
-together with in house word embeddings, with multiple feature inputs,
-etc.
+``Tensorflow``.
+
+``Spacy`` packages come with some pre-trained models,
+and can be easilly applied to proof of concept stories.
+
+In the ideal work flow, Once the PoC works, one could try with more complicated
+implementation, e.g. implemented ``Tensorflow`` DNN, RNN, or CNN
+(Attention/Transformer will be added later), together with in house word
+embeddings, with multiple feature inputs, etc.
 
 And the implementation of tensorflow models is fully compatiable with
 ``tf-serving``, which make the releasing and deployment of the new model
@@ -31,16 +33,16 @@ Installation
 Tutorial
 --------
 
-1. simple start:
-~~~~~~~~~~~~~~~~
+1. simple start
+~~~~~~~~~~~~~~~
 
 Take the test config from ``cfg/spacy_test.cfg`` as example.
 
 -  trxml\_fields: source files are trxml, and we need the following
    fields
--  features: contains input for the model
--  class: contains labels
--  doc\_id: a field which can be used to easily identify the document
+    * features: contains input for the model
+    * class: contains labels
+    * doc\_id: a field which can be used to easily identify the document
 
 -  datasets: input data
 
@@ -169,7 +171,7 @@ Example of precision/recall matrix:
     label                   Prec    Reca     F1
     Tijdelijk               0.714   0.385   0.500
     Vast                    0.575   0.676   0.622
-    Unspecified           0.653 0.810   0.723
+    Unspecified             0.653   0.810   0.723
     Detachering / interim   1.000   0.333   0.500
 
 Example of confusion matrix

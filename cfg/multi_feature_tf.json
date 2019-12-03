@@ -2,7 +2,6 @@
     "model_type": "tf_multi_feat_cnn",
     "model_name": "staffing_agency_detector",
     "model_path": "models/tf/multi_feat_cnn",
-    "model_file": "models/tf/sa_detector.h5",
 
     "features_enabled": false,
     "dropout_rate": 0.5,
@@ -13,7 +12,7 @@
     "max_lines":50,
 
     "log_dir": "log",
-    "max_sequence_length": [512,20],
+    "max_sequence_length": [512,10],
     "max_steps_without_increase": 500,
     "min_train_steps": 1000,
     "check_per_steps": 100,
@@ -53,10 +52,14 @@
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train_small",
-        "eval": "../recruitment_agency_data/eval_small",
+        "train": "../recruitment_agency_data/train_big",
+        "eval": "../recruitment_agency_data/eval_big",
         "test": {
-            "eval": "../recruitment_agency_data/eval_small"
+            "unindentified": "../recruitment_agency_data/unidentified/",
+            "annotated": "../recruitment_agency_data/annotated/",
+            "eval": "../recruitment_agency_data/eval_big",
+            "random": "../recruitment_agency_data/final_eval/random",
+            "us": "../recruitment_agency_data/us.csv"
         },
         "label_mapper": "../recruitment_agency_data/label_mapper.json"
     }

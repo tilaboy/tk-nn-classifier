@@ -57,7 +57,7 @@
         "test": {
             "unindentified": "../recruitment_agency_data/unidentified/",
             "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval",
+            "eval": "../recruitment_agency_data/eval_big",
             "random": "../recruitment_agency_data/final_eval/random",
             "us": "../recruitment_agency_data/us.csv"
         },

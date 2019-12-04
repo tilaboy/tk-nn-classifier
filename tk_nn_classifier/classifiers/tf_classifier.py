@@ -1,6 +1,7 @@
 import os
 import tensorflow as tf
 import numpy as np
+import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 from tensorflow.contrib import predictor
@@ -66,6 +67,15 @@ class TFClassifier:
     def load_embedding(self):
         if self.embedding is None:
             self.embedding = WordVector(self.config['embedding']['file'])
+            self._save_vocab_file()
+
+    def _save_vocab_file(self):
+        if self.embedding is not None:
+            os.makedirs(self.config['model_path'], exist_ok=True)
+            vocab_filename = os.path.join(self.config['model_path'], 'vocab.p')
+            LOGGER.info('write vocab file to %s' % vocab_filename)
+            with open(vocab_filename, 'wb') as handle:
+                pickle.dump(self.embedding.vocab_to_index, handle)
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:

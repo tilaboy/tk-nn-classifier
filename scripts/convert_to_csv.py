@@ -24,10 +24,10 @@ from argparse import ArgumentParser
 
 
 # design notes, how to aggreate all data:
-# - folder name: uk,
-# - filename: us, all_en
-# - mapping to csv: uk_annoated, uk_random
-# - how about the rest: unidentified, rest of random
+# - folder name: uk (trxml)
+# - mapping to csv: uk_annoated, uk_random (trxml)
+# - how about the rest: unidentified, rest of random (trxml)
+# - filename: us, all_en (csv)
 
 
 datasets = {
@@ -58,11 +58,11 @@ datasets = {
 
 csv_csv_field_mapper = {
     'id': 'id',
+    'advertiser_type': 'advertiser_type',
     'date': 'date',
     'full_text': 'full_text',
-    'advertiser_name': 'organization_name',
+    #'advertiser_name': 'organization_name',
     'organization_name': 'organization_name',
-    'advertiser_type': 'advertiser_type',
     'posting_id': 'posting_id',
     'source_type': 'source_type',
     'source_url': 'source_url',
@@ -105,6 +105,51 @@ def _load_data(data_path, data_attrib):
     country = data_attrib['country']
     clue = data_attrib['clue']
 
+def _load_trxml(data_path, trxml_miner, data_attrib):
+    docs = []
+    index = 0
+    label = None
+
+    if data_attrib['clue'] == 'anno_csv':
+        annotated_sample = _load_csv(data_attrib['anno_csv'])
+
+
+
+    for doc in os.listdir(data_path):
+        logging.debug('processing %s' % doc)
+        selected = trxml_miner.mine(os.path.join(data_path, doc))
+        values = list(selected)[0]
+        feature = {
+            'id': index,
+            'advertiser_type': _get_label_from_name(data_path),
+            'country': data_attrib['country']
+        }
+
+        for csv_field, trxml_field in field_mapper.items():
+            feature[csv_field] = values['values'][trxml_field]
+        docs.append(feature)
+        index += 1
+    return docs
+
+def _load_trxml_with_label():
+    docs = load_trxml(data_path, trxml_miner, data_attrib)
+    # todo: update the label if with csv samples
+
+def _load_csv(data_path):
+    with open(data_path, 'r', newline="") as csv_file:
+        reader = csv_file.DictReader(csvfile)
+        docs = list(reader)
+    return docs
+
+def _load_csv_with_label(data_path, data_attrib):
+    docs = _load_csv(data_path)
+    label = _get_label_from_name(data_path)
+    for doc in docs:
+        doc['advertiser_type'] = label
+        doc['country'] = data_attrib['country']
+    return docs
+
+
 def main():
     args = get_args()
     trxml_miner = TRXMLMiner(','.join(field_mapper.values()))
@@ -112,28 +157,25 @@ def main():
     if not os.path.isdir(args.input_dir):
         raise FileNotFoundError('could not find %s', args.input_dir)
 
+    data = []
+
     for dataset in datasets:
         data_path = os.path.join(args.input_dir, dataset)
         _check_file_path(data_path)
-        _load_data(data_path, datasets[dataset])
+        data.expand(_load_data(data_path, datasets[dataset]))
 
+        # deduplicated against readed using md5
 
-    rows = []
-    index = 0
-    for doc in os.listdir(args.input_dir):
-        logging.info(doc)
-        selected = trxml_miner.mine(os.path.join(args.input_dir, doc))
-        values = list(selected)[0]
-        row = {'id': index, 'advertiser_type': _get_advertiser_type(args)}
+        # summarize using org_name
+        # warn if same org_name in readed
 
-        for csv_field, trxml_field in field_mapper.items():
-            row[csv_field] = values['values'][trxml_field]
-        rows.append(row)
-        index += 1
+        # splitted data into train/eval
+        # - on org_name
+        # - annoated_random need to be leaved as test sets
 
 
     with open(args.output_file, 'w', newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=['index'] + list(field_mapper.keys()))
+        writer = csv.DictWriter(csv_file, fieldnames=list(field_mapper.keys()))
         writer.writeheader()
         for row in rows:
             writer.writerow(row)

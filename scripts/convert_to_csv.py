@@ -117,17 +117,14 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
     else:
         common_label = _get_label_from_name(data_path)
 
+    selected = list(trxml_miner.mine(data_path))
 
-    for doc in os.listdir(data_path):
-        logging.debug('processing %s' % doc)
-        selected = trxml_miner.mine(os.path.join(data_path, doc))
-
-        if not selected:
-            continue
-        values = list(selected)[0]
+    for doc in selected:
+        #logging.debug('processing %s' % doc)
+        #selected = trxml_miner.mine(os.path.join(data_path, doc))
 
         if data_attrib['clue'] == 'anno_csv':
-            posting_id = values['values']['Document.0.correlationid']
+            posting_id = doc['values']['Document.0.correlationid']
             if posting_id not in annotated_samples:
                 continue
             else:
@@ -142,7 +139,7 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
         }
 
         for csv_field, trxml_field in csv_trxml_field_mapper.items():
-            feature[csv_field] = values['values'][trxml_field]
+            feature[csv_field] = doc['values'][trxml_field]
         docs.append(feature)
         index += 1
     return docs

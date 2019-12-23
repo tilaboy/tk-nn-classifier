@@ -5,6 +5,7 @@ import csv
 import logging
 from xml.sax.saxutils import escape
 from argparse import ArgumentParser
+import hashlib
 
 # data summary:
 # - uk: 5000/5000 trxml, filename "st.trxml" or "de.trxml", or dir name "staffing_uk"
@@ -149,6 +150,8 @@ def _load_csv_with_label(data_path, data_attrib):
         doc['country'] = data_attrib['country']
     return docs
 
+def _to_md5(text):
+    return hashlib.md5(text.encode('utf-8')).hexdigest()
 
 def main():
     args = get_args()
@@ -162,9 +165,16 @@ def main():
     for dataset in datasets:
         data_path = os.path.join(args.input_dir, dataset)
         _check_file_path(data_path)
-        data.expand(_load_data(data_path, datasets[dataset]))
+        loaded_docs = _load_data(data_path, datasets[dataset])
 
         # deduplicated against readed using md5
+        for loaded_doc in loaded_docs;
+            doc_md5 = _to_md5(loaded_doc['full_text'])
+            if doc_md5 in md5_list:
+                logging.info('skip duplicated file %s <=>:', (loaded_doc['doc_id'], md5_list[doc_md5]))
+                continue
+            else:
+                md5_list[doc_md5] = loaded_doc['doc_id']
 
         # summarize using org_name
         # warn if same org_name in readed

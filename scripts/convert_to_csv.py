@@ -121,6 +121,9 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
     for doc in os.listdir(data_path):
         logging.debug('processing %s' % doc)
         selected = trxml_miner.mine(os.path.join(data_path, doc))
+
+        if not selected:
+            continue
         values = list(selected)[0]
 
         if data_attrib['clue'] == 'anno_csv':
@@ -134,11 +137,11 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
 
         feature = {
             'id': index,
-            'advertiser_type':
+            'advertiser_type': advertiser_type,
             'country': data_attrib['country']
         }
 
-        for csv_field, trxml_field in field_mapper.items():
+        for csv_field, trxml_field in csv_trxml_field_mapper.items():
             feature[csv_field] = values['values'][trxml_field]
         docs.append(feature)
         index += 1
@@ -198,7 +201,7 @@ def _write_csv(filename, header, rows):
 
 def main():
     args = get_args()
-    trxml_miner = TRXMLMiner(','.join(field_mapper.values()))
+    trxml_miner = TRXMLMiner(','.join(csv_trxml_field_mapper.values()))
 
     if not os.path.isdir(args.input_dir):
         raise FileNotFoundError('could not find %s', args.input_dir)
@@ -209,7 +212,8 @@ def main():
 
     for dataset in datasets:
         data_path = os.path.join(args.input_dir, dataset)
-        _check_file_path(data_path)
+        data_attrib = datasets[dataset]
+        _check_path(data_path)
         if os.path.isdir(data_path):
             loaded_docs = _load_trxml(data_path, trxml_miner, data_attrib)
         else:
@@ -217,7 +221,7 @@ def main():
 
         filtered_loaded_docs = []
         # deduplicated against readed using md5
-        for loaded_doc in loaded_docs;
+        for loaded_doc in loaded_docs:
             doc_md5 = _to_md5(loaded_doc['full_text'])
             if doc_md5 in md5_list:
                 logging.info('skip duplicated file %s <=>:', (loaded_doc['doc_id'], md5_list[doc_md5]))
@@ -230,9 +234,8 @@ def main():
         for org_name in counts_org_name:
             if org_name in org_name_summary:
                 logging.ingo('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
-                [ org_name_summary[org_name][country] = counts_org_name[org_name][country]
-                  for country in counts_org_name[org_name]
-                ]
+                for country in counts_org_name[org_name]:
+                    org_name_summary[org_name][country] = counts_org_name[org_name][country]
             else:
                 org_name_summary[org_name] = counts_org_name[org_name]
 
@@ -247,7 +250,7 @@ def main():
 
     _write_csv('org_summary.csv',
                [
-                   [org_name country org_name_summary[org_name][country]]
+                   [org_name, country, org_name_summary[org_name][country]]
                    for org_name in org_name_summary
                    for country in org_name_summary[org_name]
                 ],

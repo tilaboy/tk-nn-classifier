@@ -34,28 +34,30 @@ import hashlib
 datasets = {
     'uk_staffing_agency': {'country': 'uk', 'clue': 'folder_name'},
     'uk_directed_employer': {'country': 'uk', 'clue': 'folder_name'},
-    'unidentified': {'country': 'uk', 'clue': None },
+    #'unidentified': {'country': 'uk', 'clue': None },
     'annotated': {'country': 'uk', 'clue': 'anno_csv', 'anno_csv': 'annotated_sample_overview.csv'},
     'random': {'country': 'uk', 'clue': 'anno_csv', 'anno_csv': 'random_annotated.csv'},
     'direct_us.csv': {'country': 'us', 'clue': 'file_name'},
     'staffing_us.csv': {'country': 'us', 'clue': 'file_name'},
-    'all_en/AT_129_staffing_postings.csv': {'country': 'at', 'clue': 'file_name'},
-    'all_en/AT_490_direct_postings.csv': {'country': 'at', 'clue': 'file_name'},
-    'all_en/BE_385_staffing_postings.csv': {'country': 'be', 'clue': 'file_name'},
-    'all_en/BE_1000_direct_postings.csv': {'country': 'be', 'clue': 'file_name'},
-    'all_en/CA_597_staffing_postings.csv': {'country': 'ca', 'clue': 'file_name'},
-    'all_en/CA_1000_direct_postings.csv': {'country': 'ca', 'clue': 'file_name'},
-    'all_en/DE_618_staffing_postings.csv': {'country': 'de', 'clue': 'file_name'},
-    'all_en/DE_1000_direct_postings.csv': {'country': 'de', 'clue': 'file_name'},
-    'all_en/FR_225_staffing_postings.csv': {'country': 'fr', 'clue': 'file_name'},
-    'all_en/FR_1000_direct_postings.csv': {'country': 'fr', 'clue': 'file_name'},
-    'all_en/ES_210_staffing_postings.csv': {'country': 'es', 'clue': 'file_name'},
-    'all_en/ES_807_direct_postings.csv': {'country': 'es', 'clue': 'file_name'},
-    'all_en/IT_137_staffing_postings.csv': {'country': 'it', 'clue': 'file_name'},
-    'all_en/IT_744_direct_postings.csv': {'country': 'it', 'clue': 'file_name'},
-    'all_en/NL_765_staffing_postings.csv': {'country': 'nl', 'clue': 'file_name'},
-    'all_en/NL_1000_direct_postings.csv': {'country': 'nl', 'clue': 'file_name'}
+    'AT_129_staffing_postings.csv': {'country': 'at', 'clue': 'file_name'},
+    'AT_490_direct_postings.csv': {'country': 'at', 'clue': 'file_name'},
+    'BE_385_staffing_postings.csv': {'country': 'be', 'clue': 'file_name'},
+    'BE_1000_direct_postings.csv': {'country': 'be', 'clue': 'file_name'},
+    'CA_597_staffing_postings.csv': {'country': 'ca', 'clue': 'file_name'},
+    'CA_1000_direct_postings.csv': {'country': 'ca', 'clue': 'file_name'},
+    'DE_618_staffing_postings.csv': {'country': 'de', 'clue': 'file_name'},
+    'DE_1000_direct_postings.csv': {'country': 'de', 'clue': 'file_name'},
+    'FR_225_staffing_postings.csv': {'country': 'fr', 'clue': 'file_name'},
+    'FR_1000_direct_postings.csv': {'country': 'fr', 'clue': 'file_name'},
+    'ES_210_staffing_postings.csv': {'country': 'es', 'clue': 'file_name'},
+    'ES_807_direct_postings.csv': {'country': 'es', 'clue': 'file_name'},
+    'IT_137_staffing_postings.csv': {'country': 'it', 'clue': 'file_name'},
+    'IT_744_direct_postings.csv': {'country': 'it', 'clue': 'file_name'},
+    'NL_765_staffing_postings.csv': {'country': 'nl', 'clue': 'file_name'},
+    'NL_1000_direct_postings.csv': {'country': 'nl', 'clue': 'file_name'}
 }
+
+output_fields = ['id', 'posting_id', 'country', 'advertiser_type', 'organization_name', 'source_url', 'full_text']
 
 csv_csv_field_mapper = {
     'id': 'id',
@@ -94,10 +96,6 @@ def get_args():
     return parser.parse_args()
 
 
-def _get_advertiser_type(source):
-    # to implement
-    return 'yes'
-
 def _check_path(path):
     if not os.path.exists(path):
         raise FileNotFoundError('could not find %s', path)
@@ -109,20 +107,34 @@ def _load_data(data_path, data_attrib):
 def _load_trxml(data_path, trxml_miner, data_attrib):
     docs = []
     index = 0
-    label = None
+    common_label = None
 
     if data_attrib['clue'] == 'anno_csv':
-        annotated_sample = _load_csv(data_attrib['anno_csv'])
-
+        annotated_samples = {
+            row['posting_id']: 'yes' if row['advertiser_type'] == 'staffing' else 'no'
+            for row in _load_csv(data_attrib['anno_csv'])
+        }
+    else:
+        common_label = _get_label_from_name(data_path)
 
 
     for doc in os.listdir(data_path):
         logging.debug('processing %s' % doc)
         selected = trxml_miner.mine(os.path.join(data_path, doc))
         values = list(selected)[0]
+
+        if data_attrib['clue'] == 'anno_csv':
+            posting_id = values['values']['Document.0.correlationid']
+            if posting_id not in annotated_samples:
+                continue
+            else:
+                advertiser_type = annotated_samples[posting_id]
+        else:
+            advertiser_type = common_label
+
         feature = {
             'id': index,
-            'advertiser_type': _get_label_from_name(data_path),
+            'advertiser_type':
             'country': data_attrib['country']
         }
 
@@ -132,9 +144,17 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
         index += 1
     return docs
 
-def _load_trxml_with_label():
-    docs = load_trxml(data_path, trxml_miner, data_attrib)
-    # todo: update the label if with csv samples
+
+def _get_label_from_name(name):
+    label = None
+    if 'staffing' in name:
+        label = 'yes'
+    elif 'direct' in name:
+        label = 'no'
+    else:
+        raise ValueError('unknown type from name {}'.format(name))
+    return label
+
 
 def _load_csv(data_path):
     with open(data_path, 'r', newline="") as csv_file:
@@ -153,6 +173,29 @@ def _load_csv_with_label(data_path, data_attrib):
 def _to_md5(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
+def _summarize_on_org_name(loaded_docs):
+    # summarize using org_name
+    summary_loaded = {}
+    for loaded_doc in loaded_docs:
+        org_name = loaded_doc['organization_name']
+        country = loaded_doc['country']
+        if org_name in summary_loaded:
+            if country in summary_loaded[org_name]:
+                summary_loaded[org_name][country] += 1
+            else:
+                summary_loaded[org_name][country] = 1
+        else:
+            summary_loaded[org_name] = {country: 1}
+    return summary_loaded
+
+def _write_csv(filename, header, rows):
+    with open(filename, 'w', newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=header)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
 def main():
     args = get_args()
     trxml_miner = TRXMLMiner(','.join(field_mapper.values()))
@@ -161,12 +204,18 @@ def main():
         raise FileNotFoundError('could not find %s', args.input_dir)
 
     data = []
+    md5_list = []
+    org_name_summary = {}
 
     for dataset in datasets:
         data_path = os.path.join(args.input_dir, dataset)
         _check_file_path(data_path)
-        loaded_docs = _load_data(data_path, datasets[dataset])
+        if os.path.isdir(data_path):
+            loaded_docs = _load_trxml(data_path, trxml_miner, data_attrib)
+        else:
+            loaded_docs = _load_csv_with_label(data_path, data_attrib)
 
+        filtered_loaded_docs = []
         # deduplicated against readed using md5
         for loaded_doc in loaded_docs;
             doc_md5 = _to_md5(loaded_doc['full_text'])
@@ -175,20 +224,36 @@ def main():
                 continue
             else:
                 md5_list[doc_md5] = loaded_doc['doc_id']
+                filtered_loaded_docs.append(loaded_doc)
 
-        # summarize using org_name
-        # warn if same org_name in readed
+        counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
+        for org_name in counts_org_name:
+            if org_name in org_name_summary:
+                logging.ingo('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
+                [ org_name_summary[org_name][country] = counts_org_name[org_name][country]
+                  for country in counts_org_name[org_name]
+                ]
+            else:
+                org_name_summary[org_name] = counts_org_name[org_name]
+
+        new_data_folder = 'loaded_data'
+        os.makedirs(new_data_folder, exist_ok=True)
+        _write_csv(os.path.join(new_data_folder, dataset + '.csv'), filtered_loaded_docs, output_fields)
+        data.extend(filtered_loaded_docs)
 
         # splitted data into train/eval
         # - on org_name
         # - annoated_random need to be leaved as test sets
 
+    _write_csv('org_summary.csv',
+               [
+                   [org_name country org_name_summary[org_name][country]]
+                   for org_name in org_name_summary
+                   for country in org_name_summary[org_name]
+                ],
+                ['org_name', 'country', 'count']
+                )
 
-    with open(args.output_file, 'w', newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=list(field_mapper.keys()))
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
 
 if __name__ == '__main__':
     main()

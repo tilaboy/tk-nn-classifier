@@ -1,6 +1,7 @@
 '''strip trxml files'''
 from xml_miner.miner import TRXMLMiner
 import os
+import sys
 import csv
 import logging
 from xml.sax.saxutils import escape
@@ -29,6 +30,27 @@ import hashlib
 # - mapping to csv: uk_annoated, uk_random (trxml)
 # - how about the rest: unidentified, rest of random (trxml)
 # - filename: us, all_en (csv)
+
+def define_logger(mod_name):
+    """Set the default logging configuration"""
+    logger = logging.getLogger(mod_name)
+    if not logger.handlers:
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(logging.Formatter(
+            '%(levelname).1s [%(asctime)s] [%(name)s] %(message)s'))
+        logger.addHandler(console_handler)
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    return logger
+
+
+def set_logging_level(level=logging.WARN):
+    """Change logging level"""
+    LOGGER.setLevel(level)
+
+
+LOGGER = define_logger('data_aggre')
+
 
 
 datasets = {
@@ -110,9 +132,11 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
     common_label = None
 
     if data_attrib['clue'] == 'anno_csv':
+        csv_annotation_file = os.path.join(data_path, '..', data_attrib['anno_csv'])
+        print('loadding annotated csv file {}'.format(csv_annotation_file))
         annotated_samples = {
             row['posting_id']: 'yes' if row['advertiser_type'] == 'staffing' else 'no'
-            for row in _load_csv(data_attrib['anno_csv'])
+            for row in _load_csv(csv_annotation_file)
         }
     else:
         common_label = _get_label_from_name(data_path)
@@ -158,7 +182,7 @@ def _get_label_from_name(name):
 
 def _load_csv(data_path):
     with open(data_path, 'r', newline="") as csv_file:
-        reader = csv_file.DictReader(csvfile)
+        reader = csv.DictReader(csv_file)
         docs = list(reader)
     return docs
 
@@ -190,7 +214,7 @@ def _summarize_on_org_name(loaded_docs):
 
 def _write_csv(filename, header, rows):
     with open(filename, 'w', newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=header)
+        writer = csv.DictWriter(csv_file, fieldnames=header, extrasaction='ignore')
         writer.writeheader()
         for row in rows:
             writer.writerow(row)
@@ -204,10 +228,12 @@ def main():
         raise FileNotFoundError('could not find %s', args.input_dir)
 
     data = []
-    md5_list = []
+    md5_list = {}
     org_name_summary = {}
+    new_data_folder = 'loaded_data'
 
     for dataset in datasets:
+        print('processing dataset: {}'.format(dataset))
         data_path = os.path.join(args.input_dir, dataset)
         data_attrib = datasets[dataset]
         _check_path(data_path)
@@ -221,38 +247,37 @@ def main():
         for loaded_doc in loaded_docs:
             doc_md5 = _to_md5(loaded_doc['full_text'])
             if doc_md5 in md5_list:
-                logging.info('skip duplicated file %s <=>:', (loaded_doc['doc_id'], md5_list[doc_md5]))
+                LOGGER.info('skip duplicated file %s <=>:', (loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
             else:
-                md5_list[doc_md5] = loaded_doc['doc_id']
+                md5_list[doc_md5] = loaded_doc['posting_id']
                 filtered_loaded_docs.append(loaded_doc)
 
         counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
         for org_name in counts_org_name:
             if org_name in org_name_summary:
-                logging.ingo('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
+                LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
                 for country in counts_org_name[org_name]:
                     org_name_summary[org_name][country] = counts_org_name[org_name][country]
             else:
                 org_name_summary[org_name] = counts_org_name[org_name]
 
-        new_data_folder = 'loaded_data'
         os.makedirs(new_data_folder, exist_ok=True)
-        _write_csv(os.path.join(new_data_folder, dataset + '.csv'), filtered_loaded_docs, output_fields)
+        _write_csv(os.path.join(new_data_folder, dataset + '.csv'), output_fields, filtered_loaded_docs)
         data.extend(filtered_loaded_docs)
 
         # splitted data into train/eval
         # - on org_name
         # - annoated_random need to be leaved as test sets
 
-    _write_csv('org_summary.csv',
+    _write_csv(os.path.join(new_data_folder, 'org_summary.csv'),
+               ['org_name', 'country', 'count'],
                [
-                   [org_name, country, org_name_summary[org_name][country]]
+                   {'org_name': org_name, 'country': country, 'count': org_name_summary[org_name][country]}
                    for org_name in org_name_summary
                    for country in org_name_summary[org_name]
-                ],
-                ['org_name', 'country', 'count']
-                )
+               ]
+              )
 
 
 if __name__ == '__main__':

@@ -28,7 +28,7 @@
 
     "csv_fields": {
         "features": "full_text",
-        "class": "source_type",
+        "class": "advertiser_type",
         "doc_id": "posting_id",
         "extra": ["advertiser_name", "source_website", "source_url"]
     },

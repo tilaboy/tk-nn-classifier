@@ -34,6 +34,7 @@ import hashlib
 def define_logger(mod_name):
     """Set the default logging configuration"""
     logger = logging.getLogger(mod_name)
+
     if not logger.handlers:
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setFormatter(logging.Formatter(
@@ -50,7 +51,8 @@ def set_logging_level(level=logging.WARN):
 
 
 LOGGER = define_logger('data_aggre')
-
+fh = logging.FileHandler('data_aggre.log', 'w')
+LOGGER.addHandler(fh)
 
 
 datasets = {
@@ -133,7 +135,7 @@ def _load_trxml(data_path, trxml_miner, data_attrib):
 
     if data_attrib['clue'] == 'anno_csv':
         csv_annotation_file = os.path.join(data_path, '..', data_attrib['anno_csv'])
-        print('loadding annotated csv file {}'.format(csv_annotation_file))
+        LOGGER.info('loadding annotated csv file {}'.format(csv_annotation_file))
         annotated_samples = {
             row['posting_id']: 'yes' if row['advertiser_type'] == 'staffing' else 'no'
             for row in _load_csv(csv_annotation_file)
@@ -233,7 +235,7 @@ def main():
     new_data_folder = 'loaded_data'
 
     for dataset in datasets:
-        print('processing dataset: {}'.format(dataset))
+        LOGGER.info('processing dataset: {}'.format(dataset))
         data_path = os.path.join(args.input_dir, dataset)
         data_attrib = datasets[dataset]
         _check_path(data_path)
@@ -247,16 +249,20 @@ def main():
         for loaded_doc in loaded_docs:
             doc_md5 = _to_md5(loaded_doc['full_text'])
             if doc_md5 in md5_list:
-                LOGGER.info('skip duplicated file %s <=>:', (loaded_doc['posting_id'], md5_list[doc_md5]))
+                LOGGER.info('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
             else:
+                if len(loaded_doc['full_text']) < 200:
+                    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
+                    continue
+
                 md5_list[doc_md5] = loaded_doc['posting_id']
                 filtered_loaded_docs.append(loaded_doc)
 
         counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
         for org_name in counts_org_name:
             if org_name in org_name_summary:
-                LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
+                #LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
                 for country in counts_org_name[org_name]:
                     org_name_summary[org_name][country] = counts_org_name[org_name][country]
             else:
@@ -265,6 +271,8 @@ def main():
         os.makedirs(new_data_folder, exist_ok=True)
         _write_csv(os.path.join(new_data_folder, dataset + '.csv'), output_fields, filtered_loaded_docs)
         data.extend(filtered_loaded_docs)
+
+
 
         # splitted data into train/eval
         # - on org_name
@@ -277,6 +285,19 @@ def main():
                    for org_name in org_name_summary
                    for country in org_name_summary[org_name]
                ]
+              )
+
+    org_total_counts = {
+        org_name: sum(org_name_summary[org_name].values())
+        for org_name in org_name_summary
+    }
+    org_total_sorted = [
+        {'org_name': org_name, 'count': org_total_counts[org_name]}
+        for org_name in sorted(org_total_counts, key=org_total_counts.get, reverse=True)
+    ]
+    _write_csv(os.path.join(new_data_folder, 'org_total_summary.csv'),
+               ['org_name', 'count'],
+               org_total_sorted
               )
 
 

@@ -7,6 +7,7 @@ import logging
 from xml.sax.saxutils import escape
 from argparse import ArgumentParser
 import hashlib
+import re
 
 # data summary:
 # - uk: 5000/5000 trxml, filename "st.trxml" or "de.trxml", or dir name "staffing_uk"
@@ -233,6 +234,7 @@ def main():
     md5_list = {}
     org_name_summary = {}
     new_data_folder = 'loaded_data'
+    short_docs = {}
 
     for dataset in datasets:
         LOGGER.info('processing dataset: {}'.format(dataset))
@@ -252,7 +254,16 @@ def main():
                 LOGGER.info('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
             else:
-                if len(loaded_doc['full_text']) < 200:
+                if len(loaded_doc['full_text']) < 400:
+                    text = loaded_doc['full_text']
+                    cleaned_text = re.sub('[^A-Za-z0-9]+', '', text)
+                    text = re.sub(r'\n', ' ', text)
+                    if cleaned_text not in short_docs:
+                        short_docs[clean_text] = {
+                            'dataset': dataset,
+                            'posint_id': loaded_doc['posting_id'],
+                            'full_text': text
+                        }
                     #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
                     continue
 
@@ -298,6 +309,19 @@ def main():
     _write_csv(os.path.join(new_data_folder, 'org_total_summary.csv'),
                ['org_name', 'count'],
                org_total_sorted
+              )
+
+    _write_csv(os.path.join(new_data_folder, 'short_text.csv'),
+               ['dataset', 'id', 'cleaned', 'text'],
+               [
+                   {
+                        dataset:short_docs[short_text]['dataset'],
+                        id: short_docs[short_text]['posting_id'],
+                        cleaned: short_text,
+                        text: short_docs[short_text]['full_text']
+                   }
+                   for short_text in short_docs
+               ]
               )
 
 

@@ -254,18 +254,21 @@ def main():
                 LOGGER.info('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
             else:
-                if len(loaded_doc['full_text']) < 400:
-                    text = loaded_doc['full_text']
-                    cleaned_text = re.sub('[^A-Za-z0-9]+', '', text)
-                    text = re.sub(r'\n', ' ', text)
-                    if cleaned_text not in short_docs:
-                        short_docs[clean_text] = {
-                            'dataset': dataset,
-                            'posint_id': loaded_doc['posting_id'],
-                            'full_text': text
-                        }
-                    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
+                if len(loaded_doc['full_text']) < 500:
                     continue
+
+                # elif len(loaded_doc['full_text']) < 600:
+                #    text = loaded_doc['full_text']
+                #    cleaned_text = re.sub('[^A-Za-z0-9]+', '', text)
+                #    text = re.sub(r'\n', ' ', text)
+                #    if cleaned_text not in short_docs:
+                #        short_docs[cleaned_text] = {
+                #            'dataset': dataset,
+                #            'posting_id': loaded_doc['posting_id'],
+                #            'full_text': text
+                #        }
+                #    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
+                #    continue
 
                 md5_list[doc_md5] = loaded_doc['posting_id']
                 filtered_loaded_docs.append(loaded_doc)
@@ -311,18 +314,18 @@ def main():
                org_total_sorted
               )
 
-    _write_csv(os.path.join(new_data_folder, 'short_text.csv'),
-               ['dataset', 'id', 'cleaned', 'text'],
-               [
-                   {
-                        dataset:short_docs[short_text]['dataset'],
-                        id: short_docs[short_text]['posting_id'],
-                        cleaned: short_text,
-                        text: short_docs[short_text]['full_text']
-                   }
-                   for short_text in short_docs
-               ]
-              )
+    # _write_csv(os.path.join(new_data_folder, 'short_text.csv'),
+    #            ['dataset', 'id', 'length', 'text'],
+    #            [
+    #                {
+    #                     'dataset':short_docs[short_text]['dataset'],
+    #                     'id': short_docs[short_text]['posting_id'],
+    #                     'length': len(short_docs[short_text]['full_text']),
+    #                     'text': short_docs[short_text]['full_text']
+    #                }
+    #                for short_text in short_docs
+    #            ]
+    #           )
 
 
 if __name__ == '__main__':

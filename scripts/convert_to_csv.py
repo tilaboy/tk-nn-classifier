@@ -57,13 +57,14 @@ fh = logging.FileHandler('data_aggre.log', 'w')
 LOGGER.addHandler(fh)
 
 RANDOM_SEED = 10
+SPLIT_RATIO = 0.9
 
 datasets = {
     'uk_staffing_agency': {'country': 'uk', 'clue': 'folder_name'},
     'uk_directed_employer': {'country': 'uk', 'clue': 'folder_name'},
     #'unidentified': {'country': 'uk', 'clue': None },
     'annotated': {'country': 'uk', 'clue': 'anno_csv', 'anno_csv': 'annotated_sample_overview.csv'},
-    'random': {'country': 'uk', 'clue': 'anno_csv', 'anno_csv': 'random_annotated.csv'},
+    #random': {'country': 'uk', 'clue': 'anno_csv', 'anno_csv': 'random_annotated.csv'},
     'direct_us.csv': {'country': 'us', 'clue': 'file_name'},
     'staffing_us.csv': {'country': 'us', 'clue': 'file_name'},
     'AT_129_staffing_postings.csv': {'country': 'at', 'clue': 'file_name'},
@@ -358,6 +359,62 @@ def main():
                     loaded_doc
                     for org_name in data for country in data[org_name] for loaded_doc in data[org_name][country]
                 ])
+
+    LOGGER.info('in total {} orgs'.format(len(data.keys())))
+    data_on_org_name = list(data.values)
+    total_org = len(data_on_org_name)
+
+    random.Random(RANDOM_SEED).shuffle(data_on_org_name)
+    split_point = int(total_org * SPLIT_RATIO)
+    train_split = data_on_org_name[:split_point]
+    eval_split = data_on_org_name[split_point:]
+
+    LOGGER.info('splitted orgs into train: {}, eval: {}'.format(len(train_split), len(eval_split)))
+
+    _write_csv(os.path.join(new_data_folder, 'train.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_item in train_split
+                    for country, loaded_docs in org_item.items()
+                    for loaded_doc in loaded_docs
+               ])
+
+    _write_csv(os.path.join(new_data_folder, 'eval.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_item in eval_split
+                    for country, loaded_docs in org_item.items()
+                    for loaded_doc in loaded_docs
+               ])
+
+    _write_csv(os.path.join(new_data_folder, 'eval_uk.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_item in train_split
+                    for country, loaded_docs in org_item.items() if country == 'uk'
+                    for loaded_doc in loaded_docs
+               ])
+
+    _write_csv(os.path.join(new_data_folder, 'eval_us.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_item in train_split
+                    for country, loaded_docs in org_item.items() if country == 'us'
+                    for loaded_doc in loaded_docs
+               ])
+
+    _write_csv(os.path.join(new_data_folder, 'eval_other.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_item in train_split
+                    for country, loaded_docs in org_item.items() if country not in ['us', 'uk']
+                    for loaded_doc in loaded_docs
+               ])
 
 
 if __name__ == '__main__':

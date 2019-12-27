@@ -282,7 +282,7 @@ def main():
             else:
                 filtered_loaded_docs[org_name] = [loaded_doc]
 
-        counts_org_name = _summarize_on_org_name(filtered_loaded_docs, country)
+        counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
         for org_name in counts_org_name:
             if org_name in org_name_summary:
                 #LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))

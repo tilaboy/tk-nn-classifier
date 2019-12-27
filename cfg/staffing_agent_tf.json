@@ -30,7 +30,7 @@
         "features": "full_text",
         "class": "advertiser_type",
         "doc_id": "posting_id",
-        "extra": ["advertiser_name", "source_website", "source_url"]
+        "extra": ["organization_name", "country", "source_url"]
     },
 
     "lstm": {

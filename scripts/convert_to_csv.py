@@ -361,7 +361,7 @@ def main():
                 ])
 
     LOGGER.info('in total {} orgs'.format(len(data.keys())))
-    data_on_org_name = list(data.values)
+    data_on_org_name = list(data.values())
     total_org = len(data_on_org_name)
 
     random.Random(RANDOM_SEED).shuffle(data_on_org_name)

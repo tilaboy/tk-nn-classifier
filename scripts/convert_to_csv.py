@@ -199,20 +199,14 @@ def _load_csv_with_label(data_path, data_attrib):
 def _to_md5(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
-def _summarize_on_org_name(loaded_docs, country):
+def _summarize_on_org_name(loaded_docs):
     # summarize using org_name
     summary_loaded = {}
-    local_doc_per_org = {}
     for org_name in loaded_docs:
         if org_name in summary_loaded:
-            if country in summary_loaded[org_name]:
-                summary_loaded[org_name][country] += len(loaded_docs[org_name])
-            else:
-                summary_loaded[org_name][country] = len(loaded_docs[org_name])
-
+            summary_loaded[org_name] += len(loaded_docs[org_name])
         else:
-            summary_loaded[org_name] = {country: len(loaded_docs[org_name])}
-
+            summary_loaded[org_name] = len(loaded_docs[org_name])
     return summary_loaded
 
 def _write_csv(filename, header, rows):
@@ -231,10 +225,12 @@ def main():
         raise FileNotFoundError('could not find %s', args.input_dir)
 
     data = {}
-    md5_list = {}
     org_name_summary = {}
+
     new_data_folder = 'loaded_data'
-    counts_per_org = {}
+    os.makedirs(new_data_folder, exist_ok=True)
+
+    md5_list = {}
     short_docs = {}
 
     for dataset in datasets:
@@ -262,7 +258,7 @@ def main():
                 continue
 
             org_name = loaded_doc['organization_name'].lower()
-            if org_name in filtered_loaded_docs and len(filtered_loaded_docs[org_name]) == 20:
+            if org_name in filtered_loaded_docs and len(filtered_loaded_docs[org_name]) >= 20:
                 LOGGER.debug('too many docs from org_name {}, skip file {}'.format(org_name, loaded_doc['posting_id']))
                 continue
 
@@ -281,14 +277,21 @@ def main():
 
             md5_list[doc_md5] = loaded_doc['posting_id']
             if org_name in filtered_loaded_docs:
-
                 filtered_loaded_docs[org_name].append(loaded_doc)
             else:
                 filtered_loaded_docs[org_name] = [loaded_doc]
 
         counts_org_name = _summarize_on_org_name(filtered_loaded_docs, country)
+        for org_name in counts_org_name:
+            if org_name in org_name_summary:
+                #LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
+                if country in org_name_summary[org_name]:
+                    org_name_summary[org_name][country] += counts_org_name[org_name]
+                else:
+                    org_name_summary[org_name][country] = counts_org_name[org_name]
+            else:
+                org_name_summary[org_name] = {country:counts_org_name[org_name]}
 
-        os.makedirs(new_data_folder, exist_ok=True)
         _write_csv(os.path.join(new_data_folder, dataset + '.csv'),
                    output_fields,
                    [
@@ -298,16 +301,15 @@ def main():
                    ]
                   )
 
-        local_doc_per_org = {}
 
         for org_name in filtered_loaded_docs:
             if org_name in data:
                 if country in data[org_name]:
-                    data[org_name][country].append(filtered_loaded_docs[org_name])
+                    data[org_name][country].extend(filtered_loaded_docs[org_name])
                 else:
-                    data[org_name][country] = [filtered_loaded_docs[org_name]]
+                    data[org_name][country] = filtered_loaded_docs[org_name]
             else:
-                data[org_name] = {country: [filtered_loaded_docs[org_name]]}
+                data[org_name] = {country: filtered_loaded_docs[org_name]}
 
 
 

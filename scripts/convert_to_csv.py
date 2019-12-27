@@ -251,10 +251,11 @@ def main():
         for loaded_doc in loaded_docs:
             doc_md5 = _to_md5(loaded_doc['full_text'])
             if doc_md5 in md5_list:
-                LOGGER.info('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
+                LOGGER.debug('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
             else:
                 if len(loaded_doc['full_text']) < 500:
+                    LOGGER.debug('skip small file {}'.format(loaded_doc['posting_id']))
                     continue
 
                 # elif len(loaded_doc['full_text']) < 600:
@@ -270,8 +271,8 @@ def main():
                 #    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
                 #    continue
 
-                md5_list[doc_md5] = loaded_doc['posting_id']
-                filtered_loaded_docs.append(loaded_doc)
+            md5_list[doc_md5] = loaded_doc['posting_id']
+            filtered_loaded_docs.append(loaded_doc)
 
         counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
         for org_name in counts_org_name:
@@ -327,6 +328,7 @@ def main():
     #            ]
     #           )
 
+    _write_csv(os.path.join(new_data_folder, 'all_data.csv'), output_fields, data)
 
 if __name__ == '__main__':
     main()

@@ -8,6 +8,7 @@ from xml.sax.saxutils import escape
 from argparse import ArgumentParser
 import hashlib
 import re
+import random
 
 # data summary:
 # - uk: 5000/5000 trxml, filename "st.trxml" or "de.trxml", or dir name "staffing_uk"
@@ -55,6 +56,7 @@ LOGGER = define_logger('data_aggre')
 fh = logging.FileHandler('data_aggre.log', 'w')
 LOGGER.addHandler(fh)
 
+RANDOM_SEED = 10
 
 datasets = {
     'uk_staffing_agency': {'country': 'uk', 'clue': 'folder_name'},
@@ -125,9 +127,6 @@ def _check_path(path):
     if not os.path.exists(path):
         raise FileNotFoundError('could not find %s', path)
 
-def _load_data(data_path, data_attrib):
-    country = data_attrib['country']
-    clue = data_attrib['clue']
 
 def _load_trxml(data_path, trxml_miner, data_attrib):
     docs = []
@@ -200,19 +199,20 @@ def _load_csv_with_label(data_path, data_attrib):
 def _to_md5(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
-def _summarize_on_org_name(loaded_docs):
+def _summarize_on_org_name(loaded_docs, country):
     # summarize using org_name
     summary_loaded = {}
-    for loaded_doc in loaded_docs:
-        org_name = loaded_doc['organization_name']
-        country = loaded_doc['country']
+    local_doc_per_org = {}
+    for org_name in loaded_docs:
         if org_name in summary_loaded:
             if country in summary_loaded[org_name]:
-                summary_loaded[org_name][country] += 1
+                summary_loaded[org_name][country] += len(loaded_docs[org_name])
             else:
-                summary_loaded[org_name][country] = 1
+                summary_loaded[org_name][country] = len(loaded_docs[org_name])
+
         else:
-            summary_loaded[org_name] = {country: 1}
+            summary_loaded[org_name] = {country: len(loaded_docs[org_name])}
+
     return summary_loaded
 
 def _write_csv(filename, header, rows):
@@ -230,62 +230,84 @@ def main():
     if not os.path.isdir(args.input_dir):
         raise FileNotFoundError('could not find %s', args.input_dir)
 
-    data = []
+    data = {}
     md5_list = {}
     org_name_summary = {}
     new_data_folder = 'loaded_data'
+    counts_per_org = {}
     short_docs = {}
 
     for dataset in datasets:
         LOGGER.info('processing dataset: {}'.format(dataset))
         data_path = os.path.join(args.input_dir, dataset)
         data_attrib = datasets[dataset]
+        country = data_attrib['country']
+
         _check_path(data_path)
         if os.path.isdir(data_path):
             loaded_docs = _load_trxml(data_path, trxml_miner, data_attrib)
         else:
             loaded_docs = _load_csv_with_label(data_path, data_attrib)
 
-        filtered_loaded_docs = []
-        # deduplicated against readed using md5
+        filtered_loaded_docs = {}
+        random.Random(RANDOM_SEED).shuffle(loaded_docs)
+
         for loaded_doc in loaded_docs:
             doc_md5 = _to_md5(loaded_doc['full_text'])
             if doc_md5 in md5_list:
                 LOGGER.debug('skip duplicated file {} <=> {}'.format(loaded_doc['posting_id'], md5_list[doc_md5]))
                 continue
-            else:
-                if len(loaded_doc['full_text']) < 500:
-                    LOGGER.debug('skip small file {}'.format(loaded_doc['posting_id']))
-                    continue
+            if len(loaded_doc['full_text']) < 500:
+                LOGGER.debug('skip small file {}'.format(loaded_doc['posting_id']))
+                continue
 
-                # elif len(loaded_doc['full_text']) < 600:
-                #    text = loaded_doc['full_text']
-                #    cleaned_text = re.sub('[^A-Za-z0-9]+', '', text)
-                #    text = re.sub(r'\n', ' ', text)
-                #    if cleaned_text not in short_docs:
-                #        short_docs[cleaned_text] = {
-                #            'dataset': dataset,
-                #            'posting_id': loaded_doc['posting_id'],
-                #            'full_text': text
-                #        }
-                #    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
-                #    continue
+            org_name = loaded_doc['org_name'].lower()
+            if len(filtered_loaded_docs[org_name]) == 20:
+                LOGGER.debug('too many docs from org_name {}, skip file {}'.format(org_name, loaded_doc['posting_id']))
+                continue
+
+            # elif len(loaded_doc['full_text']) < 600:
+            #    text = loaded_doc['full_text']
+            #    cleaned_text = re.sub('[^A-Za-z0-9]+', '', text)
+            #    text = re.sub(r'\n', ' ', text)
+            #    if cleaned_text not in short_docs:
+            #        short_docs[cleaned_text] = {
+            #            'dataset': dataset,
+            #            'posting_id': loaded_doc['posting_id'],
+            #            'full_text': text
+            #        }
+            #    #LOGGER.info('small doc {}: {}'.format(loaded_doc['posting_id'], loaded_doc['full_text']))
+            #    continue
 
             md5_list[doc_md5] = loaded_doc['posting_id']
-            filtered_loaded_docs.append(loaded_doc)
+            if org_name in filtered_loaded_docs:
+
+                filtered_loaded_docs[org_name].append(loaded_doc)
+            else:
+                filtered_loaded_docs[org_name] = [loaded_doc]
 
         counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
-        for org_name in counts_org_name:
-            if org_name in org_name_summary:
-                #LOGGER.info('org {} already exist in {}'.format(org_name, org_name_summary[org_name]))
-                for country in counts_org_name[org_name]:
-                    org_name_summary[org_name][country] = counts_org_name[org_name][country]
-            else:
-                org_name_summary[org_name] = counts_org_name[org_name]
 
         os.makedirs(new_data_folder, exist_ok=True)
-        _write_csv(os.path.join(new_data_folder, dataset + '.csv'), output_fields, filtered_loaded_docs)
-        data.extend(filtered_loaded_docs)
+        _write_csv(os.path.join(new_data_folder, dataset + '.csv'),
+                   output_fields,
+                   [
+                      loaded_doc
+                      for org_name in filtered_loaded_docs
+                      for loaded_doc in filtered_loaded_docs[org_name]
+                   ]
+                  )
+
+        local_doc_per_org = {}
+
+        for org_name in filtered_loaded_docs:
+            if org_name in data:
+                if country in data[org_name]:
+                    data[org_name][country].append(filter_oaded_docs[org_name])
+                else:
+                    data[org_name][country] = [filter_oaded_docs[org_name]]
+            else:
+                data[org_name] = {country: [filter_oaded_docs[org_name]]}
 
 
 
@@ -328,7 +350,13 @@ def main():
     #            ]
     #           )
 
-    _write_csv(os.path.join(new_data_folder, 'all_data.csv'), output_fields, data)
+    _write_csv(os.path.join(new_data_folder, 'all_data.csv'),
+               output_fields,
+               [
+                    loaded_doc
+                    for org_name in data for country in data[org_name] for loaded_doc in data[org_name][country]
+                ])
+
 
 if __name__ == '__main__':
     main()

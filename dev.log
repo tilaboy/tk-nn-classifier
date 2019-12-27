@@ -266,3 +266,24 @@ Predicted     0     1
 Actual
 0          9369   631
 1          3154  6846
+
+
+# all en data:
+
+- baseline
+134957 loaded_data/all_data.csv
+
+- v1: deduplicat on text:
+133825 loaded_data/all_data.csv
+
+- v2: removed all small docs with len < 500
+124991 loaded_data/all_data.csv
+
+- v3: reduce the number of CV to maximum 20 per org per data_set
+
+# design
+- all_data => train, evel, random_anno
+
+eval => eval_us, eval_uk, eval_other
+
+test => random_anno

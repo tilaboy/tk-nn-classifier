@@ -8,7 +8,7 @@ from tk_nn_classifier.model import Model
 from tk_nn_classifier.config import load_config
 from tk_nn_classifier.data_loader import DataReader
 from tk_nn_classifier import set_logging_level, LOGGER
-
+from tk_nn_classifier.classifiers.utils import TrainHelper, FileHelper
 
 def process_batch(model, reader, data_set, config):
     result = []
@@ -80,7 +80,12 @@ def predict(args):
                                     delimiter="\t",
                                     quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerows(result)
+        TrainHelper.print_test_result(
+            _get_column(result, 1),
+            _get_column(result, 2))
 
+def _get_column(matrix, column_i):
+    return [matrix[i][column_i] for i in range(len(matrix))]
 
 def get_args():
     '''get arguments'''

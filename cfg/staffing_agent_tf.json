@@ -52,16 +52,16 @@
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train_big",
-        "eval": "../recruitment_agency_data/eval_big",
+        "train": "final_train/train.csv",
+        "eval": "final_train/eval.csv",
         "test": {
-            "unindentified": "../recruitment_agency_data/unidentified/",
-            "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval_big",
-            "random": "../recruitment_agency_data/final_eval/random",
-            "us": "../recruitment_agency_data/us.csv"
+            "eval": "final_train/eval.csv",
+            "eval_us": "final_train/eval_us.csv",
+            "eval_uk": "final_train/eval_uk.csv",
+            "eval_other": "final_train/eval_other.csv",
+            "random_anno": "final_train/random.csv"
         },
-        "label_mapper": "../recruitment_agency_data/label_mapper.json"
+        "label_mapper": "models/label_mapper.json"
     }
 
 }

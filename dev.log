@@ -282,6 +282,49 @@ Actual
 - v3: reduce the number of CV to maximum 20 per org per data_set
 113406
 
+- v4: exclude random_anno, splitted data into train/eval
+random_anno: 1449
+
+annotated.csv                          8220
+AT_129_staffing_postings.csv.csv       548
+AT_490_direct_postings.csv.csv         3294
+BE_1000_direct_postings.csv.csv        8093
+BE_385_staffing_postings.csv.csv       3773
+CA_1000_direct_postings.csv.csv        13674
+CA_597_staffing_postings.csv.csv       8427
+DE_1000_direct_postings.csv.csv        6376
+DE_618_staffing_postings.csv.csv       3615
+direct_us.csv.csv                      7372
+ES_210_staffing_postings.csv.csv       1735
+ES_807_direct_postings.csv.csv         6501
+FR_1000_direct_postings.csv.csv        7348
+FR_225_staffing_postings.csv.csv       1816
+IT_137_staffing_postings.csv.csv       855
+IT_744_direct_postings.csv.csv         5287
+NL_1000_direct_postings.csv.csv        8288
+NL_765_staffing_postings.csv.csv       6512
+staffing_us.csv.csv                    2762
+uk_directed_employer.csv               4216
+uk_staffing_agency.csv                 3195
+
+
+all_data.csv                           111907
+train.csv                              90103
+eval.csv                               21804
+eval_other.csv                         16879
+eval_uk.csv                            2935
+eval_us.csv                            1990
+
+
+
+ratio: 0.9
+I [2019-12-27 07:17:17,255] [data_aggre] in total 11038 orgs
+I [2019-12-27 07:17:17,262] [data_aggre] splitted orgs into train: 9934, eval: 1104
+
+ratio: 0.8
+I [2019-12-27 07:36:02,466] [data_aggre] in total 11038 orgs
+I [2019-12-27 07:36:02,472] [data_aggre] splitted orgs into train: 8830, eval: 2208
+
 # design
 - all_data => train, evel, random_anno
 

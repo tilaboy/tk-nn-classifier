@@ -57,7 +57,7 @@ fh = logging.FileHandler('data_aggre.log', 'w')
 LOGGER.addHandler(fh)
 
 RANDOM_SEED = 10
-SPLIT_RATIO = 0.9
+SPLIT_RATIO = 0.8
 
 datasets = {
     'uk_staffing_agency': {'country': 'uk', 'clue': 'folder_name'},
@@ -393,7 +393,7 @@ def main():
                output_fields,
                [
                     loaded_doc
-                    for org_item in train_split
+                    for org_item in eval_split
                     for country, loaded_docs in org_item.items() if country == 'uk'
                     for loaded_doc in loaded_docs
                ])
@@ -402,7 +402,7 @@ def main():
                output_fields,
                [
                     loaded_doc
-                    for org_item in train_split
+                    for org_item in eval_split
                     for country, loaded_docs in org_item.items() if country == 'us'
                     for loaded_doc in loaded_docs
                ])
@@ -411,7 +411,7 @@ def main():
                output_fields,
                [
                     loaded_doc
-                    for org_item in train_split
+                    for org_item in eval_split
                     for country, loaded_docs in org_item.items() if country not in ['us', 'uk']
                     for loaded_doc in loaded_docs
                ])

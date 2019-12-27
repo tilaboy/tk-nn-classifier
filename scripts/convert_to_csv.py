@@ -261,8 +261,8 @@ def main():
                 LOGGER.debug('skip small file {}'.format(loaded_doc['posting_id']))
                 continue
 
-            org_name = loaded_doc['org_name'].lower()
-            if len(filtered_loaded_docs[org_name]) == 20:
+            org_name = loaded_doc['organization_name'].lower()
+            if org_name in filtered_loaded_docs and len(filtered_loaded_docs[org_name]) == 20:
                 LOGGER.debug('too many docs from org_name {}, skip file {}'.format(org_name, loaded_doc['posting_id']))
                 continue
 
@@ -286,7 +286,7 @@ def main():
             else:
                 filtered_loaded_docs[org_name] = [loaded_doc]
 
-        counts_org_name = _summarize_on_org_name(filtered_loaded_docs)
+        counts_org_name = _summarize_on_org_name(filtered_loaded_docs, country)
 
         os.makedirs(new_data_folder, exist_ok=True)
         _write_csv(os.path.join(new_data_folder, dataset + '.csv'),
@@ -303,11 +303,11 @@ def main():
         for org_name in filtered_loaded_docs:
             if org_name in data:
                 if country in data[org_name]:
-                    data[org_name][country].append(filter_oaded_docs[org_name])
+                    data[org_name][country].append(filtered_loaded_docs[org_name])
                 else:
-                    data[org_name][country] = [filter_oaded_docs[org_name]]
+                    data[org_name][country] = [filtered_loaded_docs[org_name]]
             else:
-                data[org_name] = {country: [filter_oaded_docs[org_name]]}
+                data[org_name] = {country: [filtered_loaded_docs[org_name]]}
 
 
 

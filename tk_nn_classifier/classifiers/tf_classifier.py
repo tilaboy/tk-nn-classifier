@@ -217,7 +217,7 @@ class TFClassifier:
         '''
         input_text = tf.placeholder(
                 dtype=tf.int32,
-                shape=[None, 512],
+                shape=[None, 1024],
                 name='input_text'
         )
         seq_length = tf.placeholder(

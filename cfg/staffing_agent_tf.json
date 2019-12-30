@@ -1,19 +1,19 @@
 {
-    "model_type": "tf_cnn_simple",
+    "model_type": "tf_cnn_multi",
     "model_name": "staffing_agency_detector",
-    "model_path": "models/tf/cnn",
+    "model_path": "models/tf/cnn_multi_v1_1024_0.001",
     "model_file": "models/tf/sa_detector.h5",
 
     "dropout_rate": 0.5,
     "optimizer": "Adam",
-    "learning_rate": 0.003,
-    "num_epochs": 100,
+    "learning_rate": 0.001,
+    "num_epochs": 500,
     "batch_size": 128,
     "max_lines":50,
 
     "log_dir": "log",
-    "max_sequence_length": 512,
-    "max_steps_without_increase": 500,
+    "max_sequence_length": 1024,
+    "max_steps_without_increase": 2000,
     "min_train_steps": 1000,
     "check_per_steps": 100,
 
@@ -39,7 +39,7 @@
     },
 
     "cnn": {
-        "nr_layers": 1,
+        "nr_layers": 3,
         "filter_size": 32,
         "kernel_size": 3
     },

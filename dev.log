@@ -286,30 +286,30 @@ Actual
 random_anno: 1449
 
 annotated.csv                          8220
-AT_129_staffing_postings.csv.csv       548
-AT_490_direct_postings.csv.csv         3294
-BE_1000_direct_postings.csv.csv        8093
-BE_385_staffing_postings.csv.csv       3773
-CA_1000_direct_postings.csv.csv        13674
-CA_597_staffing_postings.csv.csv       8427
-DE_1000_direct_postings.csv.csv        6376
-DE_618_staffing_postings.csv.csv       3615
-direct_us.csv.csv                      7372
-ES_210_staffing_postings.csv.csv       1735
-ES_807_direct_postings.csv.csv         6501
-FR_1000_direct_postings.csv.csv        7348
-FR_225_staffing_postings.csv.csv       1816
-IT_137_staffing_postings.csv.csv       855
-IT_744_direct_postings.csv.csv         5287
-NL_1000_direct_postings.csv.csv        8288
-NL_765_staffing_postings.csv.csv       6512
-staffing_us.csv.csv                    2762
-uk_directed_employer.csv               4216
-uk_staffing_agency.csv                 3195
+AT_129_staffing_postings.csv       548
+AT_490_direct_postings.csv         3294
+BE_1000_direct_postings.csv        8093
+BE_385_staffing_postings.csv       3773
+CA_1000_direct_postings.csv        13674
+CA_597_staffing_postings.csv       8427
+DE_1000_direct_postings.csv        6376
+DE_618_staffing_postings.csv       3615
+ES_210_staffing_postings.csv       1735
+ES_807_direct_postings.csv         6501
+FR_1000_direct_postings.csv        7348
+FR_225_staffing_postings.csv       1816
+IT_137_staffing_postings.csv       855
+IT_744_direct_postings.csv         5287
+NL_1000_direct_postings.csv        8288
+NL_765_staffing_postings.csv       6512
+uk_directed_employer.csv           4216
+uk_staffing_agency.csv             3195
+direct_us.csv                      7372
+staffing_us.csv                    2762
 
 
 all_data.csv                           111907
-train.csv                              90103
+train.csv                              90103  => yes: 30097, no: 59310
 eval.csv                               21804
 eval_other.csv                         16879
 eval_uk.csv                            2935
@@ -331,3 +331,102 @@ I [2019-12-27 07:36:02,472] [data_aggre] splitted orgs into train: 8830, eval: 2
 eval => eval_us, eval_uk, eval_other
 
 test => random_anno
+
+# current_version:
+
+I [2019-12-27 08:25:45,489] [tk_nn_classifier] save result to [res/eval.tsv]
+label   Prec    Reca     F1
+ no     0.847   0.929   0.887
+ yes    0.812   0.646   0.720
+I [2019-12-27 08:25:45,584] [tk_nn_classifier] Confusion matrix:
+Predicted       no   yes
+Actual
+no             13645  1036
+yes             2456  4484
+
+
+I [2019-12-27 08:25:45,588] [tk_nn_classifier] process test_set [eval_us]
+I [2019-12-27 08:26:00,160] [tk_nn_classifier] save result to [res/eval_us.tsv]
+label   Prec    Reca     F1
+ no     0.833   0.960   0.892
+ yes    0.801   0.453   0.579
+I [2019-12-27 08:26:00,178] [tk_nn_classifier] Confusion matrix:
+Predicted      no  yes
+Actual
+no             1404   58
+yes             282  234
+
+
+I [2019-12-27 08:26:00,182] [tk_nn_classifier] process test_set [eval_uk]
+I [2019-12-27 08:26:20,110] [tk_nn_classifier] save result to [res/eval_uk.tsv]
+label   Prec    Reca     F1
+ no     0.990   0.980   0.985
+ yes    0.972   0.986   0.979
+I [2019-12-27 08:26:20,131] [tk_nn_classifier] Confusion matrix:
+Predicted      no   yes
+Actual
+no             1676    34
+yes              17  1165
+
+I [2019-12-27 08:26:20,134] [tk_nn_classifier] process test_set [eval_other]
+I [2019-12-27 08:28:11,860] [tk_nn_classifier] save result to [res/eval_other.tsv]
+label   Prec    Reca     F1
+ no     0.830   0.918   0.872
+ yes    0.766   0.589   0.666
+I [2019-12-27 08:28:11,929] [tk_nn_classifier] Confusion matrix:
+Predicted       no   yes
+Actual
+no             10565   944
+yes             2157  3085
+
+I [2019-12-27 08:28:11,933] [tk_nn_classifier] process test_set [random_anno]
+I [2019-12-27 08:28:20,539] [tk_nn_classifier] save result to [res/random_anno.tsv]
+label   Prec    Reca     F1
+ no     0.449   0.506   0.476
+ yes    0.933   0.917   0.925
+I [2019-12-27 08:28:20,555] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no            89    87
+yes          109  1204
+
+manual evaluation:
+- Mortgage Advice Bureau (8 jobs)
+ c2393aa009634183beb40e6dcfb33a50: You will start your journey with the business with them providing you a good insight into the business; how they work, what their culture is and how they deal with their customers.
+ ddef67862caa40fb9606037d7d09f393: One of our highly respected, market leading & award winning mortgage broker & national estate agency business partners is seeking fully CeMAP (or equivalent) qualified Mortgage Advisers in the ...
+- Huntswood (10 jobs)
+ ee30052630b342fdb0cbfd3ca5e501f6: Huntswood is a leading provider of outsourcing, resourcing and advisory services. Our aim is to drive better outcomes by combining people, processes and technology to deliver practical solutions to our clients.
+- Southampton Education Hampshire SDC (> 10 jobs)
+ c643ed4518c94c4d88791dfe8945ff1e: At Hampshire Supply Service we strive on doing the best for our candidates and our schools. Now that we are in direct partnership with Hampshire County Council our supply chain has ex
+clusive access to many Hampshire schools, meaning we have plenty of day-to-day supply and long term positions available through us.
+- Provide Education
+ ccd7d3a5556f435ba5be1500e2f30860: Provide Education are currently recruiting for Cover Supervisors for a variety of day-to-day, short and long term supply roles in several schools in the Chesterfield area.
+- HGV Training Network
+
+
+seems real erros:
+- Embrace Financial Services
+- Mortgage Advice Bureau (MAB)
+
+
+# retrain: v1_1024 =>  input length: 1024
+
+parameter searching: CNN_simple
+cnn_retrain_v1_1024_0.003: 0.003: devel (5200 steps)
+0     0.944   0.763   0.844
+1     0.643   0.904   0.751
+
+cnn_retrain_v1_1024_0.002: 0.002: devel (4200 steps)
+0     0.932   0.831   0.879
+1     0.709   0.873   0.782
+
+cnn_retrain_v1_1024_0.001: 0.001: devel (9100 steps)
+  0     0.920   0.886   0.903
+  1     0.777   0.838   0.806
+
+parameter searching: CNN_multi
+cnn_multi_v1_1024_0.001: 3 layer, 0.001: devel (8100):
+0     0.923   0.896   0.909
+1     0.793   0.841   0.816
+
+cnn_multi_v2_1024_0.001: max_line: 50 => 500

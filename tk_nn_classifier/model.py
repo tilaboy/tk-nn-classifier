@@ -2,7 +2,9 @@
 Model class:
     hub to integrate methods from both spaCy and Tensorflow frame
 '''
+import os
 import tensorflow as tf
+from shutil import copy
 from . import LOGGER
 from .config import load_config, spacy_lang_model_consistency
 from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier
@@ -56,6 +58,8 @@ class Model:
         self.classifier.save(output_path)
 
     def build_and_train(self):
+        os.makedirs(self.config['model_path'], exist_ok=True)
+        copy(self.config['config_file_path'], self.config['model_path'])
         self.classifier.build_and_train()
 
     def evaluate(self, test_data_path):

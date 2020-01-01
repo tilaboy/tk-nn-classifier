@@ -71,7 +71,6 @@ class TFClassifier:
 
     def _save_vocab_file(self):
         if self.embedding is not None:
-            os.makedirs(self.config['model_path'], exist_ok=True)
             vocab_filename = os.path.join(self.config['model_path'], 'vocab.p')
             LOGGER.info('write vocab file to %s' % vocab_filename)
             with open(vocab_filename, 'wb') as handle:

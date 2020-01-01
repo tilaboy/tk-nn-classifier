@@ -85,7 +85,7 @@ def predict(args):
             _get_column(result, 2))
 
 def _get_column(matrix, column_i):
-    return [matrix[i][column_i] for i in range(len(matrix))]
+    return [matrix[i][column_i] for i in range(1, len(matrix))]
 
 def get_args():
     '''get arguments'''

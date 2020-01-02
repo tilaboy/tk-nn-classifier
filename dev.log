@@ -432,3 +432,55 @@ cnn_multi_v1_1024_0.001: 3 layer, 0.001: devel (8100):
 cnn_multi_v2_1024_0.001: max_line: 50 => 500, 3 layer, 0.001 (7300) => accuracy': 0.89054686
 0     0.929   0.879   0.903
 1     0.770   0.858   0.812
+
+retrained on tk118 (13000):
+I [2020-01-02 02:56:03,272] [tk_nn_classifier] process test_set [eval]
+I [2020-01-02 02:59:32,077] [tk_nn_classifier] save result to [res/eval.tsv]
+label   Prec    Reca     F1
+ no     0.909   0.933   0.921
+ yes    0.850   0.803   0.826
+I [2020-01-02 02:59:32,692] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         13700   981
+yes         1369  5571
+I [2020-01-02 02:59:32,697] [tk_nn_classifier] process test_set [eval_us]
+I [2020-01-02 02:59:52,231] [tk_nn_classifier] save result to [res/eval_us.tsv]
+label   Prec    Reca     F1
+ no     0.918   0.964   0.941
+ yes    0.882   0.756   0.814
+I [2020-01-02 02:59:52,334] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1410   52
+yes         126  390
+I [2020-01-02 02:59:52,338] [tk_nn_classifier] process test_set [eval_uk]
+I [2020-01-02 03:00:16,946] [tk_nn_classifier] save result to [res/eval_uk.tsv]
+label   Prec    Reca     F1
+ no     0.966   0.942   0.954
+ yes    0.919   0.952   0.935
+I [2020-01-02 03:00:17,050] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1611    99
+yes          57  1125
+I [2020-01-02 03:00:17,053] [tk_nn_classifier] process test_set [eval_other]
+I [2020-01-02 03:02:56,589] [tk_nn_classifier] save result to [res/eval_other.tsv]
+label   Prec    Reca     F1
+ no     0.900   0.928   0.914
+ yes    0.830   0.774   0.801
+I [2020-01-02 03:02:56,919] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         10679   830
+yes         1186  4056
+I [2020-01-02 03:02:56,923] [tk_nn_classifier] process test_set [random_anno]
+I [2020-01-02 03:03:09,499] [tk_nn_classifier] save result to [res/random_anno.tsv]
+label   Prec    Reca     F1
+ no     0.552   0.568   0.560
+ yes    0.942   0.938   0.940
+I [2020-01-02 03:03:09,572] [tk_nn_classifier] Confusion matrix:
+Predicted   no   yes
+Actual
+no         100    76
+yes         81  1232

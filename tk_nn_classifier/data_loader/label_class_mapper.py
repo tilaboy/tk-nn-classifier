@@ -15,9 +15,10 @@ class LabelClassMapper:
 
     @classmethod
     def from_labels(cls, labels, label_mapper_file='label_mapper.json'):
+        uniq_label_set = sorted(set(labels))
         classes_to_label = {
                 str(i): label
-                for i, label in enumerate(sorted(set(labels)))
+                for i, label in enumerate(uniq_label_set)
         }
         return cls(classes_to_label, label_mapper_file)
 

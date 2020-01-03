@@ -23,19 +23,21 @@ class KerasClassifier:
         self.load_embedding()
         self.build_graph()
         self.train()
+        #self.load_saved_model('best_model.26-0.45.h5')
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
     def evaluate_on_tests(self):
         for test_set_name in self.config['datasets']['test']:
-
             x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])
-            dev_loss, dev_acc = model.evaluate(x_devel, y_devel)
-            LOGGER.info("Devel: loss %s\tacc %s", str(dev_loss), str(dev_acc))
-
-            result = self.classifier.predict_on_batch(x_test)
-            print(result)
-            #TrainHelper.print_test_result(predicted_classes, labels)
+            #dev_loss, dev_acc = self.classifier.evaluate(x_test, y_test)
+            #LOGGER.info("Devel: loss %s\tacc %s", str(dev_loss), str(dev_acc))
+            predictions = self.classifier.predict_on_batch(x_test)
+            result = [
+                int(score + 0.5)
+                for score in list(predictions.numpy().flatten())
+            ]
+            TrainHelper.print_test_result(result, y_test)
 
     def predict_batch(self, data_path):
         predicted_classes = [
@@ -72,8 +74,8 @@ class KerasClassifier:
                     for token in tokenize(text)]
                     for text in texts]
             data_length = np.array([
-                min(len(data_id), self.max_sequence_length)
-                for data_id in data_ids
+                min(len(data_vec), self.max_sequence_length)
+                for data_vec in data_vecs
             ])
 
             data = self._pad_vectors(data_vecs)
@@ -98,12 +100,13 @@ class KerasClassifier:
         for i in range(self.config['cnn']['nr_layers']):
             conv = tf.keras.layers.Conv1D(self.config['cnn']['filter_size'],
                                           (self.config['cnn']['kernel_size']),
+                                          padding='same',
                                           activation='relu')(inputs_encoder)
             pool = tf.keras.layers.MaxPool1D(pool_size=2)(conv)
             inputs_encoder = tf.keras.layers.Dropout(0.5)(pool)
 
 
-        flat = tf.keras.layers.Flatten()(input_encoder)
+        flat = tf.keras.layers.Flatten()(inputs_encoder)
         densed = tf.keras.layers.Dense(100, activation=tf.nn.sigmoid)(flat)
         preds = tf.keras.layers.Dense(1, activation=tf.nn.sigmoid)(densed)
 
@@ -121,11 +124,11 @@ class KerasClassifier:
 
     def train(self):
         """Training process"""
-        LOGGER.info('Reading: %s', model_cfg['datasets']['train'])
-        x_train, y_train, seqlen_train = self.load_data_set(model_cfg['datasets']['train'])
+        LOGGER.info('Reading: %s', self.config['datasets']['train'])
+        x_train, y_train, seqlen_train = self.load_data_set(self.config['datasets']['train'])
 
-        LOGGER.info('Reading: %s', model_cfg['datasets']['eval'])
-        x_eval, y_eval, seqlen_eval = self.load_data_set(model_cfg['datasets']['eval'])
+        LOGGER.info('Reading: %s', self.config['datasets']['eval'])
+        x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
 
         callbacks_list = [
             tf.keras.callbacks.ModelCheckpoint(
@@ -141,14 +144,14 @@ class KerasClassifier:
                   y_train,
                   epochs=self.config['num_epochs'],
                   batch_size=self.config['batch_size'],
-                  validation_data=(x_test, y_test),
+                  validation_data=(x_eval, y_eval),
                   callbacks=callbacks_list
         )
 
         # # TODO
         # after training, clean up
 
-        self.classifier.save(model_cfg['model_file'])
+        self.classifier.save(self.config['model_file'])
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))
@@ -160,14 +163,8 @@ class KerasClassifier:
 
     def load_saved_model(self, model_path=None):
         LOGGER.info("loading model from %s", model_path)
-        self.model = tf.keras.models.load_model(model_path)
+        self.classifier = tf.keras.models.load_model(model_path)
 
-
-    def process_with_saved_model(self, input):
-        data = self._input_text_to_pad_id(input)
-        result = self.model(data)
-        probabilities = result['probabilities'][0]
-        return probabilities.tolist()
 
     # tf.keras
     def evaluation(test_file):
@@ -178,9 +175,6 @@ class KerasClassifier:
         for text, i in enumerate(text_lines):
             LOGGER.info("predicted={:0.2f}\tclass={}\ttext={}".format(
                 results[i][0], y_eval[i], text))
-
-
-
 
 
     # todo:

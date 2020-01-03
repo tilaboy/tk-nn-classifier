@@ -7,7 +7,7 @@ import tensorflow as tf
 from shutil import copy
 from . import LOGGER
 from .config import load_config, spacy_lang_model_consistency
-from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier
+from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier, KerasClassifier
 
 
 class Model:
@@ -40,7 +40,7 @@ class Model:
             LOGGER.info('use tensorflow %s' % self.type)
             self.config['classifier_frame'] = 'tf-keras'
             self.classifier = KerasClassifier(self.config)
-            tf.logging.set_verbosity(tf.logging.INFO)
+            tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
         elif self.type.startswith('spacy'):
             LOGGER.info('use spacy %s' % self.type)

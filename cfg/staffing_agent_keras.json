@@ -16,7 +16,7 @@
     "max_steps_without_increase": 2000,
     "min_train_steps": 1000,
     "check_per_steps": 100,
-    "patience_epochs": 10,
+    "patience_epochs": 50,
 
     "trxml_fields": {
         "features": "sec_vacancy.0.sec_vacancy",

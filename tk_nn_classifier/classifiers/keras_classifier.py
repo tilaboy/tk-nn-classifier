@@ -92,7 +92,7 @@ class KerasClassifier:
         output: neural netword model
         """
 
-        inputs = tf.keras.Input((self.max_sequence_length, vector_size,))
+        inputs = tf.keras.Input((self.max_sequence_length, self.embedding.vector_size,))
         inputs_encoder = tf.keras.layers.Dropout(0.3)(inputs)
 
         for i in range(self.config['cnn']['nr_layers']):

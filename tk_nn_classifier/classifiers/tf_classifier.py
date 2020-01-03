@@ -4,7 +4,6 @@ import numpy as np
 import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
-from tensorflow.contrib import predictor
 
 from ..data_loader import WordVector, TFDataReader, tokenize
 from .. import LOGGER
@@ -278,7 +277,7 @@ class TFClassifier:
                             )
                     )
         LOGGER.info("loading model from %s", model_path)
-        self.model = predictor.from_saved_model(model_path)
+        self.model = tensorflow.contrib.predictor.from_saved_model(model_path)
         self._load_vocab()
 
     def _load_vocab(self):

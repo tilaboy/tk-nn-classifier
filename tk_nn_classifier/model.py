@@ -36,6 +36,12 @@ class Model:
             self.classifier = TFClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
+        elif self.type.startswith('keras'):
+            LOGGER.info('use tensorflow %s' % self.type)
+            self.config['classifier_frame'] = 'tf-keras'
+            self.classifier = KerasClassifier(self.config)
+            tf.logging.set_verbosity(tf.logging.INFO)
+
         elif self.type.startswith('spacy'):
             LOGGER.info('use spacy %s' % self.type)
             self.config['classifier_frame'] = 'spacy'

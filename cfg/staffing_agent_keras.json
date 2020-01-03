@@ -53,10 +53,14 @@
     },
 
     "datasets": {
-        "train": "final_train/eval_uk.csv",
-        "eval": "final_train/eval_us.csv",
+        "train": "final_train/train.csv",
+        "eval": "final_train/eval.csv",
         "test": {
+            "eval": "final_train/eval.csv",
             "eval_us": "final_train/eval_us.csv",
+            "eval_uk": "final_train/eval_uk.csv",
+            "eval_other": "final_train/eval_other.csv",
+            "random_anno": "final_train/random.csv"
         },
         "label_mapper": "models/label_mapper.json"
     }

@@ -1,0 +1,64 @@
+{
+    "model_type": "keras_cnn_multi",
+    "model_name": "staffing_agency_detector",
+    "model_path": "models/keras/keras_multi_v1_1024_0.001",
+    "model_file": "models/keras/sa_detector.h5",
+
+    "dropout_rate": 0.5,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "num_epochs": 500,
+    "batch_size": 128,
+    "max_lines":50,
+
+    "log_dir": "log",
+    "max_sequence_length": 1024,
+    "max_steps_without_increase": 2000,
+    "min_train_steps": 1000,
+    "check_per_steps": 100,
+    "patience_epochs": 10,
+
+    "trxml_fields": {
+        "features": "sec_vacancy.0.sec_vacancy",
+        "class": "derived_vac_intermediary.0.derived_vac_intermediary",
+        "doc_id": "Document.0.correlationid",
+        "extra": ["derived_org_name.0.derived_org_name",
+            "derived_source_site.0.derived_source_site",
+            "derived_norm_url.0.derived_norm_url"]
+    },
+
+    "csv_fields": {
+        "features": "full_text",
+        "class": "advertiser_type",
+        "doc_id": "posting_id",
+        "extra": ["organization_name", "country", "source_url"]
+    },
+
+    "lstm": {
+        "hidden_size": 150,
+        "nr_layers": 2
+    },
+
+    "cnn": {
+        "nr_layers": 3,
+        "filter_size": 32,
+        "kernel_size": 3
+    },
+
+    "embedding": {
+        "file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+        "dimension": 150,
+        "token_encoding": "max_embedding",
+        "trainable": false
+    },
+
+    "datasets": {
+        "train": "final_train/eval_uk.csv",
+        "eval": "final_train/eval_us.csv",
+        "test": {
+            "eval_us": "final_train/eval_us.csv",
+        },
+        "label_mapper": "models/label_mapper.json"
+    }
+
+}

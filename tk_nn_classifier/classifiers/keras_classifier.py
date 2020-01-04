@@ -1,4 +1,5 @@
 import os
+import re
 import tensorflow as tf
 import numpy as np
 import pickle
@@ -163,9 +164,34 @@ class KerasClassifier:
         return self.classifier.predict(
             input_fn=functools.partial(self._prepare_single_input, text))
 
+
+    @staticmethod
+    def _get_file_with_largest_epoch(model_path):
+        largest_epoch = 0
+        best_model_file = ''
+
+        for filename in os.listdir(model_path):
+            if filename.startswith('best_model'):
+                matched = re.match(r'best_model\.(\d+)\-', filename)
+                epoch = int(matched.group(1))
+                if epoch > largest_epoch:
+                    largest_epoch = epoch
+                    best_model_file = os.path.join(model_path, filename)
+        return best_model_file
+
     def load_saved_model(self, model_path=None):
+        self.load_embedding()
+        if model_path is None:
+            model_path = self._get_file_with_largest_epoch(self.config['model_path'])
         LOGGER.info("loading model from %s", model_path)
         self.classifier = tf.keras.models.load_model(model_path)
+
+
+    def process_with_saved_model(self, input):
+        data = self._input_text_to_pad_vec(input)
+        result = self.classifier.predict_on_batch(data)
+        probability = result.numpy().flatten()[0]
+        return [1.0 - probability, probability]
 
 
     # tf.keras
@@ -182,15 +208,12 @@ class KerasClassifier:
     # todo:
     # the padding is probably not needed in the predicting mode
     # if needed, should use the text length as max_sequence_length
-    def _input_text_to_pad_id(self, text):
-        data_id = [
-                self.vocab_to_ids[token]
-                if token in self.vocab_to_ids else WordVector.UNK_ID
-                for token in tokenize(text)
-                ]
-        data = sequence.pad_sequences([data_id],
-                                      maxlen=self.max_sequence_length,
-                                      truncating='post',
-                                      padding='post',
-                                      value=WordVector.PAD_ID)
-        return {'input': data}
+    def _input_text_to_pad_vec(self, text):
+
+        data_vecs = [[
+                self.embedding.get_vector(token)
+                for token in tokenize(text)]]
+
+        data = self._pad_vectors(data_vecs)
+
+        return data

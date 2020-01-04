@@ -29,6 +29,7 @@ class KerasClassifier:
 
     def evaluate_on_tests(self):
         for test_set_name in self.config['datasets']['test']:
+            LOGGER.info('evaluate {}'.format(test_set_name))
             x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])
             #dev_loss, dev_acc = self.classifier.evaluate(x_test, y_test)
             #LOGGER.info("Devel: loss %s\tacc %s", str(dev_loss), str(dev_acc))
@@ -132,7 +133,8 @@ class KerasClassifier:
 
         callbacks_list = [
             tf.keras.callbacks.ModelCheckpoint(
-                filepath='best_model.{epoch:02d}-{val_loss:.2f}.h5',
+                filepath=os.path.join(self.config['model_path'],
+                                      'best_model.{epoch:02d}-{val_loss:.2f}.h5'),
                 monitor='val_loss', mode='auto', verbose=1, save_best_only=True),
             tf.keras.callbacks.EarlyStopping(monitor='val_loss',
                                              mode='min',
@@ -151,7 +153,7 @@ class KerasClassifier:
         # # TODO
         # after training, clean up
 
-        self.classifier.save(self.config['model_file'])
+        self.classifier.save(os.path.join(self.config['model_path'], self.config['model_file'])
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))

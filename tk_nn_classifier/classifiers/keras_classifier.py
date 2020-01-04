@@ -154,7 +154,7 @@ class KerasClassifier:
         # # TODO
         # after training, clean up
 
-        self.classifier.save(os.path.join(self.config['model_path'], self.config['model_file'])
+        self.classifier.save(os.path.join(self.config['model_path'], self.config['model_file']))
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))

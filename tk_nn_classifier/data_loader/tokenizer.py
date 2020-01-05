@@ -29,8 +29,6 @@ def _norm_token(token):
         norm_token = 'xxAT_DOMAINxx'
     elif Patterns.YEAR_RE.fullmatch(token):
         norm_token = 'xxYEARxx'
-    elif Patterns.EMAIL_RE.fullmatch(token):
-        norm_token = 'xxEMAILxx'
 
     norm_token = Patterns.DIGIT_RE.sub('1', norm_token)
     return norm_token

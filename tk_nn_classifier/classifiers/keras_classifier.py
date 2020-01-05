@@ -110,7 +110,7 @@ class KerasClassifier:
 
 
         flat = tf.keras.layers.Flatten()(inputs_encoder)
-        densed = tf.keras.layers.Dense(100, activation=tf.nn.sigmoid)(flat)
+        densed = tf.keras.layers.Dense(8, activation=tf.nn.sigmoid)(flat)
         preds = tf.keras.layers.Dense(1, activation=tf.nn.sigmoid)(densed)
 
         model = tf.keras.models.Model(

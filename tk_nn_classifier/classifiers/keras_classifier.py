@@ -29,6 +29,7 @@ class KerasClassifier:
             self.evaluate_on_tests()
 
     def evaluate_on_tests(self):
+        self.load_saved_model
         for test_set_name in self.config['datasets']['test']:
             LOGGER.info('evaluate {}'.format(test_set_name))
             x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])
@@ -180,7 +181,8 @@ class KerasClassifier:
         return best_model_file
 
     def load_saved_model(self, model_path=None):
-        self.load_embedding()
+        if self.embedding == None:
+            self.load_embedding()
         if model_path is None:
             model_path = self._get_file_with_largest_epoch(self.config['model_path'])
         LOGGER.info("loading model from %s", model_path)

@@ -38,7 +38,7 @@ class KerasClassifier:
             predictions = self.classifier.predict_on_batch(x_test)
             result = [
                 int(score + 0.5)
-                for score in list(predictions.numpy().flatten())
+                for score in predictions.flatten()
             ]
             TrainHelper.print_test_result(result, y_test)
 
@@ -192,7 +192,7 @@ class KerasClassifier:
     def process_with_saved_model(self, input):
         data = self._input_text_to_pad_vec(input)
         result = self.classifier.predict_on_batch(data)
-        probability = result.numpy().flatten()[0]
+        probability = result.flatten()[0]
         return [1.0 - probability, probability]
 
 

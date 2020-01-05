@@ -29,7 +29,7 @@ class KerasClassifier:
             self.evaluate_on_tests()
 
     def evaluate_on_tests(self):
-        self.load_saved_model
+        self.load_saved_model()
         for test_set_name in self.config['datasets']['test']:
             LOGGER.info('evaluate {}'.format(test_set_name))
             x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])

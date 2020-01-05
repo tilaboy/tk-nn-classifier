@@ -9,7 +9,7 @@
     "learning_rate": 0.001,
     "num_epochs": 500,
     "batch_size": 128,
-    "max_lines":50,
+    "max_lines":500,
 
     "log_dir": "log",
     "max_sequence_length": 1024,

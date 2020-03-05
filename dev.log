@@ -484,3 +484,271 @@ Predicted   no   yes
 Actual
 no         100    76
 yes         81  1232
+
+* keras models
+
+- models/keras/keras_multi_v1_1024_0.001/best_model.19-0.32.h5
+I [2020-01-04 17:49:06,239] [tk_nn_classifier] save result to [keras_res/eval.tsv]
+label   Prec    Reca     F1
+ yes    0.782   0.846   0.813
+ no     0.924   0.888   0.906
+I [2020-01-04 17:49:06,810] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         13043  1638
+yes         1070  5870
+
+I [2020-01-04 17:49:25,662] [tk_nn_classifier] save result to [keras_res/eval_us.tsv]
+label   Prec    Reca     F1
+ yes    0.778   0.787   0.782
+ no     0.924   0.921   0.923
+I [2020-01-04 17:49:25,927] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1346  116
+yes         110  406
+
+I [2020-01-04 17:49:50,934] [tk_nn_classifier] save result to [keras_res/eval_uk.tsv]
+label   Prec    Reca     F1
+ yes    0.862   0.964   0.910
+ no     0.973   0.894   0.931
+I [2020-01-04 17:49:51,049] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1528   182
+yes          43  1139
+
+I [2020-01-04 17:52:19,512] [tk_nn_classifier] save result to [keras_res/eval_other.tsv]
+label   Prec    Reca     F1
+ yes    0.763   0.825   0.793
+ no     0.917   0.884   0.900
+I [2020-01-04 17:52:19,821] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         10169  1340
+yes          917  4325
+
+I [2020-01-04 17:52:31,668] [tk_nn_classifier] save result to [keras_res/random_anno.tsv]
+label   Prec    Reca     F1
+ no     0.604   0.460   0.523
+ yes    0.930   0.960   0.945
+I [2020-01-04 17:52:31,716] [tk_nn_classifier] Confusion matrix:
+Predicted  no   yes
+Actual
+no         81    95
+yes        53  1260
+
+- models/keras/keras_multi_v2_1024_0.001/best_model.14-0.36.h5
+I [2020-01-05 03:21:58,039] [tk_nn_classifier] save result to [res/eval.tsv]
+label   Prec    Reca     F1
+ no     0.928   0.904   0.916
+ yes    0.808   0.852   0.830
+I [2020-01-05 03:21:58,341] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         13276  1405
+yes         1026  5914
+I [2020-01-05 03:21:58,347] [tk_nn_classifier] process test_set [eval_us]
+I [2020-01-05 03:22:24,902] [tk_nn_classifier] save result to [res/eval_us.tsv]
+label   Prec    Reca     F1
+ no     0.942   0.936   0.939
+ yes    0.823   0.835   0.829
+I [2020-01-05 03:22:24,959] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1369   93
+yes          85  431
+I [2020-01-05 03:22:24,964] [tk_nn_classifier] process test_set [eval_uk]
+I [2020-01-05 03:22:58,717] [tk_nn_classifier] save result to [res/eval_uk.tsv]
+label   Prec    Reca     F1
+ no     0.972   0.898   0.933
+ yes    0.867   0.963   0.912
+I [2020-01-05 03:22:58,845] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1535   175
+yes          44  1138
+
+I [2020-01-05 03:22:58,850] [tk_nn_classifier] process test_set [eval_other]
+I [2020-01-05 03:26:22,465] [tk_nn_classifier] save result to [res/eval_other.tsv]
+label   Prec    Reca     F1
+ no     0.920   0.901   0.911
+ yes    0.793   0.829   0.810
+I [2020-01-05 03:26:22,704] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         10372  1137
+yes          897  4345
+I [2020-01-05 03:26:22,710] [tk_nn_classifier] process test_set [random_anno]
+I [2020-01-05 03:26:38,720] [tk_nn_classifier] save result to [res/random_anno.tsv]
+label   Prec    Reca     F1
+ no     0.591   0.460   0.518
+ yes    0.930   0.957   0.943
+I [2020-01-05 03:26:38,759] [tk_nn_classifier] Confusion matrix:
+Predicted  no   yes
+Actual
+no         81    95
+yes        56  1257
+
+
+- models/keras/keras_multi_v2_1024_0.003/best_model.67-0.34.h5
+I [2020-01-05 03:59:24,090] [tk_nn_classifier] save result to [res_v2_1024_0.003/eval.tsv]
+label   Prec    Reca     F1
+ no     0.881   0.961   0.920
+ yes    0.899   0.726   0.803
+I [2020-01-05 03:59:24,648] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         14113   568
+yes         1902  5038
+
+I [2020-01-05 03:59:41,670] [tk_nn_classifier] save result to [res_v2_1024_0.003/eval_us.tsv]
+label   Prec    Reca     F1
+ no     0.889   0.988   0.936
+ yes    0.949   0.651   0.772
+I [2020-01-05 03:59:41,749] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1444   18
+yes         180  336
+
+I [2020-01-05 04:00:03,385] [tk_nn_classifier] save result to [res_v2_1024_0.003/eval_uk.tsv]
+label   Prec    Reca     F1
+ no     0.954   0.972   0.963
+ yes    0.958   0.932   0.945
+I [2020-01-05 04:00:03,486] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1662    48
+yes          80  1102
+
+I [2020-01-05 04:02:14,290] [tk_nn_classifier] save result to [res_v2_1024_0.003/eval_other.tsv]
+label   Prec    Reca     F1
+ no     0.870   0.956   0.911
+ yes    0.878   0.687   0.771
+I [2020-01-05 04:02:14,587] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         11007   502
+yes         1642  3600
+
+I [2020-01-05 04:02:24,841] [tk_nn_classifier] save result to [res_v2_1024_0.003/random_anno.tsv]
+label   Prec    Reca     F1
+ no     0.414   0.625   0.498
+ yes    0.946   0.881   0.912
+I [2020-01-05 04:02:24,888] [tk_nn_classifier] Confusion matrix:
+Predicted   no   yes
+Actual
+no         110    66
+yes        156  1157
+
+- models/keras/keras_multi_v3_2layer_1024_0.003/best_model.107-0.31.h5
+I [2020-01-05 03:24:31,845] [tk_nn_classifier] save result to [res/eval.tsv]
+label   Prec    Reca     F1
+ no     0.896   0.950   0.922
+ yes    0.878   0.767   0.819
+I [2020-01-05 03:24:32,175] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         13944   737
+yes         1620  5320
+
+I [2020-01-05 03:24:58,463] [tk_nn_classifier] save result to [res/eval_us.tsv]
+label   Prec    Reca     F1
+ no     0.900   0.977   0.937
+ yes    0.913   0.692   0.787
+I [2020-01-05 03:24:58,553] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1428   34
+yes         159  357
+
+I [2020-01-05 03:25:31,999] [tk_nn_classifier] save result to [res/eval_uk.tsv]
+label   Prec    Reca     F1
+ no     0.959   0.956   0.958
+ yes    0.936   0.942   0.939
+I [2020-01-05 03:25:32,115] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1634    76
+yes          69  1113
+
+I [2020-01-05 03:28:52,144] [tk_nn_classifier] save result to [res/eval_other.tsv]
+label   Prec    Reca     F1
+ no     0.887   0.946   0.915
+ yes    0.860   0.734   0.792
+I [2020-01-05 03:28:52,375] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         10882   627
+yes         1392  3850
+
+I [2020-01-05 03:29:07,752] [tk_nn_classifier] save result to [res/random_anno.tsv]
+label   Prec    Reca     F1
+ yes    0.939   0.911   0.925
+ no     0.456   0.557   0.501
+I [2020-01-05 03:29:07,821] [tk_nn_classifier] Confusion matrix:
+Predicted   no   yes
+Actual
+no          98    78
+yes        117  1196
+
+
+* keras v4:
+  padding = same,
+  layer 2 or less,
+  2 dense layers: cnn output => 8, 8 => 1
+  evaluated on the best model
+
+- keras_multi_v4_l1_d2_0.001: one layer is less than 2 layer
+
+-   models/keras/keras_multi_v4_l2_d2_0.003/best_model.61-0.28.h5
+I [2020-01-05 15:15:16,584] [tk_nn_classifier] save result to [res_l2d2_0.0003/eval.tsv]
+label   Prec    Reca     F1
+ yes    0.838   0.832   0.835
+ no     0.921   0.924   0.922
+I [2020-01-05 15:15:16,971] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         13563  1118
+yes         1163  5777
+
+I [2020-01-05 15:15:42,230] [tk_nn_classifier] save result to [res_l2d2_0.0003/eval_us.tsv]
+label   Prec    Reca     F1
+ yes    0.895   0.806   0.848
+ no     0.934   0.966   0.950
+I [2020-01-05 15:15:42,265] [tk_nn_classifier] Confusion matrix:
+Predicted    no  yes
+Actual
+no         1413   49
+yes         100  416
+
+I [2020-01-05 15:16:13,794] [tk_nn_classifier] save result to [res_l2d2_0.0003/eval_uk.tsv]
+label   Prec    Reca     F1
+ yes    0.911   0.957   0.934
+ no     0.969   0.936   0.952
+I [2020-01-05 15:16:13,888] [tk_nn_classifier] Confusion matrix:
+Predicted    no   yes
+Actual
+no         1600   110
+yes          51  1131
+
+I [2020-01-05 15:16:13,892] [tk_nn_classifier] process test_set [eval_other]
+label   Prec    Reca     F1
+ yes    0.815   0.807   0.811
+ no     0.912   0.917   0.915
+I [2020-01-05 15:19:26,899] [tk_nn_classifier] Confusion matrix:
+Predicted     no   yes
+Actual
+no         10550   959
+yes         1012  4230
+
+I [2020-01-05 15:19:41,812] [tk_nn_classifier] save result to [res_l2d2_0.0003/random_anno.tsv]
+label   Prec    Reca     F1
+ yes    0.942   0.943   0.943
+ no     0.571   0.568   0.570
+I [2020-01-05 15:19:41,887] [tk_nn_classifier] Confusion matrix:
+Predicted   no   yes
+Actual
+no         100    76
+yes         75  1238

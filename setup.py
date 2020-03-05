@@ -5,12 +5,13 @@ NAME = "tk_nn_classifier"
 VERSION = os.environ.get("TK_NN_CLASSIFIER", '0.0.0')
 
 INSTALL_REQUIRES = [
-    "tensorflow == 1.14.0",
+    "tensorflow >= 1.14.0",
     "numpy == 1.16.0",
     "xml-miner >= 0.0.5",
     "spacy == 2.1.8",
     "pandas >= 0.22.0",
-    "en_core_web_sm == 2.1.0"
+    "en_core_web_sm == 2.1.0",
+    "easy_tokenizer >= 0.0.8"
 ]
 
 setup_requirements = ['pytest-runner', ]

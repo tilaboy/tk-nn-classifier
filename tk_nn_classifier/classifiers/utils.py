@@ -1,6 +1,5 @@
 import os
 import platform
-import pandas as pd
 from .. import LOGGER
 
 

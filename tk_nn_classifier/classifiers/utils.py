@@ -117,8 +117,38 @@ class TrainHelper:
         return scores
 
     @staticmethod
-    def _evaluate_confusion_matrix(eval_labels, gold_labels):
-        cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
-                         pd.Series(eval_labels, name='Predicted')
-                         )
-        return cm
+    def _evaluate_confusion_matrix(eval, gold):
+        """
+        Generate a confusion matrix for multiple classification
+
+        params:
+            - eval: a list of integers or strings of predicted classes
+            - gold: a list of integers or strings of known classes
+        output:
+            - confu_matrix: 2-dimensional list of pairwise counts
+        """
+        def _to_str(arr):
+            return [str(value) for value in arr]
+
+        gold = _to_str(gold)
+        eval = _to_str(eval)
+        cats = sorted(set(gold + eval))
+        min_len = max([len(cat) for cat in cats]) + 2
+        cellwidth = max([min_len, 10])
+
+        confu_matrix = [[0 for _ in cats] for _ in cats]
+        cat_id_map = {cat:id for id, cat in enumerate(cats)}
+        for predicted, real in zip(eval, gold):
+            confu_matrix[cat_id_map[real]][cat_id_map[predicted]] += 1
+
+        sep_line = "=" * (cellwidth * (len(cats) + 2))
+        cm_table = sep_line + "\n"
+
+        table_header = " ".join([("{}".format(cat)).ljust(cellwidth) for cat in cats])
+        cm_table += "gold\\eval".ljust(cellwidth + 1) + table_header + "\n"
+        for cat, row in zip(cats, confu_matrix):
+            row_start = ("{}".format(cat)).ljust(cellwidth)
+            row_string = " ".join([str(val).ljust(cellwidth) for val in row])
+            cm_table += "{} {}\n".format(row_start, row_string)
+        cm_table += sep_line
+        return cm_table

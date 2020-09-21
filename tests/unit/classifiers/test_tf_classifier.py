@@ -6,7 +6,6 @@ import shutil
 import numpy as np
 import tensorflow as tf
 from tk_nn_classifier.classifiers import TFClassifier
-tf.enable_eager_execution()
 
 class TFClassifierTestCases(TestCase):
     '''unit test for multi feature input and parsing'''

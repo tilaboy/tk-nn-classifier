@@ -197,7 +197,7 @@ class KerasClassifier:
 
 
     # tf.keras
-    def evaluation(test_file):
+    def evaluation(self, test_file):
         """Evaluate on the data set"""
 
         text_lines, x_eval, y_eval = self.data_reader.read_file(test_file)

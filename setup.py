@@ -9,7 +9,7 @@ INSTALL_REQUIRES = [
     "numpy == 1.16.0",
     "xml-miner == 0.0.5",
     "spacy == 2.3.0",
-    "en_core_web_sm == 2.1.0",
+    "en_core_web_sm == 2.3.0",
     "easy_tokenizer == 0.0.10"
 ]
 
@@ -38,7 +38,8 @@ setup(
         ],
     },
     dependency_links = [
-        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm"
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz#egg=en_core_web_sm",
+
     ],
     test_suite="tests",
     setup_requires=setup_requirements,

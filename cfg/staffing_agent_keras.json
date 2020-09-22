@@ -2,6 +2,7 @@
     "model_type": "keras_cnn_multi",
     "model_name": "staffing_agency_detector",
     "model_path": "models/keras/keras_multi_v1_1024_0.001",
+    "model_desc": "keras model v1: baseline model, 3 layer cnn",
     "model_file": "sa_detector.h5",
 
     "dropout_rate": 0.5,

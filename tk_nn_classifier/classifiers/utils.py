@@ -118,7 +118,7 @@ class TrainHelper:
     @staticmethod
     def _evaluate_confusion_matrix(eval, gold):
         cm = ConfusionMatrix(eval, gold)
-        return cm.to_string()
+        return cm
 
 
 class ConfusionMatrix:

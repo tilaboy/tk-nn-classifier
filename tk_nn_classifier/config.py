@@ -1,12 +1,14 @@
 '''The module to load the config file'''
+import os
 import copy
 import json
 
 DEFAULTS = {
     # Data reading params
-    "model_type": 'spacy_poc',
-    "model_name": "poc_model",
-    "model_path": "models/poc",
+    "model_type": 'spacy',
+    "model_name": "spacy_poc",
+    "model_dir": "models/poc",
+    "model_version": "baseline",
 
     "dropout_rate": 0.2,
     "num_epochs": 20,
@@ -77,12 +79,22 @@ def load_config(config_file, poc_defaults=False):
         - dictionary object contains config key and config value pairs
     '''
 
-    if poc_defaults:
-        config = get_default_config()
-    else:
-        config = {}
+    config = get_default_config()
     config['config_file_path'] = config_file
     with open(config_file) as config_fh:
         config.update(json.load(config_fh))
+
+    if config['model_type'].startswith('spacy'):
+        config['classifier_frame'] = 'SpacyClassifier'
+    else:
+        config['spacy'] = None
+        if config['model_type'].startswith('tf_multi_feat'):
+            config['classifier_frame'] = 'TFMultiFeatClassifier'
+        elif config['model_type'].startswith('tf'):
+            config['classifier_frame'] = 'TFMultiFeatClassifier'
+        elif config['model_type'].startwith('keras'):
+            config['classifier_frame'] = 'KerasClassifier'
+        else:
+            raise ValueError("unknown model type [{}]".format(config['model_type']))
 
     return config

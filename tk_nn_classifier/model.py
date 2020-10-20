@@ -13,11 +13,11 @@ from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier, K
 class Model:
     def __init__(self, config):
 
-        if 'model_type' in config:
-            self.config = config
-        else:
-            self.config = load_config(config['config_file_path'],
-                                      poc_defaults=True)
+        self.config = config
+        self.config['model_path'] = os.path.join(self.config['model_dir'],
+                                                 self.config['model_version'])
+        self.config['model_eval_path'] = os.path.join(self.config['model_path'],
+                                                      'res')
 
         self.type = self.config['model_type']
 
@@ -44,7 +44,7 @@ class Model:
 
         elif self.type.startswith('spacy'):
             LOGGER.info('use spacy %s' % self.type)
-            self.config['classifier_frame'] = 'spacy'
+
             spacy_lang_model_consistency(self.config)
             self.classifier = SpacyClassifier(self.config)
 

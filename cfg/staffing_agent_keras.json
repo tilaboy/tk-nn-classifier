@@ -26,15 +26,14 @@
         "class": "derived_vac_intermediary.0.derived_vac_intermediary",
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
-            "derived_source_site.0.derived_source_site",
             "derived_norm_url.0.derived_norm_url"]
     },
 
     "csv_fields": {
         "features": "full_text",
-        "class": "advertiser_type",
+        "class": "source_type",
         "doc_id": "posting_id",
-        "extra": ["organization_name", "country", "source_url"]
+        "extra": ["advertiser_name", "source_url"]
     },
 
     "lstm": {

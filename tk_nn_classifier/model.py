@@ -44,7 +44,6 @@ class Model:
 
         elif self.type.startswith('spacy'):
             LOGGER.info('use spacy %s' % self.type)
-
             spacy_lang_model_consistency(self.config)
             self.classifier = SpacyClassifier(self.config)
 

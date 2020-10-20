@@ -92,7 +92,7 @@ def load_config(config_file, poc_defaults=False):
             config['classifier_frame'] = 'TFMultiFeatClassifier'
         elif config['model_type'].startswith('tf'):
             config['classifier_frame'] = 'TFMultiFeatClassifier'
-        elif config['model_type'].startwith('keras'):
+        elif config['model_type'].startswith('keras'):
             config['classifier_frame'] = 'KerasClassifier'
         else:
             raise ValueError("unknown model type [{}]".format(config['model_type']))

@@ -23,6 +23,17 @@ class KerasClassifier:
     def build_and_train(self):
         self.load_embedding()
         self.build_graph()
+        if 'all_data' in self.config['datasets']:
+            if 'train' in self.config['datasets'] or \
+                    'eval' in self.config['datasets']:
+                raise ValueError("config conflict: all_data <=> train/eval")
+            else:
+                # split the data
+                LOGGER.info('split all_data into train and test')
+                train_source, eval_source = self.data_reader.get_split_data()
+                self.config['datasets']['train'] = train_source
+                self.config['datasets']['eval'] = eval_source
+
         self.train()
         #self.load_saved_model('best_model.26-0.45.h5')
         if 'test' in self.config['datasets']:

@@ -5,6 +5,7 @@
     "model_type": "keras_cnn_multi",
     "model_desc": "keras model v1: baseline model, 3 layer cnn",
     "model_file": "sa_detector.h5",
+    "language": "en",
 
     "dropout_rate": 0.5,
     "optimizer": "Adam",
@@ -48,7 +49,7 @@
     },
 
     "embedding": {
-        "file": "../../embeddings//en-embeddings.bin",
+        "filepath": "resources/embeddings/en-wiki-and-cv-data-till-2016.bin",
         "dimension": 150,
         "token_encoding": "max_embedding",
         "trainable": false

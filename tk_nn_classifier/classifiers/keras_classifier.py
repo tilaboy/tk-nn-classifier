@@ -6,7 +6,8 @@ import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, TFDataReader, tokenize
+from ..data_loader import WordVector, download_tk_embedding
+from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 
@@ -64,8 +65,10 @@ class KerasClassifier:
         return predicted_classes
 
     def load_embedding(self):
+        target_file = self.config['embedding']['filepath']
+        download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
-            self.embedding = WordVector(self.config['embedding']['file'])
+            self.embedding = WordVector(target_file)
 
     def _pad_vectors(self, datain, padding='post'):
         length = len(datain)

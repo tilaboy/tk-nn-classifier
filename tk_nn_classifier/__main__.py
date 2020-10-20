@@ -50,7 +50,7 @@ def train(args):
     model.build_and_train()
 
 
-def predict(args):
+def eval(args):
     config = load_config(args.config)
     config['action'] = 'predict'
     model = Model(config)
@@ -63,10 +63,10 @@ def predict(args):
         test_sets = config['datasets']['test']
 
     data_reader = DataReader(model.config)
-    os.makedirs(args.output_dir, exist_ok=True)
+    os.makedirs(config['model_eval_path'], exist_ok=True)
 
     for data_set in test_sets:
-        output_file = os.path.join(args.output_dir, data_set + '.tsv')
+        output_file = os.path.join(config['model_eval_path'], data_set + '.tsv')
         LOGGER.info('process test_set [%s]', data_set)
         result = process_batch(
             model,
@@ -84,6 +84,11 @@ def predict(args):
             _get_column(result, 1),
             _get_column(result, 2))
 
+
+def predict(args):
+    pass
+
+
 def _get_column(matrix, column_i):
     return [matrix[i][column_i] for i in range(1, len(matrix))]
 
@@ -99,6 +104,18 @@ def get_args():
     parser_train.add_argument('config', help='config file', type=str)
 
     parser_train.set_defaults(func=train)
+
+    parser_eval = subparsers.add_parser('eval',
+                                           help='eval on all test sets')
+
+    parser_eval.add_argument('config', help='config file', type=str)
+    parser_eval.add_argument('--test_set',
+                                help='name of test set in the config file',
+                                type=str)
+    parser_eval.add_argument('--output_dir',
+                                help='output directory',
+                                type=str, default='res')
+    parser_eval.set_defaults(func=eval)
 
     parser_predict = subparsers.add_parser('predict',
                                            help='predict for a batch of input')

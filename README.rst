@@ -199,7 +199,7 @@ looks like this:
 You can also try the batch processing command to see which file get
 wrong prediction:
 
-``tk-nn-classifier predict cfg/spacy_test.json``
+``tk-nn-classifier eval cfg/spacy_test.json``
 
 as default, the result is write to a csv file in the ``res`` folder, you
 can also specify the output folder and which test to run if multiple
@@ -410,4 +410,4 @@ TRAIN: (example config\_file can be found in cfg/)
 
 PROCESS BATCH:
 
-``tk-nn-classifier predict config_file [output_folder] [test_set_name]``
+``tk-nn-classifier eval config_file [output_folder] [test_set_name]``

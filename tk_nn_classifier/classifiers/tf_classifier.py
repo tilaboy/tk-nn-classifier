@@ -277,7 +277,7 @@ class TFClassifier:
                             )
                     )
         LOGGER.info("loading model from %s", model_path)
-        self.model = tensorflow.contrib.predictor.from_saved_model(model_path)
+        self.model = tf.contrib.predictor.from_saved_model(model_path)
         self._load_vocab()
 
     def _load_vocab(self):

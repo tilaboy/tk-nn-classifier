@@ -5,13 +5,12 @@ NAME = "tk_nn_classifier"
 VERSION = os.environ.get("TK_NN_CLASSIFIER", '0.0.0')
 
 INSTALL_REQUIRES = [
-    "tensorflow >= 1.14.0",
+    "tensorflow == 2.3.0",
     "numpy == 1.16.0",
-    "xml-miner >= 0.0.5",
-    "spacy == 2.1.8",
-    "pandas >= 0.22.0",
-    "en_core_web_sm == 2.1.0",
-    "easy_tokenizer >= 0.0.8"
+    "xml-miner == 0.0.5",
+    "spacy == 2.3.0",
+    "en_core_web_sm == 2.3.0",
+    "easy_tokenizer == 0.0.10"
 ]
 
 setup_requirements = ['pytest-runner', ]
@@ -39,7 +38,8 @@ setup(
         ],
     },
     dependency_links = [
-        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm"
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz#egg=en_core_web_sm",
+
     ],
     test_suite="tests",
     setup_requires=setup_requirements,

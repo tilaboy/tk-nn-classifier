@@ -1,13 +1,10 @@
 """unit tests for classifier utils functions"""
 import os
 from unittest import TestCase
-from tk_nn_classifier.classifiers.utils import TrainHelper
+from tk_nn_classifier.classifiers.utils import TrainHelper, ConfusionMatrix
 
 class ClassifierUtilTestCases(TestCase):
     """unit tests"""
-
-    def setUp(self):
-        self.train_helper = TrainHelper()
 
     def test_max_dict_value(self):
         cats_dict = [
@@ -23,10 +20,17 @@ class ClassifierUtilTestCases(TestCase):
         eval = [1,1,1,0,1,0]
         gold = [1,0,1,0,1,0]
 
-        conf_matrix = \
-                self.train_helper._evaluate_confusion_matrix(
-                        eval, gold)
-        self.assertEqual(conf_matrix.iloc[0,0], 2)
-        self.assertEqual(conf_matrix.iloc[0,1], 1)
-        self.assertEqual(conf_matrix.iloc[1,0], 0)
-        self.assertEqual(conf_matrix.iloc[1,1], 3)
+
+        cm = ConfusionMatrix(eval, gold)
+        self.assertEqual(cm.confusion_matrix[0][0], 2)
+        self.assertEqual(cm.confusion_matrix[0][1], 1)
+        self.assertEqual(cm.confusion_matrix[1][0], 0)
+        self.assertEqual(cm.confusion_matrix[1][1], 3)
+
+        cm_string = '========================================\n' + \
+                    'gold\\eval  0          1         \n' + \
+                    '0          2          1         \n' + \
+                    '1          0          3         \n' + \
+                    '========================================'
+
+        self.assertEqual(str(cm), cm_string, 'comfusion matrix print format')

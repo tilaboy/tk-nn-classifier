@@ -1,8 +1,11 @@
 {
-    "model_type": "keras_cnn_multi",
     "model_name": "staffing_agency_detector",
-    "model_path": "models/keras/keras_multi_v1_1024_0.001",
+    "model_version": "keras_multi_v1_1024_0.001",
+    "model_dir": "models/keras",
+    "model_type": "keras_cnn_multi",
+    "model_desc": "keras model v1: baseline model, 3 layer cnn",
     "model_file": "sa_detector.h5",
+    "language": "en",
 
     "dropout_rate": 0.5,
     "optimizer": "Adam",
@@ -16,22 +19,21 @@
     "max_steps_without_increase": 2000,
     "min_train_steps": 1000,
     "check_per_steps": 100,
-    "patience_epochs": 50,
+    "patience_epochs": 5,
 
     "trxml_fields": {
         "features": "sec_vacancy.0.sec_vacancy",
         "class": "derived_vac_intermediary.0.derived_vac_intermediary",
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
-            "derived_source_site.0.derived_source_site",
             "derived_norm_url.0.derived_norm_url"]
     },
 
     "csv_fields": {
         "features": "full_text",
-        "class": "advertiser_type",
+        "class": "source_type",
         "doc_id": "posting_id",
-        "extra": ["organization_name", "country", "source_url"]
+        "extra": ["advertiser_name", "source_url"]
     },
 
     "lstm": {
@@ -46,21 +48,18 @@
     },
 
     "embedding": {
-        "file": "../../embeddings//en-wiki-and-cv-data-till-2016.bin",
+        "filepath": "resources/embeddings/en-wiki-and-cv-data-till-2016.bin",
         "dimension": 150,
         "token_encoding": "max_embedding",
         "trainable": false
     },
 
     "datasets": {
-        "train": "final_train/train.csv",
-        "eval": "final_train/eval.csv",
+        "train": "../recruitment_agency_data/train_small/",
+        "eval": "../recruitment_agency_data/eval_small/",
         "test": {
-            "eval": "final_train/eval.csv",
-            "eval_us": "final_train/eval_us.csv",
-            "eval_uk": "final_train/eval_uk.csv",
-            "eval_other": "final_train/eval_other.csv",
-            "random_anno": "final_train/random.csv"
+            "eval_us": "../recruitment_agency_data/eval_small/",
+            "eval_uk": "../recruitment_agency_data/us_small.csv"
         },
         "label_mapper": "models/label_mapper.json"
     }

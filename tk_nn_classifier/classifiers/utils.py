@@ -1,6 +1,5 @@
 import os
 import platform
-import pandas as pd
 from .. import LOGGER
 
 
@@ -117,8 +116,47 @@ class TrainHelper:
         return scores
 
     @staticmethod
-    def _evaluate_confusion_matrix(eval_labels, gold_labels):
-        cm = pd.crosstab(pd.Series(gold_labels, name='Actual'),
-                         pd.Series(eval_labels, name='Predicted')
-                         )
+    def _evaluate_confusion_matrix(eval, gold):
+        cm = ConfusionMatrix(eval, gold)
         return cm
+
+
+class ConfusionMatrix:
+    """
+    Generate a confusion matrix for multiple classification
+
+    params:
+        - eval: a list of integers or strings of predicted classes
+        - gold: a list of integers or strings of known classes
+    output:
+        - confusion_matrix: 2-dimensional list of pairwise counts
+    """
+    def __init__(self, eval, gold):
+        gold = [str(value) for value in gold]
+        eval = [str(value) for value in eval]
+        self.cats = sorted(set(gold + eval))
+        max_cat_name_length = max([len(cat) for cat in self.cats])
+        self.cellwidth = max([max_cat_name_length + 2, 10])
+
+        self.confusion_matrix = [[0 for _ in self.cats] for _ in self.cats]
+        self.cat_id_map = {cat: id for id, cat in enumerate(self.cats)}
+        for predicted, real in zip(eval, gold):
+            row_id = self.cat_id_map[real]
+            col_id = self.cat_id_map[predicted]
+            self.confusion_matrix[row_id][col_id] += 1
+
+    def __str__(self):
+        sep_line = "=" * (self.cellwidth * (len(self.cats) + 2))
+        cm_table = sep_line + "\n"
+
+        table_header = " ".join([("{}".format(cat)).ljust(self.cellwidth)
+                                 for cat in self.cats])
+        cm_table += "gold\\eval".ljust(self.cellwidth + 1) + \
+                    table_header + "\n"
+        for cat, row in zip(self.cats, self.confusion_matrix):
+            row_start = ("{}".format(cat)).ljust(self.cellwidth)
+            row_string = " ".join([str(val).ljust(self.cellwidth)
+                                  for val in row])
+            cm_table += "{} {}\n".format(row_start, row_string)
+        cm_table += sep_line
+        return cm_table

@@ -6,7 +6,8 @@ import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, TFDataReader, tokenize
+from ..data_loader import WordVector, download_tk_embedding
+from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 
@@ -23,6 +24,17 @@ class KerasClassifier:
     def build_and_train(self):
         self.load_embedding()
         self.build_graph()
+        if 'all_data' in self.config['datasets']:
+            if 'train' in self.config['datasets'] or \
+                    'eval' in self.config['datasets']:
+                raise ValueError("config conflict: all_data <=> train/eval")
+            else:
+                # split the data
+                LOGGER.info('split all_data into train and test')
+                train_source, eval_source = self.data_reader.get_split_data()
+                self.config['datasets']['train'] = train_source
+                self.config['datasets']['eval'] = eval_source
+
         self.train()
         #self.load_saved_model('best_model.26-0.45.h5')
         if 'test' in self.config['datasets']:
@@ -53,8 +65,10 @@ class KerasClassifier:
         return predicted_classes
 
     def load_embedding(self):
+        target_file = self.config['embedding']['filepath']
+        download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
-            self.embedding = WordVector(self.config['embedding']['file'])
+            self.embedding = WordVector(target_file)
 
     def _pad_vectors(self, datain, padding='post'):
         length = len(datain)
@@ -197,7 +211,7 @@ class KerasClassifier:
 
 
     # tf.keras
-    def evaluation(test_file):
+    def evaluation(self, test_file):
         """Evaluate on the data set"""
 
         text_lines, x_eval, y_eval = self.data_reader.read_file(test_file)

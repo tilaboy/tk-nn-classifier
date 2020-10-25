@@ -19,36 +19,31 @@ class Model:
         self.config['model_eval_path'] = os.path.join(self.config['model_path'],
                                                       'res')
 
-        self.type = self.config['model_type']
-
         # derived parameters
         self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
 
-        if self.type.startswith('tf_multi_feat'):
-            LOGGER.info('use tensorflow with multi feature %s' % self.type)
-            self.config['classifier_frame'] = 'tensorflow_multi_feat'
+        if self.config['model_type'] .startswith('tf_multi_feat'):
+            LOGGER.info('use tensorflow with multi feature %s' % self.config['model_type'] )
             self.classifier = TFMultiFeatClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
-        elif self.type.startswith('tf'):
-            LOGGER.info('use tensorflow %s' % self.type)
-            self.config['classifier_frame'] = 'tensorflow'
+        elif self.config['model_type'] .startswith('tf'):
+            LOGGER.info('use tensorflow %s' % self.config['model_type'] )
             self.classifier = TFClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
-        elif self.type.startswith('keras'):
-            LOGGER.info('use tensorflow %s' % self.type)
-            self.config['classifier_frame'] = 'tf-keras'
+        elif self.config['model_type'] .startswith('keras'):
+            LOGGER.info('use tensorflow %s' % self.config['model_type'] )
             self.classifier = KerasClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
-        elif self.type.startswith('spacy'):
-            LOGGER.info('use spacy %s' % self.type)
+        elif self.config['model_type'] .startswith('spacy'):
+            LOGGER.info('use spacy %s' % self.config['model_type'] )
             spacy_lang_model_consistency(self.config)
             self.classifier = SpacyClassifier(self.config)
 
         else:
-            raise ValueError("unknown classifier type [{}]".format(self.type))
+            raise ValueError("unknown classifier type [{}]".format(self.config['model_type'] ))
 
     def build_graph(self):
         self.classifier.build_graph()

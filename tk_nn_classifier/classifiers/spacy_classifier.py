@@ -5,22 +5,22 @@ from spacy.util import minibatch, compounding
 
 from ..data_loader import SpacyDataReader
 from .. import LOGGER
+from ..exceptions import ConfigError
 from .utils import TrainHelper
 
 
 class SpacyClassifier:
     def __init__(self, config):
         self.config = config
-        self.type = config['model_type']
         self.data_reader = SpacyDataReader(self.config)
 
-    def build_and_train(self):
-        self.build_graph()
 
+    def prepare_data(self):
         if 'all_data' in self.config['datasets']:
             if 'train' in self.config['datasets'] or \
                     'eval' in self.config['datasets']:
-                raise ValueError("config conflict: all_data <=> train/eval")
+                raise ConfigError('datasets/all_data',
+                                  'all_data can not be used together with train/eval')
             else:
                 # split the data
                 LOGGER.info('split all_data into train and test')
@@ -30,15 +30,17 @@ class SpacyClassifier:
 
         train_data = self.data_reader.get_data(
             self.config['datasets']['train'],
-            shuffle=True,
+            shuffle=False,
             train_mode=True
         )
         eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
+        return train_data, eval_data
 
+    def build_and_train(self):
+        train_data, eval_data = self.prepare_data()
+        self.build_graph()
         self.train(train_data, eval_data)
-
         self.save(self.config['model_path'])
-
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
@@ -73,8 +75,7 @@ class SpacyClassifier:
 
         # get names of other pipes to disable them during training
         other_pipes = [
-            pipe
-            for pipe in self.model.pipe_names
+            pipe for pipe in self.model.pipe_names
             if pipe != "textcat"
         ]
 

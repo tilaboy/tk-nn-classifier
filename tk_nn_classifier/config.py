@@ -2,6 +2,7 @@
 import os
 import copy
 import json
+from .exceptions import ConfigError
 
 DEFAULTS = {
     # Data reading params
@@ -15,7 +16,7 @@ DEFAULTS = {
     "max_lines": 50,
 
     "spacy": {
-        "lang": "en",
+        "language": "en",
         "arch": "simple_cnn"
     },
 
@@ -52,16 +53,24 @@ def spacy_lang_model_consistency(config):
     output:
         - updated input config or die on error
     '''
+    if 'spacy' not in config:
+        return
 
-    language = config['spacy']['lang']
+    if 'language' not in config['spacy']:
+        raise ConfigError('spacy/language',
+                          'language is needed for spacy model setup')
+
+    language = config['spacy']['language']
     if 'model' in config['spacy']:
-        assert config['spacy']['model'].startswith(language), '''Config error:
-spacy model should start with the language iso_code'''
+        model_name = config['spacy']['model']
+        if not model_name.startswith(language):
+            detail_msg = 'Spacy model name starts with language iso_code'
+            raise ConfigError('spacy/model', detail_msg)
     else:
         if language in poc_spacy_lang_model:
             config['spacy']['model'] = poc_spacy_lang_model[language]
         else:
-            raise ValueError('Sorry: %s is not supported by spaCy')
+            raise ConfigError('spacy/model', f'language {language} not supported')
 
     if 'arch' not in config['spacy']:
         # default to simple_cnn
@@ -78,23 +87,10 @@ def load_config(config_file, poc_defaults=False):
     output:
         - dictionary object contains config key and config value pairs
     '''
-
     config = get_default_config()
-    config['config_file_path'] = config_file
     with open(config_file) as config_fh:
         config.update(json.load(config_fh))
-
-    if config['model_type'].startswith('spacy'):
-        config['classifier_frame'] = 'SpacyClassifier'
-    else:
+    config['config_file_path'] = config_file
+    if not config['model_type'].startswith('spacy'):
         config['spacy'] = None
-        if config['model_type'].startswith('tf_multi_feat'):
-            config['classifier_frame'] = 'TFMultiFeatClassifier'
-        elif config['model_type'].startswith('tf'):
-            config['classifier_frame'] = 'TFMultiFeatClassifier'
-        elif config['model_type'].startswith('keras'):
-            config['classifier_frame'] = 'KerasClassifier'
-        else:
-            raise ValueError("unknown model type [{}]".format(config['model_type']))
-
     return config

@@ -45,8 +45,6 @@ def train(args):
     config = load_config(args.config)
     config['action'] = 'train'
     model = Model(config)
-    LOGGER.info("starting training process ...")
-
     model.build_and_train()
 
 
@@ -54,7 +52,6 @@ def eval(args):
     config = load_config(args.config)
     config['action'] = 'predict'
     model = Model(config)
-    LOGGER.info("starting predicting process ...")
     model.load()
 
     if args.test_set:

@@ -14,6 +14,7 @@ class DataReaderTestCases(TestCase):
         self.trxml_dir = 'tests/resource/samples'
         self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
+        self.test_trxml_categories = ('yes', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'yes')
 
         self.config= {
             "max_lines": 5,
@@ -55,7 +56,7 @@ class DataReaderTestCases(TestCase):
         full_text, categories = zip(*train_examples)
         self.assertEqual(
                 categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
+                self.test_trxml_categories
         )
         self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
 
@@ -67,7 +68,7 @@ class DataReaderTestCases(TestCase):
         self.assertEqual(text[4][0], self._get_expected_trxml_full_text())
         self.assertEqual(
                 categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
+                self.test_trxml_categories
         )
         self.assertEqual(
                 doc_ids[0:2],

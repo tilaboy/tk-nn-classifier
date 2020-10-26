@@ -12,6 +12,7 @@ class TFDataReaderTestCases(TestCase):
         self.trxml_dir = 'tests/resource/samples'
         self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
+        self.trxml_label = [1, 1, 1, 0, 1, 1, 0, 0, 1, 1]
 
         self.config= {
             "max_lines": 5,
@@ -48,7 +49,7 @@ class TFDataReaderTestCases(TestCase):
 
         self.assertEqual(
                 trxml_label,
-                [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+                self.trxml_label
         )
 
     def _get_expected_trxml_full_text(self):

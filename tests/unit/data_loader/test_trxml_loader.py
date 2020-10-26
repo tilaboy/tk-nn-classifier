@@ -11,6 +11,7 @@ class TRXMLLoaderTestCases(TestCase):
     def setUp(self):
         self.trxml_dir = 'tests/resource/samples'
         self.test_dir = tempfile.mkdtemp()
+        self.trxml_label = ('yes', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'yes')
 
         self.config= {
             "max_lines": 5,
@@ -59,7 +60,7 @@ class TRXMLLoaderTestCases(TestCase):
         full_text, categories = zip(*train_examples)
         self.assertEqual(
                 categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
+                self.trxml_label
         )
         self.assertEqual(full_text[4][0], self._get_expected_trxml_full_text())
 
@@ -71,7 +72,7 @@ class TRXMLLoaderTestCases(TestCase):
         self.assertEqual(text[4][0], self._get_expected_trxml_full_text())
         self.assertEqual(
                 categories,
-                ('no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no')
+                self.trxml_label
         )
         self.assertEqual(
                 doc_ids[0:2],

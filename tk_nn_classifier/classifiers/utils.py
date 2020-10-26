@@ -159,7 +159,7 @@ def eval_predictions(predictions, gold_labels):
     precision = sa_tp / (sa_tp + sa_fp)
     recall = sa_tp / (sa_tp + sa_fn)
     LOGGER.info('accuracy: {:0.2f}%'.format(accuracy))
-    LOGGER.info('\tagency => precision: {:0.2f}, recall: {:0.2f}'.format(
+    LOGGER.info('agency => precision: {:0.2f}, recall: {:0.2f}'.format(
         precision, recall))
 
     return accuracy, precision, recall

@@ -64,7 +64,7 @@ class TFClassifierTestCases(TestCase):
     @classmethod
     def tearDownClass(self):
         '''clean up the temp dir after test'''
-        shutil.rmtree(self.self.test_dir)
+        shutil.rmtree(self.test_dir)
 
     def test_01_prepare_data(self):
         classifier = SpacyClassifier(self.config)
@@ -112,7 +112,5 @@ class TFClassifierTestCases(TestCase):
         test_set = classifier.data_reader.get_data(classifier.config['datasets']['test']['test'])
         classifier.load_saved_model()
         eval, gold = classifier.evaluate(test_set, mode='test')
-        print(eval)
-        print(gold)
         accuracy, prediction, recall = eval_predictions(eval, gold)
         self.assertGreater(accuracy, 0.6, 'testing on test set using trained model')

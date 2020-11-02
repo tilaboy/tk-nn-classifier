@@ -14,13 +14,6 @@ class Model:
     def __init__(self, config):
 
         self.config = config
-        self.config['model_path'] = os.path.join(self.config['model_dir'],
-                                                 self.config['model_version'])
-        self.config['model_eval_path'] = os.path.join(self.config['model_path'],
-                                                      'res')
-
-        # derived parameters
-        self.config['dropout_keep_rate'] = 1 - self.config['dropout_rate']
 
         if self.config['model_type'] .startswith('tf_multi_feat'):
             LOGGER.info('use tensorflow with multi feature %s' % self.config['model_type'] )

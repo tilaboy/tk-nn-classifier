@@ -77,7 +77,17 @@ def spacy_lang_model_consistency(config):
         config['spacy']['arch'] = 'simple_cnn'
 
 
-def load_config(config_file, poc_defaults=False):
+def _derived_config_fields(config):
+    config['model_path'] = os.path.join(config['model_dir'],
+                                        config['model_version'])
+    config['model_eval_path'] = os.path.join(config['model_path'],
+                                             'res')
+
+    # derived parameters
+    config['dropout_keep_rate'] = 1 - config['dropout_rate']
+    return config
+
+def load_config(config_file: str):
     '''
     load the config file
 
@@ -87,10 +97,25 @@ def load_config(config_file, poc_defaults=False):
     output:
         - dictionary object contains config key and config value pairs
     '''
-    config = get_default_config()
     with open(config_file) as config_fh:
-        config.update(json.load(config_fh))
-    config['config_file_path'] = config_file
+        config_dikt = json.load(config_fh)
+    config_dikt['config_file_path'] = config_file
+    return load_config_from_dikt(config_dikt)
+
+def load_config_from_dikt(config_dikt):
+    '''
+    load the config from dikt
+
+    params:
+        - config_dikt: config options saved in dictionary
+
+    output:
+        - dictionary object contains config key and config value pairs
+    '''
+
+    config = get_default_config()
+    config.update(config_dikt)
     if not config['model_type'].startswith('spacy'):
         config['spacy'] = None
+    _derived_config_fields(config)
     return config

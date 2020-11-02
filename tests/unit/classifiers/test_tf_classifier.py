@@ -5,89 +5,144 @@ import tempfile
 import shutil
 import numpy as np
 import tensorflow as tf
+from tensorflow.estimator import Estimator
 from tk_nn_classifier.classifiers import TFClassifier
+from tk_nn_classifier.config import load_config_from_dikt
+from tk_nn_classifier.classifiers.utils import eval_predictions
 
 class TFClassifierTestCases(TestCase):
-    '''unit test for multi feature input and parsing'''
+    '''unit test for tensorflow classifier:
+        - data preparation
+        - model Training
+        - loading
+        - evaluation'''
 
-    def setUp(self):
-        self.trxml_dir = 'tests/resource/samples'
-        self.csv_file = 'tests/resource/sample.csv'
+    @classmethod
+    def setUpClass(self):
+        self.test_train = 'tests/resource/sample_train.csv'
+        self.test_eval = 'tests/resource/sample_eval.csv'
+        self.test_trxml = 'tests/resource/samples/'
+
         self.test_dir = tempfile.mkdtemp()
-        test_embedding_file = os.path.join(self.test_dir, 'test_embedding.txt')
-        with open(test_embedding_file, 'w') as embedding_fh:
-            embedding_fh.write(self.embedding_content())
 
-        config= {
+        config_dikt = {
             "model_type": "tf_cnn_simple",
-            "max_lines": 5,
-            "model_path": self.test_dir,
-            "max_sequence_length": 4,
+            "model_name": "tf_simple",
+            "model_dir": self.test_dir,
+            "model_version": "test",
+            "language": "en",
+            "log_dir": "log",
+
+
+            "max_sequence_length": 1024,
+            "max_lines":50,
+
+            "dropout_rate": 0.5,
+            "optimizer": "Adam",
+            "learning_rate": 0.001,
+            "num_epochs": 50,
+            "batch_size": 128,
+
+            "check_per_steps": 100,
+            "max_steps_without_increase": 2000,
+            "min_train_steps": 10000,
+
             "trxml_fields": {
                 "features": "sec_vacancy.0.sec_vacancy",
                 "class": "derived_vac_intermediary.0.derived_vac_intermediary",
                 "doc_id": "Document.0.correlationid",
                 "extra": ["derived_org_name.0.derived_org_name",
-                    "derived_source_site.0.derived_source_site",
                     "derived_norm_url.0.derived_norm_url"]
             },
             "csv_fields": {
                 "features": "full_text",
-                "class": "source_type",
+                "class": "advertiser_type",
                 "doc_id": "posting_id",
-                "extra": ["advertiser_name", "source_website", "source_url"]
+                "extra": ["advertiser_name", "source_url"]
+            },
+            "lstm": {
+                "hidden_size": 150,
+                "nr_layers": 2
+            },
+
+            "cnn": {
+                "nr_layers": 3,
+                "filter_size": 32,
+                "kernel_size": 3
             },
             "embedding": {
-                "file": test_embedding_file,
-                "dimension": 3,
-                "token_encoding": "token_embedding",
+                "filepath": "resources/embeddings/en-wiki-and-cv-data-till-2016.bin",
+                "dimension": 150,
+                "token_encoding": "max_embedding",
                 "trainable": False
             },
-
-            "datasets": {}
-
+            "datasets": {
+                "train": self.test_train,
+                "eval": self.test_eval,
+                "test": {
+                    "test": self.test_trxml
+                },
+                "label_mapper": self.test_dir + "label_mapper.json"
+            }
         }
         #self.data_reader = DataReader(self.config)
-        self.classifier = TFClassifier(config)
-        self.classifier.load_embedding()
+        self.config = load_config_from_dikt(config_dikt)
 
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(self):
         '''clean up the temp dir after test'''
         shutil.rmtree(self.test_dir)
 
-    def test_input_text_to_pad_id(self):
-        inputs = [
-                    'foo bar zoo new',
-                    'foo bar zoo boo foo new rule',
-                    'boo zoo'
-                 ]
+    def test_00_load_embedding(self):
+        classifier = TFClassifier(self.config)
+        classifier.load_embedding()
 
-        expected_ids = [ [2, 3, 4, 6], [2, 3, 4, 5], [5, 4, 0, 0] ]
-        expected_lengths = [ 4, 4, 2 ]
+        self.assertEqual(classifier.embedding.vocab_size, 249985)
+        self.assertEqual(classifier.embedding.vector_size, 150)
 
-        for (input, expected_id, expected_length) in zip(inputs, expected_ids, expected_lengths):
-            transfered_input = self.classifier._prepare_single_input(input)
-            self.assertEqual(transfered_input[0]['input'].numpy().tolist(), expected_id)
-            self.assertEqual(transfered_input[0]['len'].numpy(), expected_length)
+    def test_01_prepare_data(self):
+        classifier = TFClassifier(self.config)
+        classifier.load_embedding()
+        (train_data, labels, train_data_length) = classifier.load_data_set(
+            classifier.config['datasets']['train'])
 
-    def test_input_text_to_pad_id(self):
-        test_texts = ['foo bar zoo boo foo', 'new rule']
-        expected_ids = [[2, 3, 4, 5], [6, 8, 0, 0]]
-        self.classifier._load_vocab()
-        for test_text, expected_id in zip(test_texts, expected_ids):
-            data = self.classifier._input_text_to_pad_id(test_text)
-            self.assertEqual(data["input"].tolist(), [expected_id] )
+        # train data
+        print(train_data[0][0:10])
+        print(train_data_length)
+        print(labels)
+        # index of two tokens from embedding
+        self.assertEqual(train_data[0][0], 184)
+        self.assertEqual(train_data[0][9], 101)
+        self.assertEqual(train_data_length[0], 551)
+        self.assertEqual(sum(labels), 109)
 
 
-    @staticmethod
-    def embedding_content():
-        embedding_content = '''7 3
-FOO 0.1 1.0 -0.3
-BAR 1.0 -0.6 1.0
-ZOO -0.5 0.5 0.1
-BOO -0.7 -0.7 0.6
-NEW 0.2 -1.0 0.7
-OLD -1.0 0.9 -1.0
-RULE 0.7 -0.1 0.0
-'''
-        return embedding_content
+        # also check the label id
+        # with open(classifier.config['datasets']['label_mapper']) as mapper_fh:
+        #    label_mapper = json.load(mapper_fh)
+        # self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
+
+    def test_02_build_graph(self):
+        classifier = TFClassifier(self.config)
+        classifier.load_embedding()
+        classifier.build_graph()
+        self.assertTrue(isinstance(classifier.classifier, Estimator))
+
+    def test_03_train_save_and_eval(self):
+        classifier = TFClassifier(self.config)
+        classifier.load_embedding()
+        classifier.build_graph()
+        classifier.train()
+        #classifier.save(classifier.config['model_path'])
+        eval = classifier.predict_batch(classifier.config['datasets']['eval'])
+        _, gold, data_length = classifier.load_data_set(classifier.config['datasets']['eval'])
+        accuracy, precision, recall = eval_predictions(eval, gold)
+        self.assertGreater(accuracy, 0.7, 'testing on eval set using trained model')
+
+    #def test_04_load_and_eval(self):
+    #    classifier = SpacyClassifier(self.config)
+    #    test_set = classifier.data_reader.get_data(classifier.config['datasets']['test']['test'])
+    #    classifier.load_saved_model()
+    #    eval, gold = classifier.evaluate(test_set, mode='test')
+    #    accuracy, prediction, recall = eval_predictions(eval, gold)
+    #    self.assertGreater(accuracy, 0.6, 'testing on test set using trained model')

@@ -7,10 +7,15 @@ import json
 from spacy.lang.en import English
 from tk_nn_classifier.classifiers import SpacyClassifier
 from tk_nn_classifier.classifiers.utils import eval_predictions
+from tk_nn_classifier.config import load_config_from_dikt
 
 
-class TFClassifierTestCases(TestCase):
-    '''unit test for multi feature input and parsing'''
+class SpacyClassifierTestCases(TestCase):
+    '''unit test for spacy classifier:
+        - data preparation
+        - model Training
+        - loading
+        - evaluation'''
 
     @classmethod
     def setUpClass(self):
@@ -18,12 +23,11 @@ class TFClassifierTestCases(TestCase):
         self.test_eval = 'tests/resource/sample_eval.csv'
         self.test_trxml = 'tests/resource/samples/'
         self.test_dir = tempfile.mkdtemp()
-        self.config = {
+        config_dikt = {
             "model_type": "spacy_simple",
             "model_name": "spacy_simple",
             "model_dir": self.test_dir,
             "model_version": "test",
-            "model_path": self.test_dir,
 
             "dropout_rate": 0.5,
             "num_epochs": 8,
@@ -59,6 +63,7 @@ class TFClassifierTestCases(TestCase):
                 "label_mapper": self.test_dir + "label_mapper.json"
             }
         }
+        self.config = load_config_from_dikt(config_dikt)
         #self.data_reader = DataReader(self.config)
 
     @classmethod
@@ -112,5 +117,5 @@ class TFClassifierTestCases(TestCase):
         test_set = classifier.data_reader.get_data(classifier.config['datasets']['test']['test'])
         classifier.load_saved_model()
         eval, gold = classifier.evaluate(test_set, mode='test')
-        accuracy, prediction, recall = eval_predictions(eval, gold)
+        accuracy, precision, recall = eval_predictions(eval, gold)
         self.assertGreater(accuracy, 0.6, 'testing on test set using trained model')

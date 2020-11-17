@@ -20,7 +20,8 @@ class CSVLoader(CommonLoader):
         return self._get_values_from_csv(self._detail_fields(), data_path)
 
     def _get_values_from_csv(self, fields, data_path):
-        with open(data_path, newline='') as csvfile:
+        # to skip some csv file with BOM <U+FEFF> in the beginning
+        with open(data_path, newline='', encoding='utf-8-sig') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 yield [
@@ -34,7 +35,7 @@ class CSVLoader(CommonLoader):
 
     @staticmethod
     def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):
-        with open(data_path, newline='') as csvfile:
+        with open(data_path, newline='', encoding='utf-8-sig') as csvfile:
             rows = list(csv.reader(csvfile))
             header = rows.pop(0)
         if not rows:
@@ -68,13 +69,13 @@ class CSVLoader(CommonLoader):
         else:
             raise ValueError('train/eval destination needs to be specified')
 
-        with open(train_file, 'w', newline='') as train_fh:
+        with open(train_file, 'w', newline='', encoding='utf-8') as train_fh:
             csv_writer = csv.writer(train_fh, delimiter=",",
                                     quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow(header)
             csv_writer.writerows(train_rows)
 
-        with open(eval_file, 'w', newline='') as eval_fh:
+        with open(eval_file, 'w', newline='', encoding='utf-8') as eval_fh:
             csv_writer = csv.writer(eval_fh, delimiter=",",
                                     quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow(header)

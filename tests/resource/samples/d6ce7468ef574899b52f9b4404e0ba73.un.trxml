@@ -56,7 +56,7 @@
     </ItemGroup>
     <ItemGroup key="derived_vac_intermediary">
         <Item index="0">
-            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
         </Item>
     </ItemGroup>
     <ItemGroup key="Document">

@@ -44,8 +44,8 @@ class SpacyDataReaderTestCases(TestCase):
         self.assertEqual(len(data_set), 10)
 
         full_text, categories = zip(*data_set)
-        self.assertEqual(categories[4], {'no': True, 'yes': False})
-        self.assertEqual(categories[5], {'no': True, 'yes': False})
+        self.assertEqual(categories[4], {'no': False, 'yes': True})
+        self.assertEqual(categories[5], {'no': False, 'yes': True})
         expected_org_name = 'ASQ EDUCATION'
         self.assertEqual(
                 full_text[4],

@@ -5,12 +5,12 @@ import tempfile
 import shutil
 import numpy as np
 import tensorflow as tf
-from tensorflow.estimator import Estimator
-from tk_nn_classifier.classifiers import TFClassifier
+from tensorflow.keras.models import Model
+from tk_nn_classifier.classifiers import KerasClassifier
 from tk_nn_classifier.config import load_config_from_dikt
 from tk_nn_classifier.classifiers.utils import eval_predictions
 
-class TFClassifierTestCases(TestCase):
+class KerasClassifierTestCases(TestCase):
     '''unit test for tensorflow classifier:
         - data preparation
         - model Training
@@ -26,26 +26,23 @@ class TFClassifierTestCases(TestCase):
         self.test_dir = tempfile.mkdtemp()
 
         config_dikt = {
-            "model_type": "tf_cnn_simple",
-            "model_name": "tf_simple",
+            "model_type": "keras_cnn_multi",
+            "model_name": "keras_simple",
             "model_dir": self.test_dir,
-            "model_version": "test",
+            "model_version": "test_01",
             "language": "en",
             "log_dir": "log",
-
-
-            "max_sequence_length": 1024,
-            "max_lines":50,
 
             "dropout_rate": 0.5,
             "optimizer": "Adam",
             "learning_rate": 0.001,
-            "num_epochs": 50,
+            "num_epochs": 500,
             "batch_size": 128,
+            "max_lines":50,
 
-            "check_per_steps": 100,
-            "max_steps_without_increase": 2000,
-            "min_train_steps": 10000,
+            "log_dir": "log",
+            "max_sequence_length": 1024,
+            "patience_epochs": 10,
 
             "trxml_fields": {
                 "features": "sec_vacancy.0.sec_vacancy",
@@ -94,25 +91,19 @@ class TFClassifierTestCases(TestCase):
         shutil.rmtree(self.test_dir)
 
     def test_00_load_embedding(self):
-        classifier = TFClassifier(self.config)
+        classifier = KerasClassifier(self.config)
         classifier.load_embedding()
-
         self.assertEqual(classifier.embedding.vocab_size, 249985)
         self.assertEqual(classifier.embedding.vector_size, 150)
 
     def test_01_prepare_data(self):
-        classifier = TFClassifier(self.config)
+        classifier = KerasClassifier(self.config)
         classifier.load_embedding()
         (train_data, labels, train_data_length) = classifier.load_data_set(
             classifier.config['datasets']['train'])
 
-        # train data
-        print(train_data[0][0:10])
-        print(train_data_length)
-        print(labels)
         # index of two tokens from embedding
-        self.assertEqual(train_data[0][0], 184)
-        self.assertEqual(train_data[0][9], 101)
+        self.assertEqual(train_data.shape, (256, 1024, 150))
         self.assertEqual(train_data_length[0], 551)
         self.assertEqual(sum(labels), 109)
 
@@ -123,19 +114,19 @@ class TFClassifierTestCases(TestCase):
         # self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
 
     def test_02_build_graph(self):
-        classifier = TFClassifier(self.config)
+        classifier = KerasClassifier(self.config)
         classifier.load_embedding()
         classifier.build_graph()
-        self.assertTrue(isinstance(classifier.classifier, Estimator))
+        self.assertTrue(isinstance(classifier.classifier, Model))
 
     def test_03_train_save_and_eval(self):
-        classifier = TFClassifier(self.config)
+        classifier = KerasClassifier(self.config)
         classifier.load_embedding()
         classifier.build_graph()
         classifier.train()
-        #classifier.save(classifier.config['model_path'])
-        eval = classifier.predict_batch(classifier.config['datasets']['eval'])
-        _, gold, data_length = classifier.load_data_set(classifier.config['datasets']['eval'])
+
+        likelihoods, gold = classifier.evaluate(classifier.config['datasets']['eval'])
+        eval = [1 if likelihood >= 0.5 else 0 for likelihood in likelihoods]
         accuracy, precision, recall = eval_predictions(eval, gold)
         self.assertGreater(accuracy, 0.7, 'testing on eval set using trained model')
 

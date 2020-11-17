@@ -5,7 +5,8 @@ import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, TFDataReader, tokenize
+from ..data_loader import WordVector, download_tk_embedding
+from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
@@ -20,6 +21,7 @@ class TFClassifier:
         self.data_sets = {}
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
+        os.makedirs(self.config['model_path'], exist_ok=True)
 
     def build_and_train(self):
         self.load_embedding()
@@ -64,8 +66,10 @@ class TFClassifier:
         return iterator.get_next()
 
     def load_embedding(self):
+        target_file = self.config['embedding']['filepath']
+        download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
-            self.embedding = WordVector(self.config['embedding']['file'])
+            self.embedding = WordVector(target_file)
             self._save_vocab_file()
 
     def _save_vocab_file(self):
@@ -261,6 +265,7 @@ class TFClassifier:
         )
 
         # train and evaluate
+        LOGGER.info("start model training %s", self.config['model_path'])
         tf.estimator.train_and_evaluate(self.classifier, train_spec, eval_spec)
 
     def predict_on_text(self, text):
@@ -281,7 +286,7 @@ class TFClassifier:
         self._load_vocab()
 
     def _load_vocab(self):
-        vocab, _ = WordVector.read_embeddings(self.config['embedding']['file'])
+        vocab, _ = WordVector.read_embeddings(self.config['embedding']['filepath'])
         self.vocab_to_ids = WordVector.create_vocab_index_dict(vocab)
 
     def process_with_saved_model(self, input):

@@ -20,6 +20,7 @@ class KerasClassifier:
         self.data_sets = {}
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
+        os.makedirs(self.config['model_path'], exist_ok=True)
 
     def build_and_train(self):
         self.load_embedding()
@@ -39,30 +40,6 @@ class KerasClassifier:
         #self.load_saved_model('best_model.26-0.45.h5')
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
-
-    def evaluate_on_tests(self):
-        self.load_saved_model()
-        for test_set_name in self.config['datasets']['test']:
-            LOGGER.info('evaluate {}'.format(test_set_name))
-            x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])
-            #dev_loss, dev_acc = self.classifier.evaluate(x_test, y_test)
-            #LOGGER.info("Devel: loss %s\tacc %s", str(dev_loss), str(dev_acc))
-            predictions = self.classifier.predict_on_batch(x_test)
-            result = [
-                int(score + 0.5)
-                for score in predictions.flatten()
-            ]
-            TrainHelper.print_test_result(result, y_test)
-
-    def predict_batch(self, data_path):
-        predicted_classes = [
-                predict['classes']
-                for predict in
-                self.classifier.predict(
-                        input_fn=functools.partial(self.input_fn, data_path)
-                )
-        ]
-        return predicted_classes
 
     def load_embedding(self):
         target_file = self.config['embedding']['filepath']
@@ -98,7 +75,6 @@ class KerasClassifier:
             data = self._pad_vectors(data_vecs)
             self.data_sets[data_path] = (data, np.array(labels), data_length)
         return self.data_sets[data_path]
-
 
     def build_graph(self):
         """
@@ -169,16 +145,11 @@ class KerasClassifier:
         # # TODO
         # after training, clean up
 
-        self.classifier.save(os.path.join(self.config['model_path'], self.config['model_file']))
+        # since best model is already stored, seems this is not necessary
+        # self.classifier.save(os.path.join(self.config['model_path'], self.config['model_file']))
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))
-
-
-    def predict_on_text(self, text):
-        return self.classifier.predict(
-            input_fn=functools.partial(self._prepare_single_input, text))
-
 
     @staticmethod
     def _get_file_with_largest_epoch(model_path):
@@ -202,6 +173,17 @@ class KerasClassifier:
         LOGGER.info("loading model from %s", model_path)
         self.classifier = tf.keras.models.load_model(model_path)
 
+    def evaluate_on_tests(self):
+        self.load_saved_model()
+        for test_set_name in self.config['datasets']['test']:
+            LOGGER.info('evaluate {}'.format(test_set_name))
+            x_test, y_test, seqlen_test = self.load_data_set(self.config['datasets']['test'][test_set_name])
+            predictions = self.classifier.predict_on_batch(x_test)
+            result = [
+                int(score + 0.5)
+                for score in predictions.flatten()
+            ]
+            TrainHelper.print_test_result(result, y_test)
 
     def process_with_saved_model(self, input):
         data = self._input_text_to_pad_vec(input)
@@ -211,15 +193,14 @@ class KerasClassifier:
 
 
     # tf.keras
-    def evaluation(self, test_file):
+    def evaluate(self, test_file):
         """Evaluate on the data set"""
+        x_test, y_test, seqlen_test = self.load_data_set(test_file)
+        likelihoods = self.classifier.predict_on_batch(x_test)
+        return likelihoods, y_test
 
-        text_lines, x_eval, y_eval = self.data_reader.read_file(test_file)
-        results = self.classifier.predict(x_eval)
-        for text, i in enumerate(text_lines):
-            LOGGER.info("predicted={:0.2f}\tclass={}\ttext={}".format(
-                results[i][0], y_eval[i], text))
-
+    def predict_on_text(self, input):
+        print('TO IMPLEMENT')
 
     # todo:
     # the padding is probably not needed in the predicting mode

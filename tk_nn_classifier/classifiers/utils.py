@@ -121,6 +121,50 @@ class TrainHelper:
         return cm
 
 
+def eval_predictions(predictions, gold_labels):
+    '''
+    input:
+        - predictions
+        - gold_labels
+
+    func:
+        - compute the accuracy, and print out
+        - compute the precision and recall, and print out
+
+    output:
+        - accuracy
+        - precision
+        - recall
+    '''
+
+    total_errors = 0
+    total_eval_cases = len(gold_labels)
+    sa_tp = sa_tn = 0.0
+    sa_fp = sa_fn = 1e-7
+
+    for pred, label in zip(predictions, gold_labels):
+        if pred == label:
+            if pred == 0:
+                sa_tn += 1
+            else:
+                sa_tp += 1
+        if pred != label:
+            if pred == 1:
+                sa_fp += 1
+            else:
+                sa_fn += 1
+            total_errors += 1
+
+    accuracy = 1.0 - total_errors / total_eval_cases
+    precision = sa_tp / (sa_tp + sa_fp)
+    recall = sa_tp / (sa_tp + sa_fn)
+    LOGGER.info('accuracy: {:0.2f}%'.format(accuracy))
+    LOGGER.info('agency => precision: {:0.2f}, recall: {:0.2f}'.format(
+        precision, recall))
+
+    return accuracy, precision, recall
+
+
 class ConfusionMatrix:
     """
     Generate a confusion matrix for multiple classification

@@ -10,7 +10,8 @@ INSTALL_REQUIRES = [
     "xml-miner == 0.0.5",
     "spacy == 2.3.0",
     "en_core_web_sm == 2.3.0",
-    "easy_tokenizer == 0.0.10"
+    "easy_tokenizer == 0.0.10",
+    "h5py == 2.10.0"
 ]
 
 setup_requirements = ['pytest-runner', ]

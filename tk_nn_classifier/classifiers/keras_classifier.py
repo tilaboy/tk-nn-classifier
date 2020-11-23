@@ -11,6 +11,7 @@ from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 
+from tqdm import tqdm
 
 class KerasClassifier:
     def __init__(self, config):
@@ -66,7 +67,7 @@ class KerasClassifier:
             data_vecs = [[
                     self.embedding.get_vector(token)
                     for token in tokenize(text)]
-                    for text in texts]
+                    for text in tqdm(texts)]
             data_length = np.array([
                 min(len(data_vec), self.max_sequence_length)
                 for data_vec in data_vecs
@@ -88,7 +89,7 @@ class KerasClassifier:
         """
 
         inputs = tf.keras.Input((self.max_sequence_length, self.embedding.vector_size,))
-        inputs_encoder = tf.keras.layers.Dropout(0.3)(inputs)
+        inputs_encoder = tf.keras.layers.Dropout(self.config.get('dropout_rate',0.3))(inputs)
 
         for i in range(self.config['cnn']['nr_layers']):
             conv = tf.keras.layers.Conv1D(self.config['cnn']['filter_size'],
@@ -96,7 +97,7 @@ class KerasClassifier:
                                           padding='same',
                                           activation='relu')(inputs_encoder)
             pool = tf.keras.layers.MaxPool1D(pool_size=2)(conv)
-            inputs_encoder = tf.keras.layers.Dropout(0.5)(pool)
+            inputs_encoder = tf.keras.layers.Dropout(self.config['cnn'].get('dropout_rate',0.5))(pool)
 
 
         flat = tf.keras.layers.Flatten()(inputs_encoder)

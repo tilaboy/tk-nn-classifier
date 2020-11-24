@@ -24,7 +24,7 @@ def _input_text_to_pad_id(text, vocab_to_ids, tokenizer):
 
 def get_args():
     '''get arguments'''
-    parser = ArgumentParser(description='process trxml file/files:', prog='PROG')
+    parser = ArgumentParser(description='process trxml file/files:')
     parser.add_argument('input', help='input trxml/trxml folder to predict', type=str)
     parser.add_argument('model_path', help='trained classifier', type=str)
     parser.add_argument('embedding_path', help='path of the embedding file', type=str)

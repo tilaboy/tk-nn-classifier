@@ -44,7 +44,8 @@ class KerasClassifier:
 
     def load_embedding(self):
         target_file = self.config['embedding']['filepath']
-        download_tk_embedding(self.config['language'], target_file)
+        if not self.config['embedding']['use_local']:
+            download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
             self.embedding = WordVector(target_file)
 

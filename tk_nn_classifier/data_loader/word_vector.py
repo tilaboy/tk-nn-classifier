@@ -3,7 +3,7 @@
 import struct
 import mimetypes
 import numpy as np
-
+from .. import LOGGER
 
 class WordVector:
     '''
@@ -33,10 +33,7 @@ class WordVector:
 
     @staticmethod
     def create_vocab_index_dict(vocab):
-        vocab_to_index = {}
-        for index, word in enumerate(vocab):
-            vocab_to_index[word] = index
-        return vocab_to_index
+        return {word: index for index, word in enumerate(vocab)}
 
     @property
     def vocab_size(self):
@@ -77,6 +74,13 @@ class WordVector:
             vector = self.vectors[vector_index]
         return vector
 
+    def get_vectors(self, words):
+        '''
+        lookup the vectors given words
+        '''
+        indexes = [self.get_index(word) for word in words]
+        return np.take(self.vectors, indexes, axis=0)
+
     def get_word(self, index):
         '''
         look up the token in vocabulary with given index
@@ -101,24 +105,21 @@ class WordVector:
         with only the given list of words.
         """
 
-        known_words = [
-            w.upper()
-            for w in words
-            if self.get_index(w.upper()) >= 2
-        ]
+        known_words = [word.upper()
+                       for word in words
+                       if self.get_index(word.upper()) >= 2]
         nwords = len(known_words)
-
+        LOGGER.info('out of %s tokens from input, save %s words with dimension %s to %s',
+                    len(words), nwords, self.vector_size, output_file)
         with open(output_file, 'wb') as ostream:
             # store header
-            ostream.write("{} {}\n".format(nwords,
-                                           self.vector_size).encode('ascii'))
+            ostream.write("{} {}\n".format(nwords, self.vector_size).encode('ascii'))
 
             # store word and word_vector
             for word in known_words:
                 ostream.write("{} ".format(word).encode('utf-8'))
                 ostream.write(
-                    struct.pack("f" * self.vector_size,
-                                *self.get_vector(word)))
+                    struct.pack("f" * self.vector_size, *self.get_vector(word)))
                 ostream.write(" ".encode('utf-8'))
 
     @classmethod
@@ -137,7 +138,8 @@ class WordVector:
         '''
 
         # Read headers to get vocab and vector size
-        vocab_size, vector_size = cls.read_embeddings_header(inputfile)
+        mimetype = mimetypes.guess_type(inputfile)
+        vocab_size, vector_size = cls.read_embeddings_header(inputfile, mimetype)
         vocab_size += 2  # +2 for pad and unknown token
 
         # Create vocab and vector arrays
@@ -150,7 +152,6 @@ class WordVector:
         vectors[0] = np.zeros(vector_size)
         vectors[1] = np.zeros(vector_size)
 
-        mimetype = mimetypes.guess_type(inputfile)
         if mimetype[0] == "text/plain":
             cls._load_embeddings_from_text(inputfile, vocab[2:], vectors[2:])
         else:
@@ -159,34 +160,27 @@ class WordVector:
         return vocab, vectors
 
     @classmethod
-    def read_embeddings_header(cls, inputfile):
+    def read_embeddings_header(cls, inputfile, mimetype='text/plain'):
         '''
         read the header from the file, note that both binary and text have
         the same header.
         '''
-        mimetype = mimetypes.guess_type(inputfile)
+        header = ''
         if mimetype[0] == "text/plain":
-            readmode = 'r'
-            encoding = 'utf-8'
+            with open(inputfile, 'r', encoding='utf-8') as fin:
+                header = fin.readline()
         else:
-            readmode = 'rb'
-            encoding = None
-        with open(inputfile, readmode, encoding=encoding) as fin:
-            header = fin.readline()
-            vocab_size, vector_size = list(map(int, header.split()))
+            with open(inputfile, 'rb') as fin:
+                header = fin.readline()
+
+        vocab_size, vector_size = list(map(int, header.split()))
         return vocab_size, vector_size
 
     @classmethod
     def _load_embeddings_from_binary(cls, filename, vocab, vectors):
-
         vocab_size, vector_size = cls.read_embeddings_header(filename)
-
-        assert vocab.shape[0] == vocab_size
-        assert vectors.shape[0] == vocab_size
-        assert vectors.shape[1] == vector_size
-
         with open(filename, 'rb') as fin:
-            _ = fin.readline()  # first line is header
+            _ = fin.readline() #     first line is header
             binary_len = np.dtype(np.float32).itemsize * vector_size
             for i in range(vocab_size):
                 word = b''
@@ -198,21 +192,14 @@ class WordVector:
                 fin.read(1)
                 vocab[i] = word.decode('utf-8')
                 vectors[i] = unitvec(vector)
-        print(
-            "read {} tokens with vector size {} from {}".format(
-                vocab_size,
-                vector_size,
-                filename))
+        LOGGER.info(
+            "read %s tokens with vector size %s from %s",
+            vocab_size, vector_size, filename)
 
     @classmethod
     def _load_embeddings_from_text(cls, filename, vocab, vectors):
 
         vocab_size, vector_size = cls.read_embeddings_header(filename)
-
-        assert vocab.shape[0] == vocab_size
-        assert vectors.shape[0] == vocab_size
-        assert vectors.shape[1] == vector_size
-
         with open(filename, 'r', encoding='utf-8') as fin:
             _ = fin.readline()
             for index, line in enumerate(fin):
@@ -222,11 +209,9 @@ class WordVector:
                 vector = np.array(parts[1:], dtype=np.float)
                 vocab[index] = word
                 vectors[index] = unitvec(vector)
-        print(
-            "read {} tokens with vector size {} from {}".format(
-                vocab_size,
-                vector_size,
-                filename))
+        LOGGER.info(
+            "read %s tokens with vector size %s from %s",
+            vocab_size, vector_size, filename)
 
 
 def unitvec(vec):
@@ -237,20 +222,13 @@ def unitvec(vec):
 
 
 def maxabs(embeddings, axis=0):
-    """Return slice of embeddings, keeping only those values that are
-    furthest away from 0 along axis"""
+    """Return slice of embeddings, keeping only those values that are furthest away
+    from 0 along axis"""
     maxa = embeddings.max(axis=axis)
     mina = embeddings.min(axis=axis)
     positive = abs(maxa) >= abs(mina)  # bool, or indices where +ve values win
-    negative = abs(mina) >= abs(maxa)  # bool, or indices where -ve values win
-    if axis is None:
-        if positive:
-            return maxa
-        else:
-            return mina
-    shape = list(embeddings.shape)
-    shape.pop(axis)
-    out = np.zeros(shape, dtype=embeddings.dtype)
+    negative = np.logical_not(positive)  # bool, or indices where -ve values win
+    out = np.zeros(embeddings.shape[-1], dtype=embeddings.dtype)
     out[positive] = maxa[positive]
     out[negative] = mina[negative]
     return out

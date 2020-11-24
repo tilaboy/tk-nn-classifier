@@ -98,7 +98,7 @@ class TFClassifierTestCases(TestCase):
         classifier = TFClassifier(self.config)
         classifier.load_embedding()
 
-        self.assertEqual(classifier.embedding.vocab_size, 249985)
+        self.assertEqual(classifier.embedding.vocab_size, 8854)
         self.assertEqual(classifier.embedding.vector_size, 150)
 
     def test_01_prepare_data(self):

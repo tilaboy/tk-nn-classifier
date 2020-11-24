@@ -68,10 +68,11 @@ class KerasClassifierTestCases(TestCase):
                 "kernel_size": 3
             },
             "embedding": {
-                "filepath": "resources/embeddings/en-wiki-and-cv-data-till-2016.bin",
+                "filepath": "tests/resource/sample_embedding.bin",
                 "dimension": 150,
                 "token_encoding": "max_embedding",
-                "trainable": False
+                "trainable": False,
+                "use_local": True
             },
             "datasets": {
                 "train": self.test_train,

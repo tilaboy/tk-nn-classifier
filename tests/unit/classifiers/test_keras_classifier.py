@@ -68,10 +68,11 @@ class KerasClassifierTestCases(TestCase):
                 "kernel_size": 3
             },
             "embedding": {
-                "filepath": "resources/embeddings/en-wiki-and-cv-data-till-2016.bin",
+                "filepath": "tests/resource/sample_embedding.bin",
                 "dimension": 150,
                 "token_encoding": "max_embedding",
-                "trainable": False
+                "trainable": False,
+                "use_local": True
             },
             "datasets": {
                 "train": self.test_train,
@@ -93,7 +94,7 @@ class KerasClassifierTestCases(TestCase):
     def test_00_load_embedding(self):
         classifier = KerasClassifier(self.config)
         classifier.load_embedding()
-        self.assertEqual(classifier.embedding.vocab_size, 249985)
+        self.assertEqual(classifier.embedding.vocab_size, 8854)
         self.assertEqual(classifier.embedding.vector_size, 150)
 
     def test_01_prepare_data(self):

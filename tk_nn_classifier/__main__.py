@@ -92,32 +92,25 @@ def _get_column(matrix, column_i):
 
 def get_args():
     '''get arguments'''
-    parser = ArgumentParser(description='train a classifier, or predict class',
-                            prog='PROG')
+    parser = ArgumentParser(description='train a classifier, or predict class')
+
     subparsers = parser.add_subparsers(help='supported actions')
-
-    parser_train = subparsers.add_parser('train',
-                                         help='train the model')
-
+    parser_train = subparsers.add_parser('train', help='train the model')
     parser_train.add_argument('config', help='config file', type=str)
-
     parser_train.set_defaults(func=train)
 
-    parser_eval = subparsers.add_parser('eval',
-                                           help='eval on all test sets')
-
+    parser_eval = subparsers.add_parser('eval', help='eval on all test sets')
     parser_eval.add_argument('config', help='config file', type=str)
     parser_eval.add_argument('--test_set',
-                                help='name of test set in the config file',
-                                type=str)
+                             help='name of test set in the config file',
+                             type=str)
     parser_eval.add_argument('--output_dir',
-                                help='output directory',
-                                type=str, default='res')
+                             help='output directory',
+                             type=str, default='res')
     parser_eval.set_defaults(func=eval)
 
     parser_predict = subparsers.add_parser('predict',
                                            help='predict for a batch of input')
-
     parser_predict.add_argument('config', help='config file', type=str)
     parser_predict.add_argument('--test_set',
                                 help='name of test set in the config file',
@@ -125,7 +118,6 @@ def get_args():
     parser_predict.add_argument('--output_dir',
                                 help='output directory',
                                 type=str, default='res')
-
     parser_predict.set_defaults(func=predict)
 
     return parser.parse_args()

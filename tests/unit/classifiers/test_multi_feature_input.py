@@ -42,7 +42,8 @@ class MultiFeatTestCases(TestCase):
                 "file": test_embedding_file,
                 "dimension": 3,
                 "token_encoding": "token_embedding",
-                "trainable": False
+                "trainable": False,
+                "use_local": True                
             },
 
             "datasets": {}

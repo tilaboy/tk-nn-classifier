@@ -45,12 +45,12 @@ class TFClassifierTestUtilsCases(TestCase):
                 "extra": ["advertiser_name", "source_url"]
             },
             "embedding": {
-                "file": test_embedding_file,
+                "filepath": test_embedding_file,
                 "dimension": 3,
                 "token_encoding": "token_embedding",
                 "trainable": False,
                 "use_local": True
-                
+
             },
 
             "datasets": {}

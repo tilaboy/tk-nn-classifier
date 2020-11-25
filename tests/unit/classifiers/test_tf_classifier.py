@@ -4,6 +4,7 @@ from unittest import TestCase
 import tempfile
 import shutil
 import numpy as np
+import json
 import tensorflow as tf
 from tensorflow.estimator import Estimator
 from tk_nn_classifier.classifiers import TFClassifier
@@ -112,16 +113,16 @@ class TFClassifierTestCases(TestCase):
         print(train_data_length)
         print(labels)
         # index of two tokens from embedding
-        self.assertEqual(train_data[0][0], 184)
-        self.assertEqual(train_data[0][9], 101)
+        self.assertEqual(train_data[0][0], 5745)
+        self.assertEqual(train_data[0][9], 3836)
         self.assertEqual(train_data_length[0], 551)
         self.assertEqual(sum(labels), 109)
 
-
         # also check the label id
-        # with open(classifier.config['datasets']['label_mapper']) as mapper_fh:
-        #    label_mapper = json.load(mapper_fh)
-        # self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
+        with open(classifier.config['datasets']['label_mapper']) as mapper_fh:
+            label_mapper = json.load(mapper_fh)
+        print(label_mapper)
+        self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
 
     def test_02_build_graph(self):
         classifier = TFClassifier(self.config)

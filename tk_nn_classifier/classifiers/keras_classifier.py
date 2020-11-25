@@ -10,13 +10,14 @@ from ..data_loader import WordVector, download_tk_embedding
 from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
+from .common_classifier import CommonClassifier
 
 from tqdm import tqdm
 
-class KerasClassifier:
+class KerasClassifier(CommonClassifier):
     def __init__(self, config):
+        
         self.config = config
-        self.type = config['model_type']
         self.max_sequence_length = config['max_sequence_length']
         self.data_sets = {}
         self.embedding = None
@@ -192,7 +193,6 @@ class KerasClassifier:
         result = self.classifier.predict_on_batch(data)
         probability = result.flatten()[0]
         return [1.0 - probability, probability]
-
 
     # tf.keras
     def evaluate(self, test_file):

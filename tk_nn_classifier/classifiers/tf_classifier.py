@@ -15,17 +15,16 @@ from .tf_best_export import BestCheckpointsExporter
 
 class TFClassifier:
     def __init__(self, config):
-        self.config = config
-        self.type = config['model_type']
+        super().__init__(config)
         self.max_sequence_length = config['max_sequence_length']
-        self.data_sets = {}
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
-        os.makedirs(self.config['model_path'], exist_ok=True)
 
     def build_and_train(self):
         self.load_embedding()
         self.build_graph()
+        if 'all_data' in self.config['datasets']:
+            self.split_data()
         self.train()
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()

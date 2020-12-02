@@ -11,7 +11,7 @@ from .utils import TrainHelper, FileHelper
 from .tf_best_export import BestCheckpointsExporter
 
 
-class TFMultiFeatClassifier:
+class TFMultiFeatClassifier(BaseClassifier):
     def __init__(self, config):
         super().__init__(config)
         self.max_sequence_length = config['max_sequence_length']

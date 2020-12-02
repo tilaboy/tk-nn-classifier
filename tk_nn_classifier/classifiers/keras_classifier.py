@@ -23,9 +23,9 @@ class KerasClassifier(BaseClassifier):
 
     def build_and_train(self):
         self.load_embedding()
-        self.build_graph()
         if 'all_data' in self.config['datasets']:
             self.split_data()
+        self.build_graph()
         self.train()
         #self.load_saved_model('best_model.26-0.45.h5')
         if 'test' in self.config['datasets']:

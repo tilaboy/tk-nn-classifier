@@ -77,7 +77,7 @@ class SpacyClassifierTestCases(TestCase):
         self.assertEqual(self.test_train, classifier.config['datasets']['train'])
         self.assertEqual(self.test_eval, classifier.config['datasets']['eval'])
 
-        train_data, eval_data = classifier.prepare_data()
+        train_data, eval_data = classifier.load_data()
 
         # train data
         self.assertEqual(len(train_data), 256)
@@ -104,7 +104,7 @@ class SpacyClassifierTestCases(TestCase):
 
     def test_03_train_save_and_eval(self):
         classifier = SpacyClassifier(self.config)
-        train_data, eval_data = classifier.prepare_data()
+        train_data, eval_data = classifier.load_data()
         classifier.build_graph()
         classifier.train(train_data, eval_data)
         classifier.save(classifier.config['model_path'])

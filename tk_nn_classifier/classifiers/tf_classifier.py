@@ -8,12 +8,13 @@ from tensorflow.python.keras.preprocessing import sequence
 from ..data_loader import WordVector, download_tk_embedding
 from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
+from .base_classifier import BaseClassifier
 from .utils import TrainHelper, FileHelper
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
 
-class TFClassifier:
+class TFClassifier(BaseClassifier):
     def __init__(self, config):
         super().__init__(config)
         self.max_sequence_length = config['max_sequence_length']

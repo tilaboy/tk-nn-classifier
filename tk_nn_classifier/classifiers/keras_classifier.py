@@ -10,7 +10,7 @@ from ..data_loader import WordVector, download_tk_embedding
 from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
-from .common_classifier import CommonClassifier
+from .base_classifier import BaseClassifier
 
 from tqdm import tqdm
 

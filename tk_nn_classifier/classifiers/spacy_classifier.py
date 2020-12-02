@@ -6,10 +6,11 @@ from spacy.util import minibatch, compounding
 from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from ..exceptions import ConfigError
+from .base_classifier import BaseClassifier
 from .utils import TrainHelper
 
 
-class SpacyClassifier:
+class SpacyClassifier(BaseClassifier):
     def __init__(self, config):
         super().__init__(config)
         self.data_reader = SpacyDataReader(self.config)
@@ -23,12 +24,11 @@ class SpacyClassifier:
         eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
         return train_data, eval_data
 
-
     def build_and_train(self):
-        self.build_graph()
         if 'all_data' in self.config['datasets']:
             self.split_data()
         train_data, eval_data = self.load_data()
+        self.build_graph()
         self.train(train_data, eval_data)
         self.save(self.config['model_path'])
         if 'test' in self.config['datasets']:

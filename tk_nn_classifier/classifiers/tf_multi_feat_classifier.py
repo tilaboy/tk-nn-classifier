@@ -5,6 +5,7 @@ import functools
 from tensorflow.python.keras.preprocessing import sequence
 
 from ..data_loader import WordVector, TFDataReader, tokenize
+from .base_classifier import BaseClassifier
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .tf_best_export import BestCheckpointsExporter
@@ -12,11 +13,9 @@ from .tf_best_export import BestCheckpointsExporter
 
 class TFMultiFeatClassifier:
     def __init__(self, config):
-        self.config = config
-        self.type = config['model_type']
-        self.data_sets = {}
-        self.embedding = None
+        super().__init__(config)
         self.max_sequence_length = config['max_sequence_length']
+        self.embedding = None
         self.data_reader = TFDataReader(self.config)
 
     def build_and_train(self):

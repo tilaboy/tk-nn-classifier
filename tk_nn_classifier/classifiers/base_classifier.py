@@ -1,4 +1,7 @@
 '''common classifer'''
+import os
+
+from .. import LOGGER
 
 class BaseClassifier:
     def __init__(self, config):

@@ -21,13 +21,20 @@ class KerasClassifier(BaseClassifier):
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
 
+    def prepare_train_eval_data(self):
+        LOGGER.info('Reading: %s', self.config['datasets']['train'])
+        x_train, y_train, seqlen_train = self.load_data_set(self.config['datasets']['train'])
+
+        LOGGER.info('Reading: %s', self.config['datasets']['eval'])
+        x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
+        return ([x_train, y_train, sequlen_train],
+                [x_eval, y_eval, seqlen_eval])
+
     def build_and_train(self):
         self.load_embedding()
-        if 'all_data' in self.config['datasets']:
-            self.split_data()
+        train_data, eval_data = self.prepare_train_eval_data()
         self.build_graph()
-        self.train()
-        #self.load_saved_model('best_model.26-0.45.h5')
+        self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
@@ -37,18 +44,6 @@ class KerasClassifier(BaseClassifier):
             download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
             self.embedding = WordVector(target_file)
-
-    def _pad_vectors(self, datain, padding='post'):
-        length = len(datain)
-        x_shape = [length, self.max_sequence_length, self.embedding.vector_size]
-        x_vector = np.zeros(x_shape, dtype=np.float32)
-        for i, datain_i in enumerate(datain):
-            seqlen = min(len(datain_i), self.max_sequence_length)
-            if padding == 'post':
-                x_vector[i][:seqlen] = datain_i[:seqlen]
-            else:
-                x_vector[i][-seqlen:] = datain_i[-seqlen:]
-        return x_vector
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
@@ -67,9 +62,10 @@ class KerasClassifier(BaseClassifier):
             self.data_sets[data_path] = (data, np.array(labels), data_length)
         return self.data_sets[data_path]
 
+
     def build_graph(self):
         """
-        A hard coded training graph
+        A multi-layer cnn
 
         params:
             - input_dimension: the dimension of the input data
@@ -106,13 +102,11 @@ class KerasClassifier(BaseClassifier):
 
         self.classifier = model
 
-    def train(self):
+    def train(self, train_data, eval_data):
         """Training process"""
-        LOGGER.info('Reading: %s', self.config['datasets']['train'])
-        x_train, y_train, seqlen_train = self.load_data_set(self.config['datasets']['train'])
 
-        LOGGER.info('Reading: %s', self.config['datasets']['eval'])
-        x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
+        x_train, y_train, _ = train_data
+        x_eval, y_eval, _ = eval_data
 
         callbacks_list = [
             tf.keras.callbacks.ModelCheckpoint(
@@ -141,6 +135,20 @@ class KerasClassifier(BaseClassifier):
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))
+
+
+    def _pad_vectors(self, datain, padding='post'):
+        length = len(datain)
+        x_shape = [length, self.max_sequence_length, self.embedding.vector_size]
+        x_vector = np.zeros(x_shape, dtype=np.float32)
+        for i, datain_i in enumerate(datain):
+            seqlen = min(len(datain_i), self.max_sequence_length)
+            if padding == 'post':
+                x_vector[i][:seqlen] = datain_i[:seqlen]
+            else:
+                x_vector[i][-seqlen:] = datain_i[-seqlen:]
+        return x_vector
+
 
     @staticmethod
     def _get_file_with_largest_epoch(model_path):

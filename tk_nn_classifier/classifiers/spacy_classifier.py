@@ -15,15 +15,6 @@ class SpacyClassifier(BaseClassifier):
         super().__init__(config)
         self.data_reader = SpacyDataReader(self.config)
 
-    def load_data(self):
-        train_data = self.data_reader.get_data(
-            self.config['datasets']['train'],
-            shuffle=False,
-            train_mode=True
-        )
-        eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
-        return train_data, eval_data
-
     def build_and_train(self):
         if 'all_data' in self.config['datasets']:
             self.split_data()
@@ -33,6 +24,16 @@ class SpacyClassifier(BaseClassifier):
         self.save(self.config['model_path'])
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
+
+    def load_data(self):
+        train_data = self.data_reader.get_data(
+            self.config['datasets']['train'],
+            shuffle=False,
+            train_mode=True
+        )
+        eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
+        return train_data, eval_data
+
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:

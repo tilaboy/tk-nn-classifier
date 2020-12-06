@@ -20,3 +20,17 @@ class BaseClassifier:
             train_source, eval_source = self.data_reader.get_split_data()
             self.config['datasets']['train'] = train_source
             self.config['datasets']['eval'] = eval_source
+
+    def _load_train_eval(self):
+        train_data = self.data_reader.get_data(
+            self.config['datasets']['train'],
+            shuffle=False,
+            train_mode=True
+        )
+        eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
+        return train_data, eval_data
+
+    def prepare_train_eval_data(self):
+        if 'all_data' in self.config['datasets']:
+            self.split_data()
+        train_data, eval_data = self._load_train_eval()

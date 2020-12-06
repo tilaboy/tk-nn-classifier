@@ -27,7 +27,7 @@ class KerasClassifier(BaseClassifier):
 
         LOGGER.info('Reading: %s', self.config['datasets']['eval'])
         x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
-        return ([x_train, y_train, sequlen_train],
+        return ([x_train, y_train, seqlen_train],
                 [x_eval, y_eval, seqlen_eval])
 
     def build_and_train(self):

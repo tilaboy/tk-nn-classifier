@@ -3,7 +3,6 @@ Basic class to read files also get the field names relevant to the training
 '''
 from collections import Iterable
 
-
 class BaseLoader:
     def __init__(self, config):
         self.max_lines = config['max_lines']

@@ -123,8 +123,9 @@ class KerasClassifierTestCases(TestCase):
     def test_03_train_save_and_eval(self):
         classifier = KerasClassifier(self.config)
         classifier.load_embedding()
+        train_data, eval_data = classifier.prepare_train_eval_data()
         classifier.build_graph()
-        classifier.train()
+        classifier.train(train_data, eval_data)
 
         likelihoods, gold = classifier.evaluate(classifier.config['datasets']['eval'])
         eval = [1 if likelihood >= 0.5 else 0 for likelihood in likelihoods]

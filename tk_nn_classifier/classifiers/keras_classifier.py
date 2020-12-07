@@ -10,35 +10,31 @@ from ..data_loader import WordVector, download_tk_embedding
 from ..data_loader import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
+from .base_classifier import BaseClassifier
 
 from tqdm import tqdm
 
-class KerasClassifier:
+class KerasClassifier(BaseClassifier):
     def __init__(self, config):
-        self.config = config
-        self.type = config['model_type']
+        super().__init__(config)
         self.max_sequence_length = config['max_sequence_length']
-        self.data_sets = {}
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
-        os.makedirs(self.config['model_path'], exist_ok=True)
+
+    def prepare_train_eval_data(self):
+        LOGGER.info('Reading: %s', self.config['datasets']['train'])
+        x_train, y_train, seqlen_train = self.load_data_set(self.config['datasets']['train'])
+
+        LOGGER.info('Reading: %s', self.config['datasets']['eval'])
+        x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
+        return ([x_train, y_train, seqlen_train],
+                [x_eval, y_eval, seqlen_eval])
 
     def build_and_train(self):
         self.load_embedding()
+        train_data, eval_data = self.prepare_train_eval_data()
         self.build_graph()
-        if 'all_data' in self.config['datasets']:
-            if 'train' in self.config['datasets'] or \
-                    'eval' in self.config['datasets']:
-                raise ValueError("config conflict: all_data <=> train/eval")
-            else:
-                # split the data
-                LOGGER.info('split all_data into train and test')
-                train_source, eval_source = self.data_reader.get_split_data()
-                self.config['datasets']['train'] = train_source
-                self.config['datasets']['eval'] = eval_source
-
-        self.train()
-        #self.load_saved_model('best_model.26-0.45.h5')
+        self.train(train_data, eval_data)
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
@@ -48,18 +44,6 @@ class KerasClassifier:
             download_tk_embedding(self.config['language'], target_file)
         if self.embedding is None:
             self.embedding = WordVector(target_file)
-
-    def _pad_vectors(self, datain, padding='post'):
-        length = len(datain)
-        x_shape = [length, self.max_sequence_length, self.embedding.vector_size]
-        x_vector = np.zeros(x_shape, dtype=np.float32)
-        for i, datain_i in enumerate(datain):
-            seqlen = min(len(datain_i), self.max_sequence_length)
-            if padding == 'post':
-                x_vector[i][:seqlen] = datain_i[:seqlen]
-            else:
-                x_vector[i][-seqlen:] = datain_i[-seqlen:]
-        return x_vector
 
     def load_data_set(self, data_path):
         if data_path not in self.data_sets:
@@ -78,9 +62,10 @@ class KerasClassifier:
             self.data_sets[data_path] = (data, np.array(labels), data_length)
         return self.data_sets[data_path]
 
+
     def build_graph(self):
         """
-        A hard coded training graph
+        A multi-layer cnn
 
         params:
             - input_dimension: the dimension of the input data
@@ -117,13 +102,11 @@ class KerasClassifier:
 
         self.classifier = model
 
-    def train(self):
+    def train(self, train_data, eval_data):
         """Training process"""
-        LOGGER.info('Reading: %s', self.config['datasets']['train'])
-        x_train, y_train, seqlen_train = self.load_data_set(self.config['datasets']['train'])
 
-        LOGGER.info('Reading: %s', self.config['datasets']['eval'])
-        x_eval, y_eval, seqlen_eval = self.load_data_set(self.config['datasets']['eval'])
+        x_train, y_train, _ = train_data
+        x_eval, y_eval, _ = eval_data
 
         callbacks_list = [
             tf.keras.callbacks.ModelCheckpoint(
@@ -152,6 +135,20 @@ class KerasClassifier:
 
         #test_loss, test_acc = self.classifier.evaluate()
         #LOGGER.info("Test: loss %s\tacc %s", str(test_loss), str(test_acc))
+
+
+    def _pad_vectors(self, datain, padding='post'):
+        length = len(datain)
+        x_shape = [length, self.max_sequence_length, self.embedding.vector_size]
+        x_vector = np.zeros(x_shape, dtype=np.float32)
+        for i, datain_i in enumerate(datain):
+            seqlen = min(len(datain_i), self.max_sequence_length)
+            if padding == 'post':
+                x_vector[i][:seqlen] = datain_i[:seqlen]
+            else:
+                x_vector[i][-seqlen:] = datain_i[-seqlen:]
+        return x_vector
+
 
     @staticmethod
     def _get_file_with_largest_epoch(model_path):
@@ -192,7 +189,6 @@ class KerasClassifier:
         result = self.classifier.predict_on_batch(data)
         probability = result.flatten()[0]
         return [1.0 - probability, probability]
-
 
     # tf.keras
     def evaluate(self, test_file):

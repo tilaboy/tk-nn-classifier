@@ -7,7 +7,7 @@ Submodules
 tk\_nn\_classifier.data\_loader.common\_loader module
 -----------------------------------------------------
 
-.. automodule:: tk_nn_classifier.data_loader.common_loader
+.. automodule:: tk_nn_classifier.data_loader.base_loader
     :members:
     :undoc-members:
     :show-inheritance:

@@ -5,10 +5,10 @@ from shutil import copyfile
 import os
 from xml_miner.miner import TRXMLMiner
 from .. import LOGGER
-from .common_loader import CommonLoader
+from .base_loader import BaseLoader
 
 
-class TRXMLLoader(CommonLoader):
+class TRXMLLoader(BaseLoader):
     def _train_fields(self):
         return super()._get_train_fields('trxml_fields')
 

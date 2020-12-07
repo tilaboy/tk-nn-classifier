@@ -3,10 +3,10 @@ import random
 import os
 import csv
 from .. import LOGGER
-from .common_loader import CommonLoader
+from .base_loader import BaseLoader
 
 
-class CSVLoader(CommonLoader):
+class CSVLoader(BaseLoader):
     def _train_fields(self):
         return super()._get_train_fields('csv_fields')
 

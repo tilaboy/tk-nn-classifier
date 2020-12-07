@@ -102,6 +102,10 @@ def load_config(config_file: str):
     config_dikt['config_file_path'] = config_file
     return load_config_from_dikt(config_dikt)
 
+def _validate_config(config):
+    #TODO
+    print("TO IMPLEMENT")
+
 def load_config_from_dikt(config_dikt):
     '''
     load the config from dikt
@@ -118,4 +122,5 @@ def load_config_from_dikt(config_dikt):
     if not config['model_type'].startswith('spacy'):
         config['spacy'] = None
     _derived_config_fields(config)
+    _validate_config(config)
     return config

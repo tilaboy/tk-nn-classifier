@@ -6,28 +6,26 @@ from spacy.util import minibatch, compounding
 from ..data_loader import SpacyDataReader
 from .. import LOGGER
 from ..exceptions import ConfigError
+from .base_classifier import BaseClassifier
 from .utils import TrainHelper
 
 
-class SpacyClassifier:
+class SpacyClassifier(BaseClassifier):
     def __init__(self, config):
-        self.config = config
+        super().__init__(config)
         self.data_reader = SpacyDataReader(self.config)
 
-
-    def prepare_data(self):
+    def build_and_train(self):
         if 'all_data' in self.config['datasets']:
-            if 'train' in self.config['datasets'] or \
-                    'eval' in self.config['datasets']:
-                raise ConfigError('datasets/all_data',
-                                  'all_data can not be used together with train/eval')
-            else:
-                # split the data
-                LOGGER.info('split all_data into train and test')
-                train_source, eval_source = self.data_reader.get_split_data()
-                self.config['datasets']['train'] = train_source
-                self.config['datasets']['eval'] = eval_source
+            self.split_data()
+        train_data, eval_data = self.load_data()
+        self.build_graph()
+        self.train(train_data, eval_data)
+        self.save(self.config['model_path'])
+        if 'test' in self.config['datasets']:
+            self.evaluate_on_tests()
 
+    def load_data(self):
         train_data = self.data_reader.get_data(
             self.config['datasets']['train'],
             shuffle=False,
@@ -36,13 +34,6 @@ class SpacyClassifier:
         eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
         return train_data, eval_data
 
-    def build_and_train(self):
-        train_data, eval_data = self.prepare_data()
-        self.build_graph()
-        self.train(train_data, eval_data)
-        self.save(self.config['model_path'])
-        if 'test' in self.config['datasets']:
-            self.evaluate_on_tests()
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:

@@ -17,19 +17,15 @@ class CSVLoaderTestCases(TestCase):
         self.csv_file = 'tests/resource/sample.csv'
         self.test_dir = tempfile.mkdtemp()
 
-        config_dikt= {
-            "max_lines": 5,
-            "model_path": self.test_dir,
+        config= {
             "csv_fields": {
                 "features": ["full_text", 'advertiser_name'],
                 "class": "source_type",
                 "doc_id": "posting_id",
                 "extra": ["advertiser_name", "source_website", "source_url"]
-            },
-            "datasets": {}
+            }
         }
-        self.config = load_config_from_dikt(config_dikt)
-        self.csv_loader = CSVLoader(self.config['csv_fields'])
+        self.csv_loader = CSVLoader(config['csv_fields'])
 
     @classmethod
     def tearDownClass(self):

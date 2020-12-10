@@ -10,7 +10,7 @@ class TRXMLLoaderTestCases(TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.trxml_dir = 'tests/resource/samples'
+        self.trxml_dir = 'tests/resource/sample_trxmls'
         self.test_dir = tempfile.mkdtemp()
 
         config= {

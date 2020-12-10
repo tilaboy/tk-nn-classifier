@@ -38,16 +38,6 @@ class CSVLoader(BaseLoader):
         for row in self._iter_csv(data_path):
             yield {field: row[field] for field in iter_flatten(fields)}
 
-    def load_train_data(self, data_path:str) -> Generator:
-        '''load data for training: features, and category'''
-        fields = self._train_fields()
-        return self._load_selected_data(fields, data_path)
-
-    def load_detail_data(self, data_path:str) -> Generator:
-        '''load data for eval and analysis: docid, features and category, and extra'''
-        fields = self._detail_fields()
-        return self._load_selected_data(fields, data_path)
-
 
 def split_csv_file(data_path: str,
                    ratio: float=0.8,
@@ -70,7 +60,7 @@ def split_csv_file(data_path: str,
     os.makedirs(des, exist_ok=True)
     train_file = os.path.join(des, 'train.csv')
     eval_file = os.path.join(des, 'eval.csv')
-    LOGGER.info('split the data to train file %s and eval file %s',
+    LOGGER.info('split the data to train file: %s, and eval file: %s',
                 train_file, eval_file)
     train_fh = open(train_file, 'w', newline='', encoding='utf-8')
     eval_fh = open(eval_file, 'w', newline='', encoding='utf-8')

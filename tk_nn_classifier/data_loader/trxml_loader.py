@@ -1,39 +1,21 @@
 ''' TRXML file reader: import data from trxml files'''
-
-import random
-from shutil import copyfile
+from typing import Generator, Tuple
 import os
+import random
+from shutil import copy
+import glob
 from xml_miner.miner import TRXMLMiner
+
 from .. import LOGGER
 from .base_loader import BaseLoader
+from .data_utils import iter_flatten
 
 
 class TRXMLLoader(BaseLoader):
-    def _train_fields(self):
-        return super()._get_train_fields('trxml_fields')
-
-    def _detail_fields(self):
-        return super()._get_detail_fields('trxml_fields')
-
-    def get_train_data(self, data_path):
-        return self._get_values_from_trxml(self._train_fields(), data_path)
-
-    def get_details(self, data_path):
-        return self._get_values_from_trxml(self._detail_fields(), data_path)
-
-    def _get_values_from_trxml(self, fields, data_path):
-        # the first element in the fields is the input text to the data models
-        trxml_miner = TRXMLMiner(','.join(list(self._iter_flatten(fields))))
+    def _load_selected_data(self, fields, data_path):
+        trxml_miner = TRXMLMiner(','.join(list(iter_flatten(fields))))
         for trxml in trxml_miner.mine(data_path):
-            yield [
-                trxml['values'][field] if isinstance(field, str) else
-                [
-                    self._prepare_input_text(trxml['values'][sub_field],
-                                             index == 0)
-                    for sub_field in field
-                ]
-                for index, field in enumerate(fields)
-            ]
+            yield {field: trxml['values'][field] for field in iter_flatten(fields)}
 
     @staticmethod
     def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):
@@ -54,29 +36,47 @@ class TRXMLLoader(BaseLoader):
                     )
         return train_files, eval_files
 
-    def split_data(self, data_path, ratio=0.8, des='models'):
-        '''split the data into train and evel'''
-        train_files, eval_files = self._split_docs_on_ratio(
-            data_path, ratio, random_shuffle=True)
+def split_trxml_set(data_path: str,
+                    ratio: float=0.8,
+                    des: str='models',
+                    rand_seed: int=111) -> Tuple[str, str]:
+    '''
+    split the data into train and evel
 
-        if des:
-            os.makedirs(des, exist_ok=True)
-            train_folder = os.path.join(des, 'train')
-            LOGGER.info('copy the train data to train folder %s' %
-                        train_folder)
-            os.makedirs(train_folder, exist_ok=True)
+    params:
+        - data_path: input data path
+        - ratio: a float number x in [0, 1], x will be train,
+                 and 1 - x will be eval
+        - des: output folder, generate des/train/*.trxml, and des/eval/*.trxml
+        - rand_seed: random number seed
 
-            eval_folder = os.path.join(des, 'eval')
-            LOGGER.info('copy the eval data to eval folder %s' % eval_folder)
-            os.makedirs(eval_folder, exist_ok=True)
+    output:
+        - train_trxml_folder
+        - eval_trxml_folder
+    '''
+
+    train_folder = os.path.join(des, 'train')
+    eval_folder = os.path.join(des, 'eval')
+    LOGGER.info('copy the data to train: %s, and eval: %s',
+                train_folder, eval_folder)
+
+    random.seed(rand_seed)
+    nr_train = nr_eval = 0
+
+    os.makedirs(train_folder, exist_ok=True)
+    os.makedirs(eval_folder, exist_ok=True)
+
+    for file in glob.iglob(f'{data_path}/*.trxml'):
+        if random.random() <= ratio:
+            copy(file, train_folder)
+            nr_train += 1
         else:
-            raise ValueError('train/eval destination needs to be specified')
+            copy(file, eval_folder)
+            nr_eval += 1
 
-        for file in train_files:
-            copyfile(os.path.join(data_path, file),
-                     os.path.join(train_folder, file))
+    LOGGER.info('summary: %d split to %d train, and %d eval',
+                nr_train + nr_eval,
+                nr_train,
+                nr_eval)
 
-        for file in eval_files:
-            copyfile(os.path.join(data_path, file),
-                     os.path.join(eval_folder, file))
-        return train_folder, eval_folder
+    return train_folder, eval_folder

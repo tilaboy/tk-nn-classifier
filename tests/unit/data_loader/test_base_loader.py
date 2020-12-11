@@ -1,5 +1,6 @@
 """unit tests for classifier utils functions"""
 from unittest import TestCase
+from tk_nn_classifier.exceptions import ConfigError
 from tk_nn_classifier.data_loader.base_loader import BaseLoader
 
 class BaseLoaderTestCases(TestCase):
@@ -22,7 +23,7 @@ class BaseLoaderTestCases(TestCase):
             }
         }
 
-    def test_trxml_train_fields(self):
+    def test_000_trxml_train_fields(self):
         base_loader = BaseLoader(self.config['trxml_fields'])
         all_fields = ['sec_vacancy.0.sec_vacancy',
                       'derived_vac_intermediary.0.derived_vac_intermediary',
@@ -40,7 +41,7 @@ class BaseLoaderTestCases(TestCase):
             all_fields
         )
 
-    def test_csv_train_fields(self):
+    def test_001_csv_train_fields(self):
         base_loader = BaseLoader(self.config['csv_fields'])
         all_fields = ['full_text', 'advertiser_type', 'posting_id',
                       ['organization_name', 'source_type', 'source_website']]
@@ -53,3 +54,8 @@ class BaseLoaderTestCases(TestCase):
             base_loader._detail_fields(),
             all_fields
         )
+
+    def test_002_missing_fields(self):
+        del self.config['csv_fields']['features']
+        with self.assertRaisesRegex(ConfigError, 'Missing/Wrong') as cm:
+            base_loader = BaseLoader(self.config['csv_fields'])

@@ -11,26 +11,25 @@ class BaseLoader:
         - train_process:
     '''
     def __init__(self, field_config: List):
+        self._field_validation(field_config)
         self.field_config = field_config
+
+    @classmethod
+    def _field_validation(cls, field_config):
+        if 'features' not in field_config:
+            raise ConfigError('features', 'csv/trxml_fields')
+        if 'class' not in field_config:
+            raise ConfigError('class', 'csv/trxml_fields')
 
     def _load_selected_data(self, fields: List, data_path: str) -> None:
         raise NotImplementedError('_load_selected_data needs to be implemented')
 
-    def _field_validation(self):
-        if 'features' not in self.field_config:
-            raise ConfigError('features', 'csv/trxml_fields')
-        if 'class' not in self.field_config:
-            raise ConfigError('class', 'csv/trxml_fields')
-
-
     def _train_fields(self):
-        self._field_validation()
         fields = [self.field_config['features'],
                   self.field_config['class']]
         return fields
 
     def _detail_fields(self):
-        self._field_validation()
         fields = [self.field_config['features'],
                   self.field_config['class']]
         if 'doc_id' in self.field_config:

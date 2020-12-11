@@ -49,9 +49,9 @@ class CSVLoaderTestCases(TestCase):
                 [['full_text', 'advertiser_name'],
                  'source_type',
                  'posting_id',
-                 'advertiser_name',
+                 ['advertiser_name',
                  'source_website',
-                 'source_url']
+                 'source_url']]
         )
 
     def test_csv_reading(self):

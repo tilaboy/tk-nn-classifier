@@ -23,7 +23,7 @@ class BaseLoaderTestCases(TestCase):
             }
         }
 
-    def test_000_trxml_train_fields(self):
+    def test_00_trxml_train_fields(self):
         base_loader = BaseLoader(self.config['trxml_fields'])
         all_fields = ['sec_vacancy.0.sec_vacancy',
                       'derived_vac_intermediary.0.derived_vac_intermediary',
@@ -41,7 +41,7 @@ class BaseLoaderTestCases(TestCase):
             all_fields
         )
 
-    def test_001_csv_train_fields(self):
+    def test_01_csv_train_fields(self):
         base_loader = BaseLoader(self.config['csv_fields'])
         all_fields = ['full_text', 'advertiser_type', 'posting_id',
                       ['organization_name', 'source_type', 'source_website']]
@@ -55,7 +55,11 @@ class BaseLoaderTestCases(TestCase):
             all_fields
         )
 
-    def test_002_missing_fields(self):
+    def test_02_missing_fields(self):
         del self.config['csv_fields']['features']
         with self.assertRaisesRegex(ConfigError, 'Missing/Wrong') as cm:
             base_loader = BaseLoader(self.config['csv_fields'])
+
+        del self.config['trxml_fields']['class']
+        with self.assertRaisesRegex(ConfigError, 'Missing/Wrong') as cm:
+            base_loader = BaseLoader(self.config['trxml_fields'])

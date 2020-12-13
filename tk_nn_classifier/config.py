@@ -103,8 +103,44 @@ def load_config(config_file: str):
     return load_config_from_dikt(config_dikt)
 
 def _validate_config(config):
-    #TODO
-    print("TO IMPLEMENT")
+    # obligated terms:
+    _validate_must_have(config)
+    _validate_at_least_one(config)
+    _validate_conflict(config)
+
+def _validate_must_have(config):
+    fields_must = ['model_type', 'model_name',
+                   'model_dir', 'model_version',
+                   'data_sets']
+
+    for field in fields_must:
+        if field not in config:
+            raise ConfigError(field)
+
+def _validate_at_least_one(config):
+    fields_at_least_one = [['trxml_fields', 'csv_fields']]
+
+    for field_set in fields_at_least_one:
+        if any(field in config for field in field_set):
+            pass
+        else:
+            raise ConfigError(
+                ' or '.join(field_set),
+                section='',
+                detail_msg='need at least one: {}'.format(', '.join(field_set)))
+
+def _validate_conflict(config):
+    if 'all_data' in config['datasets']:
+        if 'train' in config['datasets'] or 'eval' in config['datasets']:
+            raise ConfigError(
+                'all_data',
+                section='datasets',
+                detail_msg='config conflict: all_data <=> train/eval')
+    if 'all_data' not in config['datasets'] and 'train' not in config['datasets']:
+        raise ConfigError(
+            'train',
+            'datasets',
+            detail_msg='all_data or train need to be set')
 
 def load_config_from_dikt(config_dikt):
     '''

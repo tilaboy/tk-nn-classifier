@@ -1,8 +1,8 @@
 '''module to load data and split data'''
-from typing import List, Generator, Tuple
+from typing import Dict, Generator, Tuple, List
 import os
 import sys
-from ..exceptions import FileTypeError
+from ..exceptions import FileTypeError, ConfigError
 from .csv_loader import CSVLoader, split_csv_file
 from .trxml_loader import TRXMLLoader, split_trxml_set
 from .data_utils import file_ext
@@ -23,13 +23,15 @@ def _data_type(data_path: str) -> str:
     return data_type
 
 
-def _select_data_reader(field_config: List, data_path: str):
-    data_type = _data_type(data_path)
+def _select_data_reader(config_input_feature: Dict, data_type: str):
     loader_class = getattr(sys.modules[__name__], data_type + 'Loader')
-    return loader_class(field_config)
+    return loader_class(config_input_feature)
+
+def _type_to_config_field_entry(data_type: str) -> str:
+    return data_type.lower() + '_fields'
 
 
-def load_data_set(field_config: List,
+def load_data_set(config: Dict,
                   data_path: str,
                   train_mode: bool=True) ->Generator:
     '''
@@ -43,7 +45,15 @@ def load_data_set(field_config: List,
     output:
         - data_set: a list of dic in the form of {field_0: value, field_1: value, ...}
     '''
-    data_reader = _select_data_reader(field_config, data_path)
+    data_type = _data_type(data_path)
+    field_entry = _type_to_config_field_entry(data_type)
+    if field_entry not in config:
+        raise ConfigError(
+            field_entry,
+            section='',
+            detail_msg=f'fields {field_entry} not set, failed loading data')
+
+    data_reader = _select_data_reader(config[field_entry], data_type)
     if train_mode:
         return data_reader.load_train_data(data_path)
     else:

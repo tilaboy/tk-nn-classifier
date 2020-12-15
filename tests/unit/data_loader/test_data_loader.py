@@ -3,7 +3,7 @@ import os
 import tempfile
 import shutil
 
-from tk_nn_classifier.data_loader import load_data_set, _select_data_reader, split_data_set, _data_type
+from tk_nn_classifier.data_loader import load_data_set, _select_data_loader, split_data_set, _data_type
 from tk_nn_classifier.data_loader.csv_loader import CSVLoader
 from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
 from tk_nn_classifier.exceptions import FileTypeError
@@ -37,15 +37,15 @@ class DataLoaderTestCase(TestCase):
         '''clean up the temp dir after test'''
         shutil.rmtree(self.test_dir)
 
-    def test_select_data_reader(self):
-        data_reader = _select_data_reader(self.config['csv_fields'],
+    def test_select_data_loader(self):
+        data_loader = _select_data_loader(self.config['csv_fields'],
                                           _data_type('tests/resource/sample.csv'))
 
-        self.assertIsInstance(data_reader, CSVLoader)
+        self.assertIsInstance(data_loader, CSVLoader)
 
-        data_reader = _select_data_reader(self.config['trxml_fields'],
+        data_loader = _select_data_loader(self.config['trxml_fields'],
                                           _data_type('tests/resource/sample_trxmls'))
-        self.assertIsInstance(data_reader, TRXMLLoader)
+        self.assertIsInstance(data_loader, TRXMLLoader)
 
         with self.assertRaisesRegex(FileNotFoundError, 'not found') as cm:
             _data_type('tests/resource/no_exist.csv')

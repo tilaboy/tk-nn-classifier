@@ -22,14 +22,12 @@ def _data_type(data_path: str) -> str:
         raise FileNotFoundError(f'{data_path} not found')
     return data_type
 
-
-def _select_data_reader(config_input_feature: Dict, data_type: str):
+def _select_data_loader(config_input_feature: Dict, data_type: str):
     loader_class = getattr(sys.modules[__name__], data_type + 'Loader')
     return loader_class(config_input_feature)
 
 def _type_to_config_field_entry(data_type: str) -> str:
     return data_type.lower() + '_fields'
-
 
 def load_data_set(config: Dict,
                   data_path: str,
@@ -52,13 +50,11 @@ def load_data_set(config: Dict,
             field_entry,
             section='',
             detail_msg=f'fields {field_entry} not set, failed loading data')
-
-    data_reader = _select_data_reader(config[field_entry], data_type)
+    data_loader = _select_data_loader(config[field_entry], data_type)
     if train_mode:
-        return data_reader.load_train_data(data_path)
+        return data_loader.load_train_data(data_path)
     else:
-        return data_reader.load_detail_data(data_path)
-
+        return data_loader.load_detail_data(data_path)
 
 def split_data_set(data_path: str,
                    ratio: float=0.8,

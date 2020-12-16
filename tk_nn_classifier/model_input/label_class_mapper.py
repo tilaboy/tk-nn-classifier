@@ -24,8 +24,8 @@ class LabelClassMapper:
 
     @classmethod
     def from_file(cls, label_mapper_file):
-        with open(label_mapper_file, 'r') as l_fh:
-            classid_to_label = json.load(l_fh)
+        with open(label_mapper_file, 'r') as label_fh:
+            classid_to_label = json.load(label_fh)
         return cls(classid_to_label, label_mapper_file)
 
     def write(self):
@@ -34,8 +34,8 @@ class LabelClassMapper:
         if dir != '':
             os.makedirs(dir, exist_ok=True)
 
-        with open(self.label_mapper_file, 'w') as l_fh:
-            json.dump(self.classid_to_label, l_fh)
+        with open(self.label_mapper_file, 'w') as label_fh:
+            json.dump(self.classid_to_label, label_fh)
 
     def class_id(self, label):
         return self.label_to_classid[label]

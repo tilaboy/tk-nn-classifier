@@ -9,12 +9,12 @@
 
     "spacy": {
         "model": "en_core_web_sm",
-        "lang": "en",
+        "language": "en",
         "arch": "simple_cnn"
     },
 
     "trxml_fields": {
-        "features": "sec_vacancy.0.sec_vacancy",
+        "features": ["derived_org_name.0.derived_org_name","sec_vacancy.0.sec_vacancy"],
         "class": "derived_vac_intermediary.0.derived_vac_intermediary",
         "doc_id": "Document.0.correlationid",
         "extra": ["derived_org_name.0.derived_org_name",
@@ -23,22 +23,18 @@
     },
 
     "csv_fields": {
-        "features": "full_text",
-        "class": "source_type",
+        "features": ["organization_name", "full_text"],
+        "class": "advertiser_type",
         "doc_id": "posting_id",
-        "extra": ["advertiser_name", "source_website", "source_url"]
+        "extra": ["organization_name", "source_url"]
     },
 
     "datasets": {
-        "train": "../recruitment_agency_data/train_big",
-        "eval": "../recruitment_agency_data/eval_big",
+        "train": "tests/resource/train.csv",
+        "eval": "tests/resource/eval.csv",
         "test": {
-            "unindentified": "../recruitment_agency_data/unidentified/",
-            "annotated": "../recruitment_agency_data/annotated/",
-            "eval": "../recruitment_agency_data/eval",
-            "random": "../recruitment_agency_data/final_eval/random",
-            "us": "../recruitment_agency_data/us.csv"
+            "test": "tests/resource/eval.csv"
         },
-        "label_mapper": "../recruitment_agency_data/label_mapper.json"
+        "label_mapper": "models/label_mapper.json"
     }
 }

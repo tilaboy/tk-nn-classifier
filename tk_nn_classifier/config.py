@@ -170,7 +170,7 @@ def data_field_type(field_name, config):
     trxml_type = csv_type = None
     if 'trxml_fields' in config:
         trxml_type = _field_type_lookup(field_name, config['trxml_fields'])
-    if 'eval_fields' in config:
+    if 'csv_fields' in config:
         csv_type = _field_type_lookup(field_name, config['csv_fields'])
     if trxml_type and csv_type:
         raise ConfigError(

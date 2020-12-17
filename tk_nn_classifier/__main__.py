@@ -79,7 +79,7 @@ def train(args):
     # test if test in datasets
     if 'test' in config['datasets']:
         for testset in config['datasets']:
-            LOGGER.info('eval on test %: %', testset, config['datasets'][dataset])
+            LOGGER.info('eval on test %: %', testset, config['datasets'][testset])
             model.evaluate_on_test(config['datasets'][testset])
 
 

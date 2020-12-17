@@ -1,7 +1,10 @@
 {
     "model_type": "spacy_simple",
     "model_name": "uk_vac_staffing_agency_spacy",
-    "model_path": "models/uk_vac_staffing_agency_spacy_v4_sec_vacancy",
+    "model_version": "staff_agency_baseline",
+    "model_dir": "models/spacy",
+    "model_desc": "spacy model v1: baseline model",
+    "language": "en",
 
     "dropout_rate": 0.2,
     "num_epochs": 20,

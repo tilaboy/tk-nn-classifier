@@ -6,8 +6,8 @@ import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, download_tk_embedding
-from ..data_loader import TFDataReader, tokenize
+from ..word_embedding import WordVector, download_tk_embedding
+from ..model_input import TFDataReader, tokenize
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper
 from .base_classifier import BaseClassifier
@@ -17,7 +17,7 @@ from tqdm import tqdm
 class KerasClassifier(BaseClassifier):
     def __init__(self, config):
         super().__init__(config)
-        self.max_sequence_length = config['max_sequence_length']
+        self.max_sequence_length = self.config['max_sequence_length']
         self.embedding = None
         self.data_reader = TFDataReader(self.config)
 

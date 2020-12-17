@@ -5,8 +5,8 @@ import pickle
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, download_tk_embedding
-from ..data_loader import TFDataReader, tokenize
+from ..word_embedding import WordVector, download_tk_embedding
+from ..model_input import TFDataReader, tokenize
 from .. import LOGGER
 from .base_classifier import BaseClassifier
 from .utils import TrainHelper, FileHelper

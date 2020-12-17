@@ -4,7 +4,8 @@ import numpy as np
 import functools
 from tensorflow.python.keras.preprocessing import sequence
 
-from ..data_loader import WordVector, TFDataReader, tokenize
+from ..word_embedding import WordVector
+from ..model_input import TFDataReader, tokenize
 from .base_classifier import BaseClassifier
 from .. import LOGGER
 from .utils import TrainHelper, FileHelper

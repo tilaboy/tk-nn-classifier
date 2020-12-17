@@ -6,7 +6,7 @@ import logging
 import csv
 from tk_nn_classifier.model import Model
 from tk_nn_classifier.config import load_config
-from tk_nn_classifier.data_loader import DataReader
+from tk_nn_classifier.data_loader import load_data_set, split_data_set
 from tk_nn_classifier import set_logging_level, LOGGER
 from tk_nn_classifier.classifiers.utils import TrainHelper, FileHelper
 
@@ -42,10 +42,45 @@ def process_batch(model, reader, data_set, config):
 
 
 def train(args):
+    # load config
     config = load_config(args.config)
     config['action'] = 'train'
+
+    # split data if needed
+    if 'all_data' in config['datasets']:
+        LOGGER.info('split all_data into train and eval')
+        config['datasets']['train'], config['datasets']['eval'] = \
+            split_data_set(config['datasets']['all_data'])
+
+    # load_data
+    train_data_set = load_data_set(config, config['datasets']['train'])
+    eval_data_set = load_data_set(config, config['datasets']['eval'])
+
+    # declare model
+    # - get the right type as configured
+    # - define graph/pipelines
     model = Model(config)
-    model.build_and_train()
+
+    # transfer data set [{f1: v1, f2: v2, ...}, {}, ...]
+    # to model input, e.g. [x1, x2, y]
+    #
+    train_data = model.prepare_input(train_data_set, train_mode=True)
+    eval_data = model.prepare_input(eval_data_set, train_mode=False)
+
+    # build graph
+    model.build_graph()
+
+    # train
+    model.train(train_data, eval_data)
+
+    # save the model
+    model.save(config['model_path'])
+
+    # test if test in datasets
+    if 'test' in config['datasets']:
+        for testset in config['datasets']:
+            LOGGER.info('eval on test %: %', testset, config['datasets'][dataset])
+            model.evaluate_on_test(config['datasets'][testset])
 
 
 def eval(args):

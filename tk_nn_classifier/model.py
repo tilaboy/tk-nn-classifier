@@ -6,7 +6,6 @@ import os
 import tensorflow as tf
 from shutil import copy
 from . import LOGGER
-from .config import load_config, spacy_lang_model_consistency
 from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier, KerasClassifier
 
 
@@ -31,8 +30,7 @@ class Model:
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
         elif self.config['model_type'] .startswith('spacy'):
-            LOGGER.info('use spacy %s' % self.config['model_type'] )
-            spacy_lang_model_consistency(self.config)
+            LOGGER.info('use %s' % self.config['model_type'] )
             self.classifier = SpacyClassifier(self.config)
 
         else:
@@ -41,14 +39,17 @@ class Model:
     def build_graph(self):
         self.classifier.build_graph()
 
+    def prepare_input(self, data_gen, train_mode=True):
+        return self.classifier.prepare_input(data_gen, train_mode)
+
     def train(self, train_data=None, eval_data=None):
-        if train_data:
-            self.classifier.train(train_data, eval_data)
-        else:
-            self.classifier.train()
+        self.classifier.train(train_data, eval_data)
 
     def save(self, output_path):
         self.classifier.save(output_path)
+
+    def load(self, model_path=None):
+        self.classifier.load_saved_model(model_path)
 
     def build_and_train(self):
         os.makedirs(self.config['model_path'], exist_ok=True)
@@ -58,11 +59,8 @@ class Model:
     def evaluate(self, test_data_path):
         self.classifier.evaluate(test_data_path)
 
-    def load(self, model_path=None):
-        self.classifier.load_saved_model(model_path)
-
-    def process_with_saved_model(self, input):
-        return self.classifier.process_with_saved_model(input)
+    def process_with_saved_model(self, data_set):
+        return self.classifier.process_with_saved_model(data_set)
 
     def predict_on_text(self, text):
         return self.classifier.predict_on_text(text)

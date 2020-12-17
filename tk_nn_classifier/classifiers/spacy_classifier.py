@@ -3,7 +3,7 @@ from pathlib import Path
 import random
 from spacy.util import minibatch, compounding
 
-from ..data_loader import SpacyDataReader
+from ..model_input import SpacyDataReader
 from .. import LOGGER
 from ..exceptions import ConfigError
 from .base_classifier import BaseClassifier
@@ -15,25 +15,15 @@ class SpacyClassifier(BaseClassifier):
         super().__init__(config)
         self.data_reader = SpacyDataReader(self.config)
 
-    def build_and_train(self):
-        if 'all_data' in self.config['datasets']:
-            self.split_data()
-        train_data, eval_data = self.load_data()
+    def build_and_train(self, train_data, eval_data):
         self.build_graph()
         self.train(train_data, eval_data)
         self.save(self.config['model_path'])
         if 'test' in self.config['datasets']:
             self.evaluate_on_tests()
 
-    def load_data(self):
-        train_data = self.data_reader.get_data(
-            self.config['datasets']['train'],
-            shuffle=False,
-            train_mode=True
-        )
-        eval_data = self.data_reader.get_data(self.config['datasets']['eval'])
-        return train_data, eval_data
-
+    def prepare_input(self, data_gen, train_mode):
+        return self.data_reader.model_input(data_gen, train_mode)
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
@@ -107,13 +97,13 @@ class SpacyClassifier(BaseClassifier):
         self.model = spacy.load(model_path)
 
     def save(self, output_dir):
+        LOGGER.info("Saved model to %s" % output_dir)
         if output_dir is not None:
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
             # with self.model.use_params(self.optimizer.averages):
             self.model.to_disk(output_dir)
-            LOGGER.info("Saved model to %s" % output_dir)
 
     def process_with_saved_model(self, input):
         result = self.model(input)

@@ -4,8 +4,8 @@ class ConfigError(Exception):
     def __init__(self, field, section='', detail_msg=''):
         msg = f'\nMissing/Wrong "{field}" value'
         if section:
-            msg += f' in "{section}",'
-        msg += 'please check config file.\n'
+            msg += f' in "{section}"'
+        msg += ', please check config file.\n'
         if detail_msg:
             msg += f'details: {detail_msg}'
         super().__init__(msg)

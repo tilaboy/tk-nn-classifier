@@ -18,7 +18,56 @@ class GraphSelector:
         )
         return input_layer
 
-    def add_graph(self, input, training_mode, embedding_initializer):
+    def keras_graph(self):
+        if self.config['model_type'] == 'keras_cnn_multi':
+            LOGGER.info('crease keras cnn model')
+            return self._keras_cnn()
+        else:
+            LOGGER.info('unknown graph tyep')
+
+    def _keras_cnn(self):
+        """
+        A multi-layer cnn
+
+        params:
+            - input_dimension: the dimension of the input data
+            - l_rate: the learning rate
+
+        output: neural netword model
+        """
+
+        inputs = keras.Input((self.config['max_sequence_length'],
+                                 self.embedding.vector_size,))
+        inputs_encoder = keras.layers.Dropout(self.config.get('dropout_rate',0.3))(inputs)
+
+        for i in range(self.config['cnn']['nr_layers']):
+            conv = keras.layers.Conv1D(self.config['cnn']['filter_size'],
+                                          (self.config['cnn']['kernel_size']),
+                                          padding='same',
+                                          activation='relu')(inputs_encoder)
+            pool = keras.layers.MaxPool1D(pool_size=2)(conv)
+            inputs_encoder = keras.layers.Dropout(self.config['cnn'].get('dropout_rate',0.5))(pool)
+
+
+        flat = keras.layers.Flatten()(inputs_encoder)
+        densed = keras.layers.Dense(8, activation=tf.nn.sigmoid)(flat)
+        preds = keras.layers.Dense(1, activation=tf.nn.sigmoid)(densed)
+
+        model = keras.models.Model(
+            inputs=inputs,
+            outputs=preds
+        )
+        print(model.summary())
+
+        model.compile(loss=keras.losses.binary_crossentropy,
+                      optimizer=keras.optimizers.Adam(self.config['learning_rate']),
+                      metrics=['accuracy'])
+        return model
+
+
+
+
+    def add_tf_graph(self, input, training_mode, embedding_initializer):
         if self.config['model_type'] == 'tf_cnn_simple':
             LOGGER.info("create model: cnn_simple")
             return self._cnn_simple(input, training_mode,

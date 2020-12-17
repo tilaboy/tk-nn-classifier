@@ -64,43 +64,8 @@ class KerasClassifier(BaseClassifier):
 
 
     def build_graph(self):
-        """
-        A multi-layer cnn
-
-        params:
-            - input_dimension: the dimension of the input data
-            - l_rate: the learning rate
-
-        output: neural netword model
-        """
-
-        inputs = tf.keras.Input((self.max_sequence_length, self.embedding.vector_size,))
-        inputs_encoder = tf.keras.layers.Dropout(self.config.get('dropout_rate',0.3))(inputs)
-
-        for i in range(self.config['cnn']['nr_layers']):
-            conv = tf.keras.layers.Conv1D(self.config['cnn']['filter_size'],
-                                          (self.config['cnn']['kernel_size']),
-                                          padding='same',
-                                          activation='relu')(inputs_encoder)
-            pool = tf.keras.layers.MaxPool1D(pool_size=2)(conv)
-            inputs_encoder = tf.keras.layers.Dropout(self.config['cnn'].get('dropout_rate',0.5))(pool)
-
-
-        flat = tf.keras.layers.Flatten()(inputs_encoder)
-        densed = tf.keras.layers.Dense(8, activation=tf.nn.sigmoid)(flat)
-        preds = tf.keras.layers.Dense(1, activation=tf.nn.sigmoid)(densed)
-
-        model = tf.keras.models.Model(
-            inputs=inputs,
-            outputs=preds
-        )
-        print(model.summary())
-
-        model.compile(loss=tf.keras.losses.binary_crossentropy,
-                      optimizer=tf.keras.optimizers.Adam(self.config['learning_rate']),
-                      metrics=['accuracy'])
-
-        self.classifier = model
+        graph_selector = GraphSelector(self.config, self.embedding)
+        self.classifier = graph_selector.keras_graph()
 
     def train(self, train_data, eval_data):
         """Training process"""

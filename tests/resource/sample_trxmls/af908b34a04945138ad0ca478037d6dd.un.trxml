@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Specialty Doctor - General Paediatrics
+
+     * Competitive Rates
+     * Posted: 21/07/2019
+     *
+
+   Oldham
+
+     Job Ref: 172775
+
+     Temporary
+   Apply Save Job
+
+Job Details
+
+   Pertemps are currently seeking Specialty Doctor - General Paediatrics doctor that can work on a part time locum basis for an initial 4 Week period with possibility of extension. This particular vacancy is based at one of our key clients in the Greater Manchester of England.
+
+   Successful candidate will be rewarded with a competitive hourly rate.
+
+   * Job Title: Specialty Doctor - General Paediatrics
+
+   * Dates: August, 2019
+
+   * Duration: Until September 2019
+
+   * Pay: Negotiable
+
+   * Payment method: Weekly
+
+   * Appraisal and Revalidation support
+
+   * Full GMC required
+
+   If you are an experienced Locum Paediatrics Doctor or new to the locum market and would like some further information please contact Pertemps on 01908 533 240 and speak to our dedicated Paediatrics Team.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>af908b34a04945138ad0ca478037d6dd</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Pertemps</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>pertemps.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>pertemps.co.uk/job/172775/specialty-doctor-general-paediatrics-job-in-oldham</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

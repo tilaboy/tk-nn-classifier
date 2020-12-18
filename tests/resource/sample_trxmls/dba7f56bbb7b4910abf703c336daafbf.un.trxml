@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Job Title Automation QA Engineer (SDET) - RPC Consulting
+   Position Full Time - Contractor
+   Role Consultant
+   Location London
+   Expertise Insurance
+   Description
+
+   Who we are looking for
+
+   * Do you want to design and build testing automation helping shape a suite of market leading software products that are setting the standard for financial modelling?
+   * Would you like to work on cutting-edge software with other passionate team members?
+   * Would you like to make a difference by utilising your knowledge and experience to enhance the quality of the software solutions?
+
+   If so, then we would love you to come and work with us.
+   About the role
+
+   As an Automation QA Engineer you will be responsible for:
+
+   * Analysing existing systems and writing acceptance criteria using Gherkin syntax
+   * Analysing new complex software features and building appropriate automated tests, including but not limited to end to end Protractor tests, load and performance tests, Web API integration tests
+   * Supporting software engineers during the development and testing phase
+   * Building useful tools and frameworks to aid continuous development and continuous delivery
+   * Debugging bugs identified internally or by the external customer to identify the root cause and use it to improve the test coverage
+   * Working with software engineers, testers, actuaries and the product owner to identify the scope for automated testing
+
+   Before you meet us, get to know us
+
+   RPC Consulting is a fast paced, dynamic business, with ambitious growth plans and as such already supports a global client base covering the UK, EMEA, the US and Japan.
+   We help those in insurance and related sectors do things better. Our team of highly skilled actuaries and Insurance experts develop innovative solutions for our clients.
+   We solve this industry need with our proprietary modelling platform, Tyche. We are able to tackle challenging modelling problems head on and provide companies with solutions that can be implemented into their daily business discussions by leveraging affordable "commodity" hardware and ground breaking advances in parallel software design.
+   The firm now has over 80 people bringing deep insurance knowledge, actuarial science, and software development skills to a growing client base. At RPC Consulting, we provide real career development, high quality work, inspiring project teams and excellent reward and recognition programmes.
+
+   We are open to applications from candidates who require flexible working patterns.
+
+   Inclusion and Diversity
+
+   People are at the heart of everything we do. We want every member of our team to feel welcome, valued and confident they'll achieve their career objectives here.
+
+   Candidate profile
+
+   Technical Skills:
+
+   Essential:
+   * Strong experience of testing automation for Web solutions based on modern frameworks
+   * Experience of testing automation using BDD with Protractor, Angular 2+, TypeScript and Cucumber (Gherkin)
+   * HTML 5, CSS 3
+   * Desirable C#, .NET Core and Web API 2+
+   * SOLID Principles
+   * RESTful service testing
+   * Load and stress testing
+   * Git with GitFlow
+   * Microsoft Visual Studio
+
+   Desirable:
+   * TeamCity &amp; OctopusDeploy
+
+   Personal skills:
+
+   * Excellent written and verbal communication skills
+   * Enthusiastic, confident self-starter and very highly motivated to deliver
+   * Out-of-the-box thinker with good attention to detail</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>dba7f56bbb7b4910abf703c336daafbf</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>RPC</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>rpc.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>fsr.cvmailuk.com/rpc/main.cfm?page=jobspecific&amp;jobid=45746</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

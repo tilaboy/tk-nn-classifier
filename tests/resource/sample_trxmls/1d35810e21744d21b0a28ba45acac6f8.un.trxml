@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Locum Physiotherapist - MSK - Band 6
+
+     * Location:London
+     * Salary:
+     * Consultant:Joe Bateman
+     * Telephone:0345 363 1187
+
+Description
+
+   ***URGENT REQUIREMENT FOR A BAND 6***
+   Our client, based in North London East London urgently requires a Senior Physiotherapist to join their MSK team. The role will be based across three different sites;
+   * Barking &amp; Dagenham
+   * Havering
+   * Redbridge
+
+   Locum contract to start ASAP
+   Full time - 37.5 hours per week
+   Pay rate: £34ph umbrella £29.88 paye (after ENIC deductions)
+   If you are interested in the post, can you kindly send a copy of your up to date CV to joe.bateman@righealthcare.co.uk.
+   Discard Job Call Back ApplyQuick Apply</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>1d35810e21744d21b0a28ba45acac6f8</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>RIG Healthcare</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>righealthcare.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>righealthcare.co.uk/job-details/category/location/locum-physiotherapist--msk--band-6/?id=8160.247.19723&amp;key=ot</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

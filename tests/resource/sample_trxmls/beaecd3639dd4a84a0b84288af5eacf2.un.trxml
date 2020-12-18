@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Results
+   Share
+
+Labourer with Dumper Ticket
+
+   Posted on 03 July 2019
+
+   £13 - £13/hour
+
+At a glance
+
+    Ref No:  owmo-83493
+   Category: Construction
+     Role:   Labourer with Dumper Ticket
+   Location: Brentford
+    Status:  Contract
+    Salary:  £13 - £13/hour
+
+Job Description
+
+   One Way are looking for;
+
+   1 x Labourer who hold a forward tipping dumper ticket.
+
+   This job will be ideal for a newly qualified dumper driver looking to gain experience
+   90% labouring
+   10% dumper work
+
+   Working on a commercial build.
+
+   long term work
+   9 hours paid per day Monday - Friday
+
+   If interested please contact Maddie @ One Way on 01895808160
+
+Contact
+
+     * Uxbridge Service Desk
+     *
+     * 01895 808 160
+     *
+     * noreply@oneway.co.uk
+     *
+     __________________________________________________
+
+   Apply Now
+
+   Send to friend</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>beaecd3639dd4a84a0b84288af5eacf2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>One Way Resourcing Limited.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>oneway.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>oneway.co.uk/oneway/search/vacancy/all/1/3396603/labourer+with+dumper+ticket++brentford+england.html</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Job title
+          Casual Support Worker
+
+   Job reference
+          REQ00000010581
+
+   Date posted
+          21/06/2019
+
+   Application closing date
+          30/06/2019
+
+   Location
+          LONGTOWN
+
+   Salary
+          19,171.00 (pro rata)
+
+   Package
+
+   Job category/type
+          SUPPORT/CARE WORKERS
+
+   Job description
+          Salary: 19 171 (pro rata)
+
+          The advertised salary includes a supplement (JWC) to the base grade of the post. JWC supplements are conditional on the physical demands and /or working conditions of the role
+
+          Hours: casual
+
+          Work base: Eskdale House Residential Home, Longtown
+
+          Interview Date: 08/07/2019
+
+          Appointment to this post is subject to an enhanced vetting check
+
+          To contribute effectively to the delivery of the service and to enable service users to maintain the maximum possible level of independence, choice and control within an environment of safeguarding and respect.
+
+          Click here for unique characteristics form
+
+          Click here for role profile
+
+          'Like' Cumbria County Council Jobs on facebook to keep up to date with the latest job searching tips, news and opportunities.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>020f2bef4f9f4a9ca1fabccb0f2b3f9e</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Cumbria County Council</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>cumbria.gov.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>cumbria.gov.uk/trentl_webrecruitment/wrd/run/etrec107gf.open?vacancy_id=004408pzjo&amp;wvid=3697840jjb</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Pharmacy Technician
+
+   Fernville Surgery, Midland Road, Hemel Hempstead, HP2 5BL
+
+   PHOMW421762
+
+   Full Time
+
+   Permanent
+
+   Are you passionate about Healthcare?
+   Join our award winning business and become one of our expert healthcare heroes.
+
+   We are currently looking for an Pharmacy Technician in our Hemel Hempstead branch.
+
+   Reporting to the Pharmacist Manager. Your overall responsibility will be to participate in the whole dispensing process. The role will also involve establishing and developing long term relationships with customers and healthcare professionals, ensuring to always deliver courteous and effective customer service. You will be required to assist in the delivery of all commercial pharmacy services where appropriate, including blood pressure measuring and weight management.
+
+   In this role you will be required to complete administrative records, and ensure that these records are adequately maintained. You will effectively manage pharmaceutical stock and equipment, including the administration of receiving, storing, maintaining and issuing. You may be required to deliver healthcare advice and signpost where necessary. You will be expected to assist in the sale of medicines and other merchandise when required.
+
+   In order to be successful, you must be registered with the GPhC and be able to provide a membership number upon request , you must also have an NVQ3 in Pharmacy Services or Accredited equivalent qualification and experience of working in a customer focused environment.
+
+   The hours of work for the role are:
+
+   37.5 per week
+
+   Monday 9.30am to 6.30pm (1 hour unpaid break), Tuesday 9.30am to 8pm (1 hour unpaid break), Wednesday 9.30am to 6.30pm (1 hour unpaid break),Friday 9.30am to 6.30pm (1 hour unpaid break), Saturday 8am to 12pm
+
+   The expiry date for this vacancy is: Monday 29 July 2019
+   We reserve the right to close this vacancy early if sufficient applications are received</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>f415e799f8f84e9d9c0a7fdd9bc47c7a</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Rowlands Pharmacy</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>rowlandspharmacy.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>networxrecruitment.com/jobs/displayadvert/1665632?site=rowlandsnew</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

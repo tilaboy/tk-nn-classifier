@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Sales Manager - PRS21927
+
+   Added on: 30/07/2019
+
+   Sales Manager (new and used) required in Hull, East Yorkshire / Humberside
+
+   Salary up to £30,000 depending on experience and OTE in region of £50,000
+
+   We are currently seeking to recruit an experienced Motor Trade Sales Manager to join our client's Main Dealer in Hull. The successful candidate will be responsible for managing sales &amp; performance of a team of Sales Executives, Product Genius and a Business Manager. Responsibility will include controlling New and Used stock, and working with the Business Manager to stack deals.
+
+   We're looking for candidates with current or recent experience in the Main Dealer network at Sales Manager level.
+
+   Apply now with your full CV to Dan Bush at Progress Recruitment Solutions quoting Job Ref PRS21927
+
+   To ensure that we are able to process your application as swiftly as possible please check that all of your contact details are included in the application.
+
+   Unfortunately we are unable to contact every application that we receive, if you do not receive a response please assume that you have been unsuccessful with this particular application, however if you have automotive &amp; logistics experience we will keep your details on file and contact you should a vacancy arise that matches your skills and experience.
+
+   Follow us on Twitter! @progressrecruit
+
+   Motor Trade | Automotive | Yorkshire | East Yorkshire | Humberside | Hull | Sales Manager | Sales Controller | Sales Leader | General Sales Manager | GSM
+
+   The philosophy has been to put people first. This applies both to its customers and also to its own team. The dealership is passionate about its role in the motor industry, delivering pioneering innovations that protect people and make life simpler. Its vision is to be the world's most desired and progressive car brand.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>db295f0f011947d08af25c46115d295b</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Progress Recruitment Solutions UK</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>progressrecruitment.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>progressrecruitment.co.uk/current-vacancies/sales-manager-prs21927</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

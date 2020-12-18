@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Customer Service (CSM) 20hrs Login to Save this vacancy
+
+   Location:
+   Acomb
+   Salary:
+   £8.53 Per Hour
+   Vacancy Type:
+   Permanent
+   Working Pattern
+   20 hours over 4 days
+   Advertising End Date:
+   Not Specified
+   Back to results
+
+Search
+
+   Keywords Locations
+     * Home
+     * Vacancies
+     * Customer Service (CSM) 20hrs
+
+   About The Role
+
+   Are you passionate about delivering great customer service? Do you enjoy working in a dynamic and customer focused environment? If so, your dream job could be less than a few minutes application process away!
+
+   Live chat with someone in our team now to find out more!
+
+   Our Customer Service Managers are the face of our business, responsible for providing the best possible customer experience.
+
+   What will you be doing?
+     * Delivering consistently exceptional customer service and ensuring a great customer journey, resolving complaints and issues when necessary.
+     * Taking bets on a wide range of sports and events
+     * Ensuring compliance with the following;
+          + Health and Safety procedures
+          + Responsible Gambling and Self-Exclusion Guidelines
+          + Security procedures
+          + Think 21
+          + Cost Control
+     * Maintaining high shop standards, taking pride in the shop and ensuring all colleagues adhere to the company uniform policy.
+     * Ensuring the shop is clean and a shop tidy is completed at regular intervals when on duty.
+     * Ensuring the Customer Service Managers understand the company's product offering, both in shop and online to enable them to have confident conversations with customers.
+     * Supervising the shop &amp; team in the absence of the Shop Manager to maximise shop profitability, through promotion of products.
+     * Contributing to a safe and enjoyable environment where colleagues and customers feel welcomed and engaged.
+     * Having commercial awareness and understanding how they can personally impact the shop's profitability.
+
+   What do you need to be successful in this role?
+     * Passion for delivering great customer service
+     * The ability to build strong relationships and communicate effectively
+     * Self-motivated with strong organisation skills
+     * Happy to work autonomously or part of team
+     * The ability to adapt and learn
+     * Ability to deal with tough situations in a calm and professional manner
+
+   Additional Information
+
+   Benefits
+
+     * 28 days annual leave (inclusive of bank holidays)
+     * Pension Scheme
+     * Specsavers Eye care Vouchers
+     * Reward Arena Scheme - Allowing discounts to over 500 different retailers
+     * Performance based cash incentives paid every pay run
+     * Overtime subject to availability
+     * Staff recognition award nights
+
+   Your Development
+     * A clear and achievable career path
+     * Full and comprehensive training programme:
+          + 2 days Face to Face Induction session with a Regional Trainer to give you the best start when joining the business.
+          + All new starters complete a blended online and on the job journey, with the goal to becoming signed off to duty manager in 8 weeks; with dynamic web based content on the Ladbrokes Coral Academy and support from your colleagues.
+          + Ongoing performance development with your Line Manager to receive regular feedback and plan your personal development.
+          + An advancement programme to take you on a structured journey to becoming a Marketplace Manager of the future or even the potential for advancement to other parts of the business.
+          + The LCG Huddle (the company intranet) is available 24/7 so that you can access information on development tools and advice and gain even more knowledge and access to the wider business.
+
+   Working Patterns
+   In Most of our shops opening hours are between 8am - 10pm Monday to Sunday.
+   In this role you will work 4 out of 7 days, which will include weekend and Bank Holidays.
+   Shifts are devised on a rota basis and will change weekly in order to keep shifts fair across the team.
+
+   You must be 18 years old or over to work in one of our betting shops.
+   About The Company
+
+   At Ladbrokes Coral, we believe we've got the best brands in betting and gaming; and the best people behind them too. Our recent acquisition by GVC combined more than 230 years of heritage and opened up a world of exciting opportunities for the future of our business.
+
+   With the biggest UK retail estate in the industry, a growing digital business and an ever-expanding international presence, we want to be the world's best betting and gaming company, where customers want to play and people want to work.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>65758524fa744306a59c7fdd83ba6c52</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Ladbrokes Betting &amp; Gaming Ltd.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>ladbrokes.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>careers.ladbrokescoral.com/vacancies/27578/customer-service-csm-20hrs.html</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

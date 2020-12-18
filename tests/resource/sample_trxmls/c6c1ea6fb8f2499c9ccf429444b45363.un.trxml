@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Multi-Skilled Maintenance Engineer
+          + Job Reference: 6857640
+          + Date Posted: 11 July 2019
+          + Recruiter: Venn Group Limited
+          + Location: Salford/Trafford
+          + Salary: £38,000 to £42,000
+          + Sector: Housing
+          + Job Type: Contract
+          + Duration: Permanent
+          + Work Hours: Full Time
+       Apply for this job now
+
+Job Description
+       Job Title: Multi-Skilled Maintenance Engineer
+       Reference: 6857640
+       Venn Group has been approached by an established contractor to recruit a Multi-Skilled Maintenance Engineer on a on a permanent basis.
+       As the successful candidate you will have previous experience in Electrical and mechanical maintenance support to sites as part of a Maintenance team.
+       The duties will include:
+       * Respond to breakdowns across three sites
+       * Repair, modify and improve all areas of plant within the group
+       * Carry out plant improvement projects
+       * Assist with maintenance of the plant as required
+       * Apply the highest standards of health and safety during all tasks, as per company procedures
+       * Be a proactive member of any continuous improvement initiatives
+       * To be proactive on each site and identify work that needs to be carried out
+       * Work with other members of the Maintenance team and all employees on site to ensure smooth running of the plant
+       Essential Skills/Qualifications:
+       * Relevant electrical and mechanical qualifications preferably time served
+       * Electrically biased with a firm knowledge of mechanical maintenance preferred
+       * Minimum of 2 years' experience
+       * Recycling/Process/Quarry industry experience desirable
+       * Experienced in production environments
+       * Working knowledge of conveyor, bearings, gearboxes and motors required
+       * Basic knowledge of Siemens S7 (fault finding) desirable
+       * Familiar with 110/240/415V and control circuits
+       * Must be able to read electrical drawings
+       * Basic electrical fault finding and disconnect/reconnect required
+       * Full driving license / own transport essential
+       * Ability to organise, plan and procure materials for medium sized repair or upgrade works
+       * Positive, can do attitude and self-motivated
+       * Well organised and works well under pressure
+       * IT literacy and advantage
+       * Excellent interpersonal skills
+       To discuss this position in more detail or to apply please send an up to date CV to northeng@venngroup.com or call Sam Cornwell or Joe Williams on 0161 830 1830.
+       Venn Group is an equal opportunities employment business and employment agency and welcomes applications from all candidates.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>c6c1ea6fb8f2499c9ccf429444b45363</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Venn Group</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>venngroup.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>venngroup.com/jobs/multi-skilled-maintenance-engineer-salford-trafford/18795-1</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

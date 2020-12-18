@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Oracle Transportation Management Developer
+
+   Job ID
+   99641
+   Location
+   Reston, Virginia, United States
+   Job Type
+   Contract
+   Industry
+   Power
+
+   Talascend is currently seeking an Oracle Transportation Management Developer for a contract opportunity located in Reston, VA.
+
+   OVERVIEW:
+
+   Candidate should be very strong in OTM/GTM (Version 6.2 and above, preferred 6.4.2) Technical Development experience, specifically supporting and implementing/integrating Shipping and Transportation Management with ERP such as EBS, SAP, JDE etc.
+
+   RICE development: Design and development of integration RICE objects for the Oracle Transportation (OTM) and Global Trade Management (GTM).
+
+   Experience with Oracle R12, R11i or another ERP application is a distinct advantage.
+
+   POSITION REQUIREMENTS:
+     * Four (4) year degree or equivalent experience
+     * 6 years or more of technical experience in Oracle Transportation (OTM) and Global Trade Management (GTM) modules
+     * Superior knowledge of SQL (Oracle) and stored procedures
+     * OTM/GTM technical expertise:
+     * Write complex Automated Agents, workflows (Saved Queries, Saved Condition, Agent Actions, Events etc.)
+     * Inbound and outbound integration - Order Release, Planned Shipment, Tender Offer, Response, Invoice, Shipment Status, Actual Shipment and Allocation Base, Invoice, Trade Transaction, Trade Transaction line, Customs Info integration, AES Filing
+     * OutXML Profile Trimming, setting up External systems/API to communicate to internal and external engines (Out of the box and custom)
+     * Purge process and setup
+     * Create and Modify XSL, XML, JavaScript, CSS and Custom action checks
+     * Execute unit and system testing for all scenarios
+     * Debug and fine tune Agent locks and threads and aware of its corresponding tools
+     * Create BI Publisher reports with in OTM and GTM
+     * Exposure to setting up FTI (Fusion Transportation Intelligence)
+     * Experience in Microsoft Excel macros, VB and to facilitate mass upload of transportation rates in OTM
+
+   DESIRED QUALIFICATIONS:
+     * Understanding of Advanced Shipment Planning and Execution for all domestic and International Logistics
+     * Consolidated Invoices
+     * Exposure to Item Classification, Export/Import and Custom filing and integration to other 3rd party tools (Descartes, Customs Info etc.)
+     * Dock scheduling
+     * Continuous moves
+     * Cloud implementations (IaaS, PaaS, SaaS)
+
+   We thank all applicants for their interest. However, only those qualified individuals who closely meet the qualifications of the position will be contacted. The details of the position are only a summary, other duties may be assigned as necessary.
+
+   Background Check and Drug Screen may be required for this position.
+
+   Apply Now
+
+   Talascend is an EEO Employer  Minorities/Females/Disabled/Veterans/Gender Identity/Sexual Orientation
+
+   Start a new job search</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>21cf0cc0fbb04c6cbf6393c23725934a</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Talascend LLC</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>talascend.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>talascend.com/99641</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

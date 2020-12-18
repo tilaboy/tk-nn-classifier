@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>English NQT - Highgate, North West London -September 2019
+     __________________________________________________
+
+   Job Reference: EGNQT3
+
+   Job Start Date: 9 September 2019
+   Position Type: Long Term / Permanent
+   -
+
+   Sector: Secondary (age 11-18)
+   Role: Supply Teacher, NQT (Newly Qualified Teacher), NQT, Teacher
+   Subject: English Language, English Literature, English
+   Location: North West London
+
+About the job
+     __________________________________________________
+
+English NQT - Highgate, North West London -September 2019
+     __________________________________________________
+
+   Are you a trainee teacher with a background in English looking for your first teaching role in a secondary school, starting September 2019?
+
+   Surround yourself with inspirational Teachers as you become a English NQT at this Supportive school in in the Highgate area!
+     __________________________________________________
+
+     * English NQT
+     * Full Time - Permanent position
+     * MPS1 - Inner London salary
+     * In Highgate, North West London area
+     * Very Intensive NQT/ Induction programme
+     * Great supportive CPD
+     * Popular &amp; high Achieving secondary school
+     * September 2019 Start - Interviewing Now
+     __________________________________________________
+
+   THE SCHOOL:
+
+   Found in the Highgate area, this school is an inclusive secondary school and is easily accessible using public transport. The school makes it a priority to support pupils from challenging backgrounds and has a higher than the national average intake of EAL pupils. It is currently an 'Outstanding' school. The high standards imposed by this secondary make it the first choice for parents in the area, and is regularly oversubscribed.
+     __________________________________________________
+
+   IN ORDER TO APPLY FOR THIS PROSPERO TEACHING OPPORTUNITY:
+
+   To be considered, you must be a forward-thinking English NQT / Trainee Teacher who has good knowledge of the English curriculum. Your role will include working in a close-knit team of experienced teachers. You will inspire and engage students, ks3 up to GCSE, and teach them the necessary information and skills within the curriculum to a high standard.
+
+   As a English NQT, you will be teaching as part of a high-achieving English Department and you will be using the CPD schemes to develop new teaching techniques and approaches. Understand the value of teamwork as part of a cohesive department and be happy teaching up to GCSE. In this post you will be working with talented educators. In general, you will be working under a dedicated Head of Department who takes into account the ideas of the team.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>03099ae04d8940a6b4f2eb7cb8cc4178</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Prospero Recruitment Ltd</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>prosperoteaching.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>prosperoteaching.com/jobs/english-nqt-highgate-north-west-london-september-2019</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

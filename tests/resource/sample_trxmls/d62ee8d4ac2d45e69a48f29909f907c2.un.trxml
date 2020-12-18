@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>CRM Executive
+
+   Our Mission
+
+   'To create the finest retail experiences.'
+
+   Our Vision
+
+   "Continuously enhancing the quality of our customer experience, the lives of all our employees, the performance of our brand partners, and the communities where we do business."
+
+   Why start your journey at McArthurGlen?
+
+     * You'll be part of the best team in the industry, both locally and across our international business
+     * We are committed to building and operating a world-class organisation where you can be collaborative and create your career
+     * You will have the tools and ownership you need to succeed: we want everyone to love what they do
+     * You'll receive an attractive base salary and excellent bonus scheme
+     * We offer great benefits varying by country, including, fitness allowance, shopping deals &amp; discounts and many more
+     * You could be part of cross-departmental, international projects with opportunities to travel
+     * 92% of our employees would recommend us as a good place to work
+
+   Role Purpose...
+
+   To support the CRM Manager across campaign and project management, evaluation and analysis whilst enhancing our overall CRM marketing efficiency.
+
+   What you'll be doing...
+
+     * Managing campaign building and delivery for B2C email CRM marketing
+     * Evaluating and reporting on all email campaigns for internal evaluation
+     * Supporting the evaluation and development of ExactTarget audience data to enhance our overall CRM marketing efficiency
+     * Liaising with external agencies
+     * Working with internal stakeholders and wider marketing teams
+     * Supporting any new digital or CRM initiatives
+
+   About you...
+
+   * Previous experience as a CRM executive / analyst gained within a marketing or customer focused role
+   * Good working knowledge of ExactTarget especially campaign and journey building, data segmentation and analytical tools
+   * Second language of German, French or Italian desirable
+   * Experience within retail would be an advantage
+   * Data driven and analytical in mind set with an ability to challenge the status quo
+
+   Capabilities
+
+   Success = Right Strategy + Communication + Enable Self and Others + Excellent Execution
+
+   We are an equal opportunity employer and value diversity in our business. We would love to hear from you so please start your journey with us by applying online with your CV
+
+   United Kingdom
+
+   London Head Office
+
+   Marketing
+
+   Permanent</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>d62ee8d4ac2d45e69a48f29909f907c2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>McArthurGlen Group</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>mcarthurglengroup.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>mcarthurglen.com/en/careers/job?jobid=2190&amp;jobtitle=crm+executive</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

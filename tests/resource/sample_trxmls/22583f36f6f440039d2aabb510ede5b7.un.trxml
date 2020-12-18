@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Finance Analyst | Global Business | Nottingham
+
+   Salary    £30000.00 - £35000.00 per annum
+   Location  Nottingham, Nottinghamshire
+   Job Type  Permanent Jobs
+   Sector
+   Accountancy &amp; Finance
+   Job Ref   HQ00061694
+   Published about 10 hours ago
+
+   Contact Greg Statham about this role
+
+Job Description
+
+   Commercial Analyst - Nottingham - £30,000 - £35,000
+
+   Macildowie are currently recruiting for a global manufacturing business who are looking to appoint a Commercial Analyst into a newly created role at their UK Head Office. You will be responsible for delivering the budgeting, forecasting, reporting, cost control and commercial analysis that will help to drive business results.
+
+   My client are going through an exciting phase of strategic re-alignment, focusing on business performance and allowing entrepreneurial freedom within their leadership teams. This newly created position will help to give a competitive commercial edge and is seen as a critical appointment to the UK team.
+
+   So what are the core responsibilities?
+     * Prepare Budgets, Forecasts and Cost Analysis
+
+     * Deliver Commercial analysis across the business, to maximise profitability and margin
+
+     * Support the production of Financial Statements
+
+     * Generate KPI reporting and offer insight into the levers that need to be pulled.
+
+     * Assist in month-end, quarterly and year-end process as needed.
+
+     * Own the business intelligence tool, taking full advantage of its capabilities
+
+     * Drive continuous improvement mentality into your business units
+
+   In order to be successful in your application, you are likely to be a late stage studier or someone with at least 3 years' experience in a similar role. You are likely to be working as a Finance Analyst, Commercial Analyst or Commercially focused Management Accountant position, looking to take your next step.
+
+   You will have a good understanding of BI tools, looking to use data to aid decision making and you will enjoy getting down to a granular level, but also with the ability to step back and understand the broader commercial context.
+
+   If this sounds like the role that you have been waiting for, then get in touch, let's talk.
+
+   Macildowie is a specialist recruitment consultancy with a rich history of enhancing the careers of professionals across the Midlands and the Northern Home Counties. We have an unrivalled understanding of the local market place and recruit for the majority of the region's premier employers. To search for all of our live jobs please visit us at http://www.macildowie.com.
+
+   Macildowie are a recruitment business working on behalf of a client to recruit this role. Your personal data may be forwarded to that client company as part of the application process. After applying for this role you'll be sent a request for your consent to hold your data on our systems. If you would like information on how we will process your data please go to our website and view our fair processing notices which are located at the bottom of the page under privacy policies. Within the fair processing notice for Candidates there is guidance on how to amend your contact preferences or exercise your rights relating to personal data. We can't provide direct links as email address and website urls within our job adverts are removed by some of the websites on which we advertise.
+
+Job Location</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>22583f36f6f440039d2aabb510ede5b7</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Macildowie Associates</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>macildowie.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>macildowie.com/jobs/finance-analyst-global-business-nottingham</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

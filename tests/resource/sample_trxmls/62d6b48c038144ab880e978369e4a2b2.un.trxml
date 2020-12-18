@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Customer Advisor
+
+   Job reference: 104841BR
+   Location: Marlow, Market Square
+   Function area: Store Colleagues
+   Shift pattern: Part-time
+   Contract type: Permanent
+   Hours per week: Less than 16 hours per week
+   The importance of your role.
+
+   This is your chance to be part of something a bit different. You'll be working closely with the most important part of our business - our customers. Giving them fantastic customer care and making them feel good, and we think that's a great opportunity.
+
+   You'll really get to know our customers and what they're looking for; it's everything from helping them find the perfect product, working deliveries and stocking the shelves, to getting behind our in-store promotion.
+
+   What you'll be doing day to day.
+
+   Listen to our customers, it's the first step to providing a great experience and we love how passionate our customers are about our brand.
+
+   Put our customers at ease. You'll get to know our fantastic products, recommending items that they hadn't considered. You're really personable approach will keep our customers coming back.
+
+   Provide a great shopping environment for our customers ensuring our stores are clean, tidy and presentable and provide a store we can be really proud of.
+
+   Inspire the in-store team with your really personable customer care, helping them any way you can.
+
+   How will you do it?
+
+   Make our customers feel really good - it's more than just answering their questions, it's about giving our customers a really great experience. Even if it's just offering them a basket when you notice their hands are full. You'll let them know you're here to help - it's the little things that make a real difference.
+
+   Get to know our in-store promotions and schemes, and promote them - the more info we can give our customers the better.
+
+   Know our customers, find more about them, what they like and what they don't - it can make such a difference to the way we do things.
+
+   What you'll need to have.
+
+   We're looking for really great people, with a friendly personality. It's all about working together as one great team - after all it's our people that are at the heart of our business. You never know it could lead to another role with us. It would be great if you had experience of dealing with customers. But it isn't just about experience, it's personality that really counts, we're interested in seeing a bit more, the real you - and that makes us all feel good.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>62d6b48c038144ab880e978369e4a2b2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Boots Company PLC</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>boots.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>boots.jobs/jobs/104841br-customer-advisor-2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

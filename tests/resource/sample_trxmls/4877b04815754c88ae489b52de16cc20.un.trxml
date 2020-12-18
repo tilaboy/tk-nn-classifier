@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Back to Job Search
+
+Interim Associate Director - Digital Analytics
+
+     * Location Twickenham, London
+     * Reference BBBH90370
+
+     * Salary Negotiable
+     * Specialisation Pharma and Life Sciences
+     * Posted July 25, 2019
+
+   VACANCY
+   INTERIM ASSOC DIRECTOR - DIGITAL ANALYTICS
+   LOCATION
+   South-West London
+   START DATE
+   July / September
+   DURATION
+   6 Months (likely to extend)
+   SKILLS
+     * Digital Analytics Experience in Pharmaceutical Marketing / Pharma Business
+     * Expertise in Marketing Analytics and Reporting for CLM/Digital
+     * Experience Creating and Evolving Analytical Dashboards to support brand awareness or engagement
+     * Excellence in Project/ Programme Management
+     * Proven Team Management
+
+   TASKS
+     * Provide support across the EMEA region; developing digital analytics and dashboards
+     * Collaborating with EMEA Brand Managers/ Directors to Create Insights
+     * Proactively Capturing Requested and Required Changes from Stakeholders
+     * Manage, develop and Evolve the Closed Loop Management (CLM) Dashboard
+
+   RATE
+   All-inclusive daily rate / £
+   Apply Save Job
+
+Latest Jobs
+
+Data Analyst
+
+   London, England
+   I am currently on the lookout for a Data Analyst to come on board and work closely with the Anal... 23 days ago
+   view all
+
+Email Job Alerts
+
+   By submitting your details you agree to our T&amp;Cs</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>4877b04815754c88ae489b52de16cc20</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Investigo Limited</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>investigo.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>investigo.co.uk/job/interim-associate-director-digital-analytics</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Detachering / interim</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

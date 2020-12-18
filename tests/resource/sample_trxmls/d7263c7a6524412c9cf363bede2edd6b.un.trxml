@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Optical Consultant Apprentice
+
+   Job reference: 103188BR
+   Location: Woking, Commercial Way
+   Function area: Apprenticeships, Optical Support Colleague
+   Shift pattern: Full-time
+   Contract type: Permanent
+   Hours per week: Over 35 hours per week
+   The importance of the programme
+
+   We take our early career development very seriously at Boots. We've got a long history of running successful apprenticeship programmes and we really want to help you achieve your full potential. This exciting Optical Consultant apprenticeship gives you the chance to earn a real wage whilst you learn.
+
+   How will you do it?
+
+   Boots Opticians are proud to offer exceptional customer and patient-centred care every day. As an Optical Consultant apprentice you will gain the; knowledge skills and behaviours to enable you to deliver expert advice and support and be able to have great conversations with our customers and patients about their eyewear needs.
+
+   The optical world is often a fast paced environment; you will be a core member of the optical practice team. You will have the opportunity to interact with a variety of different individuals with very diverse backgrounds.
+
+   What you'll be doing day to day in your apprenticeship
+
+   It's all about providing great support and advice through focussed conversations with our customers and patients, whilst giving clear, accurate answers to any queries they may have. You will learn how to be become an active and important part of our optical team.
+
+   Your duties will include:
+     * Providing key information and advice to customers, to help them select the best products and services to ensure they see, look and feel better than they ever thought possible
+     * You'll keep up-to-date with all the new lines and promotions within your practice, so that you can always provide customers with the most up-to-date information
+     * Having the right conversations with every customer to ensure they leave Boots Opticians feeling informed and confident about their eyewear choices
+     * Be great in building relationships with your team colleagues, ensuring your patients and customers receive excellent customer care
+     * Working alongside the Optometrist and the optical team to ensure you abide by all optical regulations and governance to ensure everything you do is legal, safe and right for the customer
+
+   What you'll need to have
+
+   You will also need to be aged 16+ when you join us.
+
+   Our ideal apprentice is someone with a genuine passion to do the right thing for our customers and provide them with the best care possible. You will have the ability to build strong relationships with customers and your team, and will be able to understand individual customer needs and tailor your support and advice appropriately.
+
+   We're looking for people with friendly personalities; it's all about working together as one team and this is a fantastic opportunity to add to your own development and confidence together with a chance to learn more about us as a business.
+
+   This could be the start of a great career with us and remember - we're interested in seeing the real you and what you can achieve.
+
+   The Benefits
+
+   Competitive training wage, with an attractive increase upon completion of the apprenticeship
+
+   Gain valuable work experience in a full time role
+
+   Great opportunities for further career progression
+
+   Boots Opticians uniform
+
+   Benefits: Boots employee discount card, pension plan, holiday entitlement, access to our amazing benefits box, which allows you to choose benefits that suit you, including travel loans and discounts to cinemas and restaurants. Also being on the Optical Consultant apprenticeship programme allows you to apply for an NUS Card, giving you lots of additional high-street and online discounts.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>d7263c7a6524412c9cf363bede2edd6b</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Boots Company PLC</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>boots.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>boots.jobs/jobs/103188br-optical-consultant-apprentice-2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

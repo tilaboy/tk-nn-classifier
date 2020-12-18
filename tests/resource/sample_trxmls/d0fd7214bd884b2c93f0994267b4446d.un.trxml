@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>* United Kingdom Search/
+     * EMEA VAT Manager, Manufacturing
+
+EMEA VAT Manager, Manufacturing
+
+   Location:
+   Crawley
+   Job Type:
+   Permanent
+   Ref:
+   BBBH734407
+   Salary:
+   £50k - £60k
+   Post date:
+   25/06/2019 - 11:00
+   Consultant:
+   Emily Thomas
+
+   A multinational manufacturing company is recruiting for an EMEA Tax Manager in a permanent job based in Crawley. This role will incorporate VAT compliance as well as Personal Tax filings and Transfer Pricing documentation.
+
+   The company are a manufactoring giant with offices based in both Central London and in the South East. The company are offering progression and internal opportunities alongside a fantastic working environment. This EMEA VAT Manager job has come about through natural expansion and is an excellent opportunity to join a dynamic organization at an exciting time of their growth.
+
+   Key Responsibilities:
+     * Retrieving and ensuring Corporate and VAT reports are reviewed and submitted on time
+     * Managing VAT and Income Tax payments to Tax Authorities
+     * Managing VAT Account Reconciliations process
+     * Determine Income Tax obligations where required to support the expanding supply chain
+     * Performing contracts reviews and ensure tax language is appropriate
+     * Providing Tax support with potential new supply chains
+     * Communicating and coordinating VAT and Tax issues across all key stakeholders.
+
+   About you:
+     * Minimum of 5 years relevant VAT experience
+     * You will have multinational experience and a good understanding of VAT compliance processes.
+     * You will need to have the ability to identify VAT process weaknesses and implement process improvements.
+     * You will also be able to demonstrate strong written and verbal communication skills.
+
+   Morgan McKinley is acting as an Employment Agency in relation to this vacancy.
+
+   Please note that any references to salary or pay rates in this advertisement and in the salary refinement section are indicative only and should only be used as a guide.
+
+     * Apply for this job
+
+   Emily Thomas
+   Associate Consultant | Tax Recruitment
+   +00442070920140
+   emilythomas@morganmckinley.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>d0fd7214bd884b2c93f0994267b4446d</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Morgan McKinley</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>morganmckinley.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>morganmckinley.com/jobs/emea-vat-manager-manufacturing</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

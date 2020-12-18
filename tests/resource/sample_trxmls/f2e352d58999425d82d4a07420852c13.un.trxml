@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Interim Reporting Actuary
+
+   Apply Now
+   Location: Scotland, Scotland
+   Salary: Up to £900 per day
+   Posted: about 8 hours ago
+   Contract Type: Contract
+   Industry: Actuarial
+   Contact Name: Luc Atkinson
+   Contact Email: Luc.Atkinson@ojassociates.com
+
+Luc Atkinson
+
+   Senior Consultant, UK
+     * Email Address: luc.atkinson@ojassociates.com
+     * Phone Number: +442038619128
+
+   See more of Luc Atkinson's jobs
+
+Interim Reporting Actuary
+
+   Oliver James is working with a leading life insurer that is looking for Actuaries from a reporting background.
+
+   The assignment will be based in Scotland, and the contract will be 3-6 months in duration with excellent day rates on offer.
+
+   Experience with the likes of IFRS and Solvency II will be strongly preferred although other metrics will be considered.
+
+   Could you be interested in a new interim role? Please contact Luc Atkinson for more information on 0203 861 9128, or send your updated CV to Luc.Atkinson@OJAssociates.com.
+
+   If you are a seasoned contractor or a permanent member of staff considering contracting, we have a wide selection of UK/ Europe/ USA/ Asia based contract opportunities working within the Actuarial field, so please don't hesitate to get in touch with me for a confidential conversation.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>f2e352d58999425d82d4a07420852c13</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Oliver James associates</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>ojassociates.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>ojassociates.com/job/interim-reporting-actuary-2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Detachering / interim</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

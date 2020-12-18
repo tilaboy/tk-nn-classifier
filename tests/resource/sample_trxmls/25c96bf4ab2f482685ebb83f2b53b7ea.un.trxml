@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>All Bar One O2
+
+   Waiting Staff
+
+   As part of our Waiting Team, you are the friendly face our guests see every visit. You keep them coming back by providing exceptional service, guiding the guest around the business, and helping them exploring the menu. Without dedicated team members like you, it wouldn't be possible. Feeling proud... We're looking for Waiting Team members who bring a natural sense of pride to everything they do. You'll: * Be a champion of hygiene, cleanliness and brand standards * Be proud of the service you deliver * Always be looking to learn from others * Be positive and energetic, leading by example and setting team standards Feeling supported... We'll always support our teams, because we know how important you are to our guest experience. Our teams are welcoming and there's a strong sense of teamwork here. Everyone helps each other out. At the same time, we'll support you with career development too. Because we encourage people to work across brands and to develop their leadership skills, you
+   have lots of opportunities to progress in the future. We offer our teams: * Formal training programmes * Leadership development * Opportunities to move to different brands under the Mitchells &amp; Butlers umbrella to advance your career Feeling rewarded... * A massive 33% off at ALL of our 17 brands for you and up to 5 family members or friends * Flexible shift patterns * 28 days' holiday allowance * Access to shopping discounts with many leading UK retailers * The option to opt into our company share schemes (e.g. Free Shares Plan) * A company contributing pension plan ABOUT US Every day is made up of individual moments. At All Bar One, we see them all. The breakfast business meetings over coffee, the shopped-till-you-dropped lunchers, the casual evening diners and the post-work socialisers. In our bars, every moment brings a different challenge and a new opportunity. If you're ready for anything and you know how to make every type of guest feel welcomed and valued,
+   you'll love it here.
+
+   Competitive
+
+   2 The O2, London SE10 0DX, UK
+
+   Full Time
+
+   Engaging Personality
+
+   Enjoys meeting new people
+
+   Passionate about food, drink and great service</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>25c96bf4ab2f482685ebb83f2b53b7ea</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>All Bar One O2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>mbplc.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>harri.com/all-bar-one-o2-2/job/1030195-waiting-staff</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

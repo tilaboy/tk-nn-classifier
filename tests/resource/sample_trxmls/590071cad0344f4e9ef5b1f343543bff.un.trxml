@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>FullStack Software Developer (Permanent)
+
+   LOGIN TO APPLY
+   LOCATION
+   Leeds, West Yorkshire, United Kingdom
+   APPLY BY
+   25 JUL 2019 ( 29 days left )
+   SALARY
+   £40,000.00 (per Annum) - £50,000.00 (per Annum)
+   APPLICATIONS
+   0 People
+   Full-Stack Software Developer
+   Leeds
+   £40,000 - £50,000
+
+   Do you take pride in your code?
+
+   Looking to build on the foundations you already have set in place?
+
+   My client are looking for a self-motivated Full-Stack Developer with attention to detail to join their growing yet well-established company.
+
+   Their tailored solutions are built around core concepts and capabilities derived from real-world experience combined with leading edge technologies that create a natural feel - largely self-managing and highly adaptable. Most importantly, they are designed to deliver true bottom-line impact.
+
+   As a .NET Developer you will be aligned with one of the company's agile product and development teams, working together with Product Owners, Software Developers and QA to realise the product roadmap as well as provide product support through bug fixes so good communication skills will be essential.
+
+   You will be required to understand and contribute to your team's product protocol, whilst following and enforcing quality software practice and processes within the team. You will be working across the full development lifecycle, gaining deep knowledge of the product whilst using a broad modern technology stack.
+
+   Required Skills:
+
+   *C# &amp; .NET Framework
+   *ASP.NET MVC &amp; Web API
+   *HTML, CSS, JavaScript
+   *Databases e.g. SQL Server / RavenDB
+
+   Desirable Knowledge:
+
+   *Software Design Patterns
+   *SOLID Design Principles
+   *Object Oriented Programming
+   *Asynchronous Programming
+
+   If this is an opportunity you may be interested in please call James Chapman on [Removed] or email your CV to jameschapman isluk.co.uk
+
+   ISL (Incite Solutions Ltd) is acting as an Employment Agency in relation to this vacancy.
+   LOGIN TO APPLY
+
+Share This Job</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>590071cad0344f4e9ef5b1f343543bff</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Red Recruitment</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>ratedrecruitment.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>ratedrecruitment.co.uk/jobs/137473-fullstack-software-developer</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

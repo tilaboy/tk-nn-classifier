@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Cardiac Physiologist
+
+     * Location:Manchester
+     * Salary: £40.00 p/h
+     * Consultant:Ben Hart
+     * Telephone:07867459590
+
+Description
+
+   Discard Job Call Back ApplyQuick Apply
+
+More Jobs Like This
+
+     * Echocardiographer
+          + £40.00 p/h
+          + Bedfordshire
+       RIG Healthcare are the leading agency in Imaging across the UK, offering the best pay, service and experience.…
+       Read More Save
+     * Echocardiographer
+          + £42.00 p/h
+          + Bedfordshire
+       Description Description RIG Healthcare are the leading agency in Imaging across the UK, offering the…
+       Read More Save
+     * Echocardiographer
+          + £42.00 p/h
+          + Surrey
+       Description RIG Healthcare are the leading agency in Imaging across the UK, offering the best pay, service…
+       Read More Save</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>0a1b515e707f4a49808e12d72947d431</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>RIG Healthcare</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>righealthcare.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>righealthcare.co.uk/job-details/cardiac-physiology/manchester/cardiac-physiologist/?id=238.052.17881&amp;key=rad</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Paralegal
+
+   [Forward to a friend]
+   Term: Permanent
+   Working hours: Full-time (09:30 - 17:30)
+   Reports to: Charlotte Cook
+   Team: Housing and Local Government
+   Location: London
+   The firm
+
+   Winckworth Sherwood is an exciting, diverse and growing business. Joining our team will see you work with some of the UK's most interesting clients.
+
+   In the last year alone we have:
+     * Worked on corporate transactions valued at over £3 billion
+     * Advised our developer and social housing clients on over £1.6 billion of residential sales and over £1 billion of refinancings
+     * Advised on HS2 which will see the development of over 330 miles of railway network with an expected £59 billion benefit to the wider economy
+     * As if that wasn't enough, we are also involved in the transformation of Battersea Power Station and act for the majority of London's major Housing Associations who together own assets of over £17.3 billion.
+
+   However it's not all about big numbers and high-profile projects; the real success of our business comes from the ability of our teams to provide fantastic service and create long-lasting relationships.
+
+   The role
+
+   We are looking for a paralegal, preferably with some property experience, to assist in the Housing and Local Government team.
+
+   Day to day role to include:
+     * residential property sales and purchases (freehold and leasehold),
+     * licences to assign, to underlet and for works,
+     * negotiating and completing s38 and s104 agreements, and other dealings with gas/electricity/water services providers
+     * dealing with land registry applications and requisitions (identifying titles, ordering title and other documents from the Land Registry and/or third parties)
+     * ad hoc research and miscellaneous queries
+     * assisting on larger scale transactional work
+     * organising indemnity insurance policies;
+     * carrying out pre-completion searches and dealing with all post-completion matters.
+
+   The team
+     * The department is made up of approximately 30 professional and 5 support staff, operating in a range of legal disciplines - mainly property development, banking, corporate and governance and real estate.
+
+   Client base and type of work
+     * We act for a range of businesses, both for-profit and not-for-profit, mainly in the property development, regeneration, leisure, local government and funding spheres.
+
+   Aims of the department
+     * We aim to provide a first-class service to our clients on terms that represent good value both to our clients and the firm.
+
+   Candidate specification
+     * Organised, thorough and systematic
+     * Adaptable and able to juggle various work types!
+     * Has an approachable and friendly manner - you will be dealing with the firm's professional and support staff, other solicitors, and with clients
+     * Reasonably numerate, although the role does not require detailed calculations or financial analysis, and personal skills are more important than being a wizard with spreadsheets.
+     * Preferably will have some office experience
+     * May suit a graduate wanting to gain experience in a law firm</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>b6c6e2ce04bb478aa0fa61a5af624588</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Winckworth Sherwood LLP</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>wslaw.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>allhires.com/wslaw/positiondetail.aspx?id=236&amp;a=&amp;n=&amp;returl=/wslaw</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

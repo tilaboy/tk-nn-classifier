@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Modern Foreign Language / MFL Teacher Needed in Huddersfield
+
+   Location
+
+Bradford, Yorkshire and Humberside
+
+   CONSULTANT
+
+Eleanor Gray - 0113 331 4945
+
+   Job Description
+
+   Modern Foreign Language / MFL Teacher needed in Huddersfield
+
+   Are you a passionate Modern Foreign Language / MFL Teacher? Are you looking for a new challenge? Do you have excellent classroom management skills?
+
+   A secondary school in Huddersfield is seeking to recruit a qualified and enthusiastic Modern Foreign Language / MFL Teacher to enrich the learning and development of their KS3 &amp; KS4 students to start in September. The school is looking for a Modern Foreign Language / MFL Teacher who is able to create engaging and innovative lesson plans, demonstrate effective teaching practices and strong behaviour management skills.
+
+   The position is initially on a week by week basis with the potential to go full-time and will include planning and assessment, under the guidance of the Head of Department. The successful Modern Foreign Language / MFL Teacher may also be required to provide individual plans for Learning Support Assistants to follow when working on a 1:1 basis with SEND students.
+
+   As a member of the TeacherActive supply team, you should expect to enjoy the following benefits:
+
+   * Market leading daily rates of pay
+   * A dedicated team of consultants with an in-depth knowledge of our industry
+   * The opportunity to make a genuine difference
+   * Free career and recruitment advice
+   * TeacherActive Referral Scheme - receive a gift when you refer a friend *Terms and Conditions apply*
+
+   All of our supply staff are paid on a PAYE basis, so you can rest assured that you're paying the right level of Tax and National Insurance and there's no messing around with admin charges coming out of your hard earned cash.
+
+   To apply, please contact Ellie on 0113 331 4945 or email your CV to [email protected]
+
+   All applicants will be contacted to discuss suitability and then invited to register with TeacherActive.
+
+   Registration involves an enhanced DBS check, ID checks and will require you to supply good professional references. We pride ourselves on excellent service. We can provide a wide range of opportunities in schools and other educational institutions, with good rates of pay, at times to suit your needs.
+
+   Regular external audits have shown repeatedly that our standards are exceptional. We are passionate about finding the right staff for each environment.
+
+   TeacherActive is an equal opportunities employer, and operates as an Employment Business in providing temporary or contract job-seeking services.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>5efee6ada5844b99935daa776af14aa6</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>TeacherActive Limited</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>teacheractive.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>teacheractive.com/job-detail-page/modern-foreign-language-mfl-teacher-needed-in-huddersfield-495998</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

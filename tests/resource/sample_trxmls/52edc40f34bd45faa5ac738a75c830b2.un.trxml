@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Just Added Ending soon
+
+HGV Driver
+
+   Job Reference: HLZZ981J
+   Location: Greenford
+   37.5
+   Greenford UK
+   TEMPORARY
+   The Best Connection
+   2019-07-16
+   2019-07-23T00:00:00+01:00
+   Salary: £10.50-14.00 per hour
+   Higher pay rate is achieved by: Signing up to a LTD company
+
+   Contract Type: Temporary, Full time
+
+   The Best Connection are currently recruiting for LGV Class 2 Drivers, for our Greenford based Logistics client,
+
+   As a LGV Class 2 Driver, you will be responsible for:-
+     * The job will be doing trunking at night
+     * Starting times range from 20:00 to 23:00
+     * Ongoing Work available
+     * 8 - 11 hr Per Shift
+
+   Requirements and pay rates for LGV Class 2 Driver:-
+     * Verifiable references
+     * The pay rate for class 2 drivers starts at £10.50 for PAYE and £14.00 if you are registered as a Limited Company
+     * The work is five days a week on a rota basis, which may include weekends and bank holidays
+
+   The ideal candidate for Class 2 driver will require the following:-
+     * Digital Tachograph
+     * Class 2 Category C Licence
+     * CPC card
+     * We accept up to 6 points with none of the following codes: DD, DR, CD4.
+
+   Working for The Best Connection as a Class 2 driver you will benefit from:-
+     * Weekly Pay Via BACS each Friday
+     * 28 days holiday (PAYE)
+     * PPE given
+     * Access to pension (PAYE)
+     * 24 hour emergency contact
+
+   The Best Connection driving division are the largest suppliers of Professional agency drivers in the UK with a network of over 80 branches across the UK.
+
+Additional Benefits &amp; Requirements
+
+     * 28 days Paid Annual Leave pro-rata for PAYE (inclusive of statutory holiday)
+     * Canteen
+     * CPC Driver Qualification Card
+     * Digi-Card Required
+     * Licence - Category C
+     * Overtime Available
+     * Weekend Work
+
+   Call 0208 998 9910 and ask for Zoltan or Parnie
+   Apply with TBC
+
+   View other driving jobs online from the Hanger Lane branch. Call them today on +442089989910.
+
+   Tweet</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>52edc40f34bd45faa5ac738a75c830b2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>The Best Connection Employment Group</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>thebestconnection.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>thebestconnection.co.uk/jobs/hgv-driver/hlzz981j</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

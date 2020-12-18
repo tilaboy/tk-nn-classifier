@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Refrigeration Engineer - Industrial
+
+   Type
+          Permanent
+
+   Uploaded
+          26/06/2019
+
+   Start Date
+          ASAP
+
+   Skills
+          N/A
+
+   Location(s)
+          Edinburgh, Falkirk, Glasgow
+
+   Industries
+          HVAC
+
+   Salary
+          £28000-£38000 per annum(Door to Door)
+
+   Contact
+
+          + Tom Comerford
+          + tomc@wr-hvac.com
+          + 02392841881
+
+   Reference
+          J9014
+
+Description
+
+   Industrial Refrigeration Engineer required, working with one of the market leading manufacturers within the Commercial and Industrial Refrigeration sector.
+
+   They have an excellent product range, reputation and training on their own systems. They are currently going through extensive growth to add additional engineers to their growing and successful team.
+
+   As the Service Engineer, you will undertake a full range of service, maintenance, troubleshooting, fault-finding and commissioning to medium to large refrigeration systems, typically within factories, cold storage and food and beverage processing facilities.
+
+   You will ideally have some experience working on medium to large industrial refrigeration systems, chilled water, absorption, water or air cooled chillers or other process cooling systems.
+
+   Having F-Gas will be required, having additional certificates for ammonia, Co2 or HFC refrigerants will be advantageous but not essential as training will be given.
+
+   Industrial Refrigeration Engineer: Package
+     * £27-38K DOE
+     * Door to Door Travel
+     * Company Benefits
+     * Private Medical
+     * Bonus Scheme
+     * 25 Days Holiday
+     * Company Vehicle
+     * Defined Pension Scheme
+
+   WR HVAC are #1 recruitment partner for HVAC jobs. Our customers include a range of large and small manufacturers and suppliers of heating, ventilation, air conditioning and refrigeration equipment. We recruit UK wide predominetly for sales jobs and engineering jobs.
+
+   WR is acting as an Employment Agency in relation to this vacancy.
+
+Apply for this job
+
+Job Reference: J9014
+
+   Email address
+   Telephone
+   Attach CV:(Word document preferred)</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>6e9cb32ac4d042de9109b26850cdc439</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>White Recruitment</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>whiterecruitment.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>whiterecruitment.com/jobs/view/84650/refrigeration-engineer-industrial</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

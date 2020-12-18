@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Retail Assistant - Seasonal (Temporary Contract)
+
+   Ref
+          38655
+
+   Category
+          Retail Assistant
+
+   Location
+          Flora Street, Sheffield, S62BF
+
+   Contract type
+          Temporary - Part time
+
+   Salary
+          £8.38 per hour
+
+   Description
+          Iceland is a point of difference in the food retail industry and has an exciting opportunity for Store colleagues to join our dynamic team. This seasonal position is suited to an individual with energy and passion. We believe that our success comes through our colleagues and where best to start then at the heart of the operation as a retail assistant.
+
+          As a retail assistant, your role is to ensure that you deliver great standards and a store to be proud of. Also ensuring that our customers have the best experience when shopping with us.
+
+          If you are looking for a role that
+
+          + Allows you to take pride in what you do
+          + Offers you flexibility and a variety of shift patterns
+          + Allows you to use your own initiative
+          + Offers a great rate of pay and many benefits
+
+          If this feels like the perfect job for you and you have the following characteristics
+
+          + Excellent flexibility- We are a 7-day business
+          + Act with energy and pace
+          + Take pride in your work
+          + Have a positive can-do attitude
+
+          Unfreeze your potential and develop a fantastic career with an ever-growing company where people are the key to our success.
+
+   Additional Information
+          This role requires previous key holder experience. Shift patterns vary, fully flexibility is essential.
+
+   Send this job to a friend
+   Job alerts</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>1ef2c57de6224a7b955c13aa7a915941</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Iceland Foods Ltd</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>iceland.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>app.kallidusrecruit.com/iceland/vacancyinformation.aspx?vid=38655</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

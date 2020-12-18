@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Customer Service Specialist
+
+   UK Manchester (Trafford Point) Regional HQ
+
+   Will you be our next TIP colleague?
+
+   Are you looking for a challenging workplace where you can work with professional and energetic colleagues? Who are passionate about what they do, and who are committed to deliver excellence every day? All in a work environment where safety in the workplace is our primary care, team spirit is fostered and integrity is at the core of our business. Being the European market leader within the transportation industry and operating throughout many countries in Europe, means that we have many opportunities for your professional growth!
+
+   Job Description
+
+   Responsibilities:
+
+   Profitable Growth
+
+   The Customer Service Specialist needs to execute on planned margins /Contributed Value.
+
+     * Raise Work Orders, ensure accurate coding, check maintenance history, validate &amp; authorize additional work, follow up on pending Work Orders related to termination of FleetCare.
+     * Cost control: secondary warranty, warranty id &amp; management, challenge maintenance cost, negotiating with vendors &amp;/or suppliers. Needs to be able to challenge booking of Fleet Protect costs.
+     * Accurate follow up on rebill process, obtain Purchase Order &amp; apply customer markups.
+     * Ensure Services pricing is in line with the agreed vendor pricing
+     * Parts management: stock management at the customer site for MSUs (Mobile Service Units).
+
+   World Class Customer Service
+
+   The Customer Service Specialist needs to execute on account plans.
+
+     * Trailer reservations: reserve trailers correctly, select correct account, select rate, asset &amp; manage expired reservations, manage one ways, minimize Non Billing Days.
+     * Send job to mechanic (Mobile Service Unit) &amp; upload GETSMART &amp; GETPART, update system. Workshop Mobile Service Unit planning regarding holidays/sickness. Veriwise report
+     * Tire management: meet FOS cycle time, casing control &amp; fleet inspections.
+     * Follow up on customer insurance related tasks.
+     * Report &amp; analyze customer related data within the timeline agreed with the customer &amp; deliver input for contract review card/ margin improvement plans
+
+   The Customer Service Specialist needs to demonstrate understanding &amp; drive improvements of customer satisfaction.
+
+     * Follow up on customer request in a timely manner
+     * Manages customer related calls (inbound &amp; outbound), in order to increase customer's satisfaction (Net Promoter Score).
+
+   Compliance Management
+
+     * Schedule service events, update business applications (ALS), obtain paperwork, upload documents into myIntelligence, advising customer on due services.
+     * Manage Free of Charge Units to ensure this is kept at minimum level.
+     * Contract maintenance for tail lifts &amp; reefers.
+
+   Leadership
+     * Initiate the development needs to PDP &amp; follow up.
+     * Attend team meetings &amp; proactively participate.
+
+   Simplification &amp; creativity through teamwork
+     * Deliver 1 new productivity or process improvements
+
+   Qualifications
+
+     * Minimum of 2 years of relevant working experience in an administrative role
+     * Computer skills: average knowledge of the MS Office applications
+     * Able to work under pressure; stress resilient
+     * Self-motivated
+     * Language skills:
+
+   Required Competencies
+
+     * Interpersonal Skills: Able to successfully interact with others on different levels. Give support to customers &amp; colleagues. Able to share information in an honest &amp; open manner with integrity
+     * Negotiation Skills: Able to negotiation, to achieve best results with vendor.
+     * Customer Excellence: Service customers with a positive, professional &amp; a 'can do' attitude. Understands customer requirements &amp; TIP's capability to meet &amp; exceed these requirements. Responds in a promptly &amp; efficiently manner to customer queries &amp; issues. Performs standard customer related tasks in a consistent &amp; efficient fashion.
+     * Product &amp; Services Knowledge: Understand how the product relates to the level of service for the customer &amp; able explain the components &amp; the benefits.
+     * Process Knowledge: Correct use of business systems &amp; Standard Operation Procedures. Deliver improvement ideas to the Customer Service Assistant Manager.
+     * Budget Management (P&amp;L Skills): Understand impact of correct Fleet Management &amp; activity coding. Able to challenge costs &amp; identify opportunities to recharge, reduce costs &amp; manage fair, wear &amp; tear. Actively seeks opportunities for cost control &amp; flag to manager.
+     * Communication Skills: Is articulate &amp; easy to understand. Is clear &amp; concise in both oral &amp; written communications.
+       Time Management: Able to prioritize &amp; organize tasks, so able to multi task. Make use of business systems to effectively manage the flow &amp; storage of information. Also uses the business administrative procedures &amp; processes to complete all administrative requirements. Ensures information is easily accessible to others &amp; all tasks are completed in a timely manner.
+     * Analytical Skills: Able to understand historical data to influence decisions on daily work. Determines relevance of information &amp; identifies critical elements
+     * Process &amp; Change Management Improvement: Flag areas for improvement to the Customer Service Assistant Manager &amp; challenge process status quo. Be open for change &amp; have ability to adapt to changes.
+       Leadership: Able to collate information to make an informed decision for daily work, know when to escalate. Enthusiastic: embraces work assignments &amp; energize others
+
+   Whilst the above outlines the main duties of the post, the list is not exhaustive and duties may need to change in the light of future developments or as directed by management and business needs.
+
+   TIP Trailer Services employs staff at more than 136 locations and at more than 72 maintenance facilities throughout 17 European countries. Our employment opportunities are diverse and available at a variety of locations.
+
+   TIP is an equal opportunity employer and values diversity in its workforce, encouraging applications from all qualified individuals.
+
+   Hiring is subject to a satisfactory background check.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>374772afa2994a019971b498f30153e8</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>TIP Trailer Services Management B.V.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>tipeurope.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>tipeurope.com/en-us/tiptrailerservices_careers/job/uk-manchester-trafford-point-regional-hq/customer-service-specialist_r0004570</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

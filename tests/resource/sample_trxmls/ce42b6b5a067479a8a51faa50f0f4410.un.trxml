@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Production Assistant - ITV Studios Daytime-190001L4
+   UK-London-London
+
+   Production Assistant - Daytime, ITV Studios
+   10 Month Fixed Term Contract
+   London
+   ITV Studios Daytime creates over six and a half hours of live TV every day. With programmes on air from 6am to 6pm, there's a constant buzz! The ITV Studios Daytime slate is filled with Good Morning Britain, Lorraine, This Morning and Loose Women. The Daytime market is highly competitive and vitally important for both ITV Studios and our network. Most of these programmes run 52 weeks a year and are critical to our share of viewing. Daytime hands the ratings baton over to peak.
+
+   We have an exciting opportunity for an experienced Production Assistant to be part of our team for a fixed term 10 month contract working on all four daytime shows which bring our viewers the latest breaking news, biggest entertainment stories and exclusives. The Production Assistant role is pivotal to the gallery environment, ensuring all shows run to time, adhering to break restrictions and communicating with all presenters with regards to hard hit and off air timings. This is a fast paced, busy role that requires previous experience within a live gallery environment and animating live on-screen graphics.
+   To be successful in this role, you'll have to be extremely organised, demonstrate the ability to multitask, be clear and concise whilst giving timings and have the confidence to identify and eradicate any programme issues whilst on-air. Remaining calm in a high pressured environment is also essential as well as adopting a positive approach when faced with constant changing running orders. You must possess excellent IT skills, including knowledge of INEWS, Maestro and Silvermouse.
+   This is a fantastic opportunity to work across all four of our award winning, live, day time programmes on a four week shift pattern. You will be part of a forward thinking, fast paced creative team with some of the best in the business.
+   Please note we would like the successful applicant to start on 2nd August 2019
+   Closing Date for applications: Friday 28th June 2019
+   ITV is committed to increasing the diversity of its workforce and we strongly encourage applications from candidates from all backgrounds and as a Disability Confident employer we have committed to interview all candidates with a disability whose application meets the minimum criteria for the role.
+   "ITV, where creativity, diversity and collaboration put us right at the heart of popular culture."</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>ce42b6b5a067479a8a51faa50f0f4410</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>ITV plc.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>itvplc.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>itvplc.com/190001l4</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

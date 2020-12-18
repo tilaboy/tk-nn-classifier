@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Team Administrator - Job Ref. SR1256
+
+   Salary: £25000 - £26000 per annum free parking plus holiday
+   Location: England,Hertfordshire,Rickmansworth
+   Job Type: Temporary
+   Date Posted: 24th June 2019
+     __________________________________________________
+
+   The Company
+
+   A highly successful organisation, established and corporate
+
+   The Role
+
+   Team Administrator - working with a busy dept
+
+   Key Skills
+
+   * Administration experience supporting a busy and hectic team
+
+   * Processing and inputting of information on to the database
+
+   * Previous of handling extensive data entry duties
+
+   * Coordinating bookings and diary management
+
+   * Excellent knowledge of MS Office
+
+   * Be able to commute to Denham / Rickmansworth area
+
+   * Be available immediately and commit indefinitely
+
+   If you do not hear within 5 working days unfortunately your application has not been successful on this occasion</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>3b0012e7cde54a11af3a7567d3de1efe</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Hamlin Knight</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>hamlinknight.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>hamlinknight.co.uk/job/team-administrator-2</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Tijdelijk</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Compliance - EMEA Regulatory Management - Vice President - London-190058659
+
+   Job Description
+
+Compliance, EMEA Regulatory Management (Vice President) - London
+
+   JP Morgan Chase
+   JPMorgan Chase &amp; Co. (NYSE: JPM) is a leading global financial services firm with operations worldwide. The firm is a leader in investment banking, financial services for consumers and small business, commercial banking, financial transaction processing, and asset management. A component of the Dow Jones Industrial Average, JPMorgan Chase &amp; Co. serves millions of consumers in the United States and many of the world's most prominent corporate, institutional and government clients under its J.P. Morgan and Chase brands. Information about JPMorgan Chase &amp; Co. is available at http://www.jpmorganchase.com/.
+   Our Compliance Function
+   With a diverse team of Compliance professionals supporting all areas of our business around the globe, the team is working diligently to be innovative and present all business partners with thoughtful and unique solutions to the challenges they face. The Compliance function has a robust set of priorities in place focused on best practice and employee development to ensure goals are delivered.
+   The EMEA Regulatory Management Team
+   The EMEA Regulatory Management team is responsible for the oversight and coordination of the firm's engagement with our UK, EMEA regulators and other global regulators as their interests relate to EMEA, as well as the oversight of Regulatory Change.
+   The Role and Key Responsibilities
+     * The role will report to the EMEA Head of Regulatory Management and Change;
+     * The role will require the individual to interact broadly across the EMEA Regulatory Management team focusing on a number of key areas, including:
+
+     * Taking the lead in looking at Cross-Border issues from a Regulatory Management perspective including having oversight of licensing issues and applications, exemptions and limitations. This will include working with the Global lead for Cross-Border on a number of initiatives;
+     * Work with the rest of the regulatory management team on licensing and permissioning matters for the firm - both in the UK/EMEA region and cross-border;
+
+     * Working with the EMEA Head of Regulatory Management and Change to properly define the EMEA Regulatory Management function's scope of activities and making sure that this is well understood within the broader Compliance function and broader firm.
+
+     * Helping to coordinate the remaining Compliance Brexit preparation work (which is closely linked to licencing and permissioning work).
+
+     * Working as a broader member of the EMEA Regulatory Management team to ensure relationships with regulators across the region are managed appropriately, getting involved with other regulatory requests and initiatives as necessary (for example significant regulatory visits or requests for information). The role may involve Exam Management work on an ad-hoc basis depending on intensity of focus from the regulators.
+     * Reviewing and disseminating important communications from relevant regulators regionally, especially broader industry communications and speeches etc.
+     * Develop a good awareness of other regulatory interactions in the region (for example with the FCA and other EU regulators) and support other team members in their interactions and relationship management with these other regulators.
+
+   Qualifications
+
+   Required Skills and Experience:
+
+     * Strong background and experience in a banking or risk management environment, or financial services from a legal or regulatory perspective.
+
+     * Good knowledge of key financial services regulation and the PRA handbooks;
+
+     * Strong team player willing to work closely across and with multiple teams where inter-dependencies will be strong and ongoing. Can do attitude with a willingness to help others in the team and external to the team. Willingness to go beyond the day to day to deliver excellence;
+
+     * Strong analytical skills and ability to understand and interpret requirements;
+
+     * Excellent communication and presentation skills, with the ability to translate complex regulatory issues into comprehensible messages for a range of audiences and levels;
+
+     * Ability to think, plan and execute on multiple projects simultaneously in an organized manner;
+
+     * Meticulous attention to detail, strong organizational skills and a commitment to ensuring that information provided to the firm's regulators is of a high standard;
+
+     * The ability to offer robust and constructive challenge, at all corporate title levels and across different disciplines - to become a trusted advisor to the business on regulatory relationship matters;
+
+     * Ability to consider the regulators' position and understand, anticipate and react positively to their requirements and demands;
+
+     * Strong judgement and the ability to exercise sound judgement under pressure when faced with imperfect information.
+
+   About J.P. Morgan Chase &amp; Co:
+
+   J.P. Morgan serves one of the largest client franchises in the world. Our clients include corporations, institutional investors, hedge funds, governments and affluent individuals in more than 100 countries. J.P. Morgan is part of JPMorgan Chase &amp; Co. (NYSE: JPM), a leading global financial services firm with assets of $2.1 trillion. The firm is a leader in investment banking, financial services for consumers, small business and commercial banking, financial transaction processing, asset management, and private equity. A component of the Dow Jones Industrial Average, JPMorgan Chase serves millions of clients and consumers under its JPMorgan and Chase, and WaMu brands.
+
+   JPMorgan Chase &amp; Co. offers an exceptional benefits program and a highly competitive compensation package. JPMorgan Chase &amp; Co. is an Equal Opportunity Employer and a member of the UK Government's Disability Confident Scheme.
+
+   To be considered for this role, you may be required to complete the video interview powered By HireVue.
+
+Job
+
+   Compliance
+
+Primary Location
+
+   GB-ENG-LND-25 Bank Street / 32173
+
+Organization
+
+   CORPORATE SECTOR
+
+Schedule
+
+   Full-time
+
+Job Type
+
+   Standard
+
+Shift
+
+   Day Job
+   Corporate Brand JPMorgan Chase &amp; Co.
+   Does this role require FCA approval under the Approved Persons Regime (APeR)? No</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>b9d284ccccca4443a64700bb268f7707</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>JPMorgan Chase &amp; Co.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>jpmorgan.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>jpmorgan.com/190058659</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Franchise</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

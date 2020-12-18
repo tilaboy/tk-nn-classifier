@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>back to search results
+   Kitchen Staff
+   The Willow Walk, Victoria
+   Apply Now
+   suggest this job to a friend
+            Closes          05-08-2019
+        Contract type       Full-time
+           Pay rate         £9.50 per hour rising to £9.60 after 13 weeks
+   Number of hours per week Flexible
+      Shifts may include    Variety of shifts across the week
+   London, Greater London
+   The Ideal Candidate
+
+   We want fun, enthusiastic, confident and passionate people who are not afraid of hard work. We recruit our team for their personality and as a UK top employer with an award winning training program we know we can teach anyone the skills to succeed.
+
+   Person Specification
+
+   -Customer Focus
+   -Drive
+   -Personal Integrity
+   -Team Work
+
+   What`s in it for you?
+
+   We offer competitive hourly rates for all of our team members! Alongside this, all our team has the opportunity to earn up to 19% in bonus paid monthly plus additional benefits such as:
+
+   -50% off on food and meal deals whilst at work and 20% off on food, drink and hotel accommodation whilst not at work
+   -Paid Holiday
+   -Free Shares
+   -£1 extra an hour, for hours worked between 12am and 5.59am.
+
+   The Role
+
+   At JD Wetherspoon we like to keep it simple, our kitchen team members are the back bone of our pubs, ensuring that everyone has the best food in the quickest time. We open our doors early in the morning and sometimes don`t close them until late at night, so we offer great flexibility.
+
+   As a part of our kitchen team you will have to work hard and engage with your team and keep up as our pubs can get pretty busy in peak times. You will need to ensure the kitchen is kept clean and hygienic at all times throughout the day.
+
+   Your role will be unique and you will get to interact with a variety of different people and our great teams, therefore a good level of conversational English is essential.
+
+   Working for Wetherspoon is rewarding, and are teams our consistently maintaining our high standards and 5-star health and safety ratings but with the right attitude we know you can climb our career ladder pretty quickly!
+
+   *Under 18`s may attract a lower rate of pay.
+
+   **We will always offer to guarantee as many of the advertised hours as possible, to all successful applicants, as part of your contract.
+
+   Suggest this job to a friend
+   Apply Now
+   Click on the map to get directions
+
+Directions (Close)</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>c49e3c67ef264c1283a4b804a1c5858a</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>J D Wetherspoon</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>jdwetherspoon.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>jdwetherspoon.co.uk/careercenter/vacancyview.php?requirementid=406384</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Software Developer - Product Studies
+
+   Publish Date 29 Jul 2019
+   Division Airbus Defence and Space
+   Location Portsmouth, United Kingdom
+   Apply
+   Reference Code 10442410 A EN EXT 5
+   Functional Area Software Engineering
+   Contract Type Permanent contract
+   Work Experience Not specified
+   Interest Group Professional staff - engineer
+   Working Time Full time
+
+Software Developer - Product Studies
+
+   Share
+     *
+     *
+     *
+     *
+     *
+
+   Print
+
+Airbus Defence and Space Ltd.
+
+   Airbus is a global leader in aeronautics, space and related services. In 2018 it generated revenues of € 64 billion and employed a workforce of around 134,000. Airbus offers the most comprehensive range of passenger airliners. Airbus is also a European leader providing tanker, combat, transport and mission aircraft, as well as one of the world's leading space companies. In helicopters, Airbus provides the most efficient civil and military rotorcraft solutions worldwide.
+
+   Our people work with passion and determination to make the world a more connected, safer and smarter place. Taking pride in our work, we draw on each other's expertise and experience to achieve excellence. Our diversity and teamwork culture propel us to accomplish the extraordinary - on the ground, in the sky and in space.
+
+Description of the job
+
+   A versatile experienced Systems Engineer is required to join a studies group, based in Portsmouth, working on advanced programmes for satellites navigation ground systems.
+
+   The successful candidate will report to the Head of Product Studies and will take on significant responsibilities within the design team. In addition, they must have customer facing abilities, as the position entails technical exchanges and meetings with the customer Agencies (e.g.UK SA, UK MOD and ESA), other System Primes, Suppliers and Subcontractors.
+
+   The role is highly technical and applicants must be proficient in a number of system engineering disciplines including RF systems, signal processing, software architecture and security. The working environment is within large scale complex Satellite Ground Systems for navigation and Satellite Navigation Reference Receivers.
+
+Tasks &amp; accountabilities
+
+   Your main tasks and responsibilities will include:
+   - Requirements analysis and functional decomposition.
+   - Delivery of incremental systems design and baseline design for some component solutions.
+   - Technical analysis of system design issues
+   - Performance budgeting
+   - Interface definition
+   - Authoring of technical specifications
+
+   This role could involve some travel for business and as such you must be able to travel accordingly.
+
+   This job requires an awareness of any potential compliance risks and a commitment to act with integrity, as the foundation for the Company's success, reputation and sustainable growth.
+
+Required skills
+
+   Essential Competencies/Qualities:
+   - Degree Educated with proven relevant experience in
+   - Systems engineering and / or systems architecting
+   - RF System Design and Analysis
+   - Signal Processing Analysis and Design
+   - Software architecture (significant previous experience as a lead designer on a software system)
+   - Requirements engineering
+   - Review of element and system testing as part of acceptance.
+   - Matlab
+   - Python and C
+   - Linux
+   - Formal approach to documentation
+   - Subcontract technical management
+
+   Desirable Competencies:
+   - Experience of GNSS
+   - STK
+
+   Many of our staff work flexibly in many different ways, including part-time. Please talk to us at interview about the flexibility you need. We can't promise to give you exactly what you want, but we do promise not to judge you for asking.
+   We value the strength that diverse perspectives bring to our business; if you require any reasonable adjustments to fully participate in the recruitment process please discuss this with the Recruitment Business Partner who contacts you.
+
+   Application process</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>667bbbab8ace44f3b47b411e1a191426</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Airbus</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>airbus.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>airbus.com/careers/search-and-apply/search-for-vacancies/job-detail.html?uuid=18788</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

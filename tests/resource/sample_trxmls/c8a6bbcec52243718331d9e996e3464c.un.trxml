@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>UK12213
+
+   31-Dec-2099
+
+About the role
+
+   Balfour Beatty is currently recruiting for a Planner to join our Regional South team at Heathrow Airport. You will be part of a dedicated site based team responsible for delivering a variety of diverse and interesting projects at one of the world's busiest airports.
+
+   We are particularly interested in candidates who have experience of replacing baggage screening equipment and associated conveyor systems as we have baggage projects within T1, T2 and T4.
+
+   ROLE PURPOSE:
+
+   Under supervision of the Project Lead, Bid Manager or Senior Planner, to be responsible for implementing the requirements of the tender and / or project planning procedures, ensuring compliance with the business management system.
+
+   To establish and maintain positive and effective relationships with customers and project team members
+
+What you'll be doing
+
+   As a Planner, you will have the following responsibilities:
+     * Ensuring that the programme content is functionally compliant with the planning procedures and guidance;
+     * Identifying planning scope, major constraints and contract requirements;
+     * Identifying major quantities and factors affecting the programme;
+     * Establishing and agreeing with Operations construction outputs and agree working hours with appropriate Estimator;
+     * Establishing and agreeing with Operations and Bid Team key methods of construction, sequencing, installation and commissioning;
+     * Producing and documenting the planning deliverables including programmes, planning philosophy, presentations and reports;
+     * Producing the Tender Programme and supporting information in accordance with the tender requirements;
+     * Developing overall programmes, issuing to all parties for review and implementing recommendations, innovation and best practice as applicable;
+     * Reconciling company and sub-contract plant/labour and major materials elements in conjunction where appropriate Applying resource levelling techniques as necessary;
+     * Interfacing with third parties to identify and resolve issues.
+
+Who we're looking for
+
+   You will have the following qualities and experience:
+     * Operational experience (ie site engineer/site agent) together with previous significant experience of planning services in small to medium sized projects within the construction and engineering industry;
+     * Proficiency in the use of planning techniques and the required planning toolsets;
+     * An understanding of various forms of tender documents, contract documents and specifications;
+     * An understanding of various methods of planning, programming and progress monitoring;
+     * An understanding of risk and opportunity management with particular reference to planning programming;
+     * An understanding of the events that initiate, and of the methods used to demonstrate, delay or change entitlement;
+     * An understanding of various forms of tender documents, contract documents and specifications;
+     * An understanding of various methods of planning, programming and progress monitoring;
+     * Good understanding of risk and opportunity management with particular reference to planning/programming.</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>c8a6bbcec52243718331d9e996e3464c</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Balfour Beatty plc</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>balfourbeatty.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>global3.recruitmentplatform.com/syndicated/lay/jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;npostingid=74550&amp;npostingtargetid=203366&amp;option=52&amp;sort=desc&amp;respnr=1&amp;id=qc2fk026203f3vbqb79v4685a&amp;resultsperpage=100&amp;lg=uk&amp;mask=rapido</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

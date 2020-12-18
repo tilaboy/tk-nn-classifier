@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Kitchen Assistant
+
+        Job ID
+                2019-10065
+
+        # of Openings
+                1
+
+        Location
+                Richmond
+
+At Zizzi...
+
+   ...we don't do good times, only Great Times. That's our secret sauce. We are in the business of creating magic and memories for our customers, beyond just their meal. As a Kitchen Assistant, you'll be playing a crucial part.
+
+What will you be doing?
+
+   Here's just a taster -
+     * Taking absolute pride in your part of food presentation to our customers - washing plates, cutlery and kitchen utensils in a fast, efficient way, making sure they're perfectly clean every time, and available throughout the shift.
+     * Supporting the whole restaurant team, front of house and back of house, to make sure the restaurant is running like clockwork.
+     * Being passionate about our food and knowing the menu inside out.
+     * Knowing the kitchen inside out, helping to ensure that every corner and cupboard is spic and span.
+     * Playing a part in making sure that your restaurant is Looking Fabulous at all times, and is hitting the mark set out in our policies, processes and guidelines.
+
+   You'll be joining an energetic and passionate team, who are committed to creating Great Times for our customers. We're the kind of the team who always work together, and jump in as soon as we see a team mate needing help. Whilst we can't promise that you'll make friends, we think it's pretty likely. On top of that, we'll give you all the training and support that you need to do your job the best you can, and if you interested in progressing up our career paths, just show us! We'll support and guide you all the way to the top.
+
+Who you are
+
+   Whilst we're a diverse bunch at Zizzi and our restaurant teams come from all walks of life, we all have one thing in common - Zizziness. You'll have it too -
+     * You're magic. You can take a good time to a Great Time, whatever the occasion. You're the person other people want to hang out with.
+     * You care. You're friendly, you get people, and can easily step into their shoes. You can easily adapt and put other people at ease.
+     * You're real. You're honest, trustworthy, and respectful. You treat others as you'd want to be treated yourself.
+     * You're clear. You don't overcomplicate things. You speak clearly, confidently and appropriately for your audience. You understand and are understood.
+     * You want to be the best. You're ambitious, want to grow with Zizzi, and know that delivering Great Times will help you and Zizzi achieve success.
+     * We are Zizzi. At Zizzi we are a family. It's never me, always we. Customers included.
+
+What you'll get
+
+     * 50% Azzurri group discount card
+     * Company contribution pension
+     * 28 days holiday (including bank holidays)</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>61231678025b42e3a9c0513db15944f3</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Zizzi Ristorante</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>zizzi.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>zizzi.co.uk/jobs/10065/kitchen-assistant/job?in_iframe=1</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Close
+     * Home
+     * Find a job
+     * Working at Paddy Power
+     * About us
+     * Your rewards and development
+     * Corporate Social Responsibility
+     * FAQs
+
+   Find a job
+
+Assistant Manager
+
+Hey
+smarty pants…
+
+Think you have what it takes to be a Paddy Assistant Manager - Bletchley, Milton Keynes? Let's get the heads-up on whether you're right for the job.
+
+   Start
+     * Sitemap
+     * Privacy &amp; cookie policy
+
+   Back to top</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>f1dc07343f504fc89338ca51fdabb7b9</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Paddy Power Betfair plc</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>paddypower.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>paddypower.com/vacancy/4370/start</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

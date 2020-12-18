@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Delivery Driver - Berwick upon Tweed
+
+     * Salary
+       £8.50 per hour (£7.80 if under 21)
+     * Role area
+       Retail
+     * Contract type
+       Permanent
+     * Job reference
+       HRGEH441114
+     * Location
+       Berwick-upon-Tweed
+       TD15 2AS
+     *
+
+   Delivering first class service
+
+   Shift patterns between 5am and 10.30pm
+
+   Contracts for 20 hours, with overtime opportunities available
+
+   Advanced tech, generous benefits, plus opportunities for a career in the Sainsbury's Group.
+
+   You'll be working for the number one in same-day delivery. You'll be making sure we live up to our Fast Track promises. And now we've joined the Sainsbury's Group, we can offer you a brilliant benefits package. You'll get all the high-end kit you need, including a Mercedes Sprinter van and our advanced routing technology. Plus starting holiday allowance of 22 days (increasing each year), a company pension and staff discounts in Argos, Habitat and Sainsbury's (after 3 months).
+
+   If you're looking for a career as well as a job, there are plenty of opportunities to stay with us for the long term - an advantage of being part of a major retail Group. And you'll have our full support to develop your skills (we're friendly people).
+
+   As we see it, it's a fair return for the great service you deliver to our customers. You'll bring a smile, think on your feet, and go above and beyond to help - because this job's not just about dropping off customer orders. You'll be good with our people too, a team player in store and on the road.
+
+   Requirements
+
+   You'll be a people person, flexible with varying shifts (and customers). And guess what? There's also plenty of driving involved, so you should have a year's driving experience, be confident behind the wheel of our Mercedes Sprinter vans, and have no more than six points on your licence.
+
+   We know that candidates may be put off applying for a job unless they can tick every box. We also know that 'normal' office hours aren't always doable, and while we can't accommodate every flexible working request we are happy to be asked. So if you are excited about working with us and think you can do much of what we are looking for but aren't sure if you are 100% there yet… why not apply and see how it goes?
+
+   Here at Sainsbury's Argos we're a proud equal opportunities employer that values diversity at every level of our business. Inclusion and Diversity are fundamental to our culture and values, fostering an innovative, collaborative and fast paced work environment that means we can build a better future for our colleagues and our customers. Everyone is welcome at Sainsbury's Argos. Want to find out more? Then visit our Diversity &amp; Inclusion page on our Careers site - www.argos.careers/diversityandinclusion
+
+   #LI-DNI
+     __________________________________________________
+
+   Apply now</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>b99676a4835c4182bb1149cc55c9480c</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Argos Limited</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>argos.careers</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>argos.co.uk/find-a-job/1798</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

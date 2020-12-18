@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Senior Data Scientist
+
+   Work with the data scientist and data analyst to solve client analytics problems and document results and methodologies. Work closely and collaboratively with the data engineers. Communicates and works with business subject matter experts and organisational leadership. Manage projects that involve discovering the information hidden in vast amounts of data and help the business and our clients to make smarter decisions. Doing ad-hoc analysis and presenting results in a clear manner. What we are looking for The successful Senior Data Scientist will be: Several years of experience working in major big data projects. PhD/MSc or equivalent in Mathematics, Computer Science or similar quantitative field. Interest in understanding many different areas of the company, business, industry and technology. Very good knowledge of Python for data analysis. Good knowledge on python web servers and integrations. Experience working with a tremendous amount of data. Strong command of core statistical
+   concepts, including hypothesis testing, the design of experiments and bootstrapped confidence intervals. Great track record of working with engineering and design teams. What you'll get in return Working with a market leader, you have the chance to enhance your existing skills, while developing new expertise and personally contributing to the company's growth and success. What you need to do now If you feel this is something you'd be interested in, click apply and one of our consultants will be in touch. you but you are looking for a new position, please contact us for a confidential discussion on your career. #3626610
+
+   Senior Data Scientist
+   Location: London, The Shard
+   40:00 hours, Permanent
+   £65,000 - £75,000 p/a
+
+   Your New Company
+   One of the UK's leading facilities management and professional services company. We specialise in strategic outsourcing and energy services, bringing together the expertise and capabilities to ensure our clients achieve their organisational goals. Our specialist skills and knowledge are driven by market expertise, and we understand that all our markets have a unique set of requirements, constantly responding to what is happening around us.
+
+   Your new role
+   In your new job as a Senior Data Scientist your main duties will be to:
+     * Working with the business to identify problems and use cases that could be resolved using advanced data analytic tools and agree requirements and the expected outcome.
+     * Present the data science model and technique, facilitate the audience to have a discussion on the model's possible application to various business use cases.
+     * Work with business and functions to identify what data is available and relevant.
+     * Work with the data scientist and data analyst to solve client analytics problems and document results and methodologies.
+     * Work closely and collaboratively with the data engineers.
+     * Communicates and works with business subject matter experts and organisational leadership.
+     * Manage projects that involve discovering the information hidden in vast amounts of data and help the business and our clients to make smarter decisions.
+     * Doing ad-hoc analysis and presenting results in a clear manner.
+
+   What we are looking for
+   The successful Senior Data Scientist will be:
+     * Several years of experience working in major big data projects.
+     * PhD/MSc or equivalent in Mathematics, Computer Science or similar quantitative field.
+     * Interest in understanding many different areas of the company, business, industry and technology.
+     * Very good knowledge of Python for data analysis.
+     * Good knowledge on python web servers and integrations.
+     * Experience working with a tremendous amount of data.
+     * Strong command of core statistical concepts, including hypothesis testing, the design of experiments and bootstrapped confidence intervals.
+     * Great track record of working with engineering and design teams.
+
+   What you'll get in return
+   Working with a market leader, you have the chance to enhance your existing skills, while developing new expertise and personally contributing to the company's growth and success.
+
+   What you need to do now
+   If you feel this is something you'd be interested in, click apply and one of our consultants will be in touch.
+   you but you are looking for a new position, please contact us for a confidential discussion on your career. #3626610
+
+   London, United Kingdom
+
+   JOB_2042286
+
+   2019-07-01</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>yes</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>7320309f8ace4ca9bedab13b41adc9dd</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Hays plc</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>hays.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>hays.co.uk/jobs-search/job_2042286</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Vast</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

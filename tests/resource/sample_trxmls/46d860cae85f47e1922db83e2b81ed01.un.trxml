@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Priory
+
+   Chef
+
+   If you love cooking great food and are looking for your next Chef job then this could be just the right move for you! As a Chef with us you'll be a valued part of a tight-knit team that loves the buzz of working under pressure in a well-known and much-loved business! WHAT WE LOOK FOR IN OUR CHEFS: Passionate about working in hospitality Great eye for detail Enjoys and wants to be an active member of a team Excellent verbal communication An understanding of what amazing guest service looks like CHEF ROLE: Prepare, cook and present amazing food in accordance with brand standards Taking PRIDE in maintaining highest standards of cleanliness and safety Adhere to safety and hygiene regulations at all times Being a valuable part of the wider team to ensure the best guest experience ABOUT US Oak Tree pubs occupy some of the most famous sites in the industry. Each one has its own unique character and a loyal following to match. Heritage is at the forefront of our offering, reflecting the
+   character of the venue with our interiors, food and drink .That's why we pride ourselves on being part of the local community. It's a place where the team can create the authentic experience. Whether you're pouring a pint of ale, or serving up a well-loved pub classic, you'll thrive making our guests feel at home. WHAT WE CAN OFFER YOU: We can offer you a personalised induction based on your current skills and knowledge, then set you some tailored goals within our S.T.A.R. development programme. This will help you progress to the next level, and beyond. Besides this you will have the opportunity to develop your career to some of our other excellent brands in Mitchells &amp; Butlers. 33% off in ALL our businesses for you and up to 5 friends Tailored industry training Pension Option to opt in for some of our share schemes (e.g. Free Shares Plan) Shopping discounts with many UK leading retailers Discounts on shoes for work Flexible shifts Up to 28 days holiday Chance to earn extra
+   money with our Referral Scheme Oh, and you'll have a whole heap of fun!
+
+   Competitive
+
+   Bourton Way, Wellingborough NN8 2LF, UK
+
+   Full Time
+
+   Engaging Personality
+
+   Enjoys meeting new people
+
+   Passionate about food, drink and great service</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>46d860cae85f47e1922db83e2b81ed01</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Priory</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>mbplc.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>harri.com/priory-91/job/1044250-chef</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

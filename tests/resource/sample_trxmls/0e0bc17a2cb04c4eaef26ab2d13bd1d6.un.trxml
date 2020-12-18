@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Delivery Cyclist
+
+   Store:
+   Salisbury
+
+   Shift Pattern:
+   Days, Evenings, Nights
+
+   Hours:
+   Full Time including Evening, Weekend &amp; Night Shifts
+
+   Full Time including Day Time, Evening &amp; Weekend shifts
+
+   Full Time including Day Time, Evening, Weekends &amp; Night shifts
+
+   Full Time including Evenings &amp; Weekend shifts
+
+   Part Time including Day Time, Evening &amp; Weekend shifts
+
+   Part Time including Day Time, Evening, Weekends &amp; Night shifts
+
+   Part Time including Evenings &amp; Weekend shifts
+
+   Part Time including Evening, Weekend &amp; Night Shifts
+
+Delivery Cyclist
+
+   Can you Deliver?
+
+   Are you passionate about Customer Service?
+
+   You'll be out on your bicycle delivering delicious, hot pizzas to our hungry customers in all kinds of weather, come rain or shine. If you think you can deliver and you're passionate about customer service, this could be the opportunity for you!
+
+   You'll need to be at least 17 years of age, with your own safe and road-worthy bicycle - a sturdy mountain or hybrid bicycle as we will provide a delivery box that easily connects to the back of it.
+
+   All roles will include working shifts during evenings &amp; weekends over a 7 day period.
+   Tweet
+   Apply now</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>0e0bc17a2cb04c4eaef26ab2d13bd1d6</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>Domino's Pizza</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>dominos.co.uk</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>isw.changeworknow.co.uk/dominos/bbbgfprhzlrrayzmudqfaj</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

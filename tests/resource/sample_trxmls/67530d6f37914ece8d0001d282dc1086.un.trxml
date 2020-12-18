@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TextractorResult content_type="text/xml" source="text/xml">
+<DocumentStructure>
+    <ItemGroup key="sec_vacancy">
+        <Item index="0">
+            <Field key="sec_vacancy"><Value>Data Verification Specialist (R1078747) in London, UK at IQVIA 
+
+   Date Posted: 6/19/2019
+   Apply Now Not ready to Apply?
+   Share With:
+
+Job Snapshot
+
+     * Employee Type:
+       Full-Time
+     * Location:
+       London, UK
+     * Job Type:
+       Production
+     * Date Posted:
+       6/19/2019
+     * Job ID:
+       R1078747
+
+Job Description
+
+   IQVIA  is the leading human data science company focused on helping healthcare clients find unparalleled insights and better solutions for patients. Formed through the merger of IMS Health and Quintiles, IQVIA offers a broad range of solutions that harness the power of healthcare data, domain expertise, transformative technology, and advanced analytics to drive healthcare forward.
+
+   The role of the Data Associate is to monitor and maintain the data on the DrugDev platform. The Data Associate may also be required to contribute to a range of project-related activities, as assigned.
+   Summary of Essential Job Functions
+   Ø Review member/partner data on a monthly basis
+   Ø Provide feedback on data quality to members/partners on a monthly basis with management oversight as appropriate
+   Ø Create and maintain system master lists based on customer feedback, proactive research, and all other available tools
+   Ø Curate facility, person and other records
+   Ø Support outreach to investigators and site staff as needed
+   Ø Communicate with investigators and site staff (replying to emails, telephone enquiries etc) to deliver requested support
+   Ø Assist in the quality review of the DrugDev Data Service toolset
+   Ø Participate in the creation and update of training materials, DrugDev Data Service documentation, Data Service SOPs, and other documents that support Product Organization as assigned
+   Ø Undergo required trainings and comply with company SOPs
+
+   Join Us
+
+   Making a positive impact on human health takes insight, curiosity, and intellectual courage. It takes brave minds, pushing the boundaries to transform healthcare. Regardless of your role, you will have the opportunity to play an important part in helping our clients drive healthcare forward and ultimately improve outcomes for patients.
+
+   Forge a career with greater purpose, make an impact, and never stop learning.
+
+   Job ID: R1078747
+   Apply Now Not ready to Apply?
+
+CHECK OUT OUR SIMILAR JOBS
+
+    1. Business Analyst Jobs
+    2. Systems Analyst Jobs
+    3. Jobs in Stevenage, Hertfordshire
+    4. Business Analyst Jobs Stevenage, Hertfordshire</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_vac_intermediary">
+        <Item index="0">
+            <Field key="derived_vac_intermediary"><Value>no</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="Document">
+        <Item index="0">
+            <Field key="correlationid"><Value>67530d6f37914ece8d0001d282dc1086</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_org_name">
+        <Item index="0">
+            <Field key="derived_org_name"><Value>IQVIA</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_source_site">
+        <Item index="0">
+            <Field key="derived_source_site"><Value>iqvia.com</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_norm_url">
+        <Item index="0">
+            <Field key="derived_norm_url"><Value>iqvia.com/en-us/job/data-verification-specialist-r1078747/j3p50l62st39cjgyqwd</Value></Field>
+        </Item>
+    </ItemGroup>
+    <ItemGroup key="derived_cond_contract_type">
+        <Item index="0">
+            <Field key="derived_cond_contract_type"><Value>Unspecified</Value></Field>
+        </Item>
+    </ItemGroup>
+
+</DocumentStructure>
+</TextractorResult>

@@ -8,7 +8,7 @@ from tk_nn_classifier.model import Model
 from tk_nn_classifier.config import load_config
 from tk_nn_classifier.data_loader import load_data_set, split_data_set
 from tk_nn_classifier import set_logging_level, LOGGER
-from tk_nn_classifier.classifiers.utils import TrainHelper, FileHelper
+from tk_nn_classifier.classifiers.utils import TrainHelper, FileHelper, eval_predictions
 
 def process_batch(model, reader, data_set, config):
     result = []
@@ -77,10 +77,14 @@ def train(args):
     model.save(config['model_path'])
 
     # test if test in datasets
+    # TODO: sort out all the eval functions
     if 'test' in config['datasets']:
-        for testset in config['datasets']:
-            LOGGER.info('eval on test %: %', testset, config['datasets'][testset])
-            model.evaluate_on_test(config['datasets'][testset])
+        for testset in config['datasets']['test']:
+            test_file = config['datasets']['test'][testset]
+            LOGGER.info('eval on test %: %', testset, test_file)
+            test_data_set = load_data_set(config, test_file, train_mode=False)
+            test_input = model.prepare_input(test_data_set, train_mode=False)
+            eval_predictions(model.classifier.evaluate_on_test(test_data_set))
 
 
 def eval(args):

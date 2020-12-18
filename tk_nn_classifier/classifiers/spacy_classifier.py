@@ -72,8 +72,7 @@ class SpacyClassifier(BaseClassifier):
 
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                pred, gold = self.evaluate(eval_data, 'train',
-                                           losses["textcat"])
+                pred, gold = self.evaluate_on_eval(eval_data, losses["textcat"])
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
@@ -109,24 +108,19 @@ class SpacyClassifier(BaseClassifier):
         result = self.model(input)
         return result.cats
 
-    def evaluate_on_tests(self):
-        for test_set in self.config['datasets']['test']:
-            LOGGER.info('test_set: %s' % test_set)
-            test_data = self.data_reader.get_data(
-                    self.config['datasets']['test'][test_set])
-            eval, gold = self.evaluate(test_data, 'test')
 
-    def evaluate(self, dataset, mode='train', losses=0):
-        eval, gold = self.prediction_on_set(dataset)
-        if mode == 'test':
-            TrainHelper.print_test_result(eval, gold)
-        elif mode == 'train':
-            accu = TrainHelper.accuracy(eval, gold)
-            TrainHelper.print_progress(losses, accu)
+    def evaluate_on_test(self, data_set):
+        eval, gold = self.predict_on_set(data_set)
         return eval, gold
 
-    def prediction_on_set(self, dataset):
-        texts, cats = zip(*dataset)
+    def evaluate_on_eval(self, data_set, losses):
+        eval, gold = self.predict_on_set(data_set)
+        accu = TrainHelper.accuracy(eval, gold)
+        TrainHelper.print_progress(losses, accu)
+        return eval, gold
+
+    def predict_on_set(self, data_set):
+        texts, cats = zip(*data_set)
         predicted_prob = list(self.predict_batch(texts))
         gold_classes = TrainHelper.max_dict_value(cats)
         predicted_classes = TrainHelper.max_dict_value(predicted_prob)

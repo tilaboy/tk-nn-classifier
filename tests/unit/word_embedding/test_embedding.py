@@ -4,7 +4,7 @@ import tempfile
 import shutil
 import numpy as np
 import numpy.testing as npt
-from tk_nn_classifier.data_loader.word_vector import WordVector, maxabs
+from tk_nn_classifier.word_embedding.word_vector import WordVector, maxabs
 
 class TestWordVector(TestCase):
     """Test the context"""

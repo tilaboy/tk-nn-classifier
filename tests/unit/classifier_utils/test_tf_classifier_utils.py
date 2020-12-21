@@ -53,7 +53,10 @@ class TFClassifierTestUtilsCases(TestCase):
 
             },
 
-            "datasets": {}
+            "datasets": {
+                'train': 'foo',
+                'eval': 'bar'
+            }
 
         }
         #self.data_reader = DataReader(self.config)

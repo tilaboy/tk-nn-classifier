@@ -53,8 +53,8 @@ def train(args):
             split_data_set(config['datasets']['all_data'])
 
     # load_data
-    train_data_set = load_data_set(config, config['datasets']['train'])
-    eval_data_set = load_data_set(config, config['datasets']['eval'])
+    train_raw = load_data_set(config, config['datasets']['train'])
+    eval_raw = load_data_set(config, config['datasets']['eval'])
 
     # declare model
     # - get the right type as configured
@@ -64,8 +64,8 @@ def train(args):
     # transfer data set [{f1: v1, f2: v2, ...}, {}, ...]
     # to model input, e.g. [x1, x2, y]
     #
-    train_data = model.prepare_input(train_data_set, train_mode=True)
-    eval_data = model.prepare_input(eval_data_set, train_mode=False)
+    train_data = model.prepare_input(train_raw, train_mode=True)
+    eval_data = model.prepare_input(eval_raw, train_mode=False)
 
     # build graph
     model.build_graph()
@@ -84,7 +84,9 @@ def train(args):
             LOGGER.info('eval on test %: %', testset, test_file)
             test_data_set = load_data_set(config, test_file, train_mode=False)
             test_input = model.prepare_input(test_data_set, train_mode=False)
-            eval_predictions(model.classifier.evaluate_on_test(test_data_set))
+            features, labels = zip(*test_input)
+            predictions = model.classifier.classify_batch(features)
+            eval_predictions(predictions, labels)
 
 
 def eval(args):

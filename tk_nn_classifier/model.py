@@ -6,7 +6,7 @@ import os
 import tensorflow as tf
 from shutil import copy
 from . import LOGGER
-from .classifiers import TFClassifier, SpacyClassifier, TFMultiFeatClassifier, KerasClassifier
+from .classifiers import TFClassifier, SpacyClassifier, KerasClassifier
 
 
 class Model:
@@ -14,12 +14,7 @@ class Model:
 
         self.config = config
 
-        if self.config['model_type'] .startswith('tf_multi_feat'):
-            LOGGER.info('use tensorflow with multi feature %s' % self.config['model_type'] )
-            self.classifier = TFMultiFeatClassifier(self.config)
-            tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
-
-        elif self.config['model_type'] .startswith('tf'):
+        if self.config['model_type'] .startswith('tf'):
             LOGGER.info('use tensorflow %s' % self.config['model_type'] )
             self.classifier = TFClassifier(self.config)
             tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
@@ -51,16 +46,13 @@ class Model:
     def load(self, model_path=None):
         self.classifier.load_saved_model(model_path)
 
+    def evaluate_data_set(self, test_data_path):
+        self.classifier.evaluate(test_data_path)
+
+    def predict_likelihoods(self, inputs):
+        return self.classifier.predict_likelihoods(inputs)
+
     def build_and_train(self):
         os.makedirs(self.config['model_path'], exist_ok=True)
         copy(self.config['config_file_path'], self.config['model_path'])
         self.classifier.build_and_train()
-
-    def evaluate(self, test_data_path):
-        self.classifier.evaluate(test_data_path)
-
-    def process_with_saved_model(self, data_set):
-        return self.classifier.process_with_saved_model(data_set)
-
-    def predict_on_text(self, text):
-        return self.classifier.predict_on_text(text)

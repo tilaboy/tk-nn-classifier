@@ -31,7 +31,6 @@ class TFMultiFeatClassifier(BaseClassifier):
             data_path = self.config['datasets']['test'][test_set_name]
             predicted_classes = self.predict_batch(data_path)
             _, labels, data_length = self.load_data_set(data_path)
-            TrainHelper.print_test_result(predicted_classes, labels)
 
     def predict_batch(self, data_path):
         predicted_classes = [

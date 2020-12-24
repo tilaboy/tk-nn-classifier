@@ -7,7 +7,7 @@ from ..model_input import SpacyDataReader
 from .. import LOGGER
 from ..exceptions import ConfigError
 from .base_classifier import BaseClassifier
-from .utils import TrainHelper
+from .utils import eval_predictions, eval_accuracy
 
 
 class SpacyClassifier(BaseClassifier):
@@ -20,10 +20,10 @@ class SpacyClassifier(BaseClassifier):
         self.train(train_data, eval_data)
         self.save(self.config['model_path'])
         if 'test' in self.config['datasets']:
-            self.evaluate_on_tests()
+            self.evaluate_on_sets()
 
-    def prepare_input(self, data_gen, train_mode):
-        return self.data_reader.model_input(data_gen, train_mode)
+    def prepare_input(self, data_set, train_mode):
+        return self.data_reader.model_input(data_set, train_mode)
 
     def build_graph(self):
         if self.config["spacy"]["model"] is not None:
@@ -67,12 +67,22 @@ class SpacyClassifier(BaseClassifier):
                 with init_tok2vec.open("rb") as file_:
                     textcat.model.tok2vec.from_bytes(file_.read())
             LOGGER.info("Training the model...")
-            TrainHelper.print_progress_header()
             batch_sizes = compounding(4.0, 32.0, 1.001)
 
+            LOGGER.info("{:^5}\t{:^5}".format("LOSS", "ACCU"))
             for i in range(self.config['num_epochs']):
                 losses = self._update_one_epoch(train_data, batch_sizes)
-                pred, gold = self.evaluate_on_eval(eval_data, losses["textcat"])
+
+                # eval set accu
+                texts, cats = zip(*eval_data)
+                eval_accuracy = eval_accuracy(
+                    self.classify_batch(texts),
+                    (max(cat, key=cat.get) for cat in cats)
+                )
+
+                # print progress
+                LOGGER.info("{0:.3f}\t{1:.3f}".format(losses["textcat"],
+                                                      eval_accuracy))
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}
@@ -80,10 +90,10 @@ class SpacyClassifier(BaseClassifier):
         random.shuffle(train_data)
         batches = minibatch(train_data, size=batch_sizes)
         for batch in batches:
-            texts, annotations = zip(*batch)
+            texts, cats = zip(*batch)
             self.model.update(
                               texts,
-                              annotations,
+                              cats,
                               sgd=self.optimizer,
                               drop=self.config["dropout_rate"],
                               losses=losses
@@ -101,32 +111,16 @@ class SpacyClassifier(BaseClassifier):
             output_dir = Path(output_dir)
             if not output_dir.exists():
                 output_dir.mkdir()
-            # with self.model.use_params(self.optimizer.averages):
             self.model.to_disk(output_dir)
-
-    def process_with_saved_model(self, input):
-        result = self.model(input)
-        return result.cats
+        else:
+            raise ValueError('output_dir is not set')
 
 
-    def evaluate_on_test(self, data_set):
-        eval, gold = self.predict_on_set(data_set)
-        return eval, gold
+    def classify_batch(self, texts):
+        for cat in self.predict_likelihoods(texts):
+            yield max(cat, key=cat.get)
 
-    def evaluate_on_eval(self, data_set, losses):
-        eval, gold = self.predict_on_set(data_set)
-        accu = TrainHelper.accuracy(eval, gold)
-        TrainHelper.print_progress(losses, accu)
-        return eval, gold
-
-    def predict_on_set(self, data_set):
-        texts, cats = zip(*data_set)
-        predicted_prob = list(self.predict_batch(texts))
-        gold_classes = TrainHelper.max_dict_value(cats)
-        predicted_classes = TrainHelper.max_dict_value(predicted_prob)
-        return predicted_classes, gold_classes
-
-    def predict_batch(self, texts):
+    def predict_likelihoods(self, texts):
         textcat = self.model.get_pipe("textcat")
         docs = (self.model.tokenizer(text) for text in texts)
         for doc in textcat.pipe(docs):

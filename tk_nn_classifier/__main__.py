@@ -3,42 +3,10 @@ from __future__ import unicode_literals, print_function
 import os
 from argparse import ArgumentParser
 import logging
-import csv
-from tk_nn_classifier.model import Model
-from tk_nn_classifier.config import load_config
-from tk_nn_classifier.data_loader import load_data_set, split_data_set
-from tk_nn_classifier import set_logging_level, LOGGER
-from tk_nn_classifier.classifiers.utils import TrainHelper, FileHelper, eval_predictions
-
-def process_batch(model, reader, data_set, config):
-    result = []
-    input_data = reader.get_data_set_with_detail(
-            config['datasets']['test'][data_set]
-    )
-
-    detail_fields = reader._detail_fields(config['datasets']['test'][data_set])
-    header = [detail_fields[2], 'new',  'old'] + detail_fields[3:] + \
-             ['probabilities']
-    result.append(header)
-    for test_text, category, id, *extra in input_data:
-        probabilities = model.process_with_saved_model(test_text)
-        if type(probabilities) is list:
-            predicted_class = max(range(len(probabilities)),
-                                  key=probabilities.__getitem__)
-            predicted_class = reader.label_mapper.label_name(predicted_class)
-        elif type(probabilities) is dict:
-            predicted_class = max(probabilities, key=probabilities.get)
-        else:
-            raise ValueError("unknown type", type(probabilities))
-
-        result.append(
-            [
-                entry if entry is not None else ''
-                for entry in [id, predicted_class,
-                              category, *extra, str(probabilities)]
-            ]
-        )
-    return result
+from .model import Model
+from .config import load_config
+from .data_loader import load_data_set, split_data_set
+from . import set_logging_level, LOGGER
 
 
 def train(args):
@@ -48,7 +16,6 @@ def train(args):
 
     # split data if needed
     if 'all_data' in config['datasets']:
-        LOGGER.info('split all_data into train and eval')
         config['datasets']['train'], config['datasets']['eval'] = \
             split_data_set(config['datasets']['all_data'])
 
@@ -57,13 +24,10 @@ def train(args):
     eval_raw = load_data_set(config, config['datasets']['eval'])
 
     # declare model
-    # - get the right type as configured
-    # - define graph/pipelines
     model = Model(config)
 
     # transfer data set [{f1: v1, f2: v2, ...}, {}, ...]
-    # to model input, e.g. [x1, x2, y]
-    #
+    # to model input, e.g. [[feature], [label]]
     train_data = model.prepare_input(train_raw, train_mode=True)
     eval_data = model.prepare_input(eval_raw, train_mode=False)
 
@@ -77,17 +41,10 @@ def train(args):
     model.save(config['model_path'])
 
     # test if test in datasets
-    # TODO: sort out all the eval functions
-    if 'test' in config['datasets']:
-        for testset in config['datasets']['test']:
-            test_file = config['datasets']['test'][testset]
-            LOGGER.info('eval on test %: %', testset, test_file)
-            test_data_set = load_data_set(config, test_file, train_mode=False)
-            test_input = model.prepare_input(test_data_set, train_mode=False)
-            features, labels = zip(*test_input)
-            predictions = model.classifier.classify_batch(features)
-            eval_predictions(predictions, labels)
-
+    for testset in config['datasets'].get('test', []):
+        test_file = config['datasets']['test'][testset]
+        LOGGER.info('eval on test {} : {}'.format(testset, test_file))
+        model.eval_test_set(test_file)
 
 def eval(args):
     config = load_config(args.config)
@@ -100,28 +57,15 @@ def eval(args):
     else:
         test_sets = config['datasets']['test']
 
-    data_reader = DataReader(model.config)
     os.makedirs(config['model_eval_path'], exist_ok=True)
 
-    for data_set in test_sets:
-        output_file = os.path.join(config['model_eval_path'], data_set + '.tsv')
-        LOGGER.info('process test_set [%s]', data_set)
-        result = process_batch(
-            model,
-            data_reader,
-            data_set,
-            config
-        )
-        LOGGER.info('save result to [%s]', output_file)
-        with open(output_file, 'w', newline='') as output_fh:
-            csv_writer = csv.writer(output_fh,
-                                    delimiter="\t",
-                                    quoting=csv.QUOTE_MINIMAL)
-            csv_writer.writerows(result)
-        TrainHelper.print_test_result(
-            _get_column(result, 1),
-            _get_column(result, 2))
-
+    for testset in test_sets:
+        test_file = config['datasets']['test'][testset]
+        output_file = os.path.join(config['model_eval_path'], testset + '.tsv')
+        LOGGER.info('eval dataset {} ({}), and save to {}'.format(testset,
+                                                           test_file,
+                                                           output_file))
+        model.eval_test_set(test_file, analysis_output_file=output_file)
 
 def predict(args):
     # TODO: convert the script predict to here
@@ -145,20 +89,20 @@ def get_args():
     parser_eval.add_argument('--test_set',
                              help='name of test set in the config file',
                              type=str)
-    parser_eval.add_argument('--output_dir',
-                             help='output directory',
+    parser_eval.add_argument('--output_dir_name',
+                             help='output directory name, saved as model_path/output_dir_name',
                              type=str, default='res')
     parser_eval.set_defaults(func=eval)
 
     parser_predict = subparsers.add_parser('predict',
                                            help='predict for a batch of input')
     parser_predict.add_argument('config', help='config file', type=str)
-    parser_predict.add_argument('--test_set',
+    parser_predict.add_argument('--input_file_path',
                                 help='name of test set in the config file',
                                 type=str)
-    parser_predict.add_argument('--output_dir',
-                                help='output directory',
-                                type=str, default='res')
+    parser_predict.add_argument('--output_file_path',
+                                help='result output file',
+                                type=str, default='output.csv')
     parser_predict.set_defaults(func=predict)
 
     return parser.parse_args()

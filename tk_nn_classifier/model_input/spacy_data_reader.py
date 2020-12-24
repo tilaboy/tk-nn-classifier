@@ -49,8 +49,8 @@ class SpacyDataReader(DataReader):
 
     def _prepare_label(self, labels):
         return [
-            {class_type: class_type == label
-             for class_type in self.label_mapper.label_to_classid}
+            {category: category == label
+             for category in self.label_mapper.label_to_classid}
             for label in labels]
 
     @staticmethod

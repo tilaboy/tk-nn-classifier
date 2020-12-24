@@ -86,7 +86,8 @@ def _validate_config(config):
     _validate_must_have(config)
     _validate_at_least_one(config)
     _validate_field_consistency(config)
-    _validate_spacy_field_consistency(config)
+    if 'spacy' in config:
+        _validate_spacy_field_consistency(config)
 
 
 def _validate_must_have(config):
@@ -143,9 +144,6 @@ def _validate_spacy_field_consistency(config):
     output:
         - updated input config or die on error
     '''
-    if 'spacy' not in config:
-        return
-
     if 'language' not in config['spacy']:
         raise ConfigError('language', 'spacy'
                           'language is needed for spacy model setup')
@@ -215,7 +213,7 @@ def load_config_from_dikt(config_dikt):
     config = get_default_config()
     config.update(config_dikt)
     if not config['model_type'].startswith('spacy'):
-        config['spacy'] = None
+        config.pop('spacy', None)
     _derived_config_fields(config)
     _validate_config(config)
     return config

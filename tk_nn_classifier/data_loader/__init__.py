@@ -3,6 +3,7 @@ from typing import Dict, Generator, Tuple, List
 import os
 import sys
 from ..exceptions import FileTypeError, ConfigError
+from .. import LOGGER
 from .csv_loader import CSVLoader, split_csv_file
 from .trxml_loader import TRXMLLoader, split_trxml_set
 from .data_utils import file_ext
@@ -29,6 +30,34 @@ def _select_data_loader(config_input_feature: Dict, data_type: str):
 def _type_to_config_field_entry(data_type: str) -> str:
     return data_type.lower() + '_fields'
 
+def _validate_entry_in_config(field_entry: str, config: Dict) -> None:
+    if field_entry not in config:
+        raise ConfigError(
+            field_entry,
+            section='',
+            detail_msg=f'fields {field_entry} not set, failed loading data')
+
+
+def analysis_field_names(config: Dict, data_path: str) -> List:
+    '''
+    prepare the output field for evaluation analysis
+
+    params:
+        - config: config
+        - data_path: data file
+
+    output:
+        - field_names: a list of fields to output to the csv file
+    '''
+    data_type = _data_type(data_path)
+    field_entry = _type_to_config_field_entry(data_type)
+    _validate_entry_in_config(field_entry, config)
+    field_names = [config[field_entry]['doc_id'], 'prediction', config[field_entry]['class']]
+    field_names.extend(config[field_entry]['extra'])
+    field_names.append('likelihood')
+    return field_names
+
+
 def load_data_set(config: Dict,
                   data_path: str,
                   train_mode: bool=True) ->Generator:
@@ -45,11 +74,7 @@ def load_data_set(config: Dict,
     '''
     data_type = _data_type(data_path)
     field_entry = _type_to_config_field_entry(data_type)
-    if field_entry not in config:
-        raise ConfigError(
-            field_entry,
-            section='',
-            detail_msg=f'fields {field_entry} not set, failed loading data')
+    _validate_entry_in_config(field_entry, config)
     data_loader = _select_data_loader(config[field_entry], data_type)
     if train_mode:
         return data_loader.load_train_data(data_path)
@@ -74,6 +99,7 @@ def split_data_set(data_path: str,
         - train_file_path
         - eval_file_path
     '''
+    LOGGER.info(f'split {data_path} to train and eval')
     data_type = _data_type(data_path)
     if data_type == 'TRXML':
         train_set, eval_set = split_trxml_set(data_path, ratio, des, rand_seed)

@@ -9,7 +9,6 @@ from tensorflow.python.keras.preprocessing import sequence
 from ..word_embedding import WordVector, download_tk_embedding
 from ..model_input import TFDataReader, tokenize
 from .. import LOGGER
-from .utils import TrainHelper, FileHelper
 from .base_classifier import BaseClassifier
 
 from tqdm import tqdm
@@ -147,7 +146,6 @@ class KerasClassifier(BaseClassifier):
                 int(score + 0.5)
                 for score in predictions.flatten()
             ]
-            TrainHelper.print_test_result(result, y_test)
 
     def process_with_saved_model(self, input):
         data = self._input_text_to_pad_vec(input)

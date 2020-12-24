@@ -1,9 +1,11 @@
+from typing import List, Dict
 import os
 import platform
+from tabulate import tabulate
 from .. import LOGGER
 
 
-def creation_date(path_to_file):
+def _file_creation_date(path_to_file: str) -> float:
     """
     Try to get the date that a file was created, falling back to when it was
     last modified if that isn't possible.
@@ -21,186 +23,118 @@ def creation_date(path_to_file):
             return stat.st_mtime
 
 
-class FileHelper:
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def last_modified_folder(model_path):
-        model_names = [
-                os.path.join(model_path, name)
-                for name in os.listdir(model_path)
-        ]
-        model_path = max(model_names,
-                         key=lambda x: int(creation_date(x)))
-        return model_path
+def last_modified_folder(model_path):
+    model_files = [
+        os.path.join(model_path, name)
+        for name in os.listdir(model_path)
+    ]
+    return max(model_files, key=lambda x: int(_file_creation_date(x)))
 
 
-class TrainHelper:
-    def __init__(self):
-        pass
+def eval_accuracy(predictions: List, gold_labels: List) -> float:
+    '''
+    func:
+        - compute the accuracy
 
-    @staticmethod
-    def print_progress_header():
-        print("{:^5}\t{:^5}".format("LOSS", "ACCU"))
+    params:
+        - predictions
+        - gold_labels
 
-    @staticmethod
-    def print_progress(loss, accu):
-        print("{0:.3f}\t{1:.3f}".format(loss, accu))
-
-    @staticmethod
-    def print_test_result(eval, gold):
-        scores = TrainHelper._evaluate_f1_score(eval, gold)
-
-        print("{:^5}\t{:^5}\t{:^5}\t{:^5}".format("label",
-                                                  "Prec",
-                                                  "Reca",
-                                                  "F1"))
-        for label in scores:
-            print("{0:^5}\t{1:.3f}\t{2:.3f}\t{3:.3f}".format(
-                    label,
-                    scores[label]["precision"],
-                    scores[label]["recall"],
-                    scores[label]["f1"]
-                )
-            )
-        cm = TrainHelper._evaluate_confusion_matrix(eval, gold)
-        LOGGER.info("Confusion matrix:")
-        print(cm)
-
-    @staticmethod
-    def accuracy(eval, gold):
-        correct = 0
-        wrong = 0
-        for i, cat in enumerate(eval):
-            if cat == gold[i]:
-                correct += 1
-            else:
-                wrong += 1
-        return (1.0 * correct) / (correct + wrong)
-
-    @staticmethod
-    def max_dict_value(cats_dicts):
-        return [
-            max(cats_dict, key=cats_dict.get)
-            for cats_dict in cats_dicts
-        ]
-
-    @staticmethod
-    def _evaluate_f1_score(eval, gold):
-        uniq_labels = set(eval)
-        uniq_labels.union(set(gold))
-        scores = {}
-        for label in uniq_labels:
-            tp = 0.0  # True positives
-            fp = 1e-8  # False positives
-            fn = 1e-8  # False negatives
-            for i, cat in enumerate(eval):
-                if label not in [cat, gold[i]]:
-                    continue
-                if cat == gold[i] == label:
-                    tp += 1.0
-                elif cat == label and gold[i] != label:
-                    fp += 1.0
-                elif cat != label and gold[i] == label:
-                    fn += 1.0
-            precision = tp / (tp + fp)
-            recall = tp / (tp + fn)
-            if (precision + recall) == 0:
-                f_score = 0.0
-            else:
-                f_score = 2 * (precision * recall) / (precision + recall)
-            scores[label] = {"precision": precision,
-                             "recall": recall,
-                             "f1": f_score}
-        return scores
-
-    @staticmethod
-    def _evaluate_confusion_matrix(eval, gold):
-        cm = ConfusionMatrix(eval, gold)
-        return cm
+    output:
+        - accuracy
+    '''
+    nr_right = nr_error = 0
+    for pred, gold in zip(predictions, gold_labels):
+        if pred == gold:
+            nr_right += 1
+        else:
+            nr_error += 1
+    return 0.0 if nr_right == 0 else (1.0 * nr_right) / (nr_right + nr_error)
 
 
-def eval_predictions(predictions, gold_labels):
+def _eval_precision_recall(predictions: List, gold_labels: List) -> Dict:
     '''
     input:
         - predictions
         - gold_labels
 
     func:
-        - compute the accuracy, and print out
-        - compute the precision and recall, and print out
+        - compute the precision and recall
 
     output:
-        - accuracy
         - precision
         - recall
+        - f1
     '''
 
-    total_errors = 0
-    total_eval_cases = len(gold_labels)
-    sa_tp = sa_tn = 0.0
-    sa_fp = sa_fn = 1e-7
+    uniq_labels = set(predictions + gold_labels)
+    epsilon = 1e-8
+    scores = {label: {'tp': 0, 'fp': epsilon, 'fn': epsilon}
+              for label in uniq_labels}
 
-    for pred, label in zip(predictions, gold_labels):
-        if pred == label:
-            if pred == 0:
-                sa_tn += 1
-            else:
-                sa_tp += 1
-        if pred != label:
-            if pred == 1:
-                sa_fp += 1
-            else:
-                sa_fn += 1
-            total_errors += 1
+    for pred, gold in zip(predictions, gold_labels):
+        if pred == gold:
+            scores[pred]['tp'] = scores[pred]['tp'] + 1.0
+        else:
+            scores[pred]['fp'] = scores[pred].get('fp', 1e-7) + 1.0
+            scores[gold]['fn'] = scores[pred].get('fn', 1e-7) + 1.0
 
-    accuracy = 1.0 - total_errors / total_eval_cases
-    precision = sa_tp / (sa_tp + sa_fp)
-    recall = sa_tp / (sa_tp + sa_fn)
-    LOGGER.info('accuracy: {:0.2f}%'.format(accuracy))
-    LOGGER.info('agency => precision: {:0.2f}, recall: {:0.2f}'.format(
-        precision, recall))
+    for label in uniq_labels:
+        scores[label]['precision'] = scores[label]['tp'] / (
+            scores[label]['tp'] + scores[label]['fp'])
+        scores[label]['recall'] = scores[label]['tp'] / (
+            scores[label]['tp'] + scores[label]['fn'])
 
-    return accuracy, precision, recall
+        if scores[label]['tp'] == 0:
+            scores[label]['f1'] = 0.0
+        else:
+            prec_reca_sum = scores[label]['precision'] + scores[label]['recall']
+            prec_reca_mul = scores[label]['precision'] * scores[label]['recall']
+            scores[label]['f1'] = 2 * prec_reca_mul / prec_reca_sum
+    return scores
 
 
-class ConfusionMatrix:
+def _eval_confusion_matrix(predictions: List, gold_labels: List) -> List:
     """
     Generate a confusion matrix for multiple classification
 
     params:
         - eval: a list of integers or strings of predicted classes
         - gold: a list of integers or strings of known classes
+
     output:
         - confusion_matrix: 2-dimensional list of pairwise counts
     """
-    def __init__(self, eval, gold):
-        gold = [str(value) for value in gold]
-        eval = [str(value) for value in eval]
-        self.cats = sorted(set(gold + eval))
-        max_cat_name_length = max([len(cat) for cat in self.cats])
-        self.cellwidth = max([max_cat_name_length + 2, 10])
 
-        self.confusion_matrix = [[0 for _ in self.cats] for _ in self.cats]
-        self.cat_id_map = {cat: id for id, cat in enumerate(self.cats)}
-        for predicted, real in zip(eval, gold):
-            row_id = self.cat_id_map[real]
-            col_id = self.cat_id_map[predicted]
-            self.confusion_matrix[row_id][col_id] += 1
+    cats = sorted(set(predictions + gold_labels))
+    confusion_matrix = [['gold\\eval'] + cats]
+    for cat in cats:
+        confusion_matrix.append([cat] + [0] * len(cats))
+    cat_id_map = {cat: id + 1 for id, cat in enumerate(cats)}
+    for pred, gold in zip(predictions, gold_labels):
+        row_id = cat_id_map[gold]
+        col_id = cat_id_map[pred]
+        confusion_matrix[row_id][col_id] += 1
+    return confusion_matrix
 
-    def __str__(self):
-        sep_line = "=" * (self.cellwidth * (len(self.cats) + 2))
-        cm_table = sep_line + "\n"
 
-        table_header = " ".join([("{}".format(cat)).ljust(self.cellwidth)
-                                 for cat in self.cats])
-        cm_table += "gold\\eval".ljust(self.cellwidth + 1) + \
-                    table_header + "\n"
-        for cat, row in zip(self.cats, self.confusion_matrix):
-            row_start = ("{}".format(cat)).ljust(self.cellwidth)
-            row_string = " ".join([str(val).ljust(self.cellwidth)
-                                  for val in row])
-            cm_table += "{} {}\n".format(row_start, row_string)
-        cm_table += sep_line
-        return cm_table
+def eval_predictions(predictions: List, gold_labels: List) -> None:
+    # convert to str if the labels are not in the str format:
+    predictions = [str(value) for value in predictions]
+    gold_labels= [str(value) for value in gold_labels]
+
+    accuracy = round(eval_accuracy(predictions, gold_labels), 3)
+    print ('- overal accuracy: {:0.2f}'.format(accuracy))
+
+    scores = _eval_precision_recall(predictions, gold_labels)
+    score_fields = ['precision', 'recall', 'f1']
+    score_table = [
+        [label] + [round(scores[label][field], 3) for field in score_fields]
+        for label in sorted(scores.keys())
+    ]
+    print('- precision, recall and f1 scores:')
+    print(tabulate(score_table, ['label'] + score_fields, missingval="-", tablefmt="github"))
+
+    confusion_matrix = _eval_confusion_matrix(predictions, gold_labels)
+    print('- confusion matrix:')
+    print(tabulate(confusion_matrix, headers="firstrow", missingval="-", tablefmt="github"))

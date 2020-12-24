@@ -9,7 +9,7 @@ from ..word_embedding import WordVector, download_tk_embedding
 from ..model_input import TFDataReader, tokenize
 from .. import LOGGER
 from .base_classifier import BaseClassifier
-from .utils import TrainHelper, FileHelper
+from .utils import last_modified_folder
 from .graph_selector import GraphSelector
 from .tf_best_export import BestCheckpointsExporter
 
@@ -35,7 +35,6 @@ class TFClassifier(BaseClassifier):
             data_path = self.config['datasets']['test'][test_set_name]
             predicted_classes = self.predict_batch(data_path)
             _, labels, data_length = self.load_data_set(data_path)
-            TrainHelper.print_test_result(predicted_classes, labels)
 
     def predict_batch(self, data_path):
         predicted_classes = [
@@ -275,7 +274,7 @@ class TFClassifier(BaseClassifier):
 
     def load_saved_model(self, model_path=None):
         if model_path is None:
-            model_path = FileHelper.last_modified_folder(
+            model_path = last_modified_folder(
                     os.path.join(
                             self.config['model_path'],
                             'export',

@@ -11,7 +11,8 @@ INSTALL_REQUIRES = [
     "spacy == 2.3.0",
     "en_core_web_sm == 2.3.0",
     "easy_tokenizer == 0.0.10",
-    "h5py == 2.10.0"
+    "h5py == 2.10.0",
+    "tabulate == 0.8.7"
 ]
 
 setup_requirements = ['pytest-runner', ]

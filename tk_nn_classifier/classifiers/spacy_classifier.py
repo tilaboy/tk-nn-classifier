@@ -75,14 +75,14 @@ class SpacyClassifier(BaseClassifier):
 
                 # eval set accu
                 texts, cats = zip(*eval_data)
-                eval_accuracy = eval_accuracy(
+                _accuracy = eval_accuracy(
                     self.classify_batch(texts),
                     (max(cat, key=cat.get) for cat in cats)
                 )
 
                 # print progress
                 LOGGER.info("{0:.3f}\t{1:.3f}".format(losses["textcat"],
-                                                      eval_accuracy))
+                                                      _accuracy))
 
     def _update_one_epoch(self, train_data, batch_sizes):
         losses = {}

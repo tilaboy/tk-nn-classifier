@@ -6,7 +6,7 @@ import shutil
 import json
 from spacy.lang.en import English
 from tk_nn_classifier.classifiers import SpacyClassifier
-from tk_nn_classifier.classifiers.utils import eval_predictions
+from tk_nn_classifier.classifiers.utils import eval_accuracy
 from tk_nn_classifier.config import load_config_from_dikt
 from tk_nn_classifier.data_loader import load_data_set
 
@@ -21,7 +21,7 @@ config_dikt = {
     "model_version": "test",
 
     "dropout_rate": 0.5,
-    "num_epochs": 8,
+    "num_epochs": 20,
     "max_lines":50,
 
     "spacy": {
@@ -69,6 +69,11 @@ def _load_train_eval(classifier):
     eval_data = classifier.data_reader.model_input(eval_docs, train_mode=False)
     return train_data, eval_data
 
+def _load_mapper(mapper_file):
+    with open(mapper_file) as mapper_fh:
+        label_mapper = json.load(mapper_fh)
+    return label_mapper
+
 
 class SpacyClassifierTestCases(TestCase):
     '''unit test for spacy classifier:
@@ -114,8 +119,7 @@ class SpacyClassifierTestCases(TestCase):
         self.assertEqual(eval_data[6][1], {'no': True, 'yes': False})
 
         # also check the label id
-        with open(classifier.config['datasets']['label_mapper']) as mapper_fh:
-            label_mapper = json.load(mapper_fh)
+        label_mapper = _load_mapper(self.config['datasets']['label_mapper'])
         self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
 
     def test_02_build_graph(self):
@@ -130,28 +134,22 @@ class SpacyClassifierTestCases(TestCase):
         classifier.build_graph()
         classifier.train(train_data, eval_data)
         classifier.save(classifier.config['model_path'])
-        eval, gold = classifier.evaluate_on_test(eval_data)
-        accuracy, prediction, recall = eval_predictions(eval, gold)
+
+        eval, gold = classifier.eval_test_set(self.config['datasets']['eval'])
+        accuracy = eval_accuracy(eval, gold)
         self.assertGreater(accuracy, 0.8, 'testing on eval set using trained model')
 
-    def test_04_load_eval(self):
+    def test_04_load_test(self):
         classifier = SpacyClassifier(self.config)
         classifier.load_saved_model(classifier.config['model_path'])
         test_file = classifier.config['datasets']['test']['test']
-        test_data_set = load_data_set(classifier.config, test_file, train_mode=False)
-        test_input = classifier.prepare_input(test_data_set, train_mode=False)
-        eval, gold = classifier.evaluate_on_test(test_input)
-        accuracy, precision, recall = eval_predictions(eval, gold)
-        self.assertGreater(accuracy, 0.7, 'testing on test set using trained model')
+        eval, gold = classifier.eval_test_set(test_file)
+        accuracy = eval_accuracy(eval, gold)
+        self.assertGreater(accuracy, 0.8, 'testing on test set using trained model')
 
 
 class SpacyClassifierMultiFieldsTestCases(TestCase):
-    '''unit test for spacy classifier:
-        - data preparation
-        - model Training
-        - loading
-        - evaluation'''
-
+    '''unit test for spacy classifier with multi field input'''
     @classmethod
     def setUpClass(self):
         self.test_dir = tempfile.mkdtemp()
@@ -200,8 +198,7 @@ class SpacyClassifierMultiFieldsTestCases(TestCase):
         self.assertEqual(eval_data[6][1], {'no': True, 'yes': False})
 
         # also check the label id
-        with open(classifier.config['datasets']['label_mapper']) as mapper_fh:
-            label_mapper = json.load(mapper_fh)
+        label_mapper = _load_mapper(self.config['datasets']['label_mapper'])
         self.assertEqual(label_mapper, {"0": "no", "1": "yes"})
 
 
@@ -211,16 +208,107 @@ class SpacyClassifierMultiFieldsTestCases(TestCase):
         classifier.build_graph()
         classifier.train(train_data, eval_data)
         classifier.save(classifier.config['model_path'])
-        eval, gold = classifier.evaluate_on_test(eval_data)
-        accuracy, prediction, recall = eval_predictions(eval, gold)
+        eval, gold = classifier.eval_test_set(classifier.config['datasets']['eval'])
+        accuracy = eval_accuracy(eval, gold)
         self.assertGreater(accuracy, 0.8, 'testing on eval set using trained model')
 
-    def test_04_load_eval_multi_fields(self):
+    def test_04_load_test_multi_fields(self):
         classifier = SpacyClassifier(self.config)
         classifier.load_saved_model(classifier.config['model_path'])
         test_file = classifier.config['datasets']['test']['test']
-        test_data_set = load_data_set(classifier.config, test_file, train_mode=False)
-        test_input = classifier.prepare_input(test_data_set, train_mode=False)
-        eval, gold = classifier.evaluate_on_test(test_input)
-        accuracy, precision, recall = eval_predictions(eval, gold)
+        eval, gold = classifier.eval_test_set(test_file)
+        accuracy = eval_accuracy(eval, gold)
         self.assertGreater(accuracy, 0.7, 'testing on test set using trained model')
+
+
+class SpacyClassifierMultiLabelTestCases(TestCase):
+    '''unit test for spacy classifier with multi label'''
+    @classmethod
+    def setUpClass(self):
+        self.test_dir = tempfile.mkdtemp()
+        config_dikt['model_dir'] = self.test_dir
+        config_dikt['datasets'] = {
+            'train': test_data_path,
+            'eval': test_data_path,
+            'test': {
+                'test': test_data_path
+            },
+            'label_mapper': os.path.join(self.test_dir, 'label_mapper.json')
+        }
+        config_dikt.pop('csv_fields', None)
+        config_dikt['trxml_fields']['features'] ='sec_vacancy.0.sec_vacancy'
+        config_dikt['trxml_fields']['class'] = 'derived_cond_contract_type.0.derived_cond_contract_type'
+        config_dikt['model_version'] = 'test_multi_label'
+        self.config = load_config_from_dikt(config_dikt)
+
+    @classmethod
+    def tearDownClass(self):
+        '''clean up the temp dir after test'''
+        shutil.rmtree(self.test_dir)
+
+    def test_00_config_multi_labels(self):
+        self.assertEqual(
+            self.config['trxml_fields']['features'],
+            ['sec_vacancy.0.sec_vacancy']
+        )
+        self.assertEqual(
+            self.config['trxml_fields']['class'],
+            'derived_cond_contract_type.0.derived_cond_contract_type'
+        )
+        self.assertEqual(
+            self.config['model_path'],
+            os.path.join(self.config['model_dir'], self.config['model_version'])
+        )
+
+    def test_01_prepare_data_multi_labels(self):
+        classifier = SpacyClassifier(self.config)
+        train_data, eval_data = _load_train_eval(classifier)
+
+        # train data
+        self.assertEqual(len(train_data), 64)
+        self.assertEqual(len(train_data[6][0]), 1699, 'check train doc 6 length')
+        self.assertEqual(train_data[6][1],
+                         {'cats': {'Detachering / interim': False,
+                                   'Franchise': False,
+                                   'Freelance': False,
+                                   'Mogelijk vast': False,
+                                   'Tijdelijk': True,
+                                   'Unspecified': False,
+                                   'Vast': False
+                                   }
+                          },
+                         'check train doc 6 type')
+
+        # eval data is the same as train
+
+        # also check the label id
+        label_mapper = _load_mapper(self.config['datasets']['label_mapper'])
+        self.assertEqual(
+            label_mapper,
+            {'0': 'Detachering / interim', '1': 'Franchise',
+             '2': 'Freelance', '3': 'Mogelijk vast', '4': 'Tijdelijk',
+             '5': 'Unspecified', '6': 'Vast'}
+        )
+
+    def test_03_train_save_eval_multi_labels(self):
+        classifier = SpacyClassifier(self.config)
+        train_data, eval_data = _load_train_eval(classifier)
+        classifier.build_graph()
+        classifier.train(train_data, eval_data)
+        classifier.save(classifier.config['model_path'])
+        eval, gold = classifier.eval_test_set(classifier.config['datasets']['eval'])
+        accuracy = eval_accuracy(eval, gold)
+        self.assertGreater(accuracy, 0.8, 'testing on eval set using trained model')
+        self.assertEqual(
+            eval[:10],
+            ['Unspecified', 'Vast', 'Unspecified', 'Unspecified', 'Unspecified',
+             'Unspecified', 'Tijdelijk', 'Unspecified', 'Vast', 'Unspecified'])
+
+
+    def test_04_load_eval_multi_labels(self):
+        classifier = SpacyClassifier(self.config)
+        classifier.load_saved_model(classifier.config['model_path'])
+        test_file = classifier.config['datasets']['test']['test']
+        eval, gold = classifier.eval_test_set(test_file)
+        accuracy = eval_accuracy(eval, gold)
+        self.assertGreater(accuracy, 0.8, 'testing on test set using trained model')

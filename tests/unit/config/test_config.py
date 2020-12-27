@@ -21,9 +21,9 @@ class TestDefaultConfig(TestCase):
     def test_spacy_model_name_consistency(self):
         self.config['spacy']['model'] = 'foo'
         with self.assertRaises(ConfigError):
-            config.spacy_lang_model_consistency(self.config)
+            config._validate_spacy_field_consistency(self.config)
 
     def test_spacy_model_not_support_lang(self):
         self.config['spacy']['language'] = 'zh'
         with self.assertRaises(ConfigError):
-            config.spacy_lang_model_consistency(self.config)
+            config._validate_spacy_field_consistency(self.config)

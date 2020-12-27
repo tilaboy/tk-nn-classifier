@@ -7,20 +7,13 @@ from ..model_input import SpacyDataReader
 from .. import LOGGER
 from ..exceptions import ConfigError
 from .base_classifier import BaseClassifier
-from .utils import eval_predictions, eval_accuracy
+from .utils import eval_accuracy
 
 
 class SpacyClassifier(BaseClassifier):
     def __init__(self, config):
         super().__init__(config)
         self.data_reader = SpacyDataReader(self.config)
-
-    def build_and_train(self, train_data, eval_data):
-        self.build_graph()
-        self.train(train_data, eval_data)
-        self.save(self.config['model_path'])
-        if 'test' in self.config['datasets']:
-            self.evaluate_on_sets()
 
     def prepare_input(self, data_set, train_mode):
         return self.data_reader.model_input(data_set, train_mode)

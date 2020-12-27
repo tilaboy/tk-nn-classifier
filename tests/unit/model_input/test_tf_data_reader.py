@@ -3,7 +3,7 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.tf_data_reader import TFDataReader
+from tk_nn_classifier.model_input.tf_data_reader import TFDataReader
 
 class TFDataReaderTestCases(TestCase):
     """unit tests"""

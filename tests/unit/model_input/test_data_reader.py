@@ -3,9 +3,9 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.data_reader import DataReader
-from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
-from tk_nn_classifier.data_loader.csv_loader import CSVLoader
+from tk_nn_classifier.model_input.data_reader import DataReader
+from tk_nn_classifier.data_loader import TRXMLLoader
+from tk_nn_classifier.data_loader import CSVLoader
 
 class DataReaderTestCases(TestCase):
     """unit tests"""

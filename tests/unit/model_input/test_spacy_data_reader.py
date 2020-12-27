@@ -3,7 +3,7 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.spacy_data_reader import SpacyDataReader
+from tk_nn_classifier.model_input.spacy_data_reader import SpacyDataReader
 
 class SpacyDataReaderTestCases(TestCase):
     """unit tests"""

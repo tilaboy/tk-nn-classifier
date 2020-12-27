@@ -47,7 +47,7 @@ tk\_nn\_classifier.data\_loader.spacy\_data\_reader module
 tk\_nn\_classifier.data\_loader.tf\_data\_reader module
 -------------------------------------------------------
 
-.. automodule:: tk_nn_classifier.data_loader.tf_data_reader
+.. automodule:: tk_nn_classifier.model_input.tf_data_reader
     :members:
     :undoc-members:
     :show-inheritance:
@@ -55,7 +55,7 @@ tk\_nn\_classifier.data\_loader.tf\_data\_reader module
 tk\_nn\_classifier.data\_loader.tokenizer module
 ------------------------------------------------
 
-.. automodule:: tk_nn_classifier.data_loader.tokenizer
+.. automodule:: tk_nn_classifier.model_input.tokenizer
     :members:
     :undoc-members:
     :show-inheritance:

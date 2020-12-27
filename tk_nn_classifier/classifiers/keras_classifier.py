@@ -29,13 +29,6 @@ class KerasClassifier(BaseClassifier):
         return ([x_train, y_train, seqlen_train],
                 [x_eval, y_eval, seqlen_eval])
 
-    def build_and_train(self):
-        self.load_embedding()
-        train_data, eval_data = self.prepare_train_eval_data()
-        self.build_graph()
-        self.train(train_data, eval_data)
-        if 'test' in self.config['datasets']:
-            self.evaluate_on_tests()
 
     def load_embedding(self):
         target_file = self.config['embedding']['filepath']

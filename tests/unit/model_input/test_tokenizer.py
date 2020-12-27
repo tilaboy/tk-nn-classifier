@@ -3,7 +3,7 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
-from tk_nn_classifier.data_loader.tokenizer import tokenize
+from tk_nn_classifier.model_input.tokenizer import tokenize
 
 class TokenizerTestCases(TestCase):
     """unit tests"""

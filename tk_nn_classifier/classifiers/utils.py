@@ -52,7 +52,7 @@ def eval_accuracy(predictions: List, gold_labels: List) -> float:
     return 0.0 if nr_right == 0 else (1.0 * nr_right) / (nr_right + nr_error)
 
 
-def _eval_precision_recall(predictions: List, gold_labels: List) -> Dict:
+def eval_precision_recall(predictions: List, gold_labels: List) -> Dict:
     '''
     input:
         - predictions
@@ -94,7 +94,7 @@ def _eval_precision_recall(predictions: List, gold_labels: List) -> Dict:
     return scores
 
 
-def _eval_confusion_matrix(predictions: List, gold_labels: List) -> List:
+def eval_confusion_matrix(predictions: List, gold_labels: List) -> List:
     """
     Generate a confusion matrix for multiple classification
 
@@ -126,7 +126,7 @@ def eval_predictions(predictions: List, gold_labels: List) -> None:
     accuracy = round(eval_accuracy(predictions, gold_labels), 3)
     print ('- overal accuracy: {:0.2f}'.format(accuracy))
 
-    scores = _eval_precision_recall(predictions, gold_labels)
+    scores = eval_precision_recall(predictions, gold_labels)
     score_fields = ['precision', 'recall', 'f1']
     score_table = [
         [label] + [round(scores[label][field], 3) for field in score_fields]
@@ -135,6 +135,6 @@ def eval_predictions(predictions: List, gold_labels: List) -> None:
     print('- precision, recall and f1 scores:')
     print(tabulate(score_table, ['label'] + score_fields, missingval="-", tablefmt="github"))
 
-    confusion_matrix = _eval_confusion_matrix(predictions, gold_labels)
+    confusion_matrix = eval_confusion_matrix(predictions, gold_labels)
     print('- confusion matrix:')
     print(tabulate(confusion_matrix, headers="firstrow", missingval="-", tablefmt="github"))

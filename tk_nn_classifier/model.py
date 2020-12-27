@@ -44,7 +44,7 @@ class Model:
     def predict_likelihoods(self, inputs):
         return self.classifier.predict_likelihoods(inputs)
 
-    def classify_batch(self, iputs):
+    def classify_batch(self, inputs):
         return self.classifier.classify_batch(inputs)
 
     def eval_test_set(self, test_file, analysis_output_file=None):

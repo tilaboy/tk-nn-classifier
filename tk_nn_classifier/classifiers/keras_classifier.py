@@ -10,6 +10,7 @@ from ..word_embedding import WordVector, download_tk_embedding
 from ..model_input import TFDataReader, tokenize
 from .. import LOGGER
 from .base_classifier import BaseClassifier
+from .graph_selector import GraphSelector
 
 from tqdm import tqdm
 

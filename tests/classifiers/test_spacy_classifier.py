@@ -9,6 +9,9 @@ from tk_nn_classifier.classifiers import SpacyClassifier
 from tk_nn_classifier.classifiers.utils import eval_accuracy
 from tk_nn_classifier.config import load_config_from_dikt
 from tk_nn_classifier.data_loader import load_data_set
+from tk_nn_classifier.config import FEAT_TYPE_TOKEN, FEAT_TYPE_CHAR
+from tk_nn_classifier.config import FEAT_FIELD, CAT_FIELD
+from tk_nn_classifier.config import _DEFAULT_MAX_TOKENS, _DEFAULT_MAX_CHARS
 
 train_data_path = 'tests/resource/train.csv'
 eval_data_path = 'tests/resource/eval.csv'
@@ -96,8 +99,25 @@ class SpacyClassifierTestCases(TestCase):
         shutil.rmtree(self.test_dir)
 
     def test_00_config(self):
-        self.assertEqual(self.config['trxml_fields']['features'], ["sec_vacancy.0.sec_vacancy"])
-        self.assertEqual(self.config['csv_fields']['features'], ["full_text"])
+        self.assertEqual(
+            self.config['trxml_fields']['features'],
+            {
+                "sec_vacancy.0.sec_vacancy": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                }
+            }
+        )
+        self.assertEqual(
+            self.config['csv_fields']['features'],
+            {
+                "full_text": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                }
+            }
+        )
+
         self.assertEqual(
             self.config['model_path'],
             os.path.join(self.config['model_dir'], self.config['model_version'])
@@ -170,12 +190,30 @@ class SpacyClassifierMultiFieldsTestCases(TestCase):
 
     def test_00_config_multi_fields(self):
         self.assertEqual(
-            self.config['trxml_fields']['features'],
-            ['derived_org_name.0.derived_org_name', 'sec_vacancy.0.sec_vacancy']
+            self.config['csv_fields']['features'],
+            {
+                "organization_name": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                },
+                "full_text": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                }
+            }
         )
         self.assertEqual(
-            self.config['csv_fields']['features'],
-            ['organization_name', 'full_text']
+            self.config['trxml_fields']['features'],
+            {
+                "derived_org_name.0.derived_org_name": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                },
+                "sec_vacancy.0.sec_vacancy": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                }
+            }
         )
         self.assertEqual(
             self.config['model_path'],
@@ -249,7 +287,12 @@ class SpacyClassifierMultiLabelTestCases(TestCase):
     def test_00_config_multi_labels(self):
         self.assertEqual(
             self.config['trxml_fields']['features'],
-            ['sec_vacancy.0.sec_vacancy']
+            {
+                "sec_vacancy.0.sec_vacancy": {
+                    'type': FEAT_TYPE_TOKEN,
+                    'max_len': _DEFAULT_MAX_TOKENS
+                }
+            }
         )
         self.assertEqual(
             self.config['trxml_fields']['class'],

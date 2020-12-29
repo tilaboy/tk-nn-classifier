@@ -26,7 +26,7 @@ class BaseClassifier:
 
     def eval_test_set(self, test_file, analysis_output_file=None):
         test_data_set = list(load_data_set(self.config, test_file, train_mode=False))
-        test_input = self.prepare_input(test_data_set, train_mode=False)
+        test_input = self.prepare_input(iter(test_data_set), train_mode=False)
         features, labels = zip(*test_input)
         if isinstance(labels[0], dict):
             labels = [max(label, key=label.get) for label in labels]

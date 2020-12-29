@@ -116,7 +116,12 @@ def set_feature_property(cfg_input):
 
 def _derived_config_fields(config):
     '''
-    add derived field to config dictionary
+    modify the config to be used in later data manipulation:
+        - model_path = model_dir/model_version
+        - model_evel_path = model_path/res
+        - dropout_keep_rate = 1 - dropout_rate
+        - convert the feature to dictionary format
+          field_name: {type: 'token/char', max_len: 111}
     '''
     config['model_path'] = os.path.join(config['model_dir'],
                                         config['model_version'])

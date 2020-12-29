@@ -2,7 +2,6 @@ import os
 
 from .label_class_mapper import LabelClassMapper
 from ..config import data_field_type, FEAT_FIELD, CAT_FIELD
-from ..data_loader.data_utils import iter_flatten
 
 
 class DataReader():

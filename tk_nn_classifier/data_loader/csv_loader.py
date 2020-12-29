@@ -1,5 +1,5 @@
 ''' CSV file reader: import data from csv files'''
-from typing import Generator, Tuple
+from typing import Generator, Tuple, List
 import random
 import os
 import csv
@@ -34,7 +34,7 @@ class CSVLoader(BaseLoader):
             for row in reader:
                 yield row
 
-    def _load_selected_data(self, fields: str, data_path: str) -> Generator:
+    def _load_selected_data(self, fields: List[str], data_path: str) -> Generator:
         for row in self._iter_csv(data_path):
             yield {field: row[field] for field in fields}
 

@@ -4,8 +4,18 @@ import copy
 import json
 from .exceptions import ConfigError
 
-DATA_FEATURE_FIELD = 'features'
-DATA_LABEL_FIELD = 'class'
+# config field for feature and category
+FEAT_FIELD = 'features'
+CAT_FIELD = 'class'
+
+# feat types:
+FEAT_TYPE_TOKEN = 'token'
+FEAT_TYPE_CHAR = 'char'
+
+# default max length
+_DEFAULT_MAX_TOKENS = 1024
+_DEFAULT_MAX_CHARS = 32
+
 
 DEFAULTS = {
     # Data reading params
@@ -44,8 +54,70 @@ def get_default_config():
     config = copy.deepcopy(DEFAULTS)
     return config
 
+# TODO: convert functions to class
+class ModelConfig:
+    '''
+    build:
+        - read from json file
+        - load from dictionary
+    '''
+    pass
+
+def _default_feat_property(field_name):
+    '''set default feature type as text field'''
+    return {'type': FEAT_TYPE_TOKEN, 'max_len': _DEFAULT_MAX_TOKENS}
+
+def _set_default_max_len(property):
+    if property['type'] == FEAT_TYPE_TOKEN:
+        property['max_len'] = _DEFAULT_MAX_TOKENS
+    elif property['type'] == FEAT_TYPE_CHAR:
+        property['max_len'] = _DEFAULT_MAX_CHARS
+
+def _check_feat_property(feat_dict):
+    for feat_name, property in feat_dict.items():
+        if 'type' not in property:
+            raise ConfigError(
+                'type',
+                section=FEAT_FIELD,
+                detail_msg='type for {} not set'.format(feat_name)
+            )
+        if 'max_len' not in property:
+            _set_default_max_len(property)
+
+def set_feature_property(cfg_input):
+    '''
+    set feature property, consider the three case in config:
+        - feature: field
+        - feature: [field_1, field_2]
+        - feature: {'field_1': {'type': 'text', 'max_len': 1024},
+                    'field_2': {...}
+                    ....
+                   }
+
+    internally, all three config type will be convert to type 3
+
+    Note that the dict ordered is maintained since python 3.6, for
+    Python versions >=2.7 and <3.6, we will need collections.OrderedDict.
+    Since the repo only supports >=3.6, ordereddict is not used here
+    '''
+    if isinstance(cfg_input[FEAT_FIELD], str):
+        field = cfg_input[FEAT_FIELD]
+        cfg_input[FEAT_FIELD] = {
+            field: _default_feat_property(field)
+        }
+    elif isinstance(cfg_input[FEAT_FIELD], list):
+        cfg_input[FEAT_FIELD] = {
+            field: _default_feat_property(field)
+            for field in cfg_input[FEAT_FIELD]
+        }
+    elif isinstance(cfg_input[FEAT_FIELD], dict):
+        _check_feat_property(cfg_input[FEAT_FIELD])
+
 
 def _derived_config_fields(config):
+    '''
+    add derived field to config dictionary
+    '''
     config['model_path'] = os.path.join(config['model_dir'],
                                         config['model_version'])
     config['model_eval_path'] = os.path.join(config['model_path'],
@@ -55,16 +127,10 @@ def _derived_config_fields(config):
     config['dropout_keep_rate'] = 1 - config['dropout_rate']
 
     # convert the config[x][features] to list
-    if 'trxml_fields' in config:
-        if isinstance(config['trxml_fields'][DATA_FEATURE_FIELD], str):
-            config['trxml_fields'][DATA_FEATURE_FIELD] = \
-            [config['trxml_fields'][DATA_FEATURE_FIELD]]
-    if 'csv_fields' in config:
-        if isinstance(config['csv_fields'][DATA_FEATURE_FIELD], str):
-            config['csv_fields'][DATA_FEATURE_FIELD] = \
-            [config['csv_fields'][DATA_FEATURE_FIELD]]
+    for input_type in ['trxml_fields', 'csv_fields']:
+        if input_type in config:
+            set_feature_property(config[input_type])
 
-    return config
 
 def load_config(config_file: str):
     '''
@@ -99,7 +165,7 @@ def _validate_must_have(config):
         if field not in config:
             raise ConfigError(field)
 
-    data_fields_must_have = [DATA_FEATURE_FIELD, DATA_LABEL_FIELD]
+    data_fields_must_have = [FEAT_FIELD, CAT_FIELD]
 
     for doc_type in ['trxml', 'csv']:
         field_entry = doc_type + '_fields'
@@ -187,7 +253,7 @@ def data_field_type(field_name, config):
 def _field_type_lookup(field_name, field_config):
     field_type = ''
     for field_type in field_config.keys():
-        if isinstance(field_config[field_type], list):
+        if isinstance(field_config[field_type], (list, dict)):
             if field_name in field_config[field_type]:
                 return field_type
         elif isinstance(field_config[field_type], str):

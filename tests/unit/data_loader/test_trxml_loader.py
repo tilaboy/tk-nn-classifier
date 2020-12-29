@@ -3,6 +3,8 @@ import os
 from unittest import TestCase
 import tempfile
 import shutil
+
+from tk_nn_classifier.config import load_config_from_dikt
 from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader, split_trxml_set
 
 class TRXMLLoaderTestCases(TestCase):
@@ -20,9 +22,13 @@ class TRXMLLoaderTestCases(TestCase):
                 "doc_id": "Document.0.correlationid",
                 "extra": ["derived_org_name.0.derived_org_name",
                     "derived_norm_url.0.derived_norm_url"]
+            },
+            "datasets": {
+                "all_data": "foo"
             }
         }
-        self.trxml_loader = TRXMLLoader(config['trxml_fields'])
+        self.config = load_config_from_dikt(config)
+        self.trxml_loader = TRXMLLoader(self.config['trxml_fields'])
 
     @classmethod
     def tearDownClass(self):
@@ -31,17 +37,19 @@ class TRXMLLoaderTestCases(TestCase):
 
     def test_trxml_train_fields_list (self):
         self.assertEqual(self.trxml_loader._train_fields(),
-                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
+                ['sec_vacancy.0.sec_vacancy',
+                 'derived_org_name.0.derived_org_name',
                  'derived_vac_intermediary.0.derived_vac_intermediary']
         )
 
     def test_trxml_detailed_fields_list (self):
         self.assertEqual(self.trxml_loader._detail_fields(),
-                [['sec_vacancy.0.sec_vacancy', 'derived_org_name.0.derived_org_name'],
+                ['sec_vacancy.0.sec_vacancy',
+                 'derived_org_name.0.derived_org_name',
                  'derived_vac_intermediary.0.derived_vac_intermediary',
                  'Document.0.correlationid',
-                 ['derived_org_name.0.derived_org_name',
-                 'derived_norm_url.0.derived_norm_url']]
+                 'derived_org_name.0.derived_org_name',
+                 'derived_norm_url.0.derived_norm_url']
         )
 
     def _unpack_field(self, examples, field):

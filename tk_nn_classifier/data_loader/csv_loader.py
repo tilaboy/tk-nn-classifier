@@ -5,7 +5,7 @@ import os
 import csv
 from .. import LOGGER
 from .base_loader import BaseLoader
-from .data_utils import file_ext, iter_flatten
+from .data_utils import file_ext
 from ..exceptions import FileTypeError
 
 class CSVLoader(BaseLoader):
@@ -36,7 +36,7 @@ class CSVLoader(BaseLoader):
 
     def _load_selected_data(self, fields: str, data_path: str) -> Generator:
         for row in self._iter_csv(data_path):
-            yield {field: row[field] for field in iter_flatten(fields)}
+            yield {field: row[field] for field in fields}
 
 
 def split_csv_file(data_path: str,

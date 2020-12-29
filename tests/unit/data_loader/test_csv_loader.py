@@ -17,15 +17,20 @@ class CSVLoaderTestCases(TestCase):
         self.csv_file = 'tests/resource/eval.csv'
         self.test_dir = tempfile.mkdtemp()
 
-        config= {
+        config = {
             "csv_fields": {
                 "features": ["full_text", 'organization_name'],
                 "class": "advertiser_type",
                 "doc_id": "posting_id",
                 "extra": ["organization_name", "source_url"]
+            },
+            "datasets": {
+                "all_data": "foo"
             }
+
         }
-        self.csv_loader = CSVLoader(config['csv_fields'])
+        self.config = load_config_from_dikt(config)
+        self.csv_loader = CSVLoader(self.config['csv_fields'])
 
     @classmethod
     def tearDownClass(self):
@@ -39,18 +44,18 @@ class CSVLoaderTestCases(TestCase):
             CSVLoader._delimit_type('ab.usv')
 
     def test_csv_train_fields_list (self):
-        self.assertEqual(self.csv_loader._train_fields(),
-                [['full_text','organization_name'],
-                 'advertiser_type']
+        self.assertEqual(
+            self.csv_loader._train_fields(),
+            ['full_text', 'organization_name', 'advertiser_type']
         )
 
     def test_csv_detailed_fields_list (self):
         self.assertEqual(self.csv_loader._detail_fields(),
-                [['full_text', 'organization_name'],
+                ['full_text', 'organization_name',
                  'advertiser_type',
                  'posting_id',
-                 ['organization_name',
-                 'source_url']]
+                 'organization_name',
+                 'source_url']
         )
 
     def test_csv_reading(self):

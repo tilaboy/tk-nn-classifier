@@ -25,17 +25,14 @@ class BaseLoader:
         raise NotImplementedError('_load_selected_data needs to be implemented')
 
     def _train_fields(self):
-        fields = [self.field_config['features'],
-                  self.field_config['class']]
-        return fields
+        return list(self.field_config['features'].keys()) + [self.field_config['class']]
 
     def _detail_fields(self):
-        fields = [self.field_config['features'],
-                  self.field_config['class']]
+        fields = self._train_fields()
         if 'doc_id' in self.field_config:
             fields.append(self.field_config['doc_id'])
         if 'extra' in self.field_config:
-            fields.append(self.field_config['extra'])
+            fields.extend(self.field_config['extra'])
         return fields
 
     def load_train_data(self, data_path:str) -> Generator:

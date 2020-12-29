@@ -3,6 +3,7 @@ import os
 import tempfile
 import shutil
 
+from tk_nn_classifier.config import load_config_from_dikt
 from tk_nn_classifier.data_loader import load_data_set, _select_data_loader, split_data_set, _data_type
 from tk_nn_classifier.data_loader.csv_loader import CSVLoader
 from tk_nn_classifier.data_loader.trxml_loader import TRXMLLoader
@@ -11,7 +12,7 @@ from tk_nn_classifier.exceptions import FileTypeError
 class DataLoaderTestCase(TestCase):
     @classmethod
     def setUpClass(self):
-        self.config= {
+        config= {
             "csv_fields": {
                 "features": ["full_text", 'organization_name'],
                 "class": "advertiser_type",
@@ -24,9 +25,12 @@ class DataLoaderTestCase(TestCase):
                 "doc_id": "Document.0.correlationid",
                 "extra": ["derived_org_name.0.derived_org_name",
                     "derived_norm_url.0.derived_norm_url"]
+            },
+            "datasets": {
+                "all_data": "foo"
             }
         }
-
+        self.config = load_config_from_dikt(config)
         self.test_dir = tempfile.mkdtemp()
         self.csv_file = 'tests/resource/eval.csv'
         self.trxml_dir = 'tests/resource/sample_trxmls'

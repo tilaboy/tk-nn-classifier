@@ -8,14 +8,13 @@ from xml_miner.miner import TRXMLMiner
 
 from .. import LOGGER
 from .base_loader import BaseLoader
-from .data_utils import iter_flatten
 
 
 class TRXMLLoader(BaseLoader):
     def _load_selected_data(self, fields, data_path):
-        trxml_miner = TRXMLMiner(','.join(list(iter_flatten(fields))))
+        trxml_miner = TRXMLMiner(','.join(fields))
         for trxml in trxml_miner.mine(data_path):
-            yield {field: trxml['values'][field] for field in iter_flatten(fields)}
+            yield {field: trxml['values'][field] for field in fields}
 
     @staticmethod
     def _split_docs_on_ratio(data_path, ratio, random_shuffle=False):

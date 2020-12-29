@@ -1,7 +1,6 @@
 '''SpaCy data reader: prepare the train/eval data in spaCy format'''
 import random
 from .data_reader import DataReader
-from ..config import DATA_LABEL_FIELD
 
 
 class SpacyDataReader(DataReader):
@@ -24,28 +23,28 @@ class SpacyDataReader(DataReader):
         labels:
         [l1, l2, l3, .....]
         '''
-        features, labels = self.get_feature_values(data_gen)
+        features, _, labels, _ = self.get_feature_values(data_gen)
         texts = ['\n'.join(feature) for feature in features]
         self._build_label_mapper(labels)
         cats = self._prepare_label(labels)
         return texts, cats
 
     def get_feature_values(self, data_gen):
-        features = list()
-        labels = list()
         feature_fields = list()
         category_field = None
+        first_doc = next(data_gen)
+        for field in first_doc.keys():
+            if self.is_feature_field(field):
+                feature_fields.append(field)
+            elif self.is_category_field(field):
+                category_field = field
+        features = [[first_doc[field] for field in feature_fields]]
+        labels = [first_doc[category_field]]
+
         for doc in data_gen:
-            if category_field is None:
-                for field in doc.keys():
-                    if self.is_feature_field(field):
-                        feature_fields.append(field)
-                    elif self.is_category_field(field):
-                        category_field = field
-            feature = [doc[field] for field in feature_fields]
-            features.append(feature)
+            features.append([doc[field] for field in feature_fields])
             labels.append(doc[category_field])
-        return features, labels
+        return features, feature_fields, labels, category_field
 
     def _prepare_label(self, labels):
         return [

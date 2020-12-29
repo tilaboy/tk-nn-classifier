@@ -1,7 +1,8 @@
 import os
 
 from .label_class_mapper import LabelClassMapper
-from ..config import data_field_type, DATA_FEATURE_FIELD, DATA_LABEL_FIELD
+from ..config import data_field_type, FEAT_FIELD, CAT_FIELD
+from ..data_loader.data_utils import iter_flatten
 
 
 class DataReader():
@@ -20,10 +21,10 @@ class DataReader():
             self.label_mapper = None
 
     def is_feature_field(self, field):
-        return data_field_type(field, self.config) == DATA_FEATURE_FIELD
+        return data_field_type(field, self.config) == FEAT_FIELD
 
     def is_category_field(self, field):
-        return data_field_type(field, self.config) == DATA_LABEL_FIELD
+        return data_field_type(field, self.config) == CAT_FIELD
 
     def _build_label_mapper(self, labels):
         if self.label_mapper is None:

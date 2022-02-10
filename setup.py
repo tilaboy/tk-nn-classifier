@@ -5,7 +5,7 @@ NAME = "tk_nn_classifier"
 VERSION = os.environ.get("TK_NN_CLASSIFIER", '0.0.0')
 
 INSTALL_REQUIRES = [
-    "tensorflow == 1.14.0",
+    "tensorflow == 2.5.3",
     "numpy == 1.16.0",
     "xml-miner == 0.0.5",
     "spacy == 2.3.0",
